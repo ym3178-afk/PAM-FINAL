@@ -1483,3 +1483,50 @@ main{padding-left:238px}
   }
   .fields-instruction{display:none}
 }
+
+/* Slide 02: personal motivation before research questions */
+.motivation-strip{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border:1px solid var(--ink);
+  margin:10px 0 24px;
+}
+.motivation-card{
+  min-height:126px;
+  padding:18px 22px;
+  background:rgba(255,255,255,.55);
+}
+.motivation-card + .motivation-card{border-left:1px solid var(--ink)}
+.motivation-card-dark{background:#111;color:#fff}
+.motivation-label{
+  margin:0 0 12px!important;
+  color:var(--accent)!important;
+  font-size:10px!important;
+  line-height:1!important;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.motivation-card>p:last-child{
+  margin:0;
+  max-width:720px;
+  font-size:15px;
+  line-height:1.45;
+}
+.research-slide .research-heading{margin-bottom:22px}
+.research-slide .research-heading h2{font-size:clamp(30px,3.1vw,54px)}
+.research-slide .research-sequence{min-height:300px}
+.research-slide .research-stage{margin:14px 0 22px}
+.research-slide .research-step{padding-top:19px;padding-bottom:20px}
+.research-slide .research-step h3{font-size:clamp(18px,1.4vw,25px)}
+.research-slide .research-step>p:last-child{font-size:13px}
+.research-slide .research-logic-line{margin-top:16px}
+
+@media(max-width:1100px){
+  .motivation-strip{grid-template-columns:1fr}
+  .motivation-card + .motivation-card{border-left:0;border-top:1px solid var(--ink)}
+}
+@media(max-width:650px){
+  .motivation-card{min-height:auto;padding:16px}
+  .motivation-card>p:last-child{font-size:14px}
+}
