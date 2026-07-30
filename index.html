@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Behind the Route — Yizhang Mu</title>
+<meta name="description" content="Research foundations and project outline by Yizhang Mu." />
+<link rel="preconnect" href="https://api.mapbox.com" />
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.26.0/mapbox-gl.css" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <a href="#s01" class="brand"><strong>Behind the Route</strong><span>Yizhang Mu · Columbia GSAPP CDP</span></a>
+</header>
+<aside class="side-navigation" aria-label="Section navigation">
+  <nav id="nav"></nav>
+  <div class="rail-footer">
+    <span>Research foundations</span>
+    <b>13 sections · 16:10</b>
+  </div>
+</aside>
+<main>
+<section class="slide title-slide" id="s01" data-title="Title">
+  <div class="slide-no">01</div>
+  <div class="title-grid">
+    <div>
+      <p class="kicker">Research foundations + project outline</p>
+      <h1>Behind the Route</h1>
+      <h2>Making the invisible networks of urban food delivery perceptible</h2>
+      <p class="lead">The route is the project’s main entry point, but it is not understood as a single line on a map. It is treated as an outcome jointly produced by platforms, labor, urban space, and infrastructure.</p>
+      <div class="meta-row"><span>Urban food delivery</span><span>Critical visualization</span><span>Platform labor</span></div>
+    </div>
+    <div class="route-lab" aria-label="Adjustable route map showing how conditions change a delivery route">
+      <div class="route-lab-head">
+        <div><span>Adjustable route study</span><strong id="heroRouteMode">Balanced route</strong></div>
+        <div class="route-status"><b id="heroEta">18 min</b><small>estimated trip</small></div>
+      </div>
+      <div class="route-map-stage">
+        <div class="route-overlay-badges"><span id="weatherBadge">Clear weather</span><span id="bikeBadge">Strong bike lane coverage</span></div>
+        <svg id="heroRouteMap" viewBox="0 0 720 430" role="img" aria-label="Schematic street network with an adjustable delivery route">
+          <g class="street-grid">
+            <path d="M70 80H650M70 160H650M70 240H650M70 320H650"/>
+            <path d="M130 45V380M250 45V380M370 45V380M490 45V380M610 45V380"/>
+          </g>
+          <g class="route-obstacles">
+            <rect id="heroCampus" x="252" y="162" width="236" height="155" rx="6"/>
+            <text x="370" y="238">Restricted campus</text>
+            <path id="heroSlope" d="M490 82L610 82L610 160L490 160Z"/>
+            <text x="550" y="126">Steep slope</text>
+            <circle id="heroTraffic" cx="370" cy="160" r="42"/>
+            <text x="370" y="164">Traffic</text>
+          </g>
+          <path id="heroBaseRoute" class="base-route" d="M90 320L130 320L130 240L250 240L250 160L370 160L370 80L610 80L610 120L650 120"/>
+          <path id="heroActiveRoute" class="active-route" d="M90 320L130 320L130 240L250 240L250 160L370 160L370 80L610 80L610 120L650 120"/>
+          <g class="route-points">
+            <circle cx="90" cy="320" r="9"/><text x="90" y="347">Restaurant</text>
+            <circle cx="650" cy="120" r="9"/><text x="650" y="96">Customer</text>
+          </g>
+          <g id="heroWorker" class="worker-marker"><circle cx="90" cy="320" r="7"/><circle cx="90" cy="320" r="15"/></g>
+        </svg>
+        <div class="route-legend"><span><i class="planned-line"></i>Platform route</span><span><i class="actual-line"></i>Adjusted route</span></div>
+      </div>
+      <div class="route-controls">
+        <label><span>Traffic <b id="trafficValue">35%</b></span><input id="trafficControl" type="range" min="0" max="100" value="35"></label>
+        <label><span>Access restriction <b id="accessValue">55%</b></span><input id="accessControl" type="range" min="0" max="100" value="55"></label>
+        <label><span>Slope cost <b id="slopeValue">25%</b></span><input id="slopeControl" type="range" min="0" max="100" value="25"></label>
+        <label><span>Restaurant wait <b id="waitValue">6 min</b></span><input id="waitControl" type="range" min="0" max="20" value="6"></label>
+        <label><span>Weather exposure <b id="weatherValue">20%</b></span><input id="weatherControl" type="range" min="0" max="100" value="20"></label>
+        <label><span>Bike lane quality <b id="bikeValue">70%</b></span><input id="bikeControl" type="range" min="0" max="100" value="70"></label>
+      </div>
+      <div class="route-readout" aria-live="polite">
+        <span><b id="heroDistance">2.4 km</b> distance</span>
+        <span><b id="heroDetour">+0.3 km</b> detour</span>
+        <span><b id="heroFriction">Medium</b> friction</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide research-slide" id="s02" data-title="Research questions">
+  <div class="slide-no">02</div>
+  <p class="kicker">Research questions</p>
+  <div class="research-heading">
+    <h2>From the visible route to accountable evidence.</h2>
+    <p>The project moves through four connected questions rather than treating delivery as a single line on a map.</p>
+  </div>
+
+  <div class="research-sequence" aria-label="Research question logic">
+    <article class="research-step">
+      <div class="research-index">01</div>
+      <p class="research-stage">Omission</p>
+      <h3>What is hidden behind the route shown by the platform?</h3>
+      <p>Waiting, detours, access restrictions, risk, and rider decisions often disappear from the customer interface.</p>
+    </article>
+
+    <article class="research-step">
+      <div class="research-index">02</div>
+      <p class="research-stage">Production</p>
+      <h3>How is a delivery route produced?</h3>
+      <p>It is jointly shaped by platform algorithms, restaurant operations, rider judgment, streets, buildings, and local rules.</p>
+    </article>
+
+    <article class="research-step">
+      <div class="research-index">03</div>
+      <p class="research-stage">Revelation</p>
+      <h3>How can design reveal these hidden relationships?</h3>
+      <p>Route comparison, layered mapping, and interaction connect the visible line to the systems that produce it.</p>
+    </article>
+
+    <article class="research-step research-step-dark">
+      <div class="research-index">04</div>
+      <p class="research-stage">Accountability</p>
+      <h3>How can visualization remain honest?</h3>
+      <p>The project distinguishes observation, public data, simulation, uncertainty, and missing information.</p>
+    </article>
+  </div>
+
+  <div class="research-logic-line" aria-label="Research sequence summary">
+    <span>Visible route</span><i></i><span>Hidden systems</span><i></i><span>Comparative visualization</span><i></i><span>Accountable evidence</span>
+  </div>
+</section>
+
+<section class="slide keyword-slide" id="s03" data-title="Keywords">
+  <div class="slide-no">03</div>
+  <div class="keyword-heading">
+    <div>
+      <p class="kicker">Keywords</p>
+      <h2>Five terms define the project’s scope.</h2>
+    </div>
+    <p>Move through the network to see how the research object, spatial entry point, hidden system, labor condition, and visual method connect.</p>
+  </div>
+
+  <div class="keyword-experience">
+    <div class="keyword-network" id="keywordNetwork" aria-label="Interactive keyword network">
+      <svg class="keyword-links" viewBox="0 0 760 560" aria-hidden="true">
+        <defs>
+          <filter id="keywordGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path class="keyword-link link-food" d="M380 280 C292 238 222 170 145 106"/>
+        <path class="keyword-link link-infrastructure" d="M380 280 C480 225 570 168 642 110"/>
+        <path class="keyword-link link-labor" d="M380 280 C294 350 220 414 145 474"/>
+        <path class="keyword-link link-visualization" d="M380 280 C475 350 565 420 642 474"/>
+        <path class="keyword-route-trace" d="M70 305 C175 225 264 345 380 280 S585 206 700 294"/>
+      </svg>
+
+      <button class="keyword-node node-food" type="button" data-keyword="food">
+        <span>01</span><strong>Food delivery</strong><small>Research object</small>
+      </button>
+      <button class="keyword-node node-infrastructure" type="button" data-keyword="infrastructure">
+        <span>03</span><strong>Invisible infrastructure</strong><small>Hidden system</small>
+      </button>
+      <button class="keyword-node node-route active" type="button" data-keyword="route">
+        <span>02</span><strong>Route</strong><small>Spatial entry point</small>
+      </button>
+      <button class="keyword-node node-labor" type="button" data-keyword="labor">
+        <span>04</span><strong>Platform labor</strong><small>Labor condition</small>
+      </button>
+      <button class="keyword-node node-visualization" type="button" data-keyword="visualization">
+        <span>05</span><strong>Critical visualization</strong><small>Research method</small>
+      </button>
+
+      <div class="keyword-pulse" aria-hidden="true"></div>
+      <div class="keyword-instruction">Hover or click a term</div>
+    </div>
+
+    <aside class="keyword-detail" aria-live="polite">
+      <div class="keyword-detail-index" id="keywordDetailIndex">02</div>
+      <p class="keyword-detail-role" id="keywordDetailRole">Spatial entry point</p>
+      <h3 id="keywordDetailTitle">Route</h3>
+      <p id="keywordDetailText">The route is not a neutral line. It is the visible outcome of platform decisions, rider judgment, street conditions, and building access.</p>
+      <div class="keyword-detail-tags" id="keywordDetailTags">
+        <span>Platform route</span><span>Experienced route</span><span>Detour</span>
+      </div>
+      <div class="keyword-detail-logic">
+        <span>Object</span><i></i><span>System</span><i></i><span>Evidence</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="slide fields-slide" id="s04" data-title="Intersecting fields">
+  <div class="slide-no">04</div>
+  <div class="fields-heading">
+    <div>
+      <p class="kicker">Intersecting fields</p>
+      <h2>The project sits between movement, power, and representation.</h2>
+    </div>
+    <p>Behind the Route is not only a mapping project. It combines spatial analysis, platform critique, labor research, and interactive design to investigate how delivery routes are produced.</p>
+  </div>
+
+  <div class="fields-experience">
+    <div class="fields-map" id="fieldsMap" data-active="computational" aria-label="Interactive diagram of the fields intersecting in the project">
+      <svg class="fields-links" viewBox="0 0 780 560" aria-hidden="true">
+        <defs>
+          <filter id="fieldGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle class="fields-orbit orbit-one" cx="390" cy="280" r="186"/>
+        <circle class="fields-orbit orbit-two" cx="390" cy="280" r="112"/>
+        <path class="field-link link-computational" d="M390 280 C300 220 250 150 174 104"/>
+        <path class="field-link link-logistics" d="M390 280 C470 210 542 146 625 104"/>
+        <path class="field-link link-platform" d="M390 280 C505 278 570 278 682 280"/>
+        <path class="field-link link-labor" d="M390 280 C476 358 545 410 625 468"/>
+        <path class="field-link link-cartography" d="M390 280 C300 352 243 414 174 468"/>
+        <path class="field-link link-infrastructure" d="M390 280 C270 280 202 280 98 280"/>
+        <path class="field-route-pulse" d="M74 318 C188 220 284 352 390 280 S580 210 710 296"/>
+      </svg>
+
+      <div class="fields-center" aria-hidden="true">
+        <span>Project</span>
+        <strong>Behind the Route</strong>
+        <small>Urban delivery as a socio-technical system</small>
+      </div>
+
+      <button class="field-node field-computational active" type="button" data-field="computational">
+        <span>01</span><strong>Computational design</strong><small>Model and simulate</small>
+      </button>
+      <button class="field-node field-logistics" type="button" data-field="logistics">
+        <span>02</span><strong>Urban logistics</strong><small>Trace movement</small>
+      </button>
+      <button class="field-node field-platform" type="button" data-field="platform">
+        <span>03</span><strong>Platform urbanism</strong><small>Read algorithmic space</small>
+      </button>
+      <button class="field-node field-labor" type="button" data-field="labor">
+        <span>04</span><strong>Labor studies</strong><small>Center worker experience</small>
+      </button>
+      <button class="field-node field-cartography" type="button" data-field="cartography">
+        <span>05</span><strong>Critical cartography</strong><small>Question the map</small>
+      </button>
+      <button class="field-node field-infrastructure" type="button" data-field="infrastructure">
+        <span>06</span><strong>Infrastructure studies</strong><small>Reveal dependencies</small>
+      </button>
+
+      <div class="fields-instruction">Hover or click a field</div>
+    </div>
+
+    <aside class="field-detail" aria-live="polite">
+      <div class="field-detail-index" id="fieldDetailIndex">01</div>
+      <p class="field-detail-role" id="fieldDetailRole">Model and simulate</p>
+      <h3 id="fieldDetailTitle">Computational design</h3>
+      <p id="fieldDetailText">Builds route comparisons and parameter-based simulations that show how traffic, access, slope, waiting, weather, and bicycle infrastructure change a delivery.</p>
+      <div class="field-contribution">
+        <span>Contribution to the project</span>
+        <strong id="fieldDetailContribution">Turns hidden conditions into adjustable spatial relationships.</strong>
+      </div>
+      <div class="field-detail-tags" id="fieldDetailTags">
+        <span>Simulation</span><span>Network analysis</span><span>Interaction</span>
+      </div>
+      <div class="field-shared-question">
+        <span>Shared question</span>
+        <p>How are movement, labor, data, and urban space assembled into one visible route?</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="slide lineage-slide" id="s05" data-title="Historical lineage">
+  <div class="slide-no">05</div>
+  <div class="lineage-heading">
+    <div>
+      <p class="kicker">Historical lineage</p>
+      <h2>From telephone ordering to predictive AI dispatch.</h2>
+    </div>
+    <p class="lineage-intro">As ordering becomes easier for customers, the systems that assign labor, calculate time, and produce the route become more automated—and less visible.</p>
+  </div>
+
+  <div class="lineage-experience">
+    <div class="lineage-map" id="lineageMap" data-active="telephone">
+      <svg class="lineage-svg" viewBox="0 0 920 520" aria-hidden="true">
+        <path class="lineage-base" d="M90 355 C230 95 340 420 485 220 C605 55 735 355 845 135"/>
+        <path class="lineage-progress" id="lineageProgress" d="M90 355 C230 95 340 420 485 220 C605 55 735 355 845 135"/>
+        <circle class="lineage-pulse" r="7"><animateMotion dur="8s" repeatCount="indefinite" path="M90 355 C230 95 340 420 485 220 C605 55 735 355 845 135"/></circle>
+      </svg>
+
+      <button class="lineage-node ln-1 active" type="button" data-lineage="telephone">
+        <span>01 · Before 2004</span><strong>Telephone ordering</strong><small>Human coordination</small>
+      </button>
+      <button class="lineage-node ln-2" type="button" data-lineage="web">
+        <span>02 · 2004–2012</span><strong>Web-based ordering</strong><small>Orders become digital</small>
+      </button>
+      <button class="lineage-node ln-3" type="button" data-lineage="mobile">
+        <span>03 · 2012–2016</span><strong>Mobile apps and rider matching</strong><small>GPS + app labor</small>
+      </button>
+      <button class="lineage-node ln-4" type="button" data-lineage="algorithmic">
+        <span>04 · 2016–2020</span><strong>Algorithmic dispatch</strong><small>Automatic assignment</small>
+      </button>
+      <button class="lineage-node ln-5" type="button" data-lineage="predictive">
+        <span>05 · 2020–present</span><strong>Predictive AI orchestration</strong><small>Forecast + dynamic control</small>
+      </button>
+
+      <div class="lineage-direction">
+        <span>Visible human coordination</span><i></i><span>Invisible predictive coordination</span>
+      </div>
+      <div class="lineage-instruction">Hover or click a stage</div>
+    </div>
+
+    <aside class="lineage-detail" aria-live="polite">
+      <div class="lineage-detail-index" id="lineageDetailIndex">01</div>
+      <p class="lineage-detail-type" id="lineageDetailType">Before 2004</p>
+      <h3 id="lineageDetailTitle">Telephone ordering</h3>
+      <p id="lineageDetailText">Customers called a restaurant and placed an order verbally. The restaurant recorded the address and coordinated delivery directly.</p>
+      <div class="lineage-continue">
+        <span>Order + delivery model</span>
+        <strong id="lineageContinue">Customer → restaurant → in-house employee or part-time rider.</strong>
+      </div>
+      <div class="lineage-transform">
+        <span>How the route was produced</span>
+        <p id="lineageTransform">Routes relied mainly on local knowledge, memory, paper maps, and direct human communication.</p>
+      </div>
+      <div class="lineage-tags" id="lineageTags"><span>Phone</span><span>Local knowledge</span><span>Manual dispatch</span></div>
+    </aside>
+  </div>
+</section>
+
+<section class="slide community-slide" id="s06" data-title="Community of practice">
+  <div class="slide-no">06</div>
+  <div class="community-heading">
+    <div>
+      <p class="kicker">Community of practice</p>
+      <h2>Who is shaping this space—and where do I stand?</h2>
+    </div>
+    <p>This is a selected network of investigative practices, labor researchers, worker organizers, regulators, and platform builders that shape how I understand delivery systems.</p>
+  </div>
+
+  <div class="community-experience">
+    <div class="community-map" id="communityMap" data-active="forensic">
+      <svg class="community-links" viewBox="0 0 820 560" aria-hidden="true">
+        <defs><filter id="communityGlow"><feGaussianBlur stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <circle class="community-orbit orbit-a" cx="410" cy="280" r="205"/>
+        <circle class="community-orbit orbit-b" cx="410" cy="280" r="145"/>
+        <path class="community-link link-forensic" d="M410 280 L180 105"/>
+        <path class="community-link link-data" d="M410 280 L638 98"/>
+        <path class="community-link link-fairwork" d="M410 280 L720 280"/>
+        <path class="community-link link-ldu" d="M410 280 L635 464"/>
+        <path class="community-link link-policy" d="M410 280 L190 466"/>
+        <path class="community-link link-platforms" d="M410 280 L98 280"/>
+        <path class="community-flow" d="M98 280 C215 170 290 118 410 280 S610 400 720 280"/>
+      </svg>
+
+      <div class="community-center">
+        <span>My position</span>
+        <strong>Behind the Route</strong>
+        <small>Spatial investigation + interactive visualization</small>
+      </div>
+
+      <button class="community-node node-forensic active" type="button" data-community="forensic"><span>01 · Precedent</span><strong>Forensic Architecture</strong><small>Investigative spatial practice</small></button>
+      <button class="community-node node-data" type="button" data-community="data"><span>02 · Ethics</span><strong>Data Feminism</strong><small>Power, context, labor</small></button>
+      <button class="community-node node-fairwork" type="button" data-community="fairwork"><span>03 · Research</span><strong>Fairwork</strong><small>Platform labor standards</small></button>
+      <button class="community-node node-ldu" type="button" data-community="ldu"><span>04 · Organizing</span><strong>Los Deliveristas Unidos</strong><small>Worker-led knowledge</small></button>
+      <button class="community-node node-policy" type="button" data-community="policy"><span>05 · Regulation</span><strong>NYC DCWP</strong><small>Rights, pay, reporting</small></button>
+      <button class="community-node node-platforms" type="button" data-community="platforms"><span>06 · Critique</span><strong>Delivery platforms</strong><small>Dispatch, ETA, optimization</small></button>
+    </div>
+
+    <aside class="community-detail" aria-live="polite">
+      <div class="community-detail-top"><span id="communityDetailIndex">01</span><em id="communityDetailRole">Precedent method</em></div>
+      <h3 id="communityDetailTitle">Forensic Architecture</h3>
+      <p id="communityDetailText">Reconstructs contested events by connecting maps, media, geolocation, models, and timelines into a spatial argument.</p>
+      <div class="community-detail-row"><b>Question / approach</b><p id="communityApproach">How can distributed and uncertain evidence be spatially reassembled?</p></div>
+      <div class="community-detail-row accent-row"><b>My relationship</b><p id="communityPosition">A reinterpretation and fork: I translate investigative spatial methods from exceptional events to an everyday delivery system, adding interactive comparison and simulation.</p></div>
+      <div class="community-tags" id="communityTags"><span>Multi-source evidence</span><span>Geolocation</span><span>Uncertainty</span></div>
+      <div class="community-bottom-notes">
+        <article><span>Precedent relation</span><b>Reinterpretation + fork</b><p>Not a copy or direct advancement.</p></article>
+        <article><span>Audience</span><b>Broader than the practice network</b><p>Customers, riders, restaurant workers, students, designers, and policymakers.</p></article>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="slide simulator-slide" id="s07" data-title="Situated technology">
+  <div class="slide-no">07</div>
+  <div class="sim-head realistic-head">
+    <div>
+      <p class="kicker">Situated technology</p>
+      <h2>Situated route simulator</h2>
+      <p>Compare multiple street-following routes and test how time, access, labor, weather, and infrastructure change a local delivery.</p>
+    </div>
+    <div class="model-label">Road geometry from Mapbox · scenario factors modeled</div>
+  </div>
+
+  <div class="realistic-simulator">
+    <div class="realistic-toolbar">
+      <label class="case-picker" for="realisticCase">
+        <span>Delivery case</span>
+        <select id="realisticCase">
+          <option value="broadway-west-harlem">Broadway restaurant → West Harlem apartment</option>
+          <option value="amsterdam-columbia">Amsterdam restaurant → Columbia residence</option>
+          <option value="125-morningside">125th Street restaurant → Morningside building</option>
+        </select>
+      </label>
+
+      <div class="realistic-time-control">
+        <button id="realisticPlay" type="button">Play</button>
+        <label for="realisticTime">Time <strong id="realisticTimeOutput">12:00 PM</strong></label>
+        <input id="realisticTime" type="range" min="0" max="23" step="1" value="12" />
+      </div>
+
+      <div class="realistic-presets">
+        <button type="button" data-realistic-hour="8">Morning</button>
+        <button type="button" data-realistic-hour="12" class="active">Midday</button>
+        <button type="button" data-realistic-hour="18">Evening</button>
+        <button type="button" data-realistic-hour="22">Night</button>
+      </div>
+
+      <div class="realistic-actions">
+        <button id="realisticReset" type="button">Reset conditions</button>
+        <button id="realisticRecalculate" type="button">Recalculate routes</button>
+      </div>
+    </div>
+
+    <div class="realistic-body">
+      <div class="realistic-map-column">
+        <div class="realistic-map-wrap">
+          <div id="realisticMap"></div>
+          <div id="realisticFallback" class="realistic-fallback">
+            <strong>Loading street-following routes…</strong>
+            <span>The simulator needs Mapbox network access. It will not substitute hand-drawn routes if routing fails.</span>
+          </div>
+          <div class="realistic-map-status" id="realisticMapStatus" aria-live="polite">Requesting route alternatives…</div>
+          <div class="realistic-map-help">Drag the R, C, and E markers to test another restaurant, customer, or entrance.</div>
+          <div class="realistic-legend">
+            <span><i class="legend-platform"></i>Platform fastest</span>
+            <span><i class="legend-alternative"></i>Other alternatives</span>
+            <span><i class="legend-selected"></i>Selected rider route</span>
+          </div>
+        </div>
+
+        <div class="realistic-provenance">
+          <span><b>Road geometry</b> Mapbox Directions API</span>
+          <span><b>Time and friction</b> Modeled scenario</span>
+          <span><b>Entrance</b> Draggable test point</span>
+          <span><b>Platform internals</b> Not available</span>
+        </div>
+      </div>
+
+      <aside class="realistic-panel">
+        <div class="realistic-panel-heading">
+          <div><span>Available routes</span><b id="realisticRouteCount">0 routes</b></div>
+          <p>Select a route card or click a route on the map.</p>
+        </div>
+
+        <div id="realisticRouteCards" class="realistic-route-cards" aria-live="polite"></div>
+
+        <div class="realistic-controls" aria-label="Adjust local delivery conditions">
+          <label><span>Traffic <b id="realisticTrafficValue">55%</b></span><input id="realisticTraffic" type="range" min="0" max="100" value="55" /></label>
+          <label><span>Restaurant wait <b id="realisticWaitValue">9 min</b></span><input id="realisticWait" type="range" min="0" max="20" value="9" /></label>
+          <label><span>Access restriction <b id="realisticAccessValue">55%</b></span><input id="realisticAccess" type="range" min="0" max="100" value="55" /></label>
+          <label><span>Entrance delay <b id="realisticEntranceValue">5 min</b></span><input id="realisticEntrance" type="range" min="0" max="15" value="5" /></label>
+          <label><span>Weather exposure <b id="realisticWeatherValue">30%</b></span><input id="realisticWeather" type="range" min="0" max="100" value="30" /></label>
+          <label><span>Bike-lane availability <b id="realisticBikeValue">70%</b></span><input id="realisticBike" type="range" min="0" max="100" value="70" /></label>
+        </div>
+
+        <div class="realistic-metrics" aria-live="polite">
+          <article><span>Simplified platform ETA</span><b id="realisticPlatformEta">—</b></article>
+          <article class="metric-emphasis"><span>Modeled rider time</span><b id="realisticActualTime">—</b></article>
+          <article><span>Hidden time</span><b id="realisticHiddenTime">—</b></article>
+          <article><span>Uncertainty range</span><b id="realisticRange">—</b></article>
+        </div>
+
+        <div class="realistic-breakdown">
+          <div class="realistic-breakdown-head"><span>Selected route</span><b id="realisticSelectedName">Waiting for routes</b></div>
+          <div class="realistic-breakdown-bar" aria-hidden="true">
+            <i id="realisticBaseSegment" class="rb-base"></i>
+            <i id="realisticConditionSegment" class="rb-condition"></i>
+            <i id="realisticWaitSegment" class="rb-wait"></i>
+            <i id="realisticAccessSegment" class="rb-access"></i>
+          </div>
+          <div class="realistic-breakdown-list">
+            <span>Network travel <b id="realisticBaseTime">—</b></span>
+            <span>Street + weather friction <b id="realisticConditionTime">—</b></span>
+            <span>Restaurant waiting <b id="realisticWaitTime">—</b></span>
+            <span>Access + entrance <b id="realisticAccessTime">—</b></span>
+          </div>
+        </div>
+
+        <div class="realistic-reading">
+          <span>Interpretation</span>
+          <p id="realisticExplanation">Route geometry follows the street network. The surrounding labor and access conditions remain a transparent modeled layer rather than claimed platform data.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<section class="slide experiment-method-slide" id="s08" data-title="Methods">
+  <div class="slide-no">08</div>
+
+  <header class="experiment-method-heading">
+    <div>
+      <p class="kicker">Methods</p>
+      <h2>A method built for one<br>controlled route experiment.</h2>
+    </div>
+    <div class="experiment-method-intro">
+      <p>One restaurant and one Columbia campus handoff point remain fixed. The method changes route costs, tests the resulting alternatives, and separates street movement from waiting time.</p>
+      <div class="fixed-case-line"><span>Fixed case</span><b>125th Street restaurant → Columbia 116th Street gate</b></div>
+    </div>
+  </header>
+
+  <div class="experiment-method-body">
+    <section class="experiment-method-workflow" aria-label="Method workflow for the route simulation">
+      <div class="experiment-method-workflow-head">
+        <span>Experiment protocol</span>
+        <strong>Evidence → network → routes → scenarios → field check → comparison</strong>
+      </div>
+
+      <div class="experiment-method-steps" role="tablist" aria-label="Six methods used to build the experiment">
+        <button class="experiment-method-step active" type="button" role="tab" aria-selected="true" data-experiment-method="case">
+          <span>01</span><strong>Fix the case</strong><small>Hold origin, destination, and map extent constant.</small>
+        </button>
+        <button class="experiment-method-step" type="button" role="tab" aria-selected="false" data-experiment-method="network">
+          <span>02</span><strong>Build the network</strong><small>Attach distance, time, slope, bike, and risk attributes.</small>
+        </button>
+        <button class="experiment-method-step" type="button" role="tab" aria-selected="false" data-experiment-method="routes">
+          <span>03</span><strong>Generate routes</strong><small>Create 4–6 distinct street-following candidates.</small>
+        </button>
+        <button class="experiment-method-step" type="button" role="tab" aria-selected="false" data-experiment-method="scenarios">
+          <span>04</span><strong>Apply scenarios</strong><small>Change weights and restrictions, not the endpoints.</small>
+        </button>
+        <button class="experiment-method-step" type="button" role="tab" aria-selected="false" data-experiment-method="ground">
+          <span>05</span><strong>Ground-check</strong><small>Walk, ride, time, photograph, and annotate the corridor.</small>
+        </button>
+        <button class="experiment-method-step" type="button" role="tab" aria-selected="false" data-experiment-method="compare">
+          <span>06</span><strong>Compare evidence</strong><small>Place modeled metrics beside observed conditions.</small>
+        </button>
+      </div>
+    </section>
+
+    <aside class="experiment-method-detail" aria-live="polite">
+      <div class="experiment-method-detail-top">
+        <span id="experimentMethodIndex">01 · Controlled case</span>
+        <b id="experimentMethodEvidence">FIXED INPUT</b>
+      </div>
+      <h3 id="experimentMethodTitle">Fix one origin and one destination</h3>
+      <p id="experimentMethodDescription">The restaurant, restaurant pickup entrance, Columbia handoff point, map extent, and transport mode remain unchanged so route differences can be attributed to the calculation conditions.</p>
+
+      <div class="experiment-method-io">
+        <article><span>Input</span><p id="experimentMethodInput">Restaurant coordinate; pickup entrance; Columbia 116th Street gate; cycling mode; fixed study boundary.</p></article>
+        <article><span>Operation</span><p id="experimentMethodOperation">Lock the case before changing any route weights or scenario variables.</p></article>
+        <article><span>Output</span><p id="experimentMethodOutput">A controlled baseline for comparing every route on the same spatial canvas.</p></article>
+      </div>
+
+      <div class="experiment-method-tools"><span>Tools / practice</span><div id="experimentMethodTools"><b>Mapbox</b><b>QGIS</b><b>Field log</b></div></div>
+    </aside>
+  </div>
+
+  <footer class="experiment-method-footer">
+    <div><span>Changes route geometry</span><p>Traffic · slope sensitivity · bike-lane priority · intersection risk · weather exposure · road restriction</p></div>
+    <div><span>Changes total time only</span><p>Restaurant waiting · order preparation · campus handoff delay</p></div>
+    <div><span>Evidence protocol</span><p><b>Public</b> · <b>Interface</b> · <b>Observed</b> · <b>Modeled</b> · <b>Missing</b></p></div>
+  </footer>
+</section>
+
+<section class="slide route-experiment-slide" id="s09" data-title="Computational experiments">
+  <div class="slide-no">09</div>
+
+  <header class="route-experiment-heading">
+    <div>
+      <p class="kicker">Computational design experiment</p>
+      <h2>One journey,<br>multiple route logics.</h2>
+    </div>
+    <div class="route-experiment-intro">
+      <p>The origin and destination stay fixed. Select a route objective and adjust the situated conditions to see how the recommended street path and delivery time change.</p>
+      <div class="route-experiment-fixed">
+        <span><b>R</b> 125th Street restaurant</span>
+        <i>→</i>
+        <span><b>C</b> Columbia 116th Street gate</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="route-experiment-main">
+    <section class="route-experiment-map-wrap" aria-label="Interactive fixed-origin route experiment">
+      <div id="routeExperimentMap"></div>
+      <div id="routeExperimentFallback" class="route-experiment-fallback">
+        <strong>Calculating street-following alternatives…</strong>
+        <span>The map uses Mapbox road geometry. If routing is unavailable, invented street lines are not substituted.</span>
+      </div>
+      <div class="route-experiment-status" id="routeExperimentStatus" aria-live="polite">Preparing the controlled case…</div>
+      <div class="route-experiment-map-label origin"><span>Fixed origin</span><b>125th Street restaurant</b></div>
+      <div class="route-experiment-map-label destination"><span>Fixed destination</span><b>Columbia campus gate</b></div>
+      <div class="route-experiment-legend">
+        <span><i class="exp-line-all"></i>Candidate routes</span>
+        <span><i class="exp-line-recommended"></i>Recommended</span>
+        <span><i class="exp-line-selected"></i>Selected</span>
+        <span><i class="exp-line-blocked"></i>Restricted</span>
+      </div>
+    </section>
+
+    <aside class="route-experiment-controls">
+      <div class="route-objective-head"><span>Route objective</span><b id="experimentObjectiveLabel">Balanced</b></div>
+      <div class="route-objective-grid" role="tablist" aria-label="Route calculation objectives">
+        <button class="active" type="button" data-experiment-objective="balanced">Balanced</button>
+        <button type="button" data-experiment-objective="shortest">Shortest</button>
+        <button type="button" data-experiment-objective="fastest">Fastest</button>
+        <button type="button" data-experiment-objective="bike">Bike priority</button>
+        <button type="button" data-experiment-objective="slope">Low slope</button>
+        <button type="button" data-experiment-objective="risk">Lower risk</button>
+      </div>
+
+      <div class="route-condition-head"><span>Situated conditions</span><small>These can change route ranking</small></div>
+      <div class="route-condition-grid">
+        <label><span>Traffic <b id="experimentTrafficValue">45%</b></span><input id="experimentTraffic" type="range" min="0" max="100" value="45"></label>
+        <label><span>Weather exposure <b id="experimentWeatherValue">25%</b></span><input id="experimentWeather" type="range" min="0" max="100" value="25"></label>
+        <label><span>Slope sensitivity <b id="experimentSlopeValue">45%</b></span><input id="experimentSlope" type="range" min="0" max="100" value="45"></label>
+        <label><span>Bike-lane priority <b id="experimentBikeValue">60%</b></span><input id="experimentBike" type="range" min="0" max="100" value="60"></label>
+        <label><span>Risk sensitivity <b id="experimentRiskValue">50%</b></span><input id="experimentRisk" type="range" min="0" max="100" value="50"></label>
+        <label><span>Road restriction</span><select id="experimentClosure"><option value="none">None</option><option value="broadway">Broadway corridor</option><option value="amsterdam">Amsterdam corridor</option><option value="morningside">Morningside corridor</option></select></label>
+      </div>
+
+      <div class="route-time-only-head"><span>Time-only variables</span><small>Do not alter route geometry</small></div>
+      <div class="route-time-only-grid">
+        <label><span>Restaurant wait <b id="experimentWaitValue">8 min</b></span><input id="experimentWait" type="range" min="0" max="20" value="8"></label>
+        <label><span>Campus handoff <b id="experimentHandoffValue">4 min</b></span><input id="experimentHandoff" type="range" min="0" max="15" value="4"></label>
+      </div>
+    </aside>
+  </div>
+
+  <div class="route-experiment-results">
+    <div class="route-experiment-selected" aria-live="polite">
+      <div class="route-selected-heading"><span>Selected route</span><b id="experimentSelectedName">Waiting for routes</b><small id="experimentRouteLogic">—</small></div>
+      <div class="route-selected-metrics">
+        <article><span>Distance</span><b id="experimentDistance">—</b></article>
+        <article><span>Moving time</span><b id="experimentMoveTime">—</b></article>
+        <article><span>Bike support</span><b id="experimentBikeCoverage">—</b></article>
+        <article><span>Slope effort</span><b id="experimentSlopeCost">—</b></article>
+        <article><span>Risk exposure</span><b id="experimentRiskMetric">—</b></article>
+        <article class="total"><span>Total delivery</span><b id="experimentTotalTime">—</b></article>
+      </div>
+      <div class="route-time-breakdown" aria-label="Delivery time breakdown">
+        <i id="experimentMovingSegment"></i><i id="experimentWaitSegment"></i><i id="experimentHandoffSegment"></i>
+      </div>
+      <div class="route-time-labels"><span>Moving <b id="experimentMovingLabel">—</b></span><span>Restaurant wait <b id="experimentWaitLabel">—</b></span><span>Campus handoff <b id="experimentHandoffLabel">—</b></span></div>
+    </div>
+
+    <div class="route-experiment-candidates">
+      <div class="route-candidates-heading"><span>Street-following candidates</span><small>Click a card or route to inspect it</small></div>
+      <div id="routeExperimentCards" class="route-experiment-cards"></div>
+    </div>
+  </div>
+
+  <footer class="route-experiment-footer">
+    <p id="experimentInterpretation">Changing the definition of cost changes which route appears optimal.</p>
+    <div><span>Road geometry · Mapbox</span><span>Route scoring · Authored model</span><span>Slope / bike / risk · Prototype proxies</span><span>Platform internals · Missing</span></div>
+  </footer>
+</section>
+
+
+<section class="slide visual-representation-slide" id="s10" data-title="Visual representation">
+  <div class="slide-no">10</div>
+  <header class="vr-heading">
+    <div>
+      <p class="kicker">Visual representation</p>
+      <h2>A visual language of layered routes, friction, and uncertainty.</h2>
+    </div>
+    <p>Aesthetics is used as a form of sensory investigation: the project makes route difference, hidden delay, and incomplete evidence perceptible rather than smoothing them into one seamless map.</p>
+  </header>
+
+  <div class="vr-layout">
+    <aside class="vr-modes" aria-label="Visual representation principles">
+      <p class="vr-label">Visual principles</p>
+      <button class="active" type="button" data-visual-mode="layer"><span>01</span><b>Layer</b><small>Open the systems behind the line</small></button>
+      <button type="button" data-visual-mode="compare"><span>02</span><b>Compare</b><small>Keep origin, destination, and scale fixed</small></button>
+      <button type="button" data-visual-mode="disclose"><span>03</span><b>Disclose</b><small>Make evidence and uncertainty visible</small></button>
+      <div class="vr-community">
+        <span>Situated within</span>
+        <p>Critical cartography · Investigative spatial practice · Data Feminism · Computational design</p>
+      </div>
+    </aside>
+
+    <figure class="vr-stage mode-layer" id="visualRepresentationStage" aria-labelledby="visualRepresentationTitle">
+      <div class="vr-stage-head">
+        <div><span>Representational study</span><b id="visualRepresentationTitle">Layer the route</b></div>
+        <small>Abstract visual grammar — not a geographic map</small>
+      </div>
+      <svg viewBox="0 0 760 430" role="img" aria-label="Abstract study showing multiple route lines, friction points, evidence labels, and uncertainty">
+        <g class="vr-grid-lines">
+          <path d="M64 78H696M64 150H696M64 222H696M64 294H696M64 366H696"/>
+          <path d="M116 42V392M232 42V392M348 42V392M464 42V392M580 42V392M696 42V392"/>
+        </g>
+        <g class="vr-context">
+          <rect x="302" y="148" width="190" height="144" rx="8"/>
+          <text x="397" y="218">Campus boundary</text>
+          <path d="M580 78L696 78L696 150L580 150Z"/>
+          <text x="638" y="118">Slope</text>
+        </g>
+        <path class="vr-route vr-route-platform" d="M88 350L116 350L116 294L232 294L232 222L348 222L348 150L464 150L464 78L696 78"/>
+        <path class="vr-route vr-route-observed" d="M88 350L116 350L116 294L232 294L232 366L464 366L464 294L580 294L580 222L696 222L696 78"/>
+        <path class="vr-route vr-route-modeled" d="M88 350L116 350L116 222L232 222L232 150L348 150L348 78L580 78L580 150L696 150L696 78"/>
+        <path class="vr-uncertainty" d="M88 350C210 250 278 336 378 242S572 116 696 78"/>
+        <g class="vr-friction-points">
+          <circle cx="232" cy="294" r="8"/><text x="244" y="290">signal wait</text>
+          <circle cx="464" cy="294" r="8"/><text x="476" y="290">access friction</text>
+          <circle cx="580" cy="150" r="8"/><text x="592" y="146">slope effort</text>
+        </g>
+        <g class="vr-evidence-tags">
+          <g transform="translate(154 92)"><rect width="96" height="30" rx="15"/><text x="48" y="20">PUBLIC</text></g>
+          <g transform="translate(356 322)"><rect width="108" height="30" rx="15"/><text x="54" y="20">OBSERVED</text></g>
+          <g transform="translate(512 246)"><rect width="104" height="30" rx="15"/><text x="52" y="20">MODELED</text></g>
+          <g transform="translate(596 342)"><rect width="96" height="30" rx="15"/><text x="48" y="20">MISSING</text></g>
+        </g>
+        <g class="vr-endpoints">
+          <circle cx="88" cy="350" r="11"/><text x="88" y="382">Restaurant</text>
+          <circle cx="696" cy="78" r="11"/><text x="696" y="52">Campus handoff</text>
+        </g>
+      </svg>
+      <figcaption id="visualRepresentationCaption">Begin with the familiar route line, then open spatial conditions, labor friction, and the wider digital system behind it.</figcaption>
+    </figure>
+
+    <aside class="vr-grammar">
+      <p class="vr-label">Visual grammar</p>
+      <div class="vr-legend-list">
+        <div><i class="solid"></i><span><b>Solid line</b><small>Public or verifiable route geometry</small></span></div>
+        <div><i class="dash"></i><span><b>Dashed line</b><small>Modeled route alternative</small></span></div>
+        <div><i class="dot"></i><span><b>Dotted relation</b><small>Inference or unresolved connection</small></span></div>
+        <div><i class="band"></i><span><b>Translucent band</b><small>Uncertainty or time range</small></span></div>
+        <div><i class="break"></i><span><b>Break / absence</b><small>Missing or inaccessible data</small></span></div>
+      </div>
+      <div class="vr-sensory-note">
+        <span>Sensory aim</span>
+        <p>Make viewers feel the route splitting, waiting accumulating, and certainty weakening.</p>
+      </div>
+      <div class="vr-media"><span>Screen</span><b>Map · timeline · interface</b><span>Material</span><b>Transparent layers · copper tape · LEDs</b></div>
+    </aside>
+  </div>
+</section>
+
+<section class="slide rhetorical-argument-slide" id="s11" data-title="Rhetorical argument">
+  <div class="slide-no">11</div>
+  <header class="ra-heading">
+    <p class="kicker">Rhetorical argument</p>
+    <h2>The route is not found.<br><em>It is produced.</em></h2>
+    <p>Every route is the outcome of decisions about what counts as time, cost, safety, accessibility, and efficiency.</p>
+  </header>
+
+  <div class="ra-contrast">
+    <article class="ra-platform">
+      <span>Platform presents</span>
+      <strong>ONE ROUTE</strong>
+      <strong>ONE ETA</strong>
+      <p>A clean interface compresses waiting, risk, slope, access restrictions, and rider judgment into a single line.</p>
+    </article>
+    <div class="ra-transform" aria-hidden="true"><i></i><b>DESIGN<br>AS ARGUMENT</b><i></i></div>
+    <article class="ra-project">
+      <span>Project reveals</span>
+      <strong>MULTIPLE ROUTES</strong>
+      <strong>MULTIPLE COSTS</strong>
+      <p>Different definitions of efficiency produce different spatial realities, while incomplete evidence remains visible.</p>
+    </article>
+  </div>
+
+  <div class="ra-factor-area">
+    <div class="ra-factor-buttons" aria-label="Factors that produce a route">
+      <button class="active" type="button" data-argument-factor="time">Time</button>
+      <button type="button" data-argument-factor="safety">Safety</button>
+      <button type="button" data-argument-factor="infrastructure">Infrastructure</button>
+      <button type="button" data-argument-factor="labor">Labor</button>
+      <button type="button" data-argument-factor="data">Data</button>
+    </div>
+    <div class="ra-factor-readout" aria-live="polite">
+      <span id="argumentFactorLabel">Time</span>
+      <p id="argumentFactorText">Platform ETA often foregrounds moving time while restaurant waiting and campus handoff delay remain less visible.</p>
+    </div>
+    <blockquote>“Change the definition of cost, and the ‘optimal’ route changes.”</blockquote>
+  </div>
+
+  <footer class="ra-position">
+    <b>Design position</b>
+    <p>Route visualization should disclose the assumptions and exclusions behind its calculation instead of presenting one result as inevitable.</p>
+  </footer>
+</section>
+
+<section class="slide potential-capstone-slide" id="s12" data-title="Potential capstone">
+  <div class="slide-no">12</div>
+  <header class="pc-heading pc-heading-revised">
+    <div>
+      <p class="kicker">Potential capstone</p>
+      <h2>Behind the Route:<br>a situated investigation of platform delivery.</h2>
+    </div>
+    <div>
+      <span class="pc-status">Provisional direction — not a final solution</span>
+      <p>The capstone may develop one fixed delivery journey into an interactive research environment for examining how multiple routes are calculated, represented, validated, and contested.</p>
+    </div>
+  </header>
+
+  <div class="pc-scope pc-scope-revised" aria-label="Fixed delivery case">
+    <div class="pc-endpoint"><span>Fixed origin</span><b>One selected restaurant</b></div>
+    <i>→</i>
+    <div class="pc-core"><small>COMPUTATIONAL TEST BED</small><strong>One journey · multiple route logics</strong><span>distance · time · safety · infrastructure · labor</span></div>
+    <i>→</i>
+    <div class="pc-endpoint"><span>Fixed destination</span><b>One Columbia campus handoff point</b></div>
+  </div>
+
+  <div class="pc-revised-layout">
+    <section class="pc-form-area" aria-label="Potential project forms">
+      <div class="pc-section-label"><span>Potential form</span><b>Two connected research interfaces</b></div>
+      <div class="pc-components pc-components-two">
+        <button class="active" type="button" data-capstone-component="software">
+          <span>01 · LIVE INTERFACE</span>
+          <b>Interactive route simulator</b>
+          <small>Compare route alternatives, alter situated conditions, and inspect how route rankings and delivery time change.</small>
+        </button>
+        <button type="button" data-capstone-component="archive">
+          <span>02 · EVIDENCE LAYER</span>
+          <b>Situated route archive</b>
+          <small>Connect maps to field photographs, time logs, platform records, validation notes, and unresolved evidence.</small>
+        </button>
+        <aside class="pc-component-detail pc-component-detail-wide" aria-live="polite">
+          <div>
+            <span id="capstoneComponentType">Potential form 01</span>
+            <h3 id="capstoneComponentTitle">Interactive route simulator</h3>
+          </div>
+          <p id="capstoneComponentText">A map-based interface where viewers compare multiple routes between the same origin and destination, change traffic, weather, slope, bike-lane, and risk priorities, and see the source and limits of each modeled result.</p>
+        </aside>
+      </div>
+      <div class="pc-linkage">
+        <span>Simulator asks</span><b>How does the route change?</b><i>↔</i><b>What evidence supports that change?</b><span>Archive answers</span>
+      </div>
+    </section>
+
+    <aside class="pc-context-panel">
+      <section>
+        <span class="pc-context-kicker">Audience</span>
+        <h3>Different ways into the same case</h3>
+        <div class="pc-audience-list">
+          <span>Platform users</span>
+          <span>Riders and labor organizations</span>
+          <span>Design and urban researchers</span>
+          <span>Policy and platform-governance audiences</span>
+        </div>
+        <p>The interface should not assume one homogeneous audience; each group may enter through a different question, experience, or form of evidence.</p>
+      </section>
+      <section>
+        <span class="pc-context-kicker">What remains open</span>
+        <div class="pc-question-list">
+          <span>Can meaningful rider participation be established?</span>
+          <span>How should modeled routes be validated?</span>
+          <span>Should the network be cycling, walking, or hybrid?</span>
+          <span>Which metrics are reliable enough to compare?</span>
+          <span>Should the research remain one case or later expand?</span>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <footer class="pc-boundary pc-boundary-revised">
+    <b>Project boundary</b>
+    <span>Not a new delivery platform</span>
+    <span>Not a final optimization algorithm</span>
+    <span>Not a technical solution to platform labor</span>
+    <p>The project creates a situated environment for examining how routes are produced—not a system that claims to resolve the conditions it studies.</p>
+  </footer>
+</section>
+
+<section class="slide challenge-slide" id="s13" data-title="Challenge">
+  <div class="slide-no">13</div>
+  <header class="ch-heading">
+    <div><p class="kicker">The challenge</p><h2>The difficult part is not generating more routes.<br>It is producing evidence strong enough to explain what they mean.</h2></div>
+    <p>The next phase must deepen validation, relationships, technical clarity, and visual communication without allowing the project to expand beyond one focused delivery case.</p>
+  </header>
+
+  <div class="ch-layout">
+    <div class="ch-cards" aria-label="Project development challenges">
+      <button class="active" type="button" data-challenge="data"><span>01</span><b>Data and access</b><small>Current position: partial evidence</small></button>
+      <button type="button" data-challenge="validation"><span>02</span><b>Validation and participation</b><small>Current position: early stage</small></button>
+      <button type="button" data-challenge="technical"><span>03</span><b>Technical development</b><small>Current position: working prototype</small></button>
+      <button type="button" data-challenge="visual"><span>04</span><b>Visual clarity and scope</b><small>Current position: developing</small></button>
+    </div>
+
+    <section class="ch-detail" aria-live="polite">
+      <div class="ch-detail-top"><span id="challengeNumber">Challenge 01</span><b id="challengeTitle">Data and access</b></div>
+      <div class="ch-gap-plan">
+        <article><span>Current gap</span><p id="challengeGap">Platform dispatch logic, historical rider traces, pricing rules, and performance data are not publicly available.</p></article>
+        <i>→</i>
+        <article><span>Next step</span><p id="challengePlan">Maintain a strict evidence protocol, document missing data, and never present authored simulations as platform facts.</p></article>
+      </div>
+      <div class="ch-honesty"><span>Honest position</span><p id="challengeHonesty">The project can reconstruct public street conditions, but it cannot yet claim to reproduce real platform decision-making.</p></div>
+    </section>
+  </div>
+
+  <div class="ch-forward-plan">
+    <div><span>Now</span><b>Functional route prototype</b><small>Python · GIS · Mapbox · basic network analysis</small></div>
+    <i></i>
+    <div><span>Next semester</span><b>Validated situated investigation</b><small>Field checks · rider relationships · transparent data practice · visual testing</small></div>
+  </div>
+
+  <footer class="ch-conclusion">
+    <b>Scope discipline</b>
+    <p>One fixed origin · one fixed destination · one delivery case. Depth before expansion.</p>
+  </footer>
+</section>
+</main>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.26.0/mapbox-gl.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
