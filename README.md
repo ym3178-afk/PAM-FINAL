@@ -8,15 +8,14 @@ The capstone now has two connected forms:
 
 Chapter 12 also includes audience groups, open research questions, and a clear project boundary. The other chapters remain unchanged.
 
-## Chapter 04 layout fix
-This copy is based directly on the uploaded folder files:
-- index(75).html
-- main(18).js
-- style(43).css
-- README(45).md
+## GitHub Pages display fix
 
-Adjusted only the Intersecting Fields page:
-- black field cards stay inside their frames
-- red center title stays inside the circle
-- heading and diagram now fit the 16:10 slide height
-- right detail panel is more compact
+Chapter 04 was rebuilt to avoid differences between VS Code preview and GitHub Pages:
+
+- field cards use CSS Grid instead of absolute positioning
+- the center project circle scales responsively
+- the slide can grow when browser zoom or effective viewport height requires it
+- CSS and JavaScript URLs include a version query to avoid stale GitHub/browser cache
+- `.nojekyll` is included for a direct static deployment
+
+Upload the contents of this folder to the repository root. Do not upload an additional parent folder.
