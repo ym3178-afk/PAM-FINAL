@@ -1530,3 +1530,176 @@ main{padding-left:238px}
   .motivation-card{min-height:auto;padding:16px}
   .motivation-card>p:last-child{font-size:14px}
 }
+
+/* ==========================================================
+   Verified deployment viewport patch — Slides 02 and 04
+   Tested at 1280×720, 1366×768, 1440×900, 1536×864,
+   and 1920×1080. Prevents content clipping caused by the
+   16:10 section height combined with overflow:hidden.
+   ========================================================== */
+
+@media (min-width:1101px) and (max-width:1500px){
+  /* Slide 02: compact the vertical rhythm so every element,
+     including the final logic line, stays inside the slide. */
+  .research-slide{
+    aspect-ratio:auto;
+    height:auto;
+    min-height:max(720px, calc((100vw - 238px) * .625));
+    padding:42px 42px 24px;
+    overflow:hidden;
+  }
+  .research-slide>.kicker{margin-bottom:10px}
+  .research-slide .motivation-strip{
+    margin:5px 0 13px;
+  }
+  .research-slide .motivation-card{
+    min-height:96px;
+    padding:12px 18px;
+  }
+  .research-slide .motivation-label{
+    margin-bottom:7px!important;
+    font-size:8.5px!important;
+  }
+  .research-slide .motivation-card>p:last-child{
+    font-size:12px;
+    line-height:1.34;
+  }
+  .research-slide .research-heading{
+    grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr);
+    gap:26px;
+    margin-bottom:11px;
+  }
+  .research-slide .research-heading h2{
+    font-size:clamp(32px,3vw,43px);
+    line-height:.96;
+    margin:0;
+  }
+  .research-slide .research-heading p{
+    font-size:11.5px;
+    line-height:1.38;
+    margin-bottom:2px;
+  }
+  .research-slide .research-sequence{
+    min-height:250px;
+  }
+  .research-slide .research-step{
+    min-height:250px;
+    padding:13px 16px 14px;
+  }
+  .research-slide .research-stage{
+    margin:9px 0 14px;
+    font-size:8.5px;
+  }
+  .research-slide .research-step h3{
+    font-size:clamp(15.5px,1.35vw,19px);
+    line-height:1.08;
+    margin-bottom:9px;
+  }
+  .research-slide .research-step>p:last-child{
+    font-size:10.5px;
+    line-height:1.36;
+  }
+  .research-slide .research-step:not(:last-child)::after{
+    width:26px;
+    height:26px;
+    right:-13px;
+    font-size:13px;
+  }
+  .research-slide .research-logic-line{
+    margin-top:9px;
+    font-size:7.5px;
+    gap:8px;
+  }
+
+  /* Slide 04: use the unused space below the diagram. The previous
+     350–371px panel height clipped the Shared Question on common
+     GitHub Pages browser viewports such as 1280×720. */
+  .fields-slide{
+    min-height:max(720px, calc((100vw - 238px) * .625));
+    padding:42px 42px 24px;
+  }
+  .fields-heading{
+    gap:24px;
+    margin-bottom:10px;
+  }
+  .fields-heading h2{
+    font-size:clamp(36px,3.15vw,46px);
+    max-width:720px;
+  }
+  .fields-heading>p{
+    font-size:11.5px;
+    line-height:1.4;
+  }
+  .fields-experience{
+    height:clamp(420px,34vw,500px);
+    min-height:420px;
+    grid-template-columns:minmax(0,1.68fr) minmax(270px,.32fr);
+  }
+  .field-detail{
+    padding:18px 16px 14px;
+    overflow:hidden;
+  }
+  .field-detail-role{margin:8px 0 12px}
+  .field-detail h3{
+    font-size:clamp(25px,2.05vw,30px);
+    margin-bottom:8px;
+  }
+  .field-detail>p:not(.field-detail-role){
+    font-size:10.5px;
+    line-height:1.38;
+  }
+  .field-contribution{
+    margin-top:9px;
+    padding:8px 0;
+  }
+  .field-contribution strong{
+    font-size:10.5px;
+    line-height:1.28;
+  }
+  .field-detail-tags{
+    gap:5px;
+    margin-top:7px;
+  }
+  .field-detail-tags span{
+    padding:4px 6px;
+    font-size:6.5px;
+  }
+  .field-shared-question{
+    margin-top:auto;
+    padding-top:7px;
+  }
+  .field-shared-question p{
+    margin-top:5px;
+    font-size:9px;
+    line-height:1.28;
+  }
+}
+
+/* Intermediate desktop widths (common MacBook scaled resolutions). */
+@media (min-width:1501px) and (max-width:1750px){
+  .fields-slide{
+    padding:52px 52px 28px;
+  }
+  .fields-heading{
+    margin-bottom:12px;
+  }
+  .fields-heading h2{
+    font-size:clamp(44px,3.15vw,52px);
+  }
+  .fields-experience{
+    height:520px;
+    min-height:520px;
+  }
+  .field-detail{
+    padding:22px 19px 17px;
+  }
+  .field-detail-role{margin:10px 0 16px}
+  .field-detail h3{font-size:32px;margin-bottom:10px}
+  .field-detail>p:not(.field-detail-role){font-size:11.5px;line-height:1.42}
+  .field-contribution{margin-top:12px;padding:9px 0}
+  .field-contribution strong{font-size:11.5px}
+  .field-detail-tags{margin-top:9px}
+  .field-detail-tags span{padding:5px 7px;font-size:7px}
+  .field-shared-question{padding-top:9px}
+  .field-shared-question p{font-size:10px}
+}

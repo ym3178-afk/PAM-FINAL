@@ -19,3 +19,12 @@ Chapter 04 was rebuilt to avoid differences between VS Code preview and GitHub P
 - `.nojekyll` is included for a direct static deployment
 
 Upload the contents of this folder to the repository root. Do not upload an additional parent folder.
+
+## Verified viewport fix — Slides 02 and 04
+
+The deployment issue was reproduced rather than guessed:
+
+- At 1280×720, Slide 02 had a 720 px section but 777 px of content, so the final logic line was clipped by `overflow: hidden`.
+- At the same viewport, Slide 04 used a roughly 371 px content panel, which clipped the bottom of the right detail panel.
+
+This version compacts Slide 02 and increases/rebalances the Slide 04 content area. It was checked at 1280×720, 1366×768, 1440×900, 1536×864, and 1920×1080. Asset query versions were also changed so GitHub Pages cannot reuse the previous CSS/JS cache.
