@@ -1,27 +1,13 @@
-# Behind the Route — all 13 sections checked
+# Behind the Route — Slide 01 refined
 
-This deployment-safe version is based on the latest Chapter 06 fixed folder.
+This version keeps the original 13-section website and updates only Slide 01.
 
-## Audit completed
+Changes:
+- removed the title-page simulator
+- inserted the provided delivery-app screenshot
+- reduced and contained the image within the 16:10 slide
+- aligned the image panel vertically with the left text block
+- kept all visible website text in English
+- preserved the remaining 12 sections
 
-All 13 sections were checked at:
-
-- 1280 × 720
-- 1366 × 768
-- 1440 × 900
-- 1536 × 864
-- 1920 × 1080
-
-The website keeps a 16:10 minimum section canvas, but a section can grow when its actual content requires more vertical room. This prevents GitHub Pages / Chrome from clipping content that appears normal in a scaled VS Code preview.
-
-Additional fixes:
-
-- Chapter 04 detail panel has enough height for every interactive field.
-- Chapter 07 breakpoints account for the fixed left navigation rail.
-- Chapter 09 controls no longer lose the final rows.
-- Chapter 11 switches to the intended two-column factor layout on laptop widths.
-- Chapter 12 project boundary stays in normal flow and no longer overlaps the audience panel.
-- CSS and JavaScript URLs use a new cache-busting version.
-- `.nojekyll` is included.
-
-Upload the contents of this folder directly to the repository root.
+Open `index.html` with Live Server or deploy the folder contents to the GitHub Pages repository root.
