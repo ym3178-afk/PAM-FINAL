@@ -3451,6 +3451,37 @@ body{
     flex:0 0 1px;
   }
 }
+
+
+/* Chapter 08 — align the map with the actual Route objective / Selected route /
+   Street-following candidates table stack, not merely the sidebar shell. */
+@media (min-width:901px){
+  #s08 .route-experiment-sidebar{
+    padding-bottom:0!important;
+  }
+  #s08 .route-experiment-controls,
+  #s08 .route-experiment-selected{
+    flex:0 0 auto!important;
+  }
+  #s08 .route-experiment-candidates{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    height:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  #s08 .route-experiment-cards{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-template-rows:repeat(3,minmax(0,1fr))!important;
+    align-content:stretch!important;
+  }
+  #s08 .route-experiment-card{
+    height:100%!important;
+    align-content:center!important;
+  }
+}
 </style>
 </head>
 <body>
