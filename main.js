@@ -308,7 +308,7 @@ document.getElementById('realisticPlay')?.addEventListener('click',()=>{
   if(realisticState.timer){clearInterval(realisticState.timer);realisticState.timer=null;}
   if(realisticState.playing)realisticState.timer=setInterval(()=>{realisticState.hour=(realisticState.hour+1)%24;realisticApplyProfile(realisticState.hour);},900);
 });
-realisticApplyProfile(12);realisticInitMap();
+if(document.getElementById('realisticMap')){realisticApplyProfile(12);realisticInitMap();}
 
 
 // Title-slide adjustable route study
@@ -431,12 +431,12 @@ if(keywordNetwork){
 
 // Chapter 04: animated intersecting-fields diagram
 const fieldData={
-  computational:{index:'01',role:'Model and simulate',title:'Computational design',text:'Builds route comparisons and parameter-based simulations that show how traffic, access, slope, waiting, weather, and bicycle infrastructure change a delivery.',contribution:'Turns hidden conditions into adjustable spatial relationships.',tags:['Simulation','Network analysis','Interaction']},
-  logistics:{index:'02',role:'Trace movement',title:'Urban logistics',text:'Explains last-mile movement through distance, time, demand, waiting, street networks, restaurants, and delivery destinations.',contribution:'Provides the operational structure of the delivery journey.',tags:['Last mile','Distance','Waiting']},
-  platform:{index:'03',role:'Read algorithmic space',title:'Platform urbanism',text:'Examines how digital platforms use interfaces, location data, ETA predictions, payments, ratings, and dispatch rules to organize urban movement.',contribution:'Frames the route as a platform-produced spatial outcome.',tags:['Algorithm','ETA','Platform rules']},
-  labor:{index:'04',role:'Center worker experience',title:'Labor studies',text:'Focuses on rider judgment, waiting, risk, physical effort, ratings, incentives, and the gap between measured performance and lived experience.',contribution:'Makes the labor behind customer convenience visible.',tags:['Rider judgment','Risk','Algorithmic management']},
-  cartography:{index:'05',role:'Question the map',title:'Critical cartography',text:'Treats the route map as a selective representation that highlights location and speed while omitting access friction, uncertainty, and embodied time.',contribution:'Challenges the apparent neutrality of the platform map.',tags:['Representation','Omission','Uncertainty']},
-  infrastructure:{index:'06',role:'Reveal dependencies',title:'Infrastructure studies',text:'Connects streets, bicycle lanes, buildings, doors, elevators, GPS, payment systems, communication networks, and institutional rules.',contribution:'Shows the physical, digital, and institutional systems behind the line.',tags:['Access','Protocols','Hidden systems']}
+  computational:{index:'01',role:'Movement · Model and simulate',title:'Computational design',text:'Builds route comparisons and parameter-based simulations that show how traffic, access, slope, waiting, weather, and bicycle infrastructure change a delivery.',contribution:'Turns hidden conditions into adjustable spatial relationships.',tags:['Simulation','Network analysis','Interaction']},
+  logistics:{index:'02',role:'Movement · Trace urban flows',title:'Urban logistics',text:'Explains last-mile movement through distance, time, demand, waiting, street networks, restaurants, and delivery destinations.',contribution:'Provides the operational structure of the delivery journey.',tags:['Last mile','Distance','Waiting']},
+  platform:{index:'03',role:'Power · Read algorithmic space',title:'Platform urbanism',text:'Examines how digital platforms use interfaces, location data, ETA predictions, payments, ratings, and dispatch rules to organize urban movement.',contribution:'Frames the route as a platform-produced spatial outcome.',tags:['Algorithm','ETA','Platform rules']},
+  labor:{index:'04',role:'Power · Center worker experience',title:'Labor studies',text:'Focuses on rider judgment, waiting, risk, physical effort, ratings, incentives, and the gap between measured performance and lived experience.',contribution:'Makes the labor behind customer convenience visible.',tags:['Rider judgment','Risk','Algorithmic management']},
+  cartography:{index:'05',role:'Representation · Question the map',title:'Critical cartography',text:'Treats the route map as a selective representation that highlights location and speed while omitting access friction, uncertainty, and embodied time.',contribution:'Challenges the apparent neutrality of the platform map.',tags:['Representation','Omission','Uncertainty']},
+  infrastructure:{index:'06',role:'Representation · Reveal dependencies',title:'Infrastructure studies',text:'Connects streets, bicycle lanes, buildings, doors, elevators, GPS, payment systems, communication networks, and institutional rules.',contribution:'Shows the physical, digital, and institutional systems behind the line.',tags:['Access','Protocols','Hidden systems']}
 };
 const fieldsMap=document.getElementById('fieldsMap');
 const fieldDetail=fieldsMap?.closest('.fields-experience')?.querySelector('.field-detail');
@@ -490,60 +490,60 @@ if(fieldsMap){
 
 // Chapter 05: animated historical lineage
 const lineageData={
-  telephone:{
+  local:{
     index:'01',
-    type:'Before 2004',
-    title:'Telephone ordering',
-    text:'Customers called a restaurant and placed an order verbally. The restaurant recorded the address and coordinated delivery directly.',
-    continueText:'Customer → restaurant → in-house employee or part-time rider.',
-    transform:'Routes relied mainly on local knowledge, memory, paper maps, and direct human communication.',
-    tags:['Phone','Local knowledge','Manual dispatch'],
+    type:'Local systems',
+    title:'Traditional local food supply',
+    text:'Food moved through nearby farms, markets, street vendors, local shops, and households. The seller, source, and movement of food were comparatively visible.',
+    continueText:'Producer → local market or shop → household.',
+    transform:'Proximity, seasonal availability, face-to-face exchange, and local knowledge organized the network.',
+    tags:['Local markets','Short chains','Visible exchange'],
     progress:'10%'
   },
-  web:{
+  coldchain:{
     index:'02',
-    type:'2004–2012',
-    title:'Web-based ordering',
-    text:'Restaurant menus and order forms moved onto websites and early aggregation platforms such as Grubhub and Pizza Hut online ordering.',
-    continueText:'Customer → website → restaurant → restaurant-managed delivery.',
-    transform:'The order became digital, but routing and delivery coordination often remained local and restaurant-based.',
-    tags:['Web orders','Digital menus','Restaurant delivery'],
+    type:'19th–20th century',
+    title:'Industrial logistics and cold chain',
+    text:'Railways, trucks, refrigeration, warehouses, wholesale markets, and industrial food processing expanded the distance and scale of urban food supply.',
+    continueText:'Producer → processing → cold storage → wholesale market → retailer or restaurant.',
+    transform:'Food could travel farther and arrive more reliably, while storage, transport labor, and logistical infrastructure became less visible to consumers.',
+    tags:['Refrigeration','Warehousing','Regional logistics'],
     progress:'32%'
   },
-  mobile:{
+  telephone:{
     index:'03',
-    type:'2012–2016',
-    title:'Mobile apps and rider matching',
-    text:'Smartphones connected customers, restaurants, riders, GPS, and payment systems through one continuously updated interface.',
-    continueText:'Customer app → platform → restaurant → available rider → customer.',
-    transform:'Riders increasingly received or selected orders through apps, while live location and route guidance entered the delivery process.',
-    tags:['Mobile app','GPS','Rider matching'],
+    type:'Mid–late 20th century',
+    title:'Telephone ordering',
+    text:'Customers called restaurants directly, while staff recorded addresses and coordinated delivery through human communication and local knowledge.',
+    continueText:'Customer → restaurant → in-house employee or local rider.',
+    transform:'The delivery route remained locally managed, but ordering began to separate the customer from the physical place where food was prepared.',
+    tags:['Phone','Local knowledge','Manual dispatch'],
     progress:'55%'
   },
-  algorithmic:{
+  digital:{
     index:'04',
-    type:'2016–2020',
-    title:'Algorithmic dispatch',
-    text:'Platforms increasingly used automatic dispatch systems to match orders, riders, locations, delivery times, and multi-order combinations.',
-    continueText:'Orders + riders + locations + time constraints → algorithmic assignment.',
-    transform:'The platform began deciding who should deliver, which orders should be grouped, and which route and ETA should be recommended.',
-    tags:['Automatic dispatch','ETA','Route optimization'],
+    type:'2000s–2010s',
+    title:'Digital platforms',
+    text:'Websites and mobile applications connected customers, restaurants, payments, GPS, menus, ratings, and riders through a single interface.',
+    continueText:'Customer app → platform → restaurant → rider → customer.',
+    transform:'The interface simplified ordering while platform databases and networked coordination moved more decisions into an invisible digital layer.',
+    tags:['Mobile apps','GPS','Platform mediation'],
     progress:'78%'
   },
-  predictive:{
+  algorithmic:{
     index:'05',
-    type:'2020–present',
-    title:'Predictive AI orchestration',
-    text:'Delivery platforms now combine dispatch with demand forecasting, heat maps, dynamic pricing, personalized recommendations, and real-time operational prediction.',
-    continueText:'Prediction → demand shaping → rider positioning → dynamic dispatch → continuous adjustment.',
-    transform:'The system no longer only responds to orders; it attempts to anticipate and actively organize demand, labor, and movement across the city.',
-    tags:['Demand prediction','Dynamic pricing','AI scheduling'],
+    type:'2010s–present',
+    title:'Algorithmic dispatch and instant delivery',
+    text:'Platforms now use automated assignment, ETA prediction, route optimization, demand forecasting, dynamic pricing, and multi-order coordination.',
+    continueText:'Continuous data → prediction → rider positioning → dispatch → route and ETA adjustment.',
+    transform:'The system no longer only responds to orders. It predicts and organizes labor, movement, and demand, while presenting the customer with one apparently certain route.',
+    tags:['Algorithmic management','ETA prediction','Instant delivery'],
     progress:'100%'
   }
 };
 const lineageMap=document.getElementById('lineageMap');
 const lineageNodes=[...document.querySelectorAll('.lineage-node')];
-let lineageActive='telephone';
+let lineageActive='local';
 let lineageTimer=null;
 function setLineage(key,manual=false){
   const data=lineageData[key];
@@ -566,7 +566,7 @@ function setLineage(key,manual=false){
 }
 function restartLineageCycle(){
   if(lineageTimer) clearInterval(lineageTimer);
-  const order=['telephone','web','mobile','algorithmic','predictive'];
+  const order=['local','coldchain','telephone','digital','algorithmic'];
   lineageTimer=setInterval(()=>{
     const next=order[(order.indexOf(lineageActive)+1)%order.length];
     setLineage(next,false);
@@ -585,18 +585,18 @@ if(lineageMap){
     else if(lineageTimer){clearInterval(lineageTimer);lineageTimer=null;}
   }),{threshold:.35});
   lineageObserver.observe(document.getElementById('s05'));
-  setLineage('telephone',false);
+  setLineage('local',false);
 }
 
 
 // Chapter 06: dynamic community-of-practice map
 const communityData={
-  forensic:{index:'01',role:'Precedent method',title:'Forensic Architecture',text:'Reconstructs contested events by connecting maps, media, geolocation, models, and timelines into a spatial argument.',approach:'How can distributed and uncertain evidence be spatially reassembled?',position:'A reinterpretation and fork: I translate investigative spatial methods from exceptional events to an everyday delivery system, adding interactive comparison and simulation.',tags:['Multi-source evidence','Geolocation','Uncertainty']},
-  data:{index:'02',role:'Ethical framework',title:'Data Feminism',text:'Examines how power shapes data collection, representation, context, and whose labor or experience becomes visible.',approach:'Who is counted, who controls the data, and what knowledge remains absent?',position:'I use this framework to identify power, label data provenance, make labor visible, and avoid treating partial evidence as objective completeness.',tags:['Power','Context','Make labor visible']},
-  fairwork:{index:'03',role:'Platform labor research',title:'Fairwork',text:'Evaluates platform work through standards for pay, conditions, contracts, management, and worker representation.',approach:'How can platform working conditions be measured through research, worker testimony, and accountable standards?',position:'I share its concern with algorithmic management and worker voice, but translate those questions into spatial comparison and public interaction rather than a platform score.',tags:['Worker interviews','Fair management','Accountability']},
-  ldu:{index:'04',role:'Worker-led practice',title:'Los Deliveristas Unidos',text:'Organizes app-based delivery workers in New York around pay, safety, infrastructure, education, and collective representation.',approach:'How can delivery workers shape the policies and infrastructures that affect their daily work?',position:'Rider knowledge should inform the project through consent-based observation and participation. I should not treat workers as data sources or speak on their behalf.',tags:['Worker voice','Road safety','Local knowledge']},
-  policy:{index:'05',role:'Policy and regulation',title:'NYC DCWP',text:'Regulates delivery-app worker protections, minimum pay, rights notices, and reporting obligations in New York City.',approach:'What information and responsibilities should delivery platforms be required to disclose?',position:'This provides the project’s policy context and potential public data, showing that routes are shaped by law, pay rules, reporting systems, and rights—not only streets.',tags:['Worker rights','Platform reporting','Regulation']},
-  platforms:{index:'06',role:'Technical interlocutor',title:'Delivery platforms',text:'Companies such as DoorDash, Uber Eats, and Meituan develop systems for assignment, ETA prediction, routing, demand forecasting, and marketplace optimization.',approach:'How can logistics be predicted and optimized across customers, restaurants, workers, and cities?',position:'They are both technical references and objects of critique. I study their methods while questioning whose time, risk, and knowledge their optimization models prioritize or omit.',tags:['Dispatch','ETA prediction','Optimization']}
+  forensic:{index:'01',role:'Critical practice · Investigative method',title:'Forensic Architecture',text:'Reconstructs contested events by connecting maps, media, geolocation, models, and timelines into a spatial argument.',approach:'How can distributed and uncertain evidence be spatially reassembled?',position:'A reinterpretation and fork: I translate investigative spatial methods from exceptional events to an everyday delivery system, adding interactive comparison and simulation.',tags:['Multi-source evidence','Geolocation','Uncertainty']},
+  data:{index:'02',role:'Critical practice · Ethical framework',title:'Data Feminism',text:'Examines how power shapes data collection, representation, context, and whose labor or experience becomes visible.',approach:'Who is counted, who controls the data, and what knowledge remains absent?',position:'I use this framework to identify power, label data provenance, make labor visible, and avoid treating partial evidence as objective completeness.',tags:['Power','Context','Make labor visible']},
+  fairwork:{index:'03',role:'Labor research · Standards',title:'Fairwork',text:'Evaluates platform work through standards for pay, conditions, contracts, management, and worker representation.',approach:'How can platform working conditions be measured through research, worker testimony, and accountable standards?',position:'I share its concern with algorithmic management and worker voice, but translate those questions into spatial comparison and public interaction rather than a platform score.',tags:['Worker interviews','Fair management','Accountability']},
+  ldu:{index:'04',role:'Worker knowledge · Organizing',title:'Los Deliveristas Unidos',text:'Organizes app-based delivery workers in New York around pay, safety, infrastructure, education, and collective representation.',approach:'How can delivery workers shape the policies and infrastructures that affect their daily work?',position:'Rider knowledge should inform the project through consent-based observation and participation. I should not treat workers as data sources or speak on their behalf.',tags:['Worker voice','Road safety','Local knowledge']},
+  policy:{index:'05',role:'Public accountability · Regulation',title:'NYC DCWP',text:'Regulates delivery-app worker protections, minimum pay, rights notices, and reporting obligations in New York City.',approach:'What information and responsibilities should delivery platforms be required to disclose?',position:'This provides the project’s policy context and potential public data, showing that routes are shaped by law, pay rules, reporting systems, and rights—not only streets.',tags:['Worker rights','Platform reporting','Regulation']},
+  platforms:{index:'06',role:'Platform builders · Technical interlocutor',title:'Delivery platforms',text:'Companies such as DoorDash, Uber Eats, and Meituan develop systems for assignment, ETA prediction, routing, demand forecasting, and marketplace optimization.',approach:'How can logistics be predicted and optimized across customers, restaurants, workers, and cities?',position:'They are both technical references and objects of critique. I study their methods while questioning whose time, risk, and knowledge their optimization models prioritize or omit.',tags:['Dispatch','ETA prediction','Optimization']}
 };
 const communityMap=document.getElementById('communityMap');
 const communityNodes=[...document.querySelectorAll('.community-node')];
@@ -640,7 +640,7 @@ if(communityMap){
 }
 
 
-// Chapter 08: route-logics method diagram
+// Chapter 07: route-logics method diagram
 const methodsRouteData={
   shortest:{index:'01 · Quantitative model',title:'Shortest-distance route',text:'Uses the street network to minimize total route length. This establishes a baseline rather than claiming the route a rider would actually choose.',technique:'NetworkX shortest path',data:'OpenStreetMap road graph',metric:'Network distance'},
   fastest:{index:'02 · Quantitative model',title:'Fastest-time route',text:'Weights street segments by estimated cycling time, street class, and intersection delay. It tests how “fastest” differs from simply “shortest.”',technique:'Weighted shortest path',data:'Road class + speed assumptions',metric:'Estimated travel time'},
@@ -675,7 +675,7 @@ methodsRoutePaths.forEach(path=>path.addEventListener('click',()=>setMethodsRout
 setMethodsRoute('shortest');
 
 
-// Chapter 08: focused mixed-method workflow
+// Chapter 07: focused mixed-method workflow
 const methodOnlyData={
   collect:{
     index:'01 · Data practice',status:'PUBLIC + INTERFACE + FIELD',title:'Collect the evidence',
@@ -1186,7 +1186,7 @@ routeExperimentControls.closure?.addEventListener('change',()=>routeExperimentUp
 routeExperimentUpdateLabels();
 routeExperimentInitMap();
 
-// Chapter 10 — visual representation modes
+// Chapter 07 — visual representation modes
 const visualRepresentationModes={
   layer:{title:'Layer the route',caption:'Begin with the familiar route line, then open spatial conditions, labor friction, and the wider digital system behind it.'},
   compare:{title:'Compare route logics',caption:'Hold the origin, destination, scale, and map frame constant so differences come from route priorities rather than graphic composition.'},
@@ -1205,7 +1205,7 @@ document.querySelectorAll('[data-visual-mode]').forEach(button=>button.addEventL
   if(caption)caption.textContent=data.caption;
 }));
 
-// Chapter 11 — rhetorical argument factors
+// Chapter 07 — rhetorical argument factors
 const argumentFactors={
   time:{label:'Time',text:'Platform ETA often foregrounds moving time while restaurant waiting and campus handoff delay remain less visible.'},
   safety:{label:'Safety',text:'The shortest or fastest route may transfer more traffic exposure and intersection risk to the rider.'},
@@ -1222,7 +1222,7 @@ document.querySelectorAll('[data-argument-factor]').forEach(button=>button.addEv
   if(text)text.textContent=argumentFactors[key].text;
 }));
 
-// Chapter 12 — provisional capstone forms
+// Chapter 07 — provisional capstone forms
 const capstoneComponents={
   software:{type:'Potential form 01 · Live interface',title:'Interactive route simulator',text:'A map-based interface where viewers compare multiple routes between the same origin and destination, change traffic, weather, slope, bike-lane, and risk priorities, and see the source and limits of each modeled result.'},
   archive:{type:'Potential form 02 · Evidence layer',title:'Situated route archive',text:'A research archive that connects every route to field photographs, time logs, platform screenshots, public datasets, validation notes, uncertainty, and evidence that remains unavailable.'}
@@ -1236,7 +1236,7 @@ document.querySelectorAll('[data-capstone-component]').forEach(button=>button.ad
   document.getElementById('capstoneComponentText').textContent=data.text;
 }));
 
-// Chapter 13 — challenge gap-to-plan cards
+// Chapter 07 — challenge gap-to-plan cards
 const challengeDetails={
   data:{number:'Challenge 01',title:'Data and access',gap:'Platform dispatch logic, historical rider traces, pricing rules, and performance data are not publicly available.',plan:'Maintain a strict evidence protocol, document missing data, and never present authored simulations as platform facts.',honesty:'The project can reconstruct public street conditions, but it cannot yet claim to reproduce real platform decision-making.'},
   validation:{number:'Challenge 02',title:'Validation and participation',gap:'Modeled route alternatives do not yet demonstrate how riders actually judge safety, effort, waiting, or local shortcuts.',plan:'Conduct route walk-throughs or ride-throughs, record changing street conditions, and seek consent-based conversations with riders or labor researchers.',honesty:'My knowledge of platform interfaces and spatial data is currently stronger than my direct knowledge of riders’ everyday experience.'},
