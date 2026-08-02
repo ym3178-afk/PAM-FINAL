@@ -1663,3 +1663,82 @@ main{padding-left:238px}
   .community-experience{min-height:0}
   .community-detail{overflow:visible}
 }
+
+/* ==================================================================
+   Full 13-section GitHub Pages deployment audit — 2026-07-30
+   Keep a 16:10 minimum canvas, but let any chapter grow when its real
+   content needs more room. This prevents fixed-canvas clipping caused
+   by browser zoom, font metrics, and the left navigation rail.
+   ================================================================== */
+@media (min-width:901px){
+  .slide{
+    aspect-ratio:auto!important;
+    height:auto!important;
+    min-height:max(720px,calc((100vw - var(--rail-width,260px)) * .625))!important;
+    overflow:visible!important;
+  }
+
+  /* Chapter 12: keep the project boundary in normal document flow so
+     it cannot overlap the audience / open-question panel. */
+  .pc-boundary-revised{
+    position:static!important;
+    margin-top:20px;
+  }
+}
+
+/* Chapter 04: reserve enough height for every field-detail state. */
+@media (min-width:1101px) and (max-width:1500px){
+  .fields-experience{
+    height:auto!important;
+    min-height:445px!important;
+  }
+  .field-detail{
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+}
+
+/* Chapter 07: media queries must account for the 260px navigation rail.
+   The simulator is already a narrow component while the browser viewport
+   is still wider than the old 1320px breakpoint. */
+@media (min-width:1051px) and (max-width:1580px){
+  .realistic-toolbar{
+    grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)!important;
+  }
+  .realistic-body{
+    grid-template-columns:minmax(0,1fr) minmax(500px,.92fr)!important;
+  }
+  .realistic-controls{grid-template-columns:1fr 1fr!important}
+  .realistic-reading{display:none!important}
+  .realistic-simulator{overflow-x:hidden!important}
+}
+
+/* Chapter 09: the right control panel needs a few more pixels than the
+   old fixed 385/400px canvas after real Chrome font rendering. */
+@media (min-width:1101px) and (max-width:1500px){
+  .route-experiment-main{height:420px!important}
+  .route-experiment-controls{overflow-x:hidden;overflow-y:auto}
+}
+
+/* Chapter 11: at laptop widths the third quotation column sits outside
+   the actual slide width because the fixed left rail is not included in
+   viewport media-query math. Use the intended two-column compact state. */
+@media (min-width:901px) and (max-width:1440px){
+  .ra-factor-area{grid-template-columns:360px minmax(0,1fr)!important}
+  .ra-factor-area blockquote{display:none!important}
+}
+
+/* Chapter 04 interaction-state verification: the longest field texts
+   require more height at medium desktop widths than the default state. */
+@media (min-width:1101px){
+  .fields-experience{
+    height:auto!important;
+    min-height:clamp(445px,34vw,520px)!important;
+  }
+}
+
+/* Chapter 07: avoid overlap between the map status and help label in the
+   narrow map column used by 1280px laptop viewports. */
+@media (min-width:1051px) and (max-width:1320px){
+  .realistic-map-help{max-width:160px;font-size:7px;line-height:1.3}
+}

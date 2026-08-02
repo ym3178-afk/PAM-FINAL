@@ -1,25 +1,27 @@
-# Behind the Route — Chapter 12 revised
+# Behind the Route — all 13 sections checked
 
-This version removes the physical installation from Chapter 12, Potential Capstone.
+This deployment-safe version is based on the latest Chapter 06 fixed folder.
 
-The capstone now has two connected forms:
-1. Interactive route simulator
-2. Situated route archive
+## Audit completed
 
-Chapter 12 also includes audience groups, open research questions, and a clear project boundary. The other chapters remain unchanged.
+All 13 sections were checked at:
 
-## GitHub Pages display fix
+- 1280 × 720
+- 1366 × 768
+- 1440 × 900
+- 1536 × 864
+- 1920 × 1080
 
-Chapter 04 was rebuilt to avoid differences between VS Code preview and GitHub Pages:
+The website keeps a 16:10 minimum section canvas, but a section can grow when its actual content requires more vertical room. This prevents GitHub Pages / Chrome from clipping content that appears normal in a scaled VS Code preview.
 
-- field cards use CSS Grid instead of absolute positioning
-- the center project circle scales responsively
-- the slide can grow when browser zoom or effective viewport height requires it
-- CSS and JavaScript URLs include a version query to avoid stale GitHub/browser cache
-- `.nojekyll` is included for a direct static deployment
+Additional fixes:
 
-Upload the contents of this folder to the repository root. Do not upload an additional parent folder.
+- Chapter 04 detail panel has enough height for every interactive field.
+- Chapter 07 breakpoints account for the fixed left navigation rail.
+- Chapter 09 controls no longer lose the final rows.
+- Chapter 11 switches to the intended two-column factor layout on laptop widths.
+- Chapter 12 project boundary stays in normal flow and no longer overlaps the audience panel.
+- CSS and JavaScript URLs use a new cache-busting version.
+- `.nojekyll` is included.
 
-## Chapter 06 deployment fix
-
-Chapter 06 now uses the slide's available height instead of combining a variable heading with a fixed 510px panel. Its detail panel and node labels are compacted at common laptop widths, so all six interactive states remain usable on GitHub Pages.
+Upload the contents of this folder directly to the repository root.
