@@ -860,7 +860,63 @@ const routeExperimentObjectives={
   slope:{label:'Low-slope priority',distance:.55,time:.7,bike:.4,slope:2.8,risk:.45,weather:.3},
   risk:{label:'Lower-risk priority',distance:.5,time:.7,bike:.55,slope:.4,risk:2.8,weather:.45}
 };
-const routeExperimentState={map:null,mapReady:false,routes:[],selectedId:null,recommendedId:null,objective:'balanced',requestSerial:0,abortController:null};
+const routeExperimentState={map:null,mapReady:false,offline:false,routes:[],selectedId:null,recommendedId:null,objective:'balanced',requestSerial:0,abortController:null};
+
+function routeExperimentOfflineRoutes(){
+  return [
+    {id:'experiment-route-0',role:'direct',name:'Direct network',coordinates:[[-73.95805,40.81575],[-73.95820,40.81445],[-73.95915,40.81275],[-73.96040,40.81055],[-73.96262,40.80784]],distance:1180,duration:335,steps:9,source:'Offline schematic model'},
+    {id:'experiment-route-1',role:'broadway',name:'Broadway corridor',coordinates:[[-73.95805,40.81575],[-73.96020,40.81505],[-73.96315,40.81290],[-73.96335,40.80970],[-73.96262,40.80784]],distance:1390,duration:390,steps:11,source:'Offline schematic model'},
+    {id:'experiment-route-2',role:'amsterdam',name:'Amsterdam corridor',coordinates:[[-73.95805,40.81575],[-73.95845,40.81420],[-73.95985,40.81215],[-73.96035,40.80975],[-73.96262,40.80784]],distance:1260,duration:350,steps:10,source:'Offline schematic model'},
+    {id:'experiment-route-3',role:'morningside',name:'Morningside corridor',coordinates:[[-73.95805,40.81575],[-73.95665,40.81465],[-73.95535,40.81220],[-73.95625,40.80915],[-73.96262,40.80784]],distance:1510,duration:375,steps:13,source:'Offline schematic model'},
+    {id:'experiment-route-4',role:'west',name:'West-side detour',coordinates:[[-73.95805,40.81575],[-73.96170,40.81525],[-73.96425,40.81270],[-73.96435,40.80925],[-73.96262,40.80784]],distance:1640,duration:415,steps:12,source:'Offline schematic model'},
+    {id:'experiment-route-5',role:'east',name:'East-side detour',coordinates:[[-73.95805,40.81575],[-73.95510,40.81515],[-73.95475,40.81200],[-73.95600,40.80870],[-73.96262,40.80784]],distance:1720,duration:430,steps:15,source:'Offline schematic model'}
+  ];
+}
+function routeExperimentOfflinePoint(coordinate){
+  const [lon,lat]=coordinate;
+  const minLon=-73.9655,maxLon=-73.9535,minLat=40.8068,maxLat=40.8165;
+  const x=45+((lon-minLon)/(maxLon-minLon))*690;
+  const y=405-((lat-minLat)/(maxLat-minLat))*377;
+  return [Math.max(45,Math.min(735,x)),Math.max(28,Math.min(405,y))];
+}
+function routeExperimentUpdateOfflineMap(){
+  const group=document.getElementById('routeExperimentOfflineRoutes');
+  if(!group||!routeExperimentState.routes.length)return;
+  const values=routeExperimentValues();
+  const ordered=[...routeExperimentState.routes].sort((a,b)=>{
+    const av=a.id===routeExperimentState.selectedId?2:a.id===routeExperimentState.recommendedId?1:0;
+    const bv=b.id===routeExperimentState.selectedId?2:b.id===routeExperimentState.recommendedId?1:0;
+    return av-bv;
+  });
+  group.innerHTML=ordered.map(route=>{
+    const points=route.coordinates.map(routeExperimentOfflinePoint).map(point=>point.map(value=>value.toFixed(1)).join(',')).join(' ');
+    const classes=['offline-route'];
+    if(route.id===routeExperimentState.recommendedId)classes.push('recommended');
+    if(route.id===routeExperimentState.selectedId)classes.push('selected');
+    if(values.closure!=='none'&&route.role===values.closure)classes.push('blocked');
+    return `<polyline class="${classes.join(' ')}" data-offline-route-id="${route.id}" points="${points}" />`;
+  }).join('');
+  group.querySelectorAll('[data-offline-route-id]').forEach(path=>path.addEventListener('click',()=>routeExperimentSelectRoute(path.dataset.offlineRouteId,true)));
+}
+function routeExperimentInitOffline(reason='Live map unavailable'){
+  if(routeExperimentState.offline&&routeExperimentState.routes.length)return;
+  routeExperimentState.offline=true;
+  routeExperimentState.mapReady=false;
+  routeExperimentState.routes=routeExperimentOfflineRoutes();
+  routeExperimentCalculate();
+  routeExperimentState.selectedId=routeExperimentState.recommendedId;
+  routeExperimentUpdateLabels();
+  routeExperimentRenderCards();
+  routeExperimentUpdateMetrics();
+  routeExperimentUpdateOfflineMap();
+  document.querySelector('.route-experiment-map-wrap')?.classList.add('offline-ready');
+  const fallback=document.getElementById('routeExperimentFallback');
+  fallback?.classList.remove('is-hidden');
+  routeExperimentSetStatus(`Offline model ready · ${routeExperimentState.routes.length} alternatives`);
+  const footer=document.querySelector('.route-experiment-footer div');
+  if(footer)footer.innerHTML='<span>Road geometry · offline schematic / live Mapbox</span><span>Route scoring · authored model</span><span>Slope / bike / risk · prototype proxies</span><span>Platform internals · missing</span>';
+}
+
 const routeExperimentControls={
   traffic:document.getElementById('experimentTraffic'),
   weather:document.getElementById('experimentWeather'),
@@ -1058,6 +1114,7 @@ function routeExperimentUpdateMetrics(){
   Object.entries(segments).forEach(([id,width])=>{const element=document.getElementById(id);if(element)element.style.width=`${width}%`;});
 }
 function routeExperimentUpdateMap(fit=false){
+  if(routeExperimentState.offline){routeExperimentUpdateOfflineMap();return;}
   if(!routeExperimentState.mapReady)return;
   const source=routeExperimentState.map.getSource('route-experiment-routes');
   if(source)source.setData(routeExperimentFeatureCollection());
@@ -1139,7 +1196,7 @@ function routeExperimentMarker(letter,className=''){
 function routeExperimentInitMap(){
   const container=document.getElementById('routeExperimentMap');
   if(!container)return;
-  if(!window.mapboxgl){routeExperimentSetStatus('Mapbox GL JS did not load.',true);return;}
+  if(!window.mapboxgl){routeExperimentInitOffline('Mapbox GL JS did not load');return;}
   mapboxgl.accessToken=TOKEN;
   routeExperimentState.map=new mapboxgl.Map({
     container:'routeExperimentMap',
@@ -1152,6 +1209,7 @@ function routeExperimentInitMap(){
   });
   routeExperimentState.map.addControl(new mapboxgl.NavigationControl({showCompass:false}),'top-right');
   routeExperimentState.map.on('load',()=>{
+    routeExperimentState.offline=false;
     routeExperimentState.mapReady=true;
     routeExperimentState.map.addSource('route-experiment-routes',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
     routeExperimentState.map.addLayer({id:'route-experiment-base',type:'line',source:'route-experiment-routes',paint:{'line-color':'#8f8f8f','line-width':4,'line-opacity':.48}});
@@ -1169,8 +1227,8 @@ function routeExperimentInitMap(){
     new mapboxgl.Marker({element:routeExperimentMarker('C','destination')}).setLngLat(routeExperimentDestination).addTo(routeExperimentState.map);
     routeExperimentFetchRoutes();
   });
-  routeExperimentState.map.on('error',()=>routeExperimentSetStatus('Map style or routing service unavailable.',true));
-  const slide=document.getElementById('s09');
+  routeExperimentState.map.on('error',()=>{if(!routeExperimentState.mapReady)routeExperimentInitOffline('Map style unavailable');});
+  const slide=document.getElementById('s08');
   if(slide){
     const resizeObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)setTimeout(()=>routeExperimentState.map?.resize(),120);}),{threshold:.2});
     resizeObserver.observe(slide);

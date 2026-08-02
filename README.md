@@ -28,3 +28,6 @@ Update: refined typography and layout across Chapters 01–06. Chapters 02 and 0
 ## 12-chapter update
 
 The former Chapter 07, “Situated technology / Situated route simulator,” has been removed. The former Chapters 08–13 are now Chapters 07–12. Navigation links, section IDs, visible page numbers, and the left-rail layout have been updated accordingly.
+
+
+Update: Chapter 08 now includes an interactive offline route fallback. If Mapbox GL or live routing fails, the map presents six clearly labeled schematic alternatives instead of a black loading screen. Controls, route ranking, cards, and delivery metrics remain functional.

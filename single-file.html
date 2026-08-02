@@ -2146,6 +2146,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   }
 }
 
+
+
+/* Reliable offline route fallback for the computational experiment */
+.route-experiment-fallback{z-index:2;padding:0;display:block;text-align:left;background:#151515;color:#fff;opacity:1}
+.route-experiment-fallback.is-hidden{opacity:0;pointer-events:none}
+.route-experiment-fallback svg{display:block;width:100%;height:100%}
+.offline-street-grid path{fill:none;stroke:#343434;stroke-width:2;vector-effect:non-scaling-stroke}
+.offline-street-grid .offline-street-major{stroke:#4b4b4b;stroke-width:5}
+.offline-map-labels text{fill:#757575;font-size:10px;font-weight:700;letter-spacing:1.4px}
+.offline-fixed-markers circle{fill:#f5f2eb;stroke:#111;stroke-width:2}
+.offline-fixed-markers text{fill:#111;font-size:12px;font-weight:800;text-anchor:middle}
+.offline-route{fill:none;stroke:#7b7b7b;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.48;cursor:pointer;vector-effect:non-scaling-stroke;transition:opacity .18s ease,stroke-width .18s ease,stroke .18s ease}
+.offline-route:hover{opacity:.9;stroke-width:7}
+.offline-route.recommended{stroke:#fff;opacity:.88;stroke-dasharray:10 7}
+.offline-route.selected{stroke:#ff4d2e;stroke-width:8;opacity:1;stroke-dasharray:none}
+.offline-route.blocked{stroke:#ffb000;stroke-dasharray:5 6;opacity:.8}
+.route-experiment-offline-note{position:absolute;z-index:3;right:14px;bottom:48px;width:min(310px,42%);padding:10px 12px;background:rgba(10,10,10,.82);border-left:3px solid #ff4d2e;backdrop-filter:blur(3px)}
+.route-experiment-offline-note strong{display:block;margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+.route-experiment-offline-note span{display:block;max-width:none;font-size:9px;line-height:1.35;color:#b9b9b9}
+.route-experiment-map-wrap.offline-ready #routeExperimentMap{opacity:0}
+.route-experiment-map-wrap.offline-ready .route-experiment-status{border-left-color:#ff4d2e}
+
 </style>
 </head>
 <body>
@@ -2587,8 +2609,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
     <section class="route-experiment-map-wrap" aria-label="Interactive fixed-origin route experiment">
       <div id="routeExperimentMap"></div>
       <div id="routeExperimentFallback" class="route-experiment-fallback">
-        <strong>Calculating street-following alternatives…</strong>
-        <span>The map uses Mapbox road geometry. If routing is unavailable, invented street lines are not substituted.</span>
+        <svg id="routeExperimentOfflineSvg" viewBox="0 0 780 430" preserveAspectRatio="none" role="img" aria-label="Offline schematic route comparison for the fixed Columbia delivery case">
+          <rect width="780" height="430" fill="#151515" />
+          <g class="offline-street-grid">
+            <path d="M45 55H735 M45 110H735 M45 165H735 M45 220H735 M45 275H735 M45 330H735 M45 385H735" />
+            <path d="M95 28V405 M185 28V405 M285 28V405 M395 28V405 M505 28V405 M615 28V405 M705 28V405" />
+            <path class="offline-street-major" d="M120 20L640 410 M245 20L735 365 M55 120L705 290" />
+          </g>
+          <g class="offline-map-labels">
+            <text x="54" y="48">W 125 ST</text>
+            <text x="54" y="378">W 116 ST</text>
+            <text x="190" y="42">BROADWAY</text>
+            <text x="485" y="42">AMSTERDAM AVE</text>
+            <text x="585" y="403">COLUMBIA</text>
+          </g>
+          <g id="routeExperimentOfflineRoutes"></g>
+          <g class="offline-fixed-markers">
+            <circle cx="438" cy="54" r="14" /><text x="438" y="59">R</text>
+            <circle cx="242" cy="373" r="14" /><text x="242" y="378">C</text>
+          </g>
+        </svg>
+        <div class="route-experiment-offline-note">
+          <strong>Offline route model</strong>
+          <span>Schematic alternatives remain interactive when live Mapbox routing is unavailable. They are labeled as modeled, not verified road geometry.</span>
+        </div>
       </div>
       <div class="route-experiment-status" id="routeExperimentStatus" aria-live="polite">Preparing the controlled case…</div>
       <div class="route-experiment-map-label origin"><span>Fixed origin</span><b>125th Street restaurant</b></div>
@@ -2655,7 +2699,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
 
   <footer class="route-experiment-footer">
     <p id="experimentInterpretation">Changing the definition of cost changes which route appears optimal.</p>
-    <div><span>Road geometry · Mapbox</span><span>Route scoring · Authored model</span><span>Slope / bike / risk · Prototype proxies</span><span>Platform internals · Missing</span></div>
+    <div><span>Road geometry · live Mapbox / offline schematic</span><span>Route scoring · authored model</span><span>Slope / bike / risk · prototype proxies</span><span>Platform internals · missing</span></div>
   </footer>
 </section>
 
@@ -3767,7 +3811,63 @@ const routeExperimentObjectives={
   slope:{label:'Low-slope priority',distance:.55,time:.7,bike:.4,slope:2.8,risk:.45,weather:.3},
   risk:{label:'Lower-risk priority',distance:.5,time:.7,bike:.55,slope:.4,risk:2.8,weather:.45}
 };
-const routeExperimentState={map:null,mapReady:false,routes:[],selectedId:null,recommendedId:null,objective:'balanced',requestSerial:0,abortController:null};
+const routeExperimentState={map:null,mapReady:false,offline:false,routes:[],selectedId:null,recommendedId:null,objective:'balanced',requestSerial:0,abortController:null};
+
+function routeExperimentOfflineRoutes(){
+  return [
+    {id:'experiment-route-0',role:'direct',name:'Direct network',coordinates:[[-73.95805,40.81575],[-73.95820,40.81445],[-73.95915,40.81275],[-73.96040,40.81055],[-73.96262,40.80784]],distance:1180,duration:335,steps:9,source:'Offline schematic model'},
+    {id:'experiment-route-1',role:'broadway',name:'Broadway corridor',coordinates:[[-73.95805,40.81575],[-73.96020,40.81505],[-73.96315,40.81290],[-73.96335,40.80970],[-73.96262,40.80784]],distance:1390,duration:390,steps:11,source:'Offline schematic model'},
+    {id:'experiment-route-2',role:'amsterdam',name:'Amsterdam corridor',coordinates:[[-73.95805,40.81575],[-73.95845,40.81420],[-73.95985,40.81215],[-73.96035,40.80975],[-73.96262,40.80784]],distance:1260,duration:350,steps:10,source:'Offline schematic model'},
+    {id:'experiment-route-3',role:'morningside',name:'Morningside corridor',coordinates:[[-73.95805,40.81575],[-73.95665,40.81465],[-73.95535,40.81220],[-73.95625,40.80915],[-73.96262,40.80784]],distance:1510,duration:375,steps:13,source:'Offline schematic model'},
+    {id:'experiment-route-4',role:'west',name:'West-side detour',coordinates:[[-73.95805,40.81575],[-73.96170,40.81525],[-73.96425,40.81270],[-73.96435,40.80925],[-73.96262,40.80784]],distance:1640,duration:415,steps:12,source:'Offline schematic model'},
+    {id:'experiment-route-5',role:'east',name:'East-side detour',coordinates:[[-73.95805,40.81575],[-73.95510,40.81515],[-73.95475,40.81200],[-73.95600,40.80870],[-73.96262,40.80784]],distance:1720,duration:430,steps:15,source:'Offline schematic model'}
+  ];
+}
+function routeExperimentOfflinePoint(coordinate){
+  const [lon,lat]=coordinate;
+  const minLon=-73.9655,maxLon=-73.9535,minLat=40.8068,maxLat=40.8165;
+  const x=45+((lon-minLon)/(maxLon-minLon))*690;
+  const y=405-((lat-minLat)/(maxLat-minLat))*377;
+  return [Math.max(45,Math.min(735,x)),Math.max(28,Math.min(405,y))];
+}
+function routeExperimentUpdateOfflineMap(){
+  const group=document.getElementById('routeExperimentOfflineRoutes');
+  if(!group||!routeExperimentState.routes.length)return;
+  const values=routeExperimentValues();
+  const ordered=[...routeExperimentState.routes].sort((a,b)=>{
+    const av=a.id===routeExperimentState.selectedId?2:a.id===routeExperimentState.recommendedId?1:0;
+    const bv=b.id===routeExperimentState.selectedId?2:b.id===routeExperimentState.recommendedId?1:0;
+    return av-bv;
+  });
+  group.innerHTML=ordered.map(route=>{
+    const points=route.coordinates.map(routeExperimentOfflinePoint).map(point=>point.map(value=>value.toFixed(1)).join(',')).join(' ');
+    const classes=['offline-route'];
+    if(route.id===routeExperimentState.recommendedId)classes.push('recommended');
+    if(route.id===routeExperimentState.selectedId)classes.push('selected');
+    if(values.closure!=='none'&&route.role===values.closure)classes.push('blocked');
+    return `<polyline class="${classes.join(' ')}" data-offline-route-id="${route.id}" points="${points}" />`;
+  }).join('');
+  group.querySelectorAll('[data-offline-route-id]').forEach(path=>path.addEventListener('click',()=>routeExperimentSelectRoute(path.dataset.offlineRouteId,true)));
+}
+function routeExperimentInitOffline(reason='Live map unavailable'){
+  if(routeExperimentState.offline&&routeExperimentState.routes.length)return;
+  routeExperimentState.offline=true;
+  routeExperimentState.mapReady=false;
+  routeExperimentState.routes=routeExperimentOfflineRoutes();
+  routeExperimentCalculate();
+  routeExperimentState.selectedId=routeExperimentState.recommendedId;
+  routeExperimentUpdateLabels();
+  routeExperimentRenderCards();
+  routeExperimentUpdateMetrics();
+  routeExperimentUpdateOfflineMap();
+  document.querySelector('.route-experiment-map-wrap')?.classList.add('offline-ready');
+  const fallback=document.getElementById('routeExperimentFallback');
+  fallback?.classList.remove('is-hidden');
+  routeExperimentSetStatus(`Offline model ready · ${routeExperimentState.routes.length} alternatives`);
+  const footer=document.querySelector('.route-experiment-footer div');
+  if(footer)footer.innerHTML='<span>Road geometry · offline schematic / live Mapbox</span><span>Route scoring · authored model</span><span>Slope / bike / risk · prototype proxies</span><span>Platform internals · missing</span>';
+}
+
 const routeExperimentControls={
   traffic:document.getElementById('experimentTraffic'),
   weather:document.getElementById('experimentWeather'),
@@ -3965,6 +4065,7 @@ function routeExperimentUpdateMetrics(){
   Object.entries(segments).forEach(([id,width])=>{const element=document.getElementById(id);if(element)element.style.width=`${width}%`;});
 }
 function routeExperimentUpdateMap(fit=false){
+  if(routeExperimentState.offline){routeExperimentUpdateOfflineMap();return;}
   if(!routeExperimentState.mapReady)return;
   const source=routeExperimentState.map.getSource('route-experiment-routes');
   if(source)source.setData(routeExperimentFeatureCollection());
@@ -4023,18 +4124,7 @@ async function routeExperimentFetchRoutes(){
     document.getElementById('routeExperimentFallback')?.classList.add('is-hidden');
   }catch(error){
     if(error.name==='AbortError')return;
-    routeExperimentState.routes=[];
-    routeExperimentState.selectedId=null;
-    routeExperimentRenderCards();
-    routeExperimentSetStatus(`${error.message}. No invented street route has been substituted.`,true);
-    const fallback=document.getElementById('routeExperimentFallback');
-    if(fallback){
-      fallback.classList.remove('is-hidden');
-      const title=fallback.querySelector('strong');
-      const note=fallback.querySelector('span');
-      if(title)title.textContent='Routing unavailable';
-      if(note)note.textContent='Check network access or the Mapbox token. The experiment keeps the limitation visible rather than drawing schematic streets as real routes.';
-    }
+    routeExperimentInitOffline(error.message||'Live routing unavailable');
   }
 }
 function routeExperimentMarker(letter,className=''){
@@ -4046,7 +4136,7 @@ function routeExperimentMarker(letter,className=''){
 function routeExperimentInitMap(){
   const container=document.getElementById('routeExperimentMap');
   if(!container)return;
-  if(!window.mapboxgl){routeExperimentSetStatus('Mapbox GL JS did not load.',true);return;}
+  if(!window.mapboxgl){routeExperimentInitOffline('Mapbox GL JS did not load');return;}
   mapboxgl.accessToken=TOKEN;
   routeExperimentState.map=new mapboxgl.Map({
     container:'routeExperimentMap',
@@ -4059,6 +4149,7 @@ function routeExperimentInitMap(){
   });
   routeExperimentState.map.addControl(new mapboxgl.NavigationControl({showCompass:false}),'top-right');
   routeExperimentState.map.on('load',()=>{
+    routeExperimentState.offline=false;
     routeExperimentState.mapReady=true;
     routeExperimentState.map.addSource('route-experiment-routes',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
     routeExperimentState.map.addLayer({id:'route-experiment-base',type:'line',source:'route-experiment-routes',paint:{'line-color':'#8f8f8f','line-width':4,'line-opacity':.48}});
@@ -4076,8 +4167,8 @@ function routeExperimentInitMap(){
     new mapboxgl.Marker({element:routeExperimentMarker('C','destination')}).setLngLat(routeExperimentDestination).addTo(routeExperimentState.map);
     routeExperimentFetchRoutes();
   });
-  routeExperimentState.map.on('error',()=>routeExperimentSetStatus('Map style or routing service unavailable.',true));
-  const slide=document.getElementById('s09');
+  routeExperimentState.map.on('error',()=>{if(!routeExperimentState.mapReady)routeExperimentInitOffline('Map style unavailable');});
+  const slide=document.getElementById('s08');
   if(slide){
     const resizeObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)setTimeout(()=>routeExperimentState.map?.resize(),120);}),{threshold:.2});
     resizeObserver.observe(slide);

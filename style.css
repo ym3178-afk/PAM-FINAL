@@ -2137,3 +2137,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
     margin-right:auto;
   }
 }
+
+
+/* Reliable offline route fallback for the computational experiment */
+.route-experiment-fallback{z-index:2;padding:0;display:block;text-align:left;background:#151515;color:#fff;opacity:1}
+.route-experiment-fallback.is-hidden{opacity:0;pointer-events:none}
+.route-experiment-fallback svg{display:block;width:100%;height:100%}
+.offline-street-grid path{fill:none;stroke:#343434;stroke-width:2;vector-effect:non-scaling-stroke}
+.offline-street-grid .offline-street-major{stroke:#4b4b4b;stroke-width:5}
+.offline-map-labels text{fill:#757575;font-size:10px;font-weight:700;letter-spacing:1.4px}
+.offline-fixed-markers circle{fill:#f5f2eb;stroke:#111;stroke-width:2}
+.offline-fixed-markers text{fill:#111;font-size:12px;font-weight:800;text-anchor:middle}
+.offline-route{fill:none;stroke:#7b7b7b;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.48;cursor:pointer;vector-effect:non-scaling-stroke;transition:opacity .18s ease,stroke-width .18s ease,stroke .18s ease}
+.offline-route:hover{opacity:.9;stroke-width:7}
+.offline-route.recommended{stroke:#fff;opacity:.88;stroke-dasharray:10 7}
+.offline-route.selected{stroke:#ff4d2e;stroke-width:8;opacity:1;stroke-dasharray:none}
+.offline-route.blocked{stroke:#ffb000;stroke-dasharray:5 6;opacity:.8}
+.route-experiment-offline-note{position:absolute;z-index:3;right:14px;bottom:48px;width:min(310px,42%);padding:10px 12px;background:rgba(10,10,10,.82);border-left:3px solid #ff4d2e;backdrop-filter:blur(3px)}
+.route-experiment-offline-note strong{display:block;margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+.route-experiment-offline-note span{display:block;max-width:none;font-size:9px;line-height:1.35;color:#b9b9b9}
+.route-experiment-map-wrap.offline-ready #routeExperimentMap{opacity:0}
+.route-experiment-map-wrap.offline-ready .route-experiment-status{border-left-color:#ff4d2e}
