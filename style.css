@@ -3368,3 +3368,32 @@ body{
     flex:0 0 auto!important;
   }
 }
+
+
+/* =====================================================================
+   CHAPTERS 10–12 — TRUE VERTICAL CENTERING
+   Center the complete thematic composition on the fixed 16:10 canvas.
+   Bottom conclusion/boundary bars remain anchored while the main content
+   is centered in the remaining visible area.
+   ===================================================================== */
+@media (min-width:901px){
+  #s10.rhetorical-argument-slide,
+  #s11.potential-capstone-slide,
+  #s12.challenge-slide{
+    justify-content:center!important;
+    padding-top:70px!important;
+    padding-bottom:155px!important;
+  }
+
+  #s10 .ra-heading,
+  #s10 .ra-contrast,
+  #s10 .ra-factor-area,
+  #s11 .pc-heading-revised,
+  #s11 .pc-scope-revised,
+  #s11 .pc-revised-layout,
+  #s12 .ch-heading,
+  #s12 .ch-layout,
+  #s12 .ch-forward-plan{
+    flex:0 0 auto!important;
+  }
+}

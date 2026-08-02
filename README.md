@@ -17,3 +17,6 @@ Update: Chapters 10–12 thematic content is centered while preserving the fixed
 
 
 Chapter 12 update: the main challenge composition is vertically centered within the fixed 16:10 canvas, while the conclusion bar remains anchored at the bottom.
+
+
+Latest refinement: Chapters 10–12 use true vertical centering while preserving the fixed 16:10 composition and anchored bottom bars.
