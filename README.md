@@ -9,3 +9,8 @@ This version preserves the original desktop composition on every device.
 The presentation is scaled uniformly to fit the browser window. It does not reflow when the screen width changes, so typography, maps, cards, and the 16:10 chapter canvases keep their original proportions.
 
 For GitHub Pages, upload the whole folder and open `index.html`.
+
+- Chapter 08 map and scrollable information column now extend to the exact bottom edge of the fixed 16:10 canvas.
+
+
+Update: Chapters 10–12 thematic content is centered while preserving the fixed 16:10 canvas.

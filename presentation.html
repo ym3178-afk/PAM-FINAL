@@ -3102,12 +3102,13 @@ body{
     grid-template-columns:minmax(0,1fr)!important;
     grid-template-rows:auto minmax(0,1fr)!important;
     column-gap:0!important;
-    row-gap:9px!important;
+    row-gap:0!important;
   }
 
   #s08>.route-experiment-heading{
     grid-column:1!important;
     grid-row:1!important;
+    margin-bottom:0!important;
   }
 
   #s08>.route-experiment-main{
@@ -3121,6 +3122,7 @@ body{
     height:100%!important;
     min-height:0!important;
     margin:0!important;
+    padding-top:0!important;
     overflow:hidden!important;
   }
 
@@ -3199,6 +3201,158 @@ body{
     gap:12px!important;
     overflow:visible!important;
     min-height:0!important;
+  }
+}
+
+
+
+/* =====================================================================
+   CHAPTER 08 — BOTTOM EDGE ALIGNMENT
+   Extend the map and scrollable information column to the exact bottom
+   edge of the fixed 16:10 slide canvas.
+   ===================================================================== */
+@media (min-width:901px){
+  #s08.route-experiment-slide{
+    padding-bottom:0!important;
+  }
+  #s08>.route-experiment-main{
+    height:100%!important;
+    min-height:0!important;
+    margin-bottom:0!important;
+    align-self:stretch!important;
+  }
+  #s08 .route-experiment-map-wrap,
+  #s08 .route-experiment-sidebar{
+    height:100%!important;
+    min-height:0!important;
+    margin-bottom:0!important;
+    align-self:stretch!important;
+  }
+}
+
+
+
+/* =====================================================================
+   CHAPTERS 10–12 — CENTERED SUBJECT COMPOSITION
+   Keep the 16:10 fixed canvas while centering the thematic content.
+   ===================================================================== */
+@media (min-width:901px){
+  #s10,#s11,#s12{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+  }
+
+  /* 10 — rhetorical argument */
+  #s10 .ra-heading,
+  #s10 .ra-contrast,
+  #s10 .ra-factor-area{
+    width:min(100%,1240px)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #s10 .ra-heading{text-align:center!important}
+  #s10 .ra-contrast article{text-align:center!important}
+  #s10 .ra-contrast article p{margin-left:auto!important;margin-right:auto!important}
+  #s10 .ra-factor-readout,#s10 .ra-factor-area blockquote{text-align:center!important}
+  #s10 .ra-position{
+    left:50%!important;
+    right:auto!important;
+    transform:translateX(-50%)!important;
+    width:min(calc(100% - 108px),1240px)!important;
+    grid-template-columns:1fr!important;
+    gap:5px!important;
+    text-align:center!important;
+  }
+
+  /* 11 — potential capstone */
+  #s11 .pc-heading-revised{
+    width:min(100%,1260px)!important;
+    max-width:1260px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:10px!important;
+    text-align:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #s11 .pc-heading-revised>div:first-child{max-width:1080px!important}
+  #s11 .pc-heading-revised>div:last-child{max-width:1040px!important}
+  #s11 .pc-heading-revised h2{
+    max-width:1050px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #s11 .pc-heading-revised>div:last-child p{
+    max-width:1000px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #s11 .pc-scope-revised,
+  #s11 .pc-revised-layout{
+    width:min(100%,1320px)!important;
+    max-width:1320px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #s11 .pc-section-label{text-align:center!important}
+  #s11 .pc-linkage{justify-content:center!important;text-align:center!important}
+  #s11 .pc-boundary-revised{
+    width:min(100%,1320px)!important;
+    max-width:1320px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    justify-content:center!important;
+    text-align:center!important;
+  }
+  #s11 .pc-boundary-revised p{
+    margin-left:0!important;
+    text-align:center!important;
+    max-width:520px!important;
+  }
+
+  /* 12 — challenges */
+  #s12 .ch-heading{
+    width:min(100%,1220px)!important;
+    max-width:1220px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:9px!important;
+    text-align:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #s12 .ch-heading>div{max-width:1050px!important}
+  #s12 .ch-heading h2{
+    max-width:1000px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #s12 .ch-heading>p{
+    max-width:920px!important;
+    margin:0 auto!important;
+  }
+  #s12 .ch-layout,
+  #s12 .ch-forward-plan{
+    width:min(100%,1320px)!important;
+    max-width:1320px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #s12 .ch-detail{text-align:left!important}
+  #s12 .ch-forward-plan>div{text-align:center!important}
+  #s12 .ch-conclusion{
+    left:50%!important;
+    right:auto!important;
+    transform:translateX(-50%)!important;
+    width:min(calc(100% - 108px),1320px)!important;
+    grid-template-columns:1fr!important;
+    gap:5px!important;
+    text-align:center!important;
   }
 }
 
