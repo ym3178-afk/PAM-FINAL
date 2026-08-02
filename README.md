@@ -20,3 +20,6 @@ Chapter 12 update: the main challenge composition is vertically centered within 
 
 
 Latest refinement: Chapters 10–12 use true vertical centering while preserving the fixed 16:10 composition and anchored bottom bars.
+
+
+Latest adjustment: Chapter 08 map and scrollable information sidebar now share one exact-height grid track, with locked bottom-edge alignment.

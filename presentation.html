@@ -3405,6 +3405,52 @@ body{
     flex:0 0 auto!important;
   }
 }
+
+
+/* =====================================================================
+   CHAPTER 08 — EXACT MAP / SIDEBAR BOTTOM ALIGNMENT
+   Both columns occupy the same grid track and use the exact same outer
+   block size. The sidebar scrolls internally without shortening its box.
+   ===================================================================== */
+@media (min-width:901px){
+  #s08>.route-experiment-main{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.62fr) minmax(340px,.38fr)!important;
+    grid-template-rows:minmax(0,1fr)!important;
+    align-items:stretch!important;
+    justify-items:stretch!important;
+    height:100%!important;
+    min-height:0!important;
+    max-height:100%!important;
+    overflow:hidden!important;
+  }
+  #s08 .route-experiment-map-wrap,
+  #s08 .route-experiment-sidebar{
+    grid-row:1!important;
+    box-sizing:border-box!important;
+    block-size:100%!important;
+    min-block-size:0!important;
+    max-block-size:100%!important;
+    align-self:stretch!important;
+    margin:0!important;
+    bottom:auto!important;
+  }
+  #s08 .route-experiment-map-wrap{
+    grid-column:1!important;
+  }
+  #s08 .route-experiment-sidebar{
+    grid-column:2!important;
+    padding:0 5px 0 0!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+  }
+  #s08 .route-experiment-sidebar::after{
+    content:"";
+    display:block;
+    height:1px;
+    flex:0 0 1px;
+  }
+}
 </style>
 </head>
 <body>
