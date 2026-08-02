@@ -23,58 +23,19 @@
 <main>
 <section class="slide title-slide" id="s01" data-title="Title">
   <div class="slide-no">01</div>
-  <div class="title-grid">
-    <div>
+  <div class="title-grid title-grid-static">
+    <div class="title-copy-cn">
       <p class="kicker">Research foundations + project outline</p>
       <h1>Behind the Route</h1>
       <h2>Making the invisible networks of urban food delivery perceptible</h2>
-      <p class="lead">The route is the project’s main entry point, but it is not understood as a single line on a map. It is treated as an outcome jointly produced by platforms, labor, urban space, and infrastructure.</p>
+      <p class="lead lead-cn">作为一名大学生，我经常点外卖。但在外卖页面上，通常只会出现一条路线和一个预计送达时间。这个时间却经常受到天气、交通、突发事故，以及商家备餐和骑手等待时间等因素的影响，导致我不能按时取到外卖，甚至有时无法顺利取餐。</p>
+      <p class="title-reflection-cn">正是这些持续作用却不可见的因素，使我开始思考：地图如何才能把这些隐藏的过程显现出来？</p>
       <div class="meta-row"><span>Urban food delivery</span><span>Critical visualization</span><span>Platform labor</span></div>
     </div>
-    <div class="route-lab" aria-label="Adjustable route map showing how conditions change a delivery route">
-      <div class="route-lab-head">
-        <div><span>Adjustable route study</span><strong id="heroRouteMode">Balanced route</strong></div>
-        <div class="route-status"><b id="heroEta">18 min</b><small>estimated trip</small></div>
-      </div>
-      <div class="route-map-stage">
-        <div class="route-overlay-badges"><span id="weatherBadge">Clear weather</span><span id="bikeBadge">Strong bike lane coverage</span></div>
-        <svg id="heroRouteMap" viewBox="0 0 720 430" role="img" aria-label="Schematic street network with an adjustable delivery route">
-          <g class="street-grid">
-            <path d="M70 80H650M70 160H650M70 240H650M70 320H650"/>
-            <path d="M130 45V380M250 45V380M370 45V380M490 45V380M610 45V380"/>
-          </g>
-          <g class="route-obstacles">
-            <rect id="heroCampus" x="252" y="162" width="236" height="155" rx="6"/>
-            <text x="370" y="238">Restricted campus</text>
-            <path id="heroSlope" d="M490 82L610 82L610 160L490 160Z"/>
-            <text x="550" y="126">Steep slope</text>
-            <circle id="heroTraffic" cx="370" cy="160" r="42"/>
-            <text x="370" y="164">Traffic</text>
-          </g>
-          <path id="heroBaseRoute" class="base-route" d="M90 320L130 320L130 240L250 240L250 160L370 160L370 80L610 80L610 120L650 120"/>
-          <path id="heroActiveRoute" class="active-route" d="M90 320L130 320L130 240L250 240L250 160L370 160L370 80L610 80L610 120L650 120"/>
-          <g class="route-points">
-            <circle cx="90" cy="320" r="9"/><text x="90" y="347">Restaurant</text>
-            <circle cx="650" cy="120" r="9"/><text x="650" y="96">Customer</text>
-          </g>
-          <g id="heroWorker" class="worker-marker"><circle cx="90" cy="320" r="7"/><circle cx="90" cy="320" r="15"/></g>
-        </svg>
-        <div class="route-legend"><span><i class="planned-line"></i>Platform route</span><span><i class="actual-line"></i>Adjusted route</span></div>
-      </div>
-      <div class="route-controls">
-        <label><span>Traffic <b id="trafficValue">35%</b></span><input id="trafficControl" type="range" min="0" max="100" value="35"></label>
-        <label><span>Access restriction <b id="accessValue">55%</b></span><input id="accessControl" type="range" min="0" max="100" value="55"></label>
-        <label><span>Slope cost <b id="slopeValue">25%</b></span><input id="slopeControl" type="range" min="0" max="100" value="25"></label>
-        <label><span>Restaurant wait <b id="waitValue">6 min</b></span><input id="waitControl" type="range" min="0" max="20" value="6"></label>
-        <label><span>Weather exposure <b id="weatherValue">20%</b></span><input id="weatherControl" type="range" min="0" max="100" value="20"></label>
-        <label><span>Bike lane quality <b id="bikeValue">70%</b></span><input id="bikeControl" type="range" min="0" max="100" value="70"></label>
-      </div>
-      <div class="route-readout" aria-live="polite">
-        <span><b id="heroDistance">2.4 km</b> distance</span>
-        <span><b id="heroDetour">+0.3 km</b> detour</span>
-        <span><b id="heroFriction">Medium</b> friction</span>
-      </div>
-    </div>
+    <figure class="hero-phone-shot" aria-label="Food delivery app screenshot showing a single route and estimated arrival time">
+      <img src="hero_delivery_app.jpg" alt="Food delivery app route screenshot" />
+      <figcaption>The platform shows one visible route and one promised arrival time.</figcaption>
+    </figure>
   </div>
 </section>
 
