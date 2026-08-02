@@ -22,6 +22,4 @@ The former standalone “Situated Technology” chapter has been removed so the 
 `index.html` and `single-file.html` are self-contained. `style.css` and `main.js` are also included for continued development.
 
 
-## Complete layout alignment
-
-All current chapters now use one centered editorial system: shared canvas margins, heading columns, title scale, text measure, content-frame height, card spacing, and footer baselines. Page-specific diagrams and interactions remain intact.
+Update: Chapter 06 copy was revised, and the heading explanation panels in Chapters 06–09 were widened, flattened, and vertically aligned with their left title blocks. Forced line breaks were removed to reduce narrow, stacked text.
