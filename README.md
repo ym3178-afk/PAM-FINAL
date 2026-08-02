@@ -1,13 +1,11 @@
-# Behind the Route — Slide 01 refined
+# Behind the Route — self-contained deployment fix
 
-This version keeps the original 13-section website and updates only Slide 01.
+This version fixes the missing Slide 01 image shown in the browser screenshot.
 
-Changes:
-- removed the title-page simulator
-- inserted the provided delivery-app screenshot
-- reduced and contained the image within the 16:10 slide
-- aligned the image panel vertically with the left text block
-- kept all visible website text in English
-- preserved the remaining 12 sections
+- The delivery-app image is embedded directly inside `index.html`.
+- The full CSS and JavaScript are also embedded directly inside `index.html`.
+- `index.html` can therefore be opened by itself in VS Code, a browser, or GitHub Pages without losing the image, layout, or interactions.
+- `single-file.html` is an identical backup.
+- The original `style.css`, `main.js`, and `images/` files are retained for editing.
 
-Open `index.html` with Live Server or deploy the folder contents to the GitHub Pages repository root.
+For GitHub Pages, upload the whole folder or upload `index.html` by itself. The external Mapbox library is still loaded online for map-based sections.
