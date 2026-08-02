@@ -16,7 +16,7 @@ sections.forEach(section=>observer.observe(section));
 
 const TOKEN='pk.eyJ1IjoiZWxpYW4zMTc4IiwiYSI6ImNtcnZlZGpkdDBvbXgyd3B2eGMyajdseDUifQ.GlgugnGUmcRzqOLIaF_16w';
 
-// Chapter 07: realistic multi-route situated simulator
+// Optional legacy situated simulator (not mounted in the 12-chapter narrative)
 const realisticCases={
   'broadway-west-harlem':{
     name:'Broadway restaurant → West Harlem apartment',
@@ -640,7 +640,7 @@ if(communityMap){
 }
 
 
-// Chapter 07: route-logics method diagram
+// Chapter 08: route-logics method diagram
 const methodsRouteData={
   shortest:{index:'01 · Quantitative model',title:'Shortest-distance route',text:'Uses the street network to minimize total route length. This establishes a baseline rather than claiming the route a rider would actually choose.',technique:'NetworkX shortest path',data:'OpenStreetMap road graph',metric:'Network distance'},
   fastest:{index:'02 · Quantitative model',title:'Fastest-time route',text:'Weights street segments by estimated cycling time, street class, and intersection delay. It tests how “fastest” differs from simply “shortest.”',technique:'Weighted shortest path',data:'Road class + speed assumptions',metric:'Estimated travel time'},
@@ -675,7 +675,7 @@ methodsRoutePaths.forEach(path=>path.addEventListener('click',()=>setMethodsRout
 setMethodsRoute('shortest');
 
 
-// Chapter 07: focused mixed-method workflow
+// Chapter 08: focused mixed-method workflow
 const methodOnlyData={
   collect:{
     index:'01 · Data practice',status:'PUBLIC + INTERFACE + FIELD',title:'Collect the evidence',
@@ -755,18 +755,18 @@ methodOnlyButtons.forEach(button=>{
 });
 if(methodOnlyButtons.length)setMethodOnlyStep('collect');
 
-// Chapters 08–09: aligned method and controlled route experiment
+// Chapters 07–08: methods and controlled route experiment
 const experimentMethodData={
   case:{
     index:'01 · Controlled case',evidence:'FIXED INPUT',title:'Fix one origin and one destination',
-    description:'The restaurant, restaurant pickup entrance, Columbia handoff point, map extent, and transport mode remain unchanged so route differences can be attributed to the calculation conditions.',
-    input:'Restaurant coordinate; pickup entrance; Columbia 116th Street gate; cycling mode; fixed study boundary.',
+    description:'One restaurant and one Columbia-area destination remain fixed so route differences can be attributed to changing conditions rather than changing endpoints.',
+    input:'Restaurant coordinate; destination near Columbia; cycling mode; fixed study boundary.',
     operation:'Lock the case before changing any route weights or scenario variables.',
     output:'A controlled baseline for comparing every route on the same spatial canvas.',
     tools:['Mapbox','QGIS','Field log']
   },
   network:{
-    index:'02 · Network construction',evidence:'PUBLIC + MODELED ATTRIBUTES',title:'Build an attributed street network',
+    index:'02 · Network construction',evidence:'PUBLIC DATA + MODELED ATTRIBUTES',title:'Build an attributed street network',
     description:'Street segments become graph edges with the attributes required to calculate more than one definition of route cost.',
     input:'Street geometry, directionality, segment length, estimated cycling time, bicycle infrastructure, elevation, intersections, and restrictions.',
     operation:'Clean the network, align coordinate systems, attach edge attributes, and document which values are measured, sourced, or modeled.',
@@ -790,7 +790,7 @@ const experimentMethodData={
     tools:['Python','Pandas','JavaScript','Sensitivity analysis']
   },
   ground:{
-    index:'05 · Situated validation',evidence:'FIELD-OBSERVED',title:'Ground-check the corridor',
+    index:'05 · Situated validation',evidence:'FIELD OBSERVATION',title:'Ground-check the corridor',
     description:'The calculated routes are walked or ridden so that street conditions absent from public data can be documented rather than guessed.',
     input:'Candidate maps, timing sheet, camera, route notes, restaurant pickup point, and campus handoff point.',
     operation:'Time the journey, photograph obstacles, record signals, slope, construction, traffic pressure, waiting, and access friction.',
@@ -798,7 +798,7 @@ const experimentMethodData={
     tools:['Ride-through','Photography','Time log','Observation']
   },
   compare:{
-    index:'06 · Mixed-method comparison',evidence:'MODELED + OBSERVED',title:'Compare results without collapsing them',
+    index:'06 · Mixed-method comparison',evidence:'MODELED + OBSERVED + UNCERTAIN',title:'Compare results without collapsing them',
     description:'Computed performance and field experience are placed beside one another, with uncertainty and missing platform information kept visible.',
     input:'Distance, moving time, bike support, slope effort, risk exposure, field timing, platform ETA, waiting, and handoff records.',
     operation:'Compare routes on a fixed scale, separate movement from waiting, annotate provenance, and report uncertainty.',
@@ -860,63 +860,7 @@ const routeExperimentObjectives={
   slope:{label:'Low-slope priority',distance:.55,time:.7,bike:.4,slope:2.8,risk:.45,weather:.3},
   risk:{label:'Lower-risk priority',distance:.5,time:.7,bike:.55,slope:.4,risk:2.8,weather:.45}
 };
-const routeExperimentState={map:null,mapReady:false,offline:false,routes:[],selectedId:null,recommendedId:null,objective:'balanced',requestSerial:0,abortController:null};
-
-function routeExperimentOfflineRoutes(){
-  return [
-    {id:'experiment-route-0',role:'direct',name:'Direct network',coordinates:[[-73.95805,40.81575],[-73.95820,40.81445],[-73.95915,40.81275],[-73.96040,40.81055],[-73.96262,40.80784]],distance:1180,duration:335,steps:9,source:'Offline schematic model'},
-    {id:'experiment-route-1',role:'broadway',name:'Broadway corridor',coordinates:[[-73.95805,40.81575],[-73.96020,40.81505],[-73.96315,40.81290],[-73.96335,40.80970],[-73.96262,40.80784]],distance:1390,duration:390,steps:11,source:'Offline schematic model'},
-    {id:'experiment-route-2',role:'amsterdam',name:'Amsterdam corridor',coordinates:[[-73.95805,40.81575],[-73.95845,40.81420],[-73.95985,40.81215],[-73.96035,40.80975],[-73.96262,40.80784]],distance:1260,duration:350,steps:10,source:'Offline schematic model'},
-    {id:'experiment-route-3',role:'morningside',name:'Morningside corridor',coordinates:[[-73.95805,40.81575],[-73.95665,40.81465],[-73.95535,40.81220],[-73.95625,40.80915],[-73.96262,40.80784]],distance:1510,duration:375,steps:13,source:'Offline schematic model'},
-    {id:'experiment-route-4',role:'west',name:'West-side detour',coordinates:[[-73.95805,40.81575],[-73.96170,40.81525],[-73.96425,40.81270],[-73.96435,40.80925],[-73.96262,40.80784]],distance:1640,duration:415,steps:12,source:'Offline schematic model'},
-    {id:'experiment-route-5',role:'east',name:'East-side detour',coordinates:[[-73.95805,40.81575],[-73.95510,40.81515],[-73.95475,40.81200],[-73.95600,40.80870],[-73.96262,40.80784]],distance:1720,duration:430,steps:15,source:'Offline schematic model'}
-  ];
-}
-function routeExperimentOfflinePoint(coordinate){
-  const [lon,lat]=coordinate;
-  const minLon=-73.9655,maxLon=-73.9535,minLat=40.8068,maxLat=40.8165;
-  const x=45+((lon-minLon)/(maxLon-minLon))*690;
-  const y=405-((lat-minLat)/(maxLat-minLat))*377;
-  return [Math.max(45,Math.min(735,x)),Math.max(28,Math.min(405,y))];
-}
-function routeExperimentUpdateOfflineMap(){
-  const group=document.getElementById('routeExperimentOfflineRoutes');
-  if(!group||!routeExperimentState.routes.length)return;
-  const values=routeExperimentValues();
-  const ordered=[...routeExperimentState.routes].sort((a,b)=>{
-    const av=a.id===routeExperimentState.selectedId?2:a.id===routeExperimentState.recommendedId?1:0;
-    const bv=b.id===routeExperimentState.selectedId?2:b.id===routeExperimentState.recommendedId?1:0;
-    return av-bv;
-  });
-  group.innerHTML=ordered.map(route=>{
-    const points=route.coordinates.map(routeExperimentOfflinePoint).map(point=>point.map(value=>value.toFixed(1)).join(',')).join(' ');
-    const classes=['offline-route'];
-    if(route.id===routeExperimentState.recommendedId)classes.push('recommended');
-    if(route.id===routeExperimentState.selectedId)classes.push('selected');
-    if(values.closure!=='none'&&route.role===values.closure)classes.push('blocked');
-    return `<polyline class="${classes.join(' ')}" data-offline-route-id="${route.id}" points="${points}" />`;
-  }).join('');
-  group.querySelectorAll('[data-offline-route-id]').forEach(path=>path.addEventListener('click',()=>routeExperimentSelectRoute(path.dataset.offlineRouteId,true)));
-}
-function routeExperimentInitOffline(reason='Live map unavailable'){
-  if(routeExperimentState.offline&&routeExperimentState.routes.length)return;
-  routeExperimentState.offline=true;
-  routeExperimentState.mapReady=false;
-  routeExperimentState.routes=routeExperimentOfflineRoutes();
-  routeExperimentCalculate();
-  routeExperimentState.selectedId=routeExperimentState.recommendedId;
-  routeExperimentUpdateLabels();
-  routeExperimentRenderCards();
-  routeExperimentUpdateMetrics();
-  routeExperimentUpdateOfflineMap();
-  document.querySelector('.route-experiment-map-wrap')?.classList.add('offline-ready');
-  const fallback=document.getElementById('routeExperimentFallback');
-  fallback?.classList.remove('is-hidden');
-  routeExperimentSetStatus(`Offline model ready · ${routeExperimentState.routes.length} alternatives`);
-  const footer=document.querySelector('.route-experiment-footer div');
-  if(footer)footer.innerHTML='<span>Road geometry · offline schematic / live Mapbox</span><span>Route scoring · authored model</span><span>Slope / bike / risk · prototype proxies</span><span>Platform internals · missing</span>';
-}
-
+const routeExperimentState={map:null,mapReady:false,routes:[],selectedId:null,recommendedId:null,objective:'balanced',requestSerial:0,abortController:null};
 const routeExperimentControls={
   traffic:document.getElementById('experimentTraffic'),
   weather:document.getElementById('experimentWeather'),
@@ -1114,7 +1058,6 @@ function routeExperimentUpdateMetrics(){
   Object.entries(segments).forEach(([id,width])=>{const element=document.getElementById(id);if(element)element.style.width=`${width}%`;});
 }
 function routeExperimentUpdateMap(fit=false){
-  if(routeExperimentState.offline){routeExperimentUpdateOfflineMap();return;}
   if(!routeExperimentState.mapReady)return;
   const source=routeExperimentState.map.getSource('route-experiment-routes');
   if(source)source.setData(routeExperimentFeatureCollection());
@@ -1196,7 +1139,7 @@ function routeExperimentMarker(letter,className=''){
 function routeExperimentInitMap(){
   const container=document.getElementById('routeExperimentMap');
   if(!container)return;
-  if(!window.mapboxgl){routeExperimentInitOffline('Mapbox GL JS did not load');return;}
+  if(!window.mapboxgl){routeExperimentSetStatus('Mapbox GL JS did not load.',true);return;}
   mapboxgl.accessToken=TOKEN;
   routeExperimentState.map=new mapboxgl.Map({
     container:'routeExperimentMap',
@@ -1209,7 +1152,6 @@ function routeExperimentInitMap(){
   });
   routeExperimentState.map.addControl(new mapboxgl.NavigationControl({showCompass:false}),'top-right');
   routeExperimentState.map.on('load',()=>{
-    routeExperimentState.offline=false;
     routeExperimentState.mapReady=true;
     routeExperimentState.map.addSource('route-experiment-routes',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
     routeExperimentState.map.addLayer({id:'route-experiment-base',type:'line',source:'route-experiment-routes',paint:{'line-color':'#8f8f8f','line-width':4,'line-opacity':.48}});
@@ -1227,7 +1169,7 @@ function routeExperimentInitMap(){
     new mapboxgl.Marker({element:routeExperimentMarker('C','destination')}).setLngLat(routeExperimentDestination).addTo(routeExperimentState.map);
     routeExperimentFetchRoutes();
   });
-  routeExperimentState.map.on('error',()=>{if(!routeExperimentState.mapReady)routeExperimentInitOffline('Map style unavailable');});
+  routeExperimentState.map.on('error',()=>routeExperimentSetStatus('Map style or routing service unavailable.',true));
   const slide=document.getElementById('s08');
   if(slide){
     const resizeObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)setTimeout(()=>routeExperimentState.map?.resize(),120);}),{threshold:.2});
@@ -1244,7 +1186,7 @@ routeExperimentControls.closure?.addEventListener('change',()=>routeExperimentUp
 routeExperimentUpdateLabels();
 routeExperimentInitMap();
 
-// Chapter 07 — visual representation modes
+// Chapter 09 — visual representation modes
 const visualRepresentationModes={
   layer:{title:'Layer the route',caption:'Begin with the familiar route line, then open spatial conditions, labor friction, and the wider digital system behind it.'},
   compare:{title:'Compare route logics',caption:'Hold the origin, destination, scale, and map frame constant so differences come from route priorities rather than graphic composition.'},
@@ -1263,7 +1205,7 @@ document.querySelectorAll('[data-visual-mode]').forEach(button=>button.addEventL
   if(caption)caption.textContent=data.caption;
 }));
 
-// Chapter 07 — rhetorical argument factors
+// Chapter 11 — rhetorical argument factors
 const argumentFactors={
   time:{label:'Time',text:'Platform ETA often foregrounds moving time while restaurant waiting and campus handoff delay remain less visible.'},
   safety:{label:'Safety',text:'The shortest or fastest route may transfer more traffic exposure and intersection risk to the rider.'},
@@ -1280,7 +1222,7 @@ document.querySelectorAll('[data-argument-factor]').forEach(button=>button.addEv
   if(text)text.textContent=argumentFactors[key].text;
 }));
 
-// Chapter 07 — provisional capstone forms
+// Chapter 12 — provisional capstone forms
 const capstoneComponents={
   software:{type:'Potential form 01 · Live interface',title:'Interactive route simulator',text:'A map-based interface where viewers compare multiple routes between the same origin and destination, change traffic, weather, slope, bike-lane, and risk priorities, and see the source and limits of each modeled result.'},
   archive:{type:'Potential form 02 · Evidence layer',title:'Situated route archive',text:'A research archive that connects every route to field photographs, time logs, platform screenshots, public datasets, validation notes, uncertainty, and evidence that remains unavailable.'}
@@ -1294,7 +1236,7 @@ document.querySelectorAll('[data-capstone-component]').forEach(button=>button.ad
   document.getElementById('capstoneComponentText').textContent=data.text;
 }));
 
-// Chapter 07 — challenge gap-to-plan cards
+// Chapter 13 — challenge gap-to-plan cards
 const challengeDetails={
   data:{number:'Challenge 01',title:'Data and access',gap:'Platform dispatch logic, historical rider traces, pricing rules, and performance data are not publicly available.',plan:'Maintain a strict evidence protocol, document missing data, and never present authored simulations as platform facts.',honesty:'The project can reconstruct public street conditions, but it cannot yet claim to reproduce real platform decision-making.'},
   validation:{number:'Challenge 02',title:'Validation and participation',gap:'Modeled route alternatives do not yet demonstrate how riders actually judge safety, effort, waiting, or local shortcuts.',plan:'Conduct route walk-throughs or ride-throughs, record changing street conditions, and seek consent-based conversations with riders or labor researchers.',honesty:'My knowledge of platform interfaces and spatial data is currently stronger than my direct knowledge of riders’ everyday experience.'},

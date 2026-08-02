@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Behind the Route — Yizhang Mu</title>
 <meta name="description" content="Research foundations and project outline by Yizhang Mu." />
+<link rel="preconnect" href="https://api.mapbox.com" />
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.26.0/mapbox-gl.css" rel="stylesheet" />
 <style>
 :root{--bg:#f2f0ea;--ink:#111;--muted:#686862;--line:#cbc8bf;--accent:#ff4d2e;--dark:#161616;--panel:#fbfaf6}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#111;color:var(--ink);font-family:Arial,Helvetica,sans-serif}.topbar{position:fixed;z-index:50;top:0;left:0;right:0;height:54px;background:rgba(17,17,17,.94);color:#fff;display:flex;align-items:center;gap:22px;padding:0 24px;border-bottom:1px solid #333}.brand{color:#fff;text-decoration:none;font-weight:700;white-space:nowrap}.author{margin-left:auto;font-size:11px;color:#aaa;white-space:nowrap}.topbar nav{display:flex;gap:5px;overflow:auto;scrollbar-width:none}.topbar nav a{color:#999;text-decoration:none;font-size:10px;padding:7px 8px;border-radius:99px;white-space:nowrap}.topbar nav a.active,.topbar nav a:hover{background:#fff;color:#111}.slide{position:relative;width:min(100vw,1920px);aspect-ratio:16/10;min-height:720px;margin:0 auto;background:var(--bg);padding:92px 64px 54px;overflow:hidden;border-bottom:1px solid #222}.slide-no{position:absolute;right:28px;top:70px;font-size:13px;color:var(--muted)}.kicker{text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:700;color:var(--accent);margin:0 0 18px}.slide h1{font-size:clamp(64px,7vw,132px);line-height:.88;letter-spacing:-.07em;margin:0}.slide h2{font-size:clamp(34px,4vw,70px);line-height:.98;letter-spacing:-.05em;margin:0 0 22px}.slide h3{font-size:19px;margin:6px 0 8px}.lead{font-size:clamp(18px,1.55vw,28px);line-height:1.3;max-width:760px;color:#2f2f2c}.title-grid,.two-col,.community-layout,.argument-layout,.capstone-layout,.experiment-layout{display:grid;grid-template-columns:1.02fr .98fr;gap:54px;height:100%;align-items:center}.title-slide h2{font-size:clamp(25px,2.7vw,46px);max-width:790px;margin:18px 0}.meta-row,.visual-rules,.argument-actions,.not-building{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.meta-row span,.visual-rules span,.argument-actions span,.not-building span{border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:12px}.route-hero{position:relative;height:72%;border:1px solid var(--line);background:#e8e5dd}.route-hero svg{position:absolute;inset:0;width:100%;height:100%}.route-hero path{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:7 8}.hero-node{position:absolute;z-index:2;background:#111;color:#fff;border-radius:99px;padding:10px 14px;font-size:12px}.n1{left:7%;top:18%}.n2{left:37%;top:8%}.n3{left:68%;top:30%}.n4{left:21%;top:62%}.n5{left:50%;top:72%}.n6{right:7%;bottom:10%}.question-callout{margin-top:36px;padding:24px;border-left:5px solid var(--accent);font-size:26px;line-height:1.2;background:#fff}.stack-list{display:grid;gap:12px}.stack-list article,.community-grid article,.experiment-grid article,.method-grid article,.challenge-grid article{border-top:1px solid var(--line);padding:14px 0}.stack-list b{font-size:14px}.stack-list p,.community-grid p,.experiment-grid p,.method-grid p,.challenge-grid p{margin:5px 0;color:var(--muted);font-size:14px;line-height:1.35}.keyword-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:55px}.keyword-grid article{min-height:310px;background:#fff;border:1px solid var(--line);padding:22px;display:flex;flex-direction:column}.keyword-grid article:nth-child(3){background:var(--dark);color:#fff}.keyword-grid span{font-size:12px;color:var(--accent)}.keyword-grid h3{margin-top:auto;font-size:25px}.keyword-grid p{color:var(--muted);line-height:1.4}.field-cloud{display:flex;flex-wrap:wrap;gap:12px;align-content:center}.field-cloud span{font-size:clamp(16px,1.4vw,26px);border:1px solid #999;padding:12px 16px;border-radius:99px;background:#fff}.bottom-strip{position:absolute;left:64px;right:64px;bottom:54px;border-top:1px solid var(--line);padding-top:16px;display:grid;grid-template-columns:150px 1fr;gap:20px}.bottom-strip p{margin:0}.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:62px;border-top:1px solid var(--ink)}.timeline article{padding:25px 18px;border-right:1px solid var(--line);min-height:330px}.timeline article:last-child{border-right:0}.timeline span,.method-grid span,.challenge-grid span{color:var(--accent);font-size:11px}.timeline h3{margin-top:85px}.timeline p{font-size:14px;color:var(--muted);line-height:1.4}.community-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px 24px}.precedent-note{border-left:4px solid var(--accent);padding:18px 20px;background:#fff;margin-top:32px}.precedent-note p{margin-bottom:0;line-height:1.4}.simulator-slide{background:#eceae4}.sim-head{display:flex;justify-content:space-between;align-items:flex-start}.sim-head h2{margin-bottom:6px}.sim-head p{margin:0}.model-label{font-size:11px;border:1px solid #888;padding:9px 12px;border-radius:99px}.sim-layout{display:grid;grid-template-columns:1.45fr .55fr;gap:18px;height:calc(100% - 118px);margin-top:18px}.map-wrap{position:relative;min-height:500px;background:#1a1a1a;border:1px solid #333;overflow:hidden}.map-wrap #simMap{position:absolute;inset:0}.map-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#aaa;background:#1a1a1a}.map-fallback.hidden{display:none}.fallback-grid{position:absolute;inset:0;background-image:linear-gradient(#2c2c2c 1px,transparent 1px),linear-gradient(90deg,#2c2c2c 1px,transparent 1px);background-size:34px 34px;opacity:.5}.map-fallback span{z-index:2}.map-legend{position:absolute;left:14px;bottom:14px;display:flex;gap:12px;background:rgba(0,0,0,.75);color:#fff;padding:9px 11px;font-size:10px}.map-legend i{display:inline-block;width:20px;height:3px;margin-right:5px;vertical-align:middle}.route-a{background:#fff}.route-b{background:var(--accent)}.hotspot{background:#ffb000;border-radius:50%;height:10px!important;width:10px!important}.sim-panel{background:#fff;border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:15px;overflow:auto}.preset-row{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.preset-row button,.play-button{border:1px solid #aaa;background:#f5f3ee;padding:9px 5px;font-size:11px;cursor:pointer}.preset-row button.active,.play-button:hover{background:#111;color:#fff}.sim-panel label{font-size:12px;font-weight:700;display:flex;justify-content:space-between}.sim-panel input[type=range]{width:100%;accent-color:var(--accent)}.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.metric-grid article{border:1px solid var(--line);padding:11px}.metric-grid span{font-size:10px;color:var(--muted);display:block}.metric-grid b{font-size:21px;display:block;margin-top:5px}.factor-list{display:grid;gap:8px}.factor{display:grid;grid-template-columns:110px 1fr 36px;align-items:center;gap:8px;font-size:11px}.factor .bar{height:7px;background:#e5e1d8}.factor .bar i{display:block;height:100%;background:var(--accent)}.sim-takeaway{margin-top:auto;border-top:1px solid var(--line);padding-top:12px}.sim-takeaway p{font-size:13px;line-height:1.35;color:var(--muted);margin-bottom:0}.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 20px;margin-top:32px}.method-grid article{min-height:150px}.experiment-layout{align-items:start;margin-top:40px}.experiment-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}.layer-stack{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}.layer-stack article{min-height:300px;border:1px solid var(--line);padding:24px;background:#fff}.layer-stack article:nth-child(2){transform:translateY(35px)}.layer-stack article:nth-child(3){transform:translateY(70px);background:#111;color:#fff}.layer-stack span{color:var(--accent);font-size:11px}.layer-stack p{color:var(--muted);line-height:1.45}.argument-big{font-size:clamp(25px,2.4vw,43px);line-height:1.12;letter-spacing:-.03em}.capstone-flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.capstone-flow div{background:#fff;border:1px solid var(--line);padding:15px}.not-building{position:absolute;bottom:60px;left:64px;right:64px;border-top:1px solid var(--line);padding-top:15px;align-items:center}.challenge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px 22px;margin-top:28px}.challenge-grid article{min-height:135px}.statement{position:absolute;bottom:35px;left:64px;right:64px;background:#111;color:#fff;padding:14px 18px;display:grid;grid-template-columns:150px 1fr;gap:16px}.statement p{margin:0;line-height:1.35;font-size:13px;color:#d3d3d3}
@@ -12,7 +14,7 @@
 @media(max-width:650px){.keyword-grid,.community-grid,.method-grid,.challenge-grid,.metric-grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.timeline article{min-height:auto}.timeline h3{margin-top:18px}.slide h2{font-size:38px}.preset-row{grid-template-columns:1fr 1fr}}
 
 
-/* Corrected navigation: complete 12-section names in a fixed left rail */
+/* Corrected navigation: complete 13-section names in a fixed left rail */
 .topbar{left:0;right:auto;width:238px;height:64px;padding:12px 18px;border-right:1px solid #343434;border-bottom:1px solid #343434;align-items:flex-start;background:rgba(17,17,17,.97)}
 .brand{display:flex;flex-direction:column;gap:4px;line-height:1.1}
 .brand strong{font-size:14px}.brand span{font-size:9px;color:#999;font-weight:400}
@@ -189,7 +191,7 @@ main{padding-left:238px}
   .side-navigation nav{
     min-height:0;
     display:grid;
-    grid-template-rows:repeat(12,minmax(0,1fr));
+    grid-template-rows:repeat(13,minmax(0,1fr));
     gap:0;
     border-bottom:1px solid #313131;
   }
@@ -822,7 +824,7 @@ main{padding-left:238px}
 }
 
 
-/* Chapter 07 — revised Methods: one fixed case, multiple route logics */
+/* Chapter 08 — revised Methods: one fixed case, multiple route logics */
 .methods-research-slide{background:#efede6;padding-top:72px;padding-bottom:34px}
 .methods-heading{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:44px;align-items:end;margin-bottom:18px}
 .methods-heading .kicker{margin-bottom:10px}
@@ -917,7 +919,7 @@ main{padding-left:238px}
 }
 
 
-/* Chapter 07 — methods only: focused mixed-method workflow */
+/* Chapter 08 — methods only: focused mixed-method workflow */
 .methods-only-slide{background:#efede6;padding-top:72px;padding-bottom:34px}
 .methods-only-heading{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(390px,.95fr);gap:48px;align-items:end;margin-bottom:24px}
 .methods-only-heading .kicker{margin-bottom:11px}
@@ -1189,7 +1191,7 @@ main{padding-left:238px}
 @media(max-width:900px){.vr-heading,.pc-heading,.ch-heading,.vr-layout,.ch-layout{grid-template-columns:1fr}.vr-layout{height:auto}.vr-stage{min-height:520px}.vr-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.vr-community{grid-column:1/-1}.vr-grammar{margin-top:10px}.ra-contrast{grid-template-columns:1fr}.ra-transform{height:60px}.ra-transform i{display:none}.ra-factor-area{grid-template-columns:1fr}.ra-position,.pc-boundary,.ch-conclusion{position:static;margin-top:24px}.pc-scope{grid-template-columns:1fr}.pc-scope>i{transform:rotate(90deg)}.pc-components{grid-template-columns:1fr 1fr}.pc-component-detail{grid-column:1/-1}.ch-cards{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.vr-modes,.pc-components,.ch-cards{grid-template-columns:1fr}.vr-stage{min-height:420px}.ra-factor-buttons{grid-template-columns:1fr 1fr}.ch-gap-plan{grid-template-columns:1fr}.ch-gap-plan>i{transform:rotate(90deg)}.ch-forward-plan{grid-template-columns:1fr}.ch-forward-plan>i{height:30px;width:1px;justify-self:center}.pc-open-questions{align-items:flex-start}}
 
-/* Chapter 07 — revised without a physical installation */
+/* Chapter 12 — revised without a physical installation */
 .pc-heading-revised{grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr)}
 .pc-heading-revised h2{font-size:clamp(35px,3.7vw,64px);max-width:900px}
 .pc-heading-revised>div:last-child p{font-size:13px;line-height:1.45;margin:0;color:var(--muted)}
@@ -1236,32 +1238,41 @@ main{padding-left:238px}
   aspect-ratio:auto;
   height:auto;
   min-height:max(720px, calc((100vw - 238px) * .625));
-  padding-top:64px;
-  padding-bottom:34px;
+  padding:58px 46px 38px;
   overflow:hidden;
 }
 
 .fields-heading{
-  grid-template-columns:minmax(0,1.34fr) minmax(280px,.66fr);
-  gap:34px;
-  margin-bottom:16px;
+  display:grid;
+  grid-template-columns:minmax(0,1.22fr) minmax(380px,.78fr);
+  gap:42px;
+  align-items:start;
+  margin-bottom:22px;
 }
 .fields-heading h2{
-  font-size:clamp(42px,3.25vw,58px);
-  line-height:.96;
+  font-size:clamp(40px,3.12vw,54px);
+  line-height:.97;
   letter-spacing:-.045em;
-  max-width:850px;
+  max-width:760px;
+  margin:0;
 }
 .fields-heading>p{
-  font-size:14px;
-  line-height:1.45;
-  max-width:500px;
+  margin:2px 0 0;
+  max-width:560px;
+  font-size:15px;
+  line-height:1.52;
+  color:var(--muted);
 }
 
 .fields-experience{
-  height:clamp(360px,30vw,520px);
-  min-height:360px;
-  grid-template-columns:minmax(0,1.68fr) minmax(300px,.32fr);
+  height:clamp(430px,34vw,560px);
+  min-height:430px;
+  display:grid;
+  grid-template-columns:minmax(0,1.36fr) minmax(360px,.64fr);
+  align-items:stretch;
+  border:1px solid #292929;
+  background:#0d0d0d;
+  overflow:hidden;
 }
 
 /* The six disciplines now use a real grid instead of fragile
@@ -1270,8 +1281,8 @@ main{padding-left:238px}
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   grid-template-rows:repeat(3,minmax(0,1fr));
-  gap:10px 18px;
-  padding:20px 24px;
+  gap:14px 18px;
+  padding:22px 24px;
   isolation:isolate;
 }
 .fields-links{
@@ -1293,9 +1304,9 @@ main{padding-left:238px}
   top:auto;
   bottom:auto;
   transform:none;
-  width:min(100%,190px);
-  min-height:76px;
-  padding:11px 13px;
+  width:min(100%,176px);
+  min-height:84px;
+  padding:12px 14px;
   align-self:center;
   justify-self:center;
   overflow:hidden;
@@ -1313,7 +1324,7 @@ main{padding-left:238px}
 }
 .field-node span{margin-bottom:5px}
 .field-node strong{
-  font-size:12.5px;
+  font-size:13px;
   line-height:1.14;
   overflow-wrap:normal;
   word-break:normal;
@@ -1321,8 +1332,8 @@ main{padding-left:238px}
 }
 .field-node small{
   margin-top:5px;
-  font-size:7.2px;
-  line-height:1.25;
+  font-size:7.4px;
+  line-height:1.28;
   overflow-wrap:normal;
   word-break:normal;
 }
@@ -1342,7 +1353,7 @@ main{padding-left:238px}
   grid-row:2;
   align-self:center;
   justify-self:center;
-  width:clamp(150px,12vw,194px);
+  width:clamp(160px,12vw,192px);
   height:auto;
   aspect-ratio:1;
   padding:20px 17px;
@@ -1359,60 +1370,77 @@ main{padding-left:238px}
   hyphens:none;
 }
 .fields-center small{
-  font-size:7.5px;
+  font-size:7.6px;
   line-height:1.28;
   max-width:122px;
 }
 .fields-instruction{
   left:50%;
-  bottom:8px;
+  bottom:10px;
   transform:translateX(-50%);
   white-space:nowrap;
 }
 
 .field-detail{
   min-width:0;
-  padding:25px 22px;
+  padding:28px 26px;
+  background:#f3f0e9;
+  color:#111;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  overflow:hidden;
 }
-.field-detail-role{margin:14px 0 22px}
+.field-detail-role{margin:14px 0 18px}
 .field-detail h3{
-  font-size:clamp(25px,2.1vw,39px);
-  line-height:1;
+  font-size:clamp(24px,2.15vw,38px);
+  line-height:1.02;
   margin-bottom:14px;
-  overflow-wrap:normal;
+  max-width:none;
+  overflow-wrap:anywhere;
   word-break:normal;
   hyphens:none;
 }
 .field-detail>p:not(.field-detail-role){
-  font-size:12.5px;
-  line-height:1.48;
+  font-size:13px;
+  line-height:1.52;
+  color:#555;
+  max-width:none;
+  margin:0;
 }
 .field-contribution{margin-top:18px;padding:12px 0}
-.field-detail-tags{margin-top:13px}
-.field-shared-question{padding-top:12px}
+.field-contribution strong{
+  display:block;
+  font-size:14px;
+  line-height:1.34;
+}
+.field-detail-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.field-detail-tags span{padding:7px 9px;border:1px solid #c8c2b8;background:#ebe6dc;font-size:8px;text-transform:uppercase;letter-spacing:.07em}
+.field-shared-question{padding-top:14px}
+.field-shared-question p{margin:8px 0 0;font-size:12px;line-height:1.45;color:#555}
 
 /* Chrome at 125–150% zoom often has an effective viewport in this
    range even on a large monitor. Keep the complete diagram inside. */
 @media (min-width:1101px) and (max-width:1500px){
   .fields-slide{
-    padding:52px 42px 28px;
+    padding:52px 38px 30px;
   }
   .fields-heading{
-    grid-template-columns:minmax(0,1.42fr) minmax(250px,.58fr);
-    gap:26px;
-    margin-bottom:12px;
+    grid-template-columns:minmax(0,1.26fr) minmax(320px,.74fr);
+    gap:28px;
+    margin-bottom:16px;
   }
   .fields-heading h2{
-    font-size:clamp(38px,3.25vw,48px);
-    max-width:720px;
+    font-size:clamp(36px,3vw,46px);
+    max-width:660px;
   }
-  .fields-heading>p{font-size:12.5px}
+  .fields-heading>p{font-size:13px;line-height:1.48}
   .fields-experience{
-    height:clamp(350px,29vw,435px);
-    min-height:350px;
-    grid-template-columns:minmax(0,1.7fr) minmax(270px,.3fr);
+    height:clamp(380px,31vw,470px);
+    min-height:380px;
+    grid-template-columns:minmax(0,1.38fr) minmax(310px,.62fr);
   }
-  .fields-map{padding:14px 17px;gap:7px 12px}
+  .fields-map{padding:18px 18px;gap:10px 12px}
   .field-node,
   .field-computational,
   .field-logistics,
@@ -1420,28 +1448,29 @@ main{padding-left:238px}
   .field-labor,
   .field-cartography,
   .field-infrastructure{
-    width:min(100%,162px);
-    min-height:70px;
-    padding:9px 10px;
+    width:min(100%,160px);
+    min-height:74px;
+    padding:10px 11px;
   }
-  .field-node strong{font-size:11px}
-  .field-node small{font-size:6.5px}
+  .field-node strong{font-size:11.5px}
+  .field-node small{font-size:6.7px}
   .fields-center{width:148px;padding:15px 12px}
   .fields-center strong{font-size:15px;max-width:112px}
-  .fields-center small{font-size:6.5px;max-width:100px}
-  .field-detail{padding:20px 17px}
-  .field-detail-role{margin:10px 0 15px}
-  .field-detail h3{font-size:27px;margin-bottom:10px}
-  .field-detail>p:not(.field-detail-role){font-size:11px;line-height:1.42}
+  .fields-center small{font-size:6.8px;max-width:100px}
+  .field-detail{padding:22px 18px}
+  .field-detail-role{margin:10px 0 14px}
+  .field-detail h3{font-size:26px;margin-bottom:10px}
+  .field-detail>p:not(.field-detail-role){font-size:11.5px;line-height:1.45}
   .field-contribution{margin-top:12px;padding:9px 0}
-  .field-contribution strong{font-size:11.5px}
-  .field-detail-tags{margin-top:9px}
+  .field-contribution strong{font-size:12px}
+  .field-detail-tags{margin-top:10px}
   .field-detail-tags span{padding:5px 7px;font-size:7px}
-  .field-shared-question{padding-top:9px}
-  .field-shared-question p{font-size:10px}
+  .field-shared-question{padding-top:10px}
+  .field-shared-question p{font-size:10.5px}
 }
 
 /* Existing responsive mode remains stacked on genuinely small screens. */
+
 @media(max-width:1100px){
   .fields-slide{
     min-height:100vh;
@@ -1686,7 +1715,7 @@ main{padding-left:238px}
     overflow:visible!important;
   }
 
-  /* Chapter 07: keep the project boundary in normal document flow so
+  /* Chapter 12: keep the project boundary in normal document flow so
      it cannot overlap the audience / open-question panel. */
   .pc-boundary-revised{
     position:static!important;
@@ -1721,14 +1750,14 @@ main{padding-left:238px}
   .realistic-simulator{overflow-x:hidden!important}
 }
 
-/* Chapter 07: the right control panel needs a few more pixels than the
+/* Chapter 09: the right control panel needs a few more pixels than the
    old fixed 385/400px canvas after real Chrome font rendering. */
 @media (min-width:1101px) and (max-width:1500px){
   .route-experiment-main{height:420px!important}
   .route-experiment-controls{overflow-x:hidden;overflow-y:auto}
 }
 
-/* Chapter 07: at laptop widths the third quotation column sits outside
+/* Chapter 11: at laptop widths the third quotation column sits outside
    the actual slide width because the fixed left rail is not included in
    viewport media-query math. Use the intended two-column compact state. */
 @media (min-width:901px) and (max-width:1440px){
@@ -2147,26 +2176,379 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
 }
 
 
+/* ==========================================================
+   MASTER ALIGNMENT SYSTEM — ALL CURRENT CHAPTERS
+   Shared canvas, heading columns, text measure, content frame,
+   and centered footer baselines across the complete website.
+   ========================================================== */
+@media (min-width:1101px){
+  :root{
+    --chapter-pad-x:48px;
+    --chapter-pad-top:54px;
+    --chapter-pad-bottom:36px;
+    --chapter-max:1280px;
+    --chapter-heading-gap:38px;
+    --chapter-copy-size:14px;
+    --chapter-copy-line:1.5;
+  }
 
-/* Reliable offline route fallback for the computational experiment */
-.route-experiment-fallback{z-index:2;padding:0;display:block;text-align:left;background:#151515;color:#fff;opacity:1}
-.route-experiment-fallback.is-hidden{opacity:0;pointer-events:none}
-.route-experiment-fallback svg{display:block;width:100%;height:100%}
-.offline-street-grid path{fill:none;stroke:#343434;stroke-width:2;vector-effect:non-scaling-stroke}
-.offline-street-grid .offline-street-major{stroke:#4b4b4b;stroke-width:5}
-.offline-map-labels text{fill:#757575;font-size:10px;font-weight:700;letter-spacing:1.4px}
-.offline-fixed-markers circle{fill:#f5f2eb;stroke:#111;stroke-width:2}
-.offline-fixed-markers text{fill:#111;font-size:12px;font-weight:800;text-anchor:middle}
-.offline-route{fill:none;stroke:#7b7b7b;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.48;cursor:pointer;vector-effect:non-scaling-stroke;transition:opacity .18s ease,stroke-width .18s ease,stroke .18s ease}
-.offline-route:hover{opacity:.9;stroke-width:7}
-.offline-route.recommended{stroke:#fff;opacity:.88;stroke-dasharray:10 7}
-.offline-route.selected{stroke:#ff4d2e;stroke-width:8;opacity:1;stroke-dasharray:none}
-.offline-route.blocked{stroke:#ffb000;stroke-dasharray:5 6;opacity:.8}
-.route-experiment-offline-note{position:absolute;z-index:3;right:14px;bottom:48px;width:min(310px,42%);padding:10px 12px;background:rgba(10,10,10,.82);border-left:3px solid #ff4d2e;backdrop-filter:blur(3px)}
-.route-experiment-offline-note strong{display:block;margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
-.route-experiment-offline-note span{display:block;max-width:none;font-size:9px;line-height:1.35;color:#b9b9b9}
-.route-experiment-map-wrap.offline-ready #routeExperimentMap{opacity:0}
-.route-experiment-map-wrap.offline-ready .route-experiment-status{border-left-color:#ff4d2e}
+  .slide{
+    aspect-ratio:16/10;
+    min-height:720px;
+    padding:var(--chapter-pad-top) var(--chapter-pad-x) var(--chapter-pad-bottom)!important;
+    overflow:hidden;
+  }
+  .slide-no{top:48px;right:26px;font-size:11px}
+  .slide>.slide-no{width:auto;max-width:none;margin:0}
+  .slide>:not(.slide-no){
+    width:100%;
+    max-width:var(--chapter-max);
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .kicker{
+    margin:0 0 13px!important;
+    font-size:9.5px;
+    line-height:1.25;
+    letter-spacing:.14em;
+  }
+  .slide:not(.title-slide) h2{
+    font-size:clamp(36px,3.05vw,52px)!important;
+    line-height:.97!important;
+    letter-spacing:-.045em!important;
+  }
+
+  /* Shared two-column chapter heading system */
+  .research-heading-clean,
+  .keyword-heading,
+  .fields-heading,
+  .lineage-heading,
+  .community-heading,
+  .experiment-method-heading,
+  .route-experiment-heading,
+  .vr-heading,
+  .pc-heading-revised,
+  .ch-heading{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.2fr) minmax(360px,.8fr)!important;
+    gap:var(--chapter-heading-gap)!important;
+    align-items:start!important;
+    margin:0 auto 20px!important;
+  }
+  .research-heading-clean>div,
+  .keyword-heading>div,
+  .fields-heading>div,
+  .lineage-heading>div,
+  .community-heading>div,
+  .experiment-method-heading>div:first-child,
+  .route-experiment-heading>div:first-child,
+  .vr-heading>div:first-child,
+  .pc-heading-revised>div:first-child,
+  .ch-heading>div:first-child{min-width:0}
+
+  .research-heading-clean h2,
+  .keyword-heading h2,
+  .fields-heading h2,
+  .lineage-heading h2,
+  .community-heading h2,
+  .experiment-method-heading h2,
+  .route-experiment-heading h2,
+  .vr-heading h2,
+  .pc-heading-revised h2,
+  .ch-heading h2{
+    margin:0!important;
+    max-width:790px!important;
+  }
+  .research-heading-clean>p,
+  .keyword-heading>p,
+  .fields-heading>p,
+  .lineage-intro,
+  .community-heading>p,
+  .experiment-method-intro>p,
+  .route-experiment-intro>p,
+  .vr-heading>p,
+  .pc-heading-revised>div:last-child>p,
+  .ch-heading>p{
+    width:100%;
+    max-width:560px!important;
+    margin:1px 0 0!important;
+    justify-self:end;
+    color:#55524c!important;
+    font-size:var(--chapter-copy-size)!important;
+    line-height:var(--chapter-copy-line)!important;
+  }
+
+  /* 01 — Title */
+  .title-slide{padding:58px 52px 42px!important}
+  .title-slide .title-grid-photo{
+    flex:1;
+    height:100%!important;
+    min-height:0;
+    max-width:var(--chapter-max);
+    grid-template-columns:minmax(0,1.18fr) minmax(330px,.82fr)!important;
+    gap:48px!important;
+    align-items:stretch!important;
+    align-content:center!important;
+  }
+  .title-slide .title-copy{padding:4px 0!important}
+  .title-slide .title-copy h1{font-size:clamp(62px,5.8vw,98px)!important;line-height:.9!important}
+  .title-slide .title-copy h2{font-size:clamp(25px,2.35vw,38px)!important;line-height:1.03!important;margin:17px 0 18px!important;max-width:720px}
+  .title-slide .title-copy .lead{font-size:clamp(15px,1.15vw,19px)!important;line-height:1.42!important;max-width:720px}
+  .title-slide .title-visual{max-height:580px;align-self:center!important}
+  .title-image-wrap{padding:18px 30px!important}
+  .title-image-wrap img{max-height:370px!important;max-width:255px!important}
+
+  /* 02 — Research questions */
+  .research-slide{display:flex!important;flex-direction:column;gap:0!important}
+  .research-heading-clean{margin-top:0!important}
+  .research-sequence{flex:1;min-height:0!important;margin:0;align-items:stretch}
+  .research-step{padding:18px 18px 20px!important}
+  .research-stage{margin:12px 0 18px!important}
+  .research-step h3{font-size:clamp(18px,1.35vw,23px)!important;line-height:1.08!important;margin-bottom:14px!important}
+  .research-step>p:last-child{font-size:12px!important;line-height:1.45!important}
+  .research-logic-line{margin-top:13px!important}
+
+  /* 03 — Keywords */
+  .keyword-slide{display:flex;flex-direction:column}
+  .keyword-experience{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,1.4fr) minmax(350px,.6fr)!important;
+  }
+  .keyword-map{min-width:0}
+  .keyword-detail{padding:25px 24px!important;min-width:0}
+  .keyword-detail-role{margin:15px 0 22px!important}
+  .keyword-detail h3{font-size:clamp(25px,2.1vw,37px)!important;max-width:none!important;margin-bottom:14px!important}
+  .keyword-detail>p:not(.keyword-detail-role){max-width:none!important;font-size:13px!important;line-height:1.5!important}
+  .keyword-detail-tags{margin-top:16px!important}
+  .keyword-detail-logic{padding-top:14px!important}
+
+  /* 04 — Intersecting fields */
+  .fields-slide{display:flex;flex-direction:column;height:auto!important}
+  .fields-experience{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,1.38fr) minmax(360px,.62fr)!important;
+  }
+  .fields-map{padding:20px 22px!important;gap:12px 16px!important}
+  .field-detail{padding:25px 24px!important;min-width:0}
+  .field-detail-role{margin:13px 0 18px!important}
+  .field-detail h3{font-size:clamp(24px,2vw,35px)!important;max-width:none!important;margin-bottom:13px!important}
+  .field-detail>p:not(.field-detail-role){max-width:none!important;font-size:12.5px!important;line-height:1.48!important}
+  .field-contribution{margin-top:15px!important;padding:11px 0!important}
+  .field-contribution strong{font-size:13px!important;line-height:1.32!important}
+  .field-shared-question{padding-top:11px!important}
+
+  /* 05 — Historical lineage */
+  .lineage-slide{display:flex;flex-direction:column;height:auto!important}
+  .lineage-experience{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,1.4fr) minmax(360px,.6fr)!important;
+  }
+  #s05 .lineage-map{padding:18px 20px!important}
+  #s05 .lineage-detail{padding:22px 21px!important;min-width:0}
+  #s05 .lineage-detail h3{font-size:clamp(23px,1.8vw,31px)!important;max-width:none!important}
+  #s05 .lineage-detail>p:not(.lineage-detail-type){font-size:11.5px!important;line-height:1.43!important;max-width:none!important}
+  .lineage-reading{margin-top:12px!important;flex:0 0 auto}
+  .lineage-reading article{padding:9px 13px 10px!important}
+
+  /* 06 — Community of practice */
+  .community-slide{display:flex;flex-direction:column}
+  .community-experience{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,1.4fr) minmax(360px,.6fr)!important;
+  }
+  .community-detail{padding:23px 22px!important;min-width:0}
+  .community-detail h3{font-size:clamp(24px,2vw,35px)!important;max-width:none!important;margin:18px 0 12px!important}
+  .community-detail>p{max-width:none!important;font-size:12px!important;line-height:1.46!important;margin-bottom:10px!important}
+  .community-detail-row{padding:9px 0 8px!important}
+  .community-detail-row p{font-size:10.5px!important;line-height:1.38!important}
+
+  /* 07 — Methods */
+  .experiment-method-slide{display:flex;flex-direction:column}
+  .experiment-method-heading{margin-bottom:18px!important}
+  .experiment-method-intro>p{margin-bottom:11px!important}
+  .fixed-case-line{padding:10px 12px!important}
+  .experiment-method-body{
+    flex:1;
+    height:auto!important;
+    min-height:0;
+    grid-template-columns:minmax(0,1.34fr) minmax(350px,.66fr)!important;
+    gap:18px!important;
+  }
+  .experiment-method-workflow-head{padding:12px 14px!important}
+  .experiment-method-step{padding:14px 14px 13px!important}
+  .experiment-method-step strong{font-size:17px!important;margin:16px 0 7px!important}
+  .experiment-method-step small{font-size:10.5px!important;line-height:1.32!important}
+  .experiment-method-detail{padding:17px 18px!important}
+  .experiment-method-detail h3{font-size:25px!important;margin:16px 0 9px!important}
+  .experiment-method-detail>p{font-size:12px!important;line-height:1.38!important;margin-bottom:12px!important}
+  .experiment-method-io article{padding:8px 0!important}
+  .experiment-method-footer{margin-top:13px!important}
+  .experiment-method-footer>div{padding:10px 12px!important}
+  .experiment-method-footer p{font-size:10.5px!important}
+
+  /* 08 — Computational experiment */
+  .route-experiment-slide{display:flex;flex-direction:column}
+  .route-experiment-heading{margin-bottom:13px!important}
+  .route-experiment-intro>p{font-size:13px!important;line-height:1.45!important;margin-bottom:10px!important}
+  .route-experiment-fixed span{font-size:10px!important;padding:7px 9px!important}
+  .route-experiment-main{
+    height:350px!important;
+    grid-template-columns:minmax(0,1.38fr) minmax(380px,.62fr)!important;
+    gap:14px!important;
+  }
+  .route-experiment-controls{padding:12px!important}
+  .route-experiment-results{height:154px!important;margin-top:11px!important;gap:14px!important}
+  .route-experiment-selected{padding:10px 12px!important;gap:6px!important}
+  .route-experiment-candidates{padding:9px 10px!important}
+  .route-experiment-footer{margin-top:8px!important;padding-top:8px!important}
+  .route-experiment-footer p{font-size:10.5px!important}
+
+  /* 09 — Visual representation */
+  .visual-representation-slide{display:flex;flex-direction:column}
+  .vr-layout{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    margin-top:0!important;
+    grid-template-columns:180px minmax(0,1fr) 290px!important;
+    gap:18px!important;
+  }
+  .vr-principles,.vr-legend{min-width:0}
+
+  /* 10 — Rhetorical argument */
+  .rhetorical-argument-slide{display:flex;flex-direction:column;padding-top:50px!important}
+  .ra-heading{max-width:1120px!important;margin:0 auto 20px!important}
+  .ra-heading h2{font-size:clamp(48px,4.8vw,76px)!important;line-height:.91!important}
+  .ra-heading>p{font-size:13.5px!important;line-height:1.45!important;max-width:760px!important}
+  .ra-contrast{width:100%;max-width:1120px!important;margin:0 auto!important}
+  .ra-contrast article{padding:18px 22px!important;min-height:166px!important}
+  .ra-factor-area{width:100%;max-width:1120px!important;margin:14px auto 0!important;grid-template-columns:390px minmax(250px,1fr) minmax(250px,.82fr)!important}
+  .ra-position{
+    left:50%!important;right:auto!important;bottom:30px!important;
+    width:calc(100% - 96px)!important;max-width:1120px!important;
+    transform:translateX(-50%);
+  }
+
+  /* 11 — Potential capstone */
+  .potential-capstone-slide{display:flex;flex-direction:column}
+  .pc-heading-revised{margin-bottom:15px!important}
+  .pc-scope-revised{margin-top:0!important}
+  .pc-revised-layout{
+    flex:1;
+    min-height:0;
+    margin-top:14px!important;
+    grid-template-columns:minmax(0,1.42fr) minmax(330px,.58fr)!important;
+    gap:16px!important;
+  }
+  .pc-boundary-revised{
+    left:50%!important;right:auto!important;bottom:30px!important;
+    width:calc(100% - 96px)!important;max-width:var(--chapter-max)!important;
+    transform:translateX(-50%);
+  }
+
+  /* 12 — Challenges */
+  .challenge-slide{display:flex;flex-direction:column}
+  .ch-heading{margin-bottom:18px!important}
+  .ch-layout{margin-top:0!important;grid-template-columns:320px minmax(0,1fr)!important;gap:18px!important}
+  .ch-forward-plan{margin-top:14px!important}
+  .ch-conclusion{
+    left:50%!important;right:auto!important;bottom:30px!important;
+    width:calc(100% - 96px)!important;max-width:var(--chapter-max)!important;
+    transform:translateX(-50%);
+  }
+}
+
+
+/* Fixed 16:10 chapter canvas and final overflow corrections */
+@media (min-width:1101px){
+  .fields-slide,
+  .lineage-slide,
+  .community-slide,
+  .experiment-method-slide,
+  .route-experiment-slide,
+  .potential-capstone-slide{
+    aspect-ratio:16/10!important;
+    min-height:720px!important;
+    height:auto!important;
+  }
+  .fields-experience,.lineage-experience,.community-experience,
+  .experiment-method-body,.pc-revised-layout{min-height:0!important}
+
+  /* Compact high-information pages so every chapter stays in one frame. */
+  .experiment-method-heading,.route-experiment-heading{margin-bottom:13px!important}
+  .experiment-method-heading h2,.route-experiment-heading h2{font-size:clamp(34px,2.8vw,46px)!important}
+  .experiment-method-intro>p,.route-experiment-intro>p{font-size:12px!important;line-height:1.4!important}
+  .fixed-case-line{padding:8px 10px!important}
+  .experiment-method-step{padding:11px 12px 10px!important}
+  .experiment-method-step strong{font-size:15px!important;margin:12px 0 6px!important}
+  .experiment-method-step small{font-size:9px!important;line-height:1.27!important}
+  .experiment-method-detail{padding:14px 15px!important}
+  .experiment-method-detail h3{font-size:22px!important;margin:12px 0 7px!important}
+  .experiment-method-detail>p{font-size:10.5px!important;line-height:1.35!important;margin-bottom:8px!important}
+  .experiment-method-io article{padding:6px 0!important}
+  .experiment-method-io p{font-size:10px!important}
+  .experiment-method-tools{padding-top:8px!important}
+  .experiment-method-footer{margin-top:9px!important}
+  .experiment-method-footer>div{padding:7px 10px!important}
+  .experiment-method-footer p{font-size:9px!important;line-height:1.25!important}
+
+  .route-experiment-main{height:282px!important}
+  .route-experiment-results{height:122px!important;margin-top:8px!important}
+  .route-experiment-controls{padding:9px!important}
+  .route-objective-grid{margin-top:5px!important}
+  .route-objective-grid button{padding:5px 4px!important;font-size:8px!important}
+  .route-condition-head,.route-time-only-head{margin-top:7px!important;padding-top:7px!important}
+  .route-condition-grid{gap:5px 9px!important;margin-top:5px!important}
+  .route-condition-grid label>span,.route-time-only-grid label>span{font-size:8px!important;margin-bottom:2px!important}
+  .route-time-only-grid{padding:6px!important;margin-top:5px!important}
+  .route-selected-heading b{font-size:11px!important}
+  .route-selected-metrics b{font-size:12px!important}
+  .route-experiment-card{padding:5px 6px!important}
+  .route-experiment-card strong{font-size:9px!important;min-height:18px!important}
+  .route-experiment-footer{margin-top:6px!important;padding-top:6px!important}
+  .route-experiment-footer p{font-size:9px!important}
+
+  .potential-capstone-slide{padding-bottom:88px!important}
+  .pc-heading-revised{margin-bottom:10px!important}
+  .pc-heading-revised h2{font-size:clamp(34px,2.9vw,48px)!important}
+  .pc-heading-revised>div:last-child p{font-size:11.5px!important;line-height:1.4!important}
+  .pc-scope-revised{min-height:58px!important}
+  .pc-endpoint,.pc-core{min-height:58px!important;padding:9px 12px!important}
+  .pc-core strong{font-size:17px!important}
+  .pc-revised-layout{margin-top:10px!important;gap:12px!important}
+  .pc-form-buttons button{padding:10px!important;min-height:88px!important}
+  .pc-form-buttons button b{font-size:13px!important;margin:12px 0 4px!important}
+  .pc-form-buttons button small{font-size:9px!important;line-height:1.25!important}
+  .pc-component-detail{padding:11px 13px!important}
+  .pc-component-detail h3{font-size:16px!important;margin:9px 0 5px!important}
+  .pc-component-detail p{font-size:9.5px!important;line-height:1.35!important}
+  .pc-boundary-revised{
+    margin-left:0!important;margin-right:0!important;
+    left:50%!important;right:auto!important;transform:translateX(-50%)!important;
+    bottom:27px!important;
+  }
+  .ra-position,.ch-conclusion{margin-left:0!important;margin-right:0!important}
+}
+
+@media (min-width:1101px){
+  .visual-representation-slide{aspect-ratio:16/10!important;min-height:720px!important;height:auto!important}
+  .community-heading{margin-bottom:17px!important}
+  .route-experiment-footer>div{display:none!important}
+  .route-experiment-footer{min-height:0!important}
+  .route-experiment-footer p{max-width:none!important;width:100%!important}
+  .pc-boundary-revised{
+    left:48px!important;right:48px!important;width:auto!important;max-width:none!important;
+    transform:none!important;margin-left:0!important;margin-right:0!important;
+  }
+}
 
 </style>
 </head>
@@ -2186,10 +2568,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <div class="slide-no">01</div>
   <div class="title-grid title-grid-photo">
     <div class="title-copy">
-      <p class="kicker">01 · Experience — Why do I care?</p>
+      <p class="kicker">01 · Title — Why I research this problem</p>
       <h1>Behind the Route</h1>
       <h2>Making the invisible networks of urban food delivery perceptible</h2>
-      <p class="lead">As a Columbia University student, I often order food delivery. The app presents one route and one ETA, but the actual journey is shaped by weather, traffic, restaurant waiting, and campus access. These hidden conditions can delay pickup and leave the food cold. This mismatch between a clean interface and a complicated journey is the starting point of the project.</p>
+      <p class="lead">As a Columbia University student, I often order food delivery. The app shows one route and one estimated arrival time, but the real journey is shaped by traffic, weather, restaurant waiting, rider decisions, and campus access. This mismatch between a clean interface and a complicated delivery experience is the starting point of my project. This mismatch between a clean interface and a complicated journey is the starting point of the project.</p>
       <div class="meta-row"><span>Urban food delivery</span><span>Critical visualization</span><span>Platform labor</span></div>
     </div>
 
@@ -2203,7 +2585,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
       </div>
       <figcaption>
         <span>Interface promise</span>
-        <p>One route and one ETA suggest certainty, while the conditions that produce delay remain outside the interface.</p>
+        <p>One route and one ETA suggest certainty, while the labor, infrastructure, decisions, and delays that produce the journey remain outside the interface.</p>
       </figcaption>
     </figure>
   </div>
@@ -2215,43 +2597,43 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <div class="research-heading research-heading-clean">
     <div>
       <p class="kicker">02 · Research questions — What do I want to know?</p>
-      <h2>The mismatch becomes four connected research questions.</h2>
+      <h2>This mismatch leads to four connected research questions:</h2>
     </div>
-    <p>The questions move in sequence: what the interface omits, how the route is produced, how design can reveal its hidden relationships, and how evidence can be represented responsibly.</p>
+    <p>The questions move from understanding what is hidden, to examining how the route is produced, and finally to considering how it can be visualized responsibly.</p>
   </div>
 
   <div class="research-sequence" aria-label="Research question logic">
     <article class="research-step">
       <div class="research-index">01</div>
       <p class="research-stage">Omission</p>
-      <h3>What is hidden behind the route shown by the platform?</h3>
-      <p>Waiting, detours, access restrictions, risk, and rider decisions often disappear from the customer interface.</p>
+      <h3>What does the interface omit?</h3>
+      <p>Waiting, detours, access restrictions, risk, uncertainty, and rider decisions often disappear from the customer interface.</p>
     </article>
 
     <article class="research-step">
       <div class="research-index">02</div>
       <p class="research-stage">Production</p>
-      <h3>How is a delivery route produced?</h3>
-      <p>It is jointly shaped by platform algorithms, restaurant operations, rider judgment, streets, buildings, and local rules.</p>
+      <h3>How is the route actually produced?</h3>
+      <p>It is jointly shaped by platform systems, restaurant operations, rider judgment, streets, buildings, weather, and local rules.</p>
     </article>
 
     <article class="research-step">
       <div class="research-index">03</div>
       <p class="research-stage">Revelation</p>
-      <h3>How can design reveal these hidden relationships?</h3>
-      <p>Route comparison, layered mapping, and interaction connect the visible line to the systems that produce it.</p>
+      <h3>How can design reveal the hidden relationships behind it?</h3>
+      <p>Route comparison, layered mapping, spatial analysis, and interaction connect the visible line to the systems that produce it.</p>
     </article>
 
     <article class="research-step research-step-dark">
       <div class="research-index">04</div>
       <p class="research-stage">Accountability</p>
-      <h3>How can visualization remain honest?</h3>
-      <p>The project distinguishes observation, public data, simulation, uncertainty, and missing information.</p>
+      <h3>How can evidence be represented responsibly?</h3>
+      <p>The project distinguishes public data, field observation, modeled information, uncertainty, and missing evidence.</p>
     </article>
   </div>
 
   <div class="research-logic-line" aria-label="Research sequence summary">
-    <span>Visible route</span><i></i><span>Hidden systems</span><i></i><span>Comparative visualization</span><i></i><span>Accountable evidence</span>
+    <span>Omission</span><i></i><span>Production</span><i></i><span>Revelation</span><i></i><span>Responsible evidence</span>
   </div>
 </section>
 
@@ -2260,9 +2642,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <div class="keyword-heading">
     <div>
       <p class="kicker">03 · Keywords — What is the project about?</p>
-      <h2>Five terms define the object, entry point, system, human condition, and method.</h2>
+      <h2>Five terms turn a familiar experience into a focused research framework.</h2>
     </div>
-    <p><strong>Food delivery</strong> is the object; <strong>the route</strong> is the spatial entry point; <strong>invisible infrastructure</strong> is the hidden system; <strong>platform labor</strong> is the human condition; and <strong>critical visualization</strong> is the method.</p>
+    <p>To make these questions more precise, I define the project through five key terms: <strong>Food delivery</strong> is the research object. <strong>The route</strong> is the spatial entry point. <strong>Invisible infrastructure</strong> is the hidden system. <strong>Platform labor</strong> represents the human experience. And <strong>critical visualization</strong> is the method.</p>
   </div>
 
   <div class="keyword-experience">
@@ -2291,7 +2673,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
         <span>02</span><strong>Route</strong><small>Spatial entry point</small>
       </button>
       <button class="keyword-node node-labor" type="button" data-keyword="labor">
-        <span>04</span><strong>Platform labor</strong><small>Labor condition</small>
+        <span>04</span><strong>Platform labor</strong><small>Human experience</small>
       </button>
       <button class="keyword-node node-visualization" type="button" data-keyword="visualization">
         <span>05</span><strong>Critical visualization</strong><small>Research method</small>
@@ -2310,7 +2692,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
         <span>Platform route</span><span>Experienced route</span><span>Detour</span>
       </div>
       <div class="keyword-detail-logic keyword-five-part">
-        <span>Object</span><i></i><span>Entry point</span><i></i><span>System</span><i></i><span>Labor</span><i></i><span>Method</span>
+        <span>Research object</span><i></i><span>Spatial entry point</span><i></i><span>Hidden system</span><i></i><span>Human experience</span><i></i><span>Method</span>
       </div>
     </aside>
   </div>
@@ -2321,9 +2703,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <div class="fields-heading">
     <div>
       <p class="kicker">04 · Intersecting fields — How can I study it?</p>
-      <h2>Six disciplinary lenses organize the project through movement, power, and representation.</h2>
+      <h2>Movement, power, and representation frame the delivery route.</h2>
     </div>
-    <p><strong>Movement</strong> is studied through computational design and urban logistics. <strong>Power</strong> is examined through platform urbanism and labor studies. <strong>Representation</strong> is questioned through critical cartography and infrastructure studies.</p>
+    <p>To study this system, the project connects three larger concerns: movement, power, and representation.<br>
+    Computational design and urban logistics help me model routes and understand movement through the city.<br>
+    Platform urbanism and labor studies help me examine who controls the route and who experiences the hidden costs of waiting, delay, and risk.<br>
+    Critical cartography and infrastructure studies help me question what the map shows, what it excludes, and how invisible systems can be represented.<br>
+    These fields allow me to understand the delivery route as more than a line between two locations.</p>
   </div>
 
   <div class="fields-experience">
@@ -2388,7 +2774,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
       </div>
       <div class="field-shared-question">
         <span>Shared question</span>
-        <p>How are movement, power, and representation assembled into one visible route?</p>
+        <p>How do movement, power, and representation produce more than a line between two locations?</p>
       </div>
     </aside>
   </div>
@@ -2401,7 +2787,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
       <p class="kicker">05 · Historical lineage — How did today’s delivery network emerge?</p>
       <h2>From local food supply to algorithmic instant delivery.</h2>
     </div>
-    <p class="lineage-intro">The contemporary network was built through industrial logistics, cold chains, telecommunications, digital platforms, and automated dispatch. At each stage, coordination expanded while more of the system disappeared from the customer’s view.</p>
+    <p class="lineage-intro">to understand why the system has become so automated and invisible, I also need to examine its historical development.
+Urban food delivery developed from traditional local food supply, to industrial logistics and cold chains, telephone ordering, digital platforms, and finally algorithmic dispatch.
+Across this history, food distribution becomes faster and more automated, but its infrastructure and labor also become less visible to the customer.
+This connects to the course idea of partial knowing.
+Computation can calculate, organize, and predict, but it cannot fully represent lived experience, social context, and invisible labor.</p>
   </div>
 
   <div class="lineage-experience">
@@ -2455,12 +2845,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
     <article>
       <span>Course reading connection</span>
       <strong><em>Mirror Stage: Between Computability and Its Opposite</em> · edited by Nora N. Khan</strong>
-      <p>The reading frames computation as a form of “partial knowing”: classification and prediction can coordinate a system while still omitting lived experience, context, and labor.</p>
+      <p>The course idea of “partial knowing” helps frame the project: computation can calculate, organize, and predict, but it cannot fully represent lived experience, social context, and invisible labor.</p>
     </article>
     <article>
       <span>Lineage continued by this project</span>
       <strong>Making hidden urban systems visible</strong>
-      <p>This project continues a lineage of mapping, critical visualization, and spatial investigation by connecting one visible route to the infrastructures and labor that produce it.</p>
+      <p>This project continues a lineage of making hidden urban systems visible through mapping, critical visualization, and spatial investigation.</p>
     </article>
   </div>
 </section>
@@ -2470,9 +2860,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <div class="community-heading">
     <div>
       <p class="kicker">06 · Community of practice — Who is working here, and where do I stand?</p>
-      <h2>The project sits among critical practices, labor and public accountability, and platform builders.</h2>
+      <h2>Who investigates, regulates, experiences, and builds the delivery system?</h2>
     </div>
-    <p>Forensic Architecture and Data Feminism inform the investigative and ethical method. Fairwork, Los Deliveristas Unidos, and NYC DCWP ground labor and policy questions. Delivery platforms are both technical references and objects of critique.</p>
+    <p>This community of practice shows who is currently shaping this field.<br>
+Forensic Architecture and Data Feminism provide methods for investigating hidden systems, questioning evidence, and examining power.<br>
+Fairwork, Los Deliveristas Unidos, and New York City’s Department of Consumer and Worker Protection focus on labor conditions, worker knowledge, rights, and accountability.<br>
+Delivery platforms, meanwhile, design the dispatch systems, routes, ETAs, and interfaces that structure the delivery experience.<br>
+My project sits between these groups.<br>
+It combines spatial investigation with interactive visualization, while focusing on an everyday delivery journey.</p>
   </div>
 
   <div class="community-experience">
@@ -2509,7 +2904,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
       <h3 id="communityDetailTitle">Forensic Architecture</h3>
       <p id="communityDetailText">Reconstructs contested events by connecting maps, media, geolocation, models, and timelines into a spatial argument.</p>
       <div class="community-detail-row"><b>Question / approach</b><p id="communityApproach">How can distributed and uncertain evidence be spatially reassembled?</p></div>
-      <div class="community-detail-row accent-row"><b>My relationship</b><p id="communityPosition">A reinterpretation and fork: I translate investigative spatial methods from exceptional events to an everyday delivery system, adding interactive comparison and simulation.</p></div>
+      <div class="community-detail-row accent-row"><b>My relationship</b><p id="communityPosition">My project sits between these groups, combining spatial investigation with interactive visualization while focusing on one everyday delivery journey.</p></div>
       <div class="community-tags" id="communityTags"><span>Multi-source evidence</span><span>Geolocation</span><span>Uncertainty</span></div>
       <div class="community-bottom-notes">
         <article><span>Precedent relation</span><b>Reinterpretation + fork</b><p>Not a copy or direct advancement.</p></article>
@@ -2524,12 +2919,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
 
   <header class="experiment-method-heading">
     <div>
-      <p class="kicker">Methods</p>
-      <h2>A method built for one<br>controlled route experiment.</h2>
+      <p class="kicker">07 · Methods — From research context to a testable case</p>
+      <h2>One specific delivery case becomes a testable spatial experiment.</h2>
     </div>
     <div class="experiment-method-intro">
-      <p>One restaurant and one Columbia campus handoff point remain fixed. The method changes route costs, tests the resulting alternatives, and separates street movement from waiting time.</p>
-      <div class="fixed-case-line"><span>Fixed case</span><b>125th Street restaurant → Columbia 116th Street gate</b></div>
+      <p>After defining the research context, I begin with one specific delivery case.<br>
+I fix one restaurant and one destination near Columbia University.<br>
+Then I build a street network and generate several possible routes between the same two locations.<br>
+I compare these routes under different conditions, such as traffic, bicycle infrastructure, weather, waiting time, slope, and access restrictions.<br>
+I also distinguish between different kinds of evidence: public data, field observation, modeled information, uncertainty, and missing data.<br>
+This method allows me to move from a general research question to a testable spatial experiment.</p>
+      <div class="fixed-case-line"><span>Fixed case</span><b>One restaurant → one Columbia-area destination</b></div>
     </div>
   </header>
 
@@ -2537,7 +2937,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
     <section class="experiment-method-workflow" aria-label="Method workflow for the route simulation">
       <div class="experiment-method-workflow-head">
         <span>Experiment protocol</span>
-        <strong>Evidence → network → routes → scenarios → field check → comparison</strong>
+        <strong>Fixed case → street network → route alternatives → conditions → field observation → comparison</strong>
       </div>
 
       <div class="experiment-method-steps" role="tablist" aria-label="Six methods used to build the experiment">
@@ -2583,20 +2983,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <footer class="experiment-method-footer">
     <div><span>Changes route geometry</span><p>Traffic · slope sensitivity · bike-lane priority · intersection risk · weather exposure · road restriction</p></div>
     <div><span>Changes total time only</span><p>Restaurant waiting · order preparation · campus handoff delay</p></div>
-    <div><span>Evidence protocol</span><p><b>Public</b> · <b>Interface</b> · <b>Observed</b> · <b>Modeled</b> · <b>Missing</b></p></div>
+    <div><span>Evidence protocol</span><p><b>Public data</b> · <b>Field observation</b> · <b>Modeled information</b> · <b>Uncertainty</b> · <b>Missing data</b></p></div>
   </footer>
 </section>
 
-<section class="slide route-experiment-slide" id="s08" data-title="Computational experiments">
+<section class="slide route-experiment-slide" id="s08" data-title="Computational experiment">
   <div class="slide-no">08</div>
 
   <header class="route-experiment-heading">
     <div>
-      <p class="kicker">Computational design experiment</p>
+      <p class="kicker">08 · Computational experiment — The beginning of the simulator</p>
       <h2>One journey,<br>multiple route logics.</h2>
     </div>
     <div class="route-experiment-intro">
-      <p>The origin and destination stay fixed. Select a route objective and adjust the situated conditions to see how the recommended street path and delivery time change.</p>
+      <p>This method becomes a computational experiment called <em>One Journey, Multiple Route Logics</em>.<br>
+The origin and destination remain the same, but the route changes depending on how the journey is evaluated.<br>
+One route may be the shortest.<br>
+Another may be faster during traffic.<br>
+Another may use more bicycle lanes.<br>
+Another may avoid difficult intersections, steep slopes, or restricted entrances.<br>
+The experiment does not try to identify one universally correct route.<br>
+Instead, it demonstrates that different priorities and conditions can produce different routes within the same journey.<br>
+This is the beginning of the simulator.</p>
       <div class="route-experiment-fixed">
         <span><b>R</b> 125th Street restaurant</span>
         <i>→</i>
@@ -2609,30 +3017,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
     <section class="route-experiment-map-wrap" aria-label="Interactive fixed-origin route experiment">
       <div id="routeExperimentMap"></div>
       <div id="routeExperimentFallback" class="route-experiment-fallback">
-        <svg id="routeExperimentOfflineSvg" viewBox="0 0 780 430" preserveAspectRatio="none" role="img" aria-label="Offline schematic route comparison for the fixed Columbia delivery case">
-          <rect width="780" height="430" fill="#151515" />
-          <g class="offline-street-grid">
-            <path d="M45 55H735 M45 110H735 M45 165H735 M45 220H735 M45 275H735 M45 330H735 M45 385H735" />
-            <path d="M95 28V405 M185 28V405 M285 28V405 M395 28V405 M505 28V405 M615 28V405 M705 28V405" />
-            <path class="offline-street-major" d="M120 20L640 410 M245 20L735 365 M55 120L705 290" />
-          </g>
-          <g class="offline-map-labels">
-            <text x="54" y="48">W 125 ST</text>
-            <text x="54" y="378">W 116 ST</text>
-            <text x="190" y="42">BROADWAY</text>
-            <text x="485" y="42">AMSTERDAM AVE</text>
-            <text x="585" y="403">COLUMBIA</text>
-          </g>
-          <g id="routeExperimentOfflineRoutes"></g>
-          <g class="offline-fixed-markers">
-            <circle cx="438" cy="54" r="14" /><text x="438" y="59">R</text>
-            <circle cx="242" cy="373" r="14" /><text x="242" y="378">C</text>
-          </g>
-        </svg>
-        <div class="route-experiment-offline-note">
-          <strong>Offline route model</strong>
-          <span>Schematic alternatives remain interactive when live Mapbox routing is unavailable. They are labeled as modeled, not verified road geometry.</span>
-        </div>
+        <strong>Calculating street-following alternatives…</strong>
+        <span>The map uses Mapbox road geometry. If routing is unavailable, invented street lines are not substituted.</span>
       </div>
       <div class="route-experiment-status" id="routeExperimentStatus" aria-live="polite">Preparing the controlled case…</div>
       <div class="route-experiment-map-label origin"><span>Fixed origin</span><b>125th Street restaurant</b></div>
@@ -2698,8 +3084,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   </div>
 
   <footer class="route-experiment-footer">
-    <p id="experimentInterpretation">Changing the definition of cost changes which route appears optimal.</p>
-    <div><span>Road geometry · live Mapbox / offline schematic</span><span>Route scoring · authored model</span><span>Slope / bike / risk · prototype proxies</span><span>Platform internals · missing</span></div>
+    <p id="experimentInterpretation">There is no universally correct route: different priorities and conditions produce different routes within the same journey.</p>
+    <div><span>Road geometry · Mapbox</span><span>Route scoring · Authored model</span><span>Slope / bike / risk · Prototype proxies</span><span>Platform internals · Missing</span></div>
   </footer>
 </section>
 
@@ -2708,10 +3094,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <div class="slide-no">09</div>
   <header class="vr-heading">
     <div>
-      <p class="kicker">Visual representation</p>
-      <h2>A visual language of layered routes, friction, and uncertainty.</h2>
+      <p class="kicker">09 · Visual representation — Layer, compare, and disclose</p>
+      <h2>Show the differences—and show how the evidence was produced.</h2>
     </div>
-    <p>Aesthetics is used as a form of sensory investigation: the project makes route difference, hidden delay, and incomplete evidence perceptible rather than smoothing them into one seamless map.</p>
+    <p>To make these differences understandable, the visual strategy follows three principles: layer, compare, and disclose.<br>
+The routes are placed together so that the viewer can compare their shapes, travel times, and hidden costs.<br>
+Different visual styles distinguish verified information from modeled information.<br>
+Solid lines can represent known street data.<br>
+Dashed lines can represent modeled routes.<br>
+Transparent areas can show uncertainty.<br>
+Missing information is not hidden. It is clearly identified.</p>
   </header>
 
   <div class="vr-layout">
@@ -2768,11 +3160,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
     <aside class="vr-grammar">
       <p class="vr-label">Visual grammar</p>
       <div class="vr-legend-list">
-        <div><i class="solid"></i><span><b>Solid line</b><small>Public or verifiable route geometry</small></span></div>
-        <div><i class="dash"></i><span><b>Dashed line</b><small>Modeled route alternative</small></span></div>
+        <div><i class="solid"></i><span><b>Solid line</b><small>Known or verified street information</small></span></div>
+        <div><i class="dash"></i><span><b>Dashed line</b><small>Modeled route or calculated alternative</small></span></div>
         <div><i class="dot"></i><span><b>Dotted relation</b><small>Inference or unresolved connection</small></span></div>
-        <div><i class="band"></i><span><b>Translucent band</b><small>Uncertainty or time range</small></span></div>
-        <div><i class="break"></i><span><b>Break / absence</b><small>Missing or inaccessible data</small></span></div>
+        <div><i class="band"></i><span><b>Translucent band</b><small>Uncertainty, variation, or time range</small></span></div>
+        <div><i class="break"></i><span><b>Break / absence</b><small>Missing information that is not hidden</small></span></div>
       </div>
       <div class="vr-sensory-note">
         <span>Sensory aim</span>
@@ -2786,9 +3178,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
 <section class="slide rhetorical-argument-slide" id="s10" data-title="Rhetorical argument">
   <div class="slide-no">10</div>
   <header class="ra-heading">
-    <p class="kicker">Rhetorical argument</p>
+    <p class="kicker">10 · Rhetorical argument — From certainty to produced conditions</p>
     <h2>The route is not found.<br><em>It is produced.</em></h2>
-    <p>Every route is the outcome of decisions about what counts as time, cost, safety, accessibility, and efficiency.</p>
+    <p>The platform presents one route and one ETA as simple, predictable, and neutral. The project reveals multiple routes, multiple forms of cost, and incomplete evidence.</p>
   </header>
 
   <div class="ra-contrast">
@@ -2796,14 +3188,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
       <span>Platform presents</span>
       <strong>ONE ROUTE</strong>
       <strong>ONE ETA</strong>
-      <p>A clean interface compresses waiting, risk, slope, access restrictions, and rider judgment into a single line.</p>
+      <p>For the rhetorical argument, the platform presents one route and one ETA. This creates the impression that the delivery journey is simple, predictable, and neutral.</p>
     </article>
     <div class="ra-transform" aria-hidden="true"><i></i><b>DESIGN<br>AS ARGUMENT</b><i></i></div>
     <article class="ra-project">
       <span>Project reveals</span>
       <strong>MULTIPLE ROUTES</strong>
       <strong>MULTIPLE COSTS</strong>
-      <p>Different definitions of efficiency produce different spatial realities, while incomplete evidence remains visible.</p>
+      <p>My project presents multiple possible routes, multiple forms of cost, and incomplete evidence. It shows that the final route is shaped by algorithms, workers, streets, buildings, weather, and local restrictions.</p>
     </article>
   </div>
 
@@ -2832,12 +3224,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <div class="slide-no">11</div>
   <header class="pc-heading pc-heading-revised">
     <div>
-      <p class="kicker">Potential capstone</p>
-      <h2>Behind the Route:<br>a situated investigation of platform delivery.</h2>
+      <p class="kicker">11 · Potential capstone — From prototype to critical interface</p>
+      <h2>Two connected parts: a route simulator and a situated route archive.</h2>
     </div>
     <div>
       <span class="pc-status">Provisional direction — not a final solution</span>
-      <p>The capstone may develop one fixed delivery journey into an interactive research environment for examining how multiple routes are calculated, represented, validated, and contested.</p>
+      <p>The simulator explains how different conditions can produce different routes.<br>The archive connects those models to real places and lived experiences.<br>Together, they could help customers, students, designers, researchers, workers, and policymakers better understand the hidden systems behind delivery.<br>The goal is not to create another delivery platform or a final optimization tool, but to create a critical interface that reveals what existing platforms usually hide.</p>
     </div>
   </header>
 
@@ -2856,19 +3248,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
         <button class="active" type="button" data-capstone-component="software">
           <span>01 · LIVE INTERFACE</span>
           <b>Interactive route simulator</b>
-          <small>Compare route alternatives, alter situated conditions, and inspect how route rankings and delivery time change.</small>
+          <small>Users can change conditions and compare different route logics.</small>
         </button>
         <button type="button" data-capstone-component="archive">
           <span>02 · EVIDENCE LAYER</span>
           <b>Situated route archive</b>
-          <small>Connect maps to field photographs, time logs, platform records, validation notes, and unresolved evidence.</small>
+          <small>Documenting specific delivery journeys, access problems, waiting conditions, and rider experiences around Columbia and the surrounding neighborhood.</small>
         </button>
         <aside class="pc-component-detail pc-component-detail-wide" aria-live="polite">
           <div>
             <span id="capstoneComponentType">Potential form 01</span>
             <h3 id="capstoneComponentTitle">Interactive route simulator</h3>
           </div>
-          <p id="capstoneComponentText">A map-based interface where viewers compare multiple routes between the same origin and destination, change traffic, weather, slope, bike-lane, and risk priorities, and see the source and limits of each modeled result.</p>
+          <p id="capstoneComponentText">Users can change conditions and compare different route logics.</p>
         </aside>
       </div>
       <div class="pc-linkage">
@@ -2886,7 +3278,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
           <span>Design and urban researchers</span>
           <span>Policy and platform-governance audiences</span>
         </div>
-        <p>The interface should not assume one homogeneous audience; each group may enter through a different question, experience, or form of evidence.</p>
+        <p>Customers, students, designers, researchers, workers, and policymakers can enter the project through different questions, experiences, and forms of evidence.</p>
       </section>
       <section>
         <span class="pc-context-kicker">What remains open</span>
@@ -2906,23 +3298,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
     <span>Not a new delivery platform</span>
     <span>Not a final optimization algorithm</span>
     <span>Not a technical solution to platform labor</span>
-    <p>The project creates a situated environment for examining how routes are produced—not a system that claims to resolve the conditions it studies.</p>
+    <p>The goal is not another delivery platform or a final optimization tool. It is a critical interface that reveals what existing platforms usually hide.</p>
   </footer>
 </section>
 
-<section class="slide challenge-slide" id="s12" data-title="Challenge">
+<section class="slide challenge-slide" id="s12" data-title="Challenges">
   <div class="slide-no">12</div>
   <header class="ch-heading">
-    <div><p class="kicker">The challenge</p><h2>The difficult part is not generating more routes.<br>It is producing evidence strong enough to explain what they mean.</h2></div>
-    <p>The next phase must deepen validation, relationships, technical clarity, and visual communication without allowing the project to expand beyond one focused delivery case.</p>
+    <div><p class="kicker">12 · Challenges — What the next stage must resolve</p><h2>The project still has several challenges.</h2></div>
+    <p>The first is access to platform and rider data.<br>The second is validating the modeled routes against real delivery experiences.<br>The third is involving riders without replacing their knowledge with my own assumptions.<br>The fourth is keeping the interface clear and understandable.</p>
   </header>
 
   <div class="ch-layout">
     <div class="ch-cards" aria-label="Project development challenges">
-      <button class="active" type="button" data-challenge="data"><span>01</span><b>Data and access</b><small>Current position: partial evidence</small></button>
-      <button type="button" data-challenge="validation"><span>02</span><b>Validation and participation</b><small>Current position: early stage</small></button>
-      <button type="button" data-challenge="technical"><span>03</span><b>Technical development</b><small>Current position: working prototype</small></button>
-      <button type="button" data-challenge="visual"><span>04</span><b>Visual clarity and scope</b><small>Current position: developing</small></button>
+      <button class="active" type="button" data-challenge="data"><span>01</span><b>Platform and rider data</b><small>Current position: partial evidence</small></button>
+      <button type="button" data-challenge="validation"><span>02</span><b>Route validation</b><small>Current position: early stage</small></button>
+      <button type="button" data-challenge="technical"><span>03</span><b>Rider participation</b><small>Current position: working prototype</small></button>
+      <button type="button" data-challenge="visual"><span>04</span><b>Interface clarity</b><small>Current position: developing</small></button>
     </div>
 
     <section class="ch-detail" aria-live="polite">
@@ -2943,11 +3335,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   </div>
 
   <footer class="ch-conclusion">
-    <b>Scope discipline</b>
-    <p>One fixed origin · one fixed destination · one delivery case. Depth before expansion.</p>
+    <b>Next stage</b>
+    <p>So the next stage is not simply to generate more routes. It is to improve the evidence, test the simulator in a specific location, and connect the computational model more closely to worker experience and field observation.</p>
   </footer>
 </section>
 </main>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.26.0/mapbox-gl.js"></script>
 <script>
 const sections=[...document.querySelectorAll('.slide')];
 const nav=document.getElementById('nav');
@@ -3542,7 +3935,7 @@ if(lineageMap){
 
 // Chapter 06: dynamic community-of-practice map
 const communityData={
-  forensic:{index:'01',role:'Critical practice · Investigative method',title:'Forensic Architecture',text:'Reconstructs contested events by connecting maps, media, geolocation, models, and timelines into a spatial argument.',approach:'How can distributed and uncertain evidence be spatially reassembled?',position:'A reinterpretation and fork: I translate investigative spatial methods from exceptional events to an everyday delivery system, adding interactive comparison and simulation.',tags:['Multi-source evidence','Geolocation','Uncertainty']},
+  forensic:{index:'01',role:'Critical practice · Investigative method',title:'Forensic Architecture',text:'Reconstructs contested events by connecting maps, media, geolocation, models, and timelines into a spatial argument.',approach:'How can distributed and uncertain evidence be spatially reassembled?',position:'My project sits between these groups, combining spatial investigation with interactive visualization while focusing on one everyday delivery journey.',tags:['Multi-source evidence','Geolocation','Uncertainty']},
   data:{index:'02',role:'Critical practice · Ethical framework',title:'Data Feminism',text:'Examines how power shapes data collection, representation, context, and whose labor or experience becomes visible.',approach:'Who is counted, who controls the data, and what knowledge remains absent?',position:'I use this framework to identify power, label data provenance, make labor visible, and avoid treating partial evidence as objective completeness.',tags:['Power','Context','Make labor visible']},
   fairwork:{index:'03',role:'Labor research · Standards',title:'Fairwork',text:'Evaluates platform work through standards for pay, conditions, contracts, management, and worker representation.',approach:'How can platform working conditions be measured through research, worker testimony, and accountable standards?',position:'I share its concern with algorithmic management and worker voice, but translate those questions into spatial comparison and public interaction rather than a platform score.',tags:['Worker interviews','Fair management','Accountability']},
   ldu:{index:'04',role:'Worker knowledge · Organizing',title:'Los Deliveristas Unidos',text:'Organizes app-based delivery workers in New York around pay, safety, infrastructure, education, and collective representation.',approach:'How can delivery workers shape the policies and infrastructures that affect their daily work?',position:'Rider knowledge should inform the project through consent-based observation and participation. I should not treat workers as data sources or speak on their behalf.',tags:['Worker voice','Road safety','Local knowledge']},
@@ -3591,7 +3984,7 @@ if(communityMap){
 }
 
 
-// Chapter 07: route-logics method diagram
+// Chapter 08: route-logics method diagram
 const methodsRouteData={
   shortest:{index:'01 · Quantitative model',title:'Shortest-distance route',text:'Uses the street network to minimize total route length. This establishes a baseline rather than claiming the route a rider would actually choose.',technique:'NetworkX shortest path',data:'OpenStreetMap road graph',metric:'Network distance'},
   fastest:{index:'02 · Quantitative model',title:'Fastest-time route',text:'Weights street segments by estimated cycling time, street class, and intersection delay. It tests how “fastest” differs from simply “shortest.”',technique:'Weighted shortest path',data:'Road class + speed assumptions',metric:'Estimated travel time'},
@@ -3626,7 +4019,7 @@ methodsRoutePaths.forEach(path=>path.addEventListener('click',()=>setMethodsRout
 setMethodsRoute('shortest');
 
 
-// Chapter 07: focused mixed-method workflow
+// Chapter 08: focused mixed-method workflow
 const methodOnlyData={
   collect:{
     index:'01 · Data practice',status:'PUBLIC + INTERFACE + FIELD',title:'Collect the evidence',
@@ -3706,18 +4099,18 @@ methodOnlyButtons.forEach(button=>{
 });
 if(methodOnlyButtons.length)setMethodOnlyStep('collect');
 
-// Chapters 08–09: aligned method and controlled route experiment
+// Chapters 07–08: methods and controlled route experiment
 const experimentMethodData={
   case:{
     index:'01 · Controlled case',evidence:'FIXED INPUT',title:'Fix one origin and one destination',
-    description:'The restaurant, restaurant pickup entrance, Columbia handoff point, map extent, and transport mode remain unchanged so route differences can be attributed to the calculation conditions.',
-    input:'Restaurant coordinate; pickup entrance; Columbia 116th Street gate; cycling mode; fixed study boundary.',
+    description:'One restaurant and one Columbia-area destination remain fixed so route differences can be attributed to changing conditions rather than changing endpoints.',
+    input:'Restaurant coordinate; destination near Columbia; cycling mode; fixed study boundary.',
     operation:'Lock the case before changing any route weights or scenario variables.',
     output:'A controlled baseline for comparing every route on the same spatial canvas.',
     tools:['Mapbox','QGIS','Field log']
   },
   network:{
-    index:'02 · Network construction',evidence:'PUBLIC + MODELED ATTRIBUTES',title:'Build an attributed street network',
+    index:'02 · Network construction',evidence:'PUBLIC DATA + MODELED ATTRIBUTES',title:'Build an attributed street network',
     description:'Street segments become graph edges with the attributes required to calculate more than one definition of route cost.',
     input:'Street geometry, directionality, segment length, estimated cycling time, bicycle infrastructure, elevation, intersections, and restrictions.',
     operation:'Clean the network, align coordinate systems, attach edge attributes, and document which values are measured, sourced, or modeled.',
@@ -3741,7 +4134,7 @@ const experimentMethodData={
     tools:['Python','Pandas','JavaScript','Sensitivity analysis']
   },
   ground:{
-    index:'05 · Situated validation',evidence:'FIELD-OBSERVED',title:'Ground-check the corridor',
+    index:'05 · Situated validation',evidence:'FIELD OBSERVATION',title:'Ground-check the corridor',
     description:'The calculated routes are walked or ridden so that street conditions absent from public data can be documented rather than guessed.',
     input:'Candidate maps, timing sheet, camera, route notes, restaurant pickup point, and campus handoff point.',
     operation:'Time the journey, photograph obstacles, record signals, slope, construction, traffic pressure, waiting, and access friction.',
@@ -3749,7 +4142,7 @@ const experimentMethodData={
     tools:['Ride-through','Photography','Time log','Observation']
   },
   compare:{
-    index:'06 · Mixed-method comparison',evidence:'MODELED + OBSERVED',title:'Compare results without collapsing them',
+    index:'06 · Mixed-method comparison',evidence:'MODELED + OBSERVED + UNCERTAIN',title:'Compare results without collapsing them',
     description:'Computed performance and field experience are placed beside one another, with uncertainty and missing platform information kept visible.',
     input:'Distance, moving time, bike support, slope effort, risk exposure, field timing, platform ETA, waiting, and handoff records.',
     operation:'Compare routes on a fixed scale, separate movement from waiting, annotate provenance, and report uncertainty.',
@@ -3811,63 +4204,7 @@ const routeExperimentObjectives={
   slope:{label:'Low-slope priority',distance:.55,time:.7,bike:.4,slope:2.8,risk:.45,weather:.3},
   risk:{label:'Lower-risk priority',distance:.5,time:.7,bike:.55,slope:.4,risk:2.8,weather:.45}
 };
-const routeExperimentState={map:null,mapReady:false,offline:false,routes:[],selectedId:null,recommendedId:null,objective:'balanced',requestSerial:0,abortController:null};
-
-function routeExperimentOfflineRoutes(){
-  return [
-    {id:'experiment-route-0',role:'direct',name:'Direct network',coordinates:[[-73.95805,40.81575],[-73.95820,40.81445],[-73.95915,40.81275],[-73.96040,40.81055],[-73.96262,40.80784]],distance:1180,duration:335,steps:9,source:'Offline schematic model'},
-    {id:'experiment-route-1',role:'broadway',name:'Broadway corridor',coordinates:[[-73.95805,40.81575],[-73.96020,40.81505],[-73.96315,40.81290],[-73.96335,40.80970],[-73.96262,40.80784]],distance:1390,duration:390,steps:11,source:'Offline schematic model'},
-    {id:'experiment-route-2',role:'amsterdam',name:'Amsterdam corridor',coordinates:[[-73.95805,40.81575],[-73.95845,40.81420],[-73.95985,40.81215],[-73.96035,40.80975],[-73.96262,40.80784]],distance:1260,duration:350,steps:10,source:'Offline schematic model'},
-    {id:'experiment-route-3',role:'morningside',name:'Morningside corridor',coordinates:[[-73.95805,40.81575],[-73.95665,40.81465],[-73.95535,40.81220],[-73.95625,40.80915],[-73.96262,40.80784]],distance:1510,duration:375,steps:13,source:'Offline schematic model'},
-    {id:'experiment-route-4',role:'west',name:'West-side detour',coordinates:[[-73.95805,40.81575],[-73.96170,40.81525],[-73.96425,40.81270],[-73.96435,40.80925],[-73.96262,40.80784]],distance:1640,duration:415,steps:12,source:'Offline schematic model'},
-    {id:'experiment-route-5',role:'east',name:'East-side detour',coordinates:[[-73.95805,40.81575],[-73.95510,40.81515],[-73.95475,40.81200],[-73.95600,40.80870],[-73.96262,40.80784]],distance:1720,duration:430,steps:15,source:'Offline schematic model'}
-  ];
-}
-function routeExperimentOfflinePoint(coordinate){
-  const [lon,lat]=coordinate;
-  const minLon=-73.9655,maxLon=-73.9535,minLat=40.8068,maxLat=40.8165;
-  const x=45+((lon-minLon)/(maxLon-minLon))*690;
-  const y=405-((lat-minLat)/(maxLat-minLat))*377;
-  return [Math.max(45,Math.min(735,x)),Math.max(28,Math.min(405,y))];
-}
-function routeExperimentUpdateOfflineMap(){
-  const group=document.getElementById('routeExperimentOfflineRoutes');
-  if(!group||!routeExperimentState.routes.length)return;
-  const values=routeExperimentValues();
-  const ordered=[...routeExperimentState.routes].sort((a,b)=>{
-    const av=a.id===routeExperimentState.selectedId?2:a.id===routeExperimentState.recommendedId?1:0;
-    const bv=b.id===routeExperimentState.selectedId?2:b.id===routeExperimentState.recommendedId?1:0;
-    return av-bv;
-  });
-  group.innerHTML=ordered.map(route=>{
-    const points=route.coordinates.map(routeExperimentOfflinePoint).map(point=>point.map(value=>value.toFixed(1)).join(',')).join(' ');
-    const classes=['offline-route'];
-    if(route.id===routeExperimentState.recommendedId)classes.push('recommended');
-    if(route.id===routeExperimentState.selectedId)classes.push('selected');
-    if(values.closure!=='none'&&route.role===values.closure)classes.push('blocked');
-    return `<polyline class="${classes.join(' ')}" data-offline-route-id="${route.id}" points="${points}" />`;
-  }).join('');
-  group.querySelectorAll('[data-offline-route-id]').forEach(path=>path.addEventListener('click',()=>routeExperimentSelectRoute(path.dataset.offlineRouteId,true)));
-}
-function routeExperimentInitOffline(reason='Live map unavailable'){
-  if(routeExperimentState.offline&&routeExperimentState.routes.length)return;
-  routeExperimentState.offline=true;
-  routeExperimentState.mapReady=false;
-  routeExperimentState.routes=routeExperimentOfflineRoutes();
-  routeExperimentCalculate();
-  routeExperimentState.selectedId=routeExperimentState.recommendedId;
-  routeExperimentUpdateLabels();
-  routeExperimentRenderCards();
-  routeExperimentUpdateMetrics();
-  routeExperimentUpdateOfflineMap();
-  document.querySelector('.route-experiment-map-wrap')?.classList.add('offline-ready');
-  const fallback=document.getElementById('routeExperimentFallback');
-  fallback?.classList.remove('is-hidden');
-  routeExperimentSetStatus(`Offline model ready · ${routeExperimentState.routes.length} alternatives`);
-  const footer=document.querySelector('.route-experiment-footer div');
-  if(footer)footer.innerHTML='<span>Road geometry · offline schematic / live Mapbox</span><span>Route scoring · authored model</span><span>Slope / bike / risk · prototype proxies</span><span>Platform internals · missing</span>';
-}
-
+const routeExperimentState={map:null,mapReady:false,routes:[],selectedId:null,recommendedId:null,objective:'balanced',requestSerial:0,abortController:null};
 const routeExperimentControls={
   traffic:document.getElementById('experimentTraffic'),
   weather:document.getElementById('experimentWeather'),
@@ -4065,7 +4402,6 @@ function routeExperimentUpdateMetrics(){
   Object.entries(segments).forEach(([id,width])=>{const element=document.getElementById(id);if(element)element.style.width=`${width}%`;});
 }
 function routeExperimentUpdateMap(fit=false){
-  if(routeExperimentState.offline){routeExperimentUpdateOfflineMap();return;}
   if(!routeExperimentState.mapReady)return;
   const source=routeExperimentState.map.getSource('route-experiment-routes');
   if(source)source.setData(routeExperimentFeatureCollection());
@@ -4124,7 +4460,18 @@ async function routeExperimentFetchRoutes(){
     document.getElementById('routeExperimentFallback')?.classList.add('is-hidden');
   }catch(error){
     if(error.name==='AbortError')return;
-    routeExperimentInitOffline(error.message||'Live routing unavailable');
+    routeExperimentState.routes=[];
+    routeExperimentState.selectedId=null;
+    routeExperimentRenderCards();
+    routeExperimentSetStatus(`${error.message}. No invented street route has been substituted.`,true);
+    const fallback=document.getElementById('routeExperimentFallback');
+    if(fallback){
+      fallback.classList.remove('is-hidden');
+      const title=fallback.querySelector('strong');
+      const note=fallback.querySelector('span');
+      if(title)title.textContent='Routing unavailable';
+      if(note)note.textContent='Check network access or the Mapbox token. The experiment keeps the limitation visible rather than drawing schematic streets as real routes.';
+    }
   }
 }
 function routeExperimentMarker(letter,className=''){
@@ -4136,7 +4483,7 @@ function routeExperimentMarker(letter,className=''){
 function routeExperimentInitMap(){
   const container=document.getElementById('routeExperimentMap');
   if(!container)return;
-  if(!window.mapboxgl){routeExperimentInitOffline('Mapbox GL JS did not load');return;}
+  if(!window.mapboxgl){routeExperimentSetStatus('Mapbox GL JS did not load.',true);return;}
   mapboxgl.accessToken=TOKEN;
   routeExperimentState.map=new mapboxgl.Map({
     container:'routeExperimentMap',
@@ -4149,7 +4496,6 @@ function routeExperimentInitMap(){
   });
   routeExperimentState.map.addControl(new mapboxgl.NavigationControl({showCompass:false}),'top-right');
   routeExperimentState.map.on('load',()=>{
-    routeExperimentState.offline=false;
     routeExperimentState.mapReady=true;
     routeExperimentState.map.addSource('route-experiment-routes',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
     routeExperimentState.map.addLayer({id:'route-experiment-base',type:'line',source:'route-experiment-routes',paint:{'line-color':'#8f8f8f','line-width':4,'line-opacity':.48}});
@@ -4167,7 +4513,7 @@ function routeExperimentInitMap(){
     new mapboxgl.Marker({element:routeExperimentMarker('C','destination')}).setLngLat(routeExperimentDestination).addTo(routeExperimentState.map);
     routeExperimentFetchRoutes();
   });
-  routeExperimentState.map.on('error',()=>{if(!routeExperimentState.mapReady)routeExperimentInitOffline('Map style unavailable');});
+  routeExperimentState.map.on('error',()=>routeExperimentSetStatus('Map style or routing service unavailable.',true));
   const slide=document.getElementById('s08');
   if(slide){
     const resizeObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)setTimeout(()=>routeExperimentState.map?.resize(),120);}),{threshold:.2});
@@ -4184,7 +4530,7 @@ routeExperimentControls.closure?.addEventListener('change',()=>routeExperimentUp
 routeExperimentUpdateLabels();
 routeExperimentInitMap();
 
-// Chapter 07 — visual representation modes
+// Chapter 09 — visual representation modes
 const visualRepresentationModes={
   layer:{title:'Layer the route',caption:'Begin with the familiar route line, then open spatial conditions, labor friction, and the wider digital system behind it.'},
   compare:{title:'Compare route logics',caption:'Hold the origin, destination, scale, and map frame constant so differences come from route priorities rather than graphic composition.'},
@@ -4203,7 +4549,7 @@ document.querySelectorAll('[data-visual-mode]').forEach(button=>button.addEventL
   if(caption)caption.textContent=data.caption;
 }));
 
-// Chapter 07 — rhetorical argument factors
+// Chapter 11 — rhetorical argument factors
 const argumentFactors={
   time:{label:'Time',text:'Platform ETA often foregrounds moving time while restaurant waiting and campus handoff delay remain less visible.'},
   safety:{label:'Safety',text:'The shortest or fastest route may transfer more traffic exposure and intersection risk to the rider.'},
@@ -4220,10 +4566,10 @@ document.querySelectorAll('[data-argument-factor]').forEach(button=>button.addEv
   if(text)text.textContent=argumentFactors[key].text;
 }));
 
-// Chapter 07 — provisional capstone forms
+// Chapter 12 — provisional capstone forms
 const capstoneComponents={
-  software:{type:'Potential form 01 · Live interface',title:'Interactive route simulator',text:'A map-based interface where viewers compare multiple routes between the same origin and destination, change traffic, weather, slope, bike-lane, and risk priorities, and see the source and limits of each modeled result.'},
-  archive:{type:'Potential form 02 · Evidence layer',title:'Situated route archive',text:'A research archive that connects every route to field photographs, time logs, platform screenshots, public datasets, validation notes, uncertainty, and evidence that remains unavailable.'}
+  software:{type:'Potential form 01 · Live interface',title:'Interactive route simulator',text:'Users can change conditions and compare different route logics.'},
+  archive:{type:'Potential form 02 · Evidence layer',title:'Situated route archive',text:'Documenting specific delivery journeys, access problems, waiting conditions, and rider experiences around Columbia and the surrounding neighborhood.'}
 };
 document.querySelectorAll('[data-capstone-component]').forEach(button=>button.addEventListener('click',()=>{
   const key=button.dataset.capstoneComponent;
@@ -4234,7 +4580,7 @@ document.querySelectorAll('[data-capstone-component]').forEach(button=>button.ad
   document.getElementById('capstoneComponentText').textContent=data.text;
 }));
 
-// Chapter 07 — challenge gap-to-plan cards
+// Chapter 13 — challenge gap-to-plan cards
 const challengeDetails={
   data:{number:'Challenge 01',title:'Data and access',gap:'Platform dispatch logic, historical rider traces, pricing rules, and performance data are not publicly available.',plan:'Maintain a strict evidence protocol, document missing data, and never present authored simulations as platform facts.',honesty:'The project can reconstruct public street conditions, but it cannot yet claim to reproduce real platform decision-making.'},
   validation:{number:'Challenge 02',title:'Validation and participation',gap:'Modeled route alternatives do not yet demonstrate how riders actually judge safety, effort, waiting, or local shortcuts.',plan:'Conduct route walk-throughs or ride-throughs, record changing street conditions, and seek consent-based conversations with riders or labor researchers.',honesty:'My knowledge of platform interfaces and spatial data is currently stronger than my direct knowledge of riders’ everyday experience.'},

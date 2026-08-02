@@ -181,7 +181,7 @@ main{padding-left:238px}
   .side-navigation nav{
     min-height:0;
     display:grid;
-    grid-template-rows:repeat(12,minmax(0,1fr));
+    grid-template-rows:repeat(13,minmax(0,1fr));
     gap:0;
     border-bottom:1px solid #313131;
   }
@@ -814,7 +814,7 @@ main{padding-left:238px}
 }
 
 
-/* Chapter 07 — revised Methods: one fixed case, multiple route logics */
+/* Chapter 08 — revised Methods: one fixed case, multiple route logics */
 .methods-research-slide{background:#efede6;padding-top:72px;padding-bottom:34px}
 .methods-heading{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:44px;align-items:end;margin-bottom:18px}
 .methods-heading .kicker{margin-bottom:10px}
@@ -909,7 +909,7 @@ main{padding-left:238px}
 }
 
 
-/* Chapter 07 — methods only: focused mixed-method workflow */
+/* Chapter 08 — methods only: focused mixed-method workflow */
 .methods-only-slide{background:#efede6;padding-top:72px;padding-bottom:34px}
 .methods-only-heading{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(390px,.95fr);gap:48px;align-items:end;margin-bottom:24px}
 .methods-only-heading .kicker{margin-bottom:11px}
@@ -1181,7 +1181,7 @@ main{padding-left:238px}
 @media(max-width:900px){.vr-heading,.pc-heading,.ch-heading,.vr-layout,.ch-layout{grid-template-columns:1fr}.vr-layout{height:auto}.vr-stage{min-height:520px}.vr-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.vr-community{grid-column:1/-1}.vr-grammar{margin-top:10px}.ra-contrast{grid-template-columns:1fr}.ra-transform{height:60px}.ra-transform i{display:none}.ra-factor-area{grid-template-columns:1fr}.ra-position,.pc-boundary,.ch-conclusion{position:static;margin-top:24px}.pc-scope{grid-template-columns:1fr}.pc-scope>i{transform:rotate(90deg)}.pc-components{grid-template-columns:1fr 1fr}.pc-component-detail{grid-column:1/-1}.ch-cards{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.vr-modes,.pc-components,.ch-cards{grid-template-columns:1fr}.vr-stage{min-height:420px}.ra-factor-buttons{grid-template-columns:1fr 1fr}.ch-gap-plan{grid-template-columns:1fr}.ch-gap-plan>i{transform:rotate(90deg)}.ch-forward-plan{grid-template-columns:1fr}.ch-forward-plan>i{height:30px;width:1px;justify-self:center}.pc-open-questions{align-items:flex-start}}
 
-/* Chapter 07 — revised without a physical installation */
+/* Chapter 12 — revised without a physical installation */
 .pc-heading-revised{grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr)}
 .pc-heading-revised h2{font-size:clamp(35px,3.7vw,64px);max-width:900px}
 .pc-heading-revised>div:last-child p{font-size:13px;line-height:1.45;margin:0;color:var(--muted)}
@@ -1678,7 +1678,7 @@ main{padding-left:238px}
     overflow:visible!important;
   }
 
-  /* Chapter 07: keep the project boundary in normal document flow so
+  /* Chapter 12: keep the project boundary in normal document flow so
      it cannot overlap the audience / open-question panel. */
   .pc-boundary-revised{
     position:static!important;
@@ -1713,14 +1713,14 @@ main{padding-left:238px}
   .realistic-simulator{overflow-x:hidden!important}
 }
 
-/* Chapter 07: the right control panel needs a few more pixels than the
+/* Chapter 09: the right control panel needs a few more pixels than the
    old fixed 385/400px canvas after real Chrome font rendering. */
 @media (min-width:1101px) and (max-width:1500px){
   .route-experiment-main{height:420px!important}
   .route-experiment-controls{overflow-x:hidden;overflow-y:auto}
 }
 
-/* Chapter 07: at laptop widths the third quotation column sits outside
+/* Chapter 11: at laptop widths the third quotation column sits outside
    the actual slide width because the fixed left rail is not included in
    viewport media-query math. Use the intended two-column compact state. */
 @media (min-width:901px) and (max-width:1440px){
@@ -2138,23 +2138,374 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   }
 }
 
+/* ==========================================================
+   MASTER ALIGNMENT SYSTEM — ALL CURRENT CHAPTERS
+   Shared canvas, heading columns, text measure, content frame,
+   and centered footer baselines across the complete website.
+   ========================================================== */
+@media (min-width:1101px){
+  :root{
+    --chapter-pad-x:48px;
+    --chapter-pad-top:54px;
+    --chapter-pad-bottom:36px;
+    --chapter-max:1280px;
+    --chapter-heading-gap:38px;
+    --chapter-copy-size:14px;
+    --chapter-copy-line:1.5;
+  }
 
-/* Reliable offline route fallback for the computational experiment */
-.route-experiment-fallback{z-index:2;padding:0;display:block;text-align:left;background:#151515;color:#fff;opacity:1}
-.route-experiment-fallback.is-hidden{opacity:0;pointer-events:none}
-.route-experiment-fallback svg{display:block;width:100%;height:100%}
-.offline-street-grid path{fill:none;stroke:#343434;stroke-width:2;vector-effect:non-scaling-stroke}
-.offline-street-grid .offline-street-major{stroke:#4b4b4b;stroke-width:5}
-.offline-map-labels text{fill:#757575;font-size:10px;font-weight:700;letter-spacing:1.4px}
-.offline-fixed-markers circle{fill:#f5f2eb;stroke:#111;stroke-width:2}
-.offline-fixed-markers text{fill:#111;font-size:12px;font-weight:800;text-anchor:middle}
-.offline-route{fill:none;stroke:#7b7b7b;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.48;cursor:pointer;vector-effect:non-scaling-stroke;transition:opacity .18s ease,stroke-width .18s ease,stroke .18s ease}
-.offline-route:hover{opacity:.9;stroke-width:7}
-.offline-route.recommended{stroke:#fff;opacity:.88;stroke-dasharray:10 7}
-.offline-route.selected{stroke:#ff4d2e;stroke-width:8;opacity:1;stroke-dasharray:none}
-.offline-route.blocked{stroke:#ffb000;stroke-dasharray:5 6;opacity:.8}
-.route-experiment-offline-note{position:absolute;z-index:3;right:14px;bottom:48px;width:min(310px,42%);padding:10px 12px;background:rgba(10,10,10,.82);border-left:3px solid #ff4d2e;backdrop-filter:blur(3px)}
-.route-experiment-offline-note strong{display:block;margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
-.route-experiment-offline-note span{display:block;max-width:none;font-size:9px;line-height:1.35;color:#b9b9b9}
-.route-experiment-map-wrap.offline-ready #routeExperimentMap{opacity:0}
-.route-experiment-map-wrap.offline-ready .route-experiment-status{border-left-color:#ff4d2e}
+  .slide{
+    aspect-ratio:16/10;
+    min-height:720px;
+    padding:var(--chapter-pad-top) var(--chapter-pad-x) var(--chapter-pad-bottom)!important;
+    overflow:hidden;
+  }
+  .slide-no{top:48px;right:26px;font-size:11px}
+  .slide>.slide-no{width:auto;max-width:none;margin:0}
+  .slide>:not(.slide-no){
+    width:100%;
+    max-width:var(--chapter-max);
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .kicker{
+    margin:0 0 13px!important;
+    font-size:9.5px;
+    line-height:1.25;
+    letter-spacing:.14em;
+  }
+  .slide:not(.title-slide) h2{
+    font-size:clamp(36px,3.05vw,52px)!important;
+    line-height:.97!important;
+    letter-spacing:-.045em!important;
+  }
+
+  /* Shared two-column chapter heading system */
+  .research-heading-clean,
+  .keyword-heading,
+  .fields-heading,
+  .lineage-heading,
+  .community-heading,
+  .experiment-method-heading,
+  .route-experiment-heading,
+  .vr-heading,
+  .pc-heading-revised,
+  .ch-heading{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.2fr) minmax(360px,.8fr)!important;
+    gap:var(--chapter-heading-gap)!important;
+    align-items:start!important;
+    margin:0 auto 20px!important;
+  }
+  .research-heading-clean>div,
+  .keyword-heading>div,
+  .fields-heading>div,
+  .lineage-heading>div,
+  .community-heading>div,
+  .experiment-method-heading>div:first-child,
+  .route-experiment-heading>div:first-child,
+  .vr-heading>div:first-child,
+  .pc-heading-revised>div:first-child,
+  .ch-heading>div:first-child{min-width:0}
+
+  .research-heading-clean h2,
+  .keyword-heading h2,
+  .fields-heading h2,
+  .lineage-heading h2,
+  .community-heading h2,
+  .experiment-method-heading h2,
+  .route-experiment-heading h2,
+  .vr-heading h2,
+  .pc-heading-revised h2,
+  .ch-heading h2{
+    margin:0!important;
+    max-width:790px!important;
+  }
+  .research-heading-clean>p,
+  .keyword-heading>p,
+  .fields-heading>p,
+  .lineage-intro,
+  .community-heading>p,
+  .experiment-method-intro>p,
+  .route-experiment-intro>p,
+  .vr-heading>p,
+  .pc-heading-revised>div:last-child>p,
+  .ch-heading>p{
+    width:100%;
+    max-width:560px!important;
+    margin:1px 0 0!important;
+    justify-self:end;
+    color:#55524c!important;
+    font-size:var(--chapter-copy-size)!important;
+    line-height:var(--chapter-copy-line)!important;
+  }
+
+  /* 01 — Title */
+  .title-slide{padding:58px 52px 42px!important}
+  .title-slide .title-grid-photo{
+    flex:1;
+    height:100%!important;
+    min-height:0;
+    max-width:var(--chapter-max);
+    grid-template-columns:minmax(0,1.18fr) minmax(330px,.82fr)!important;
+    gap:48px!important;
+    align-items:stretch!important;
+    align-content:center!important;
+  }
+  .title-slide .title-copy{padding:4px 0!important}
+  .title-slide .title-copy h1{font-size:clamp(62px,5.8vw,98px)!important;line-height:.9!important}
+  .title-slide .title-copy h2{font-size:clamp(25px,2.35vw,38px)!important;line-height:1.03!important;margin:17px 0 18px!important;max-width:720px}
+  .title-slide .title-copy .lead{font-size:clamp(15px,1.15vw,19px)!important;line-height:1.42!important;max-width:720px}
+  .title-slide .title-visual{max-height:580px;align-self:center!important}
+  .title-image-wrap{padding:18px 30px!important}
+  .title-image-wrap img{max-height:370px!important;max-width:255px!important}
+
+  /* 02 — Research questions */
+  .research-slide{display:flex!important;flex-direction:column;gap:0!important}
+  .research-heading-clean{margin-top:0!important}
+  .research-sequence{flex:1;min-height:0!important;margin:0;align-items:stretch}
+  .research-step{padding:18px 18px 20px!important}
+  .research-stage{margin:12px 0 18px!important}
+  .research-step h3{font-size:clamp(18px,1.35vw,23px)!important;line-height:1.08!important;margin-bottom:14px!important}
+  .research-step>p:last-child{font-size:12px!important;line-height:1.45!important}
+  .research-logic-line{margin-top:13px!important}
+
+  /* 03 — Keywords */
+  .keyword-slide{display:flex;flex-direction:column}
+  .keyword-experience{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,1.4fr) minmax(350px,.6fr)!important;
+  }
+  .keyword-map{min-width:0}
+  .keyword-detail{padding:25px 24px!important;min-width:0}
+  .keyword-detail-role{margin:15px 0 22px!important}
+  .keyword-detail h3{font-size:clamp(25px,2.1vw,37px)!important;max-width:none!important;margin-bottom:14px!important}
+  .keyword-detail>p:not(.keyword-detail-role){max-width:none!important;font-size:13px!important;line-height:1.5!important}
+  .keyword-detail-tags{margin-top:16px!important}
+  .keyword-detail-logic{padding-top:14px!important}
+
+  /* 04 — Intersecting fields */
+  .fields-slide{display:flex;flex-direction:column;height:auto!important}
+  .fields-experience{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,1.38fr) minmax(360px,.62fr)!important;
+  }
+  .fields-map{padding:20px 22px!important;gap:12px 16px!important}
+  .field-detail{padding:25px 24px!important;min-width:0}
+  .field-detail-role{margin:13px 0 18px!important}
+  .field-detail h3{font-size:clamp(24px,2vw,35px)!important;max-width:none!important;margin-bottom:13px!important}
+  .field-detail>p:not(.field-detail-role){max-width:none!important;font-size:12.5px!important;line-height:1.48!important}
+  .field-contribution{margin-top:15px!important;padding:11px 0!important}
+  .field-contribution strong{font-size:13px!important;line-height:1.32!important}
+  .field-shared-question{padding-top:11px!important}
+
+  /* 05 — Historical lineage */
+  .lineage-slide{display:flex;flex-direction:column;height:auto!important}
+  .lineage-experience{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,1.4fr) minmax(360px,.6fr)!important;
+  }
+  #s05 .lineage-map{padding:18px 20px!important}
+  #s05 .lineage-detail{padding:22px 21px!important;min-width:0}
+  #s05 .lineage-detail h3{font-size:clamp(23px,1.8vw,31px)!important;max-width:none!important}
+  #s05 .lineage-detail>p:not(.lineage-detail-type){font-size:11.5px!important;line-height:1.43!important;max-width:none!important}
+  .lineage-reading{margin-top:12px!important;flex:0 0 auto}
+  .lineage-reading article{padding:9px 13px 10px!important}
+
+  /* 06 — Community of practice */
+  .community-slide{display:flex;flex-direction:column}
+  .community-experience{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,1.4fr) minmax(360px,.6fr)!important;
+  }
+  .community-detail{padding:23px 22px!important;min-width:0}
+  .community-detail h3{font-size:clamp(24px,2vw,35px)!important;max-width:none!important;margin:18px 0 12px!important}
+  .community-detail>p{max-width:none!important;font-size:12px!important;line-height:1.46!important;margin-bottom:10px!important}
+  .community-detail-row{padding:9px 0 8px!important}
+  .community-detail-row p{font-size:10.5px!important;line-height:1.38!important}
+
+  /* 07 — Methods */
+  .experiment-method-slide{display:flex;flex-direction:column}
+  .experiment-method-heading{margin-bottom:18px!important}
+  .experiment-method-intro>p{margin-bottom:11px!important}
+  .fixed-case-line{padding:10px 12px!important}
+  .experiment-method-body{
+    flex:1;
+    height:auto!important;
+    min-height:0;
+    grid-template-columns:minmax(0,1.34fr) minmax(350px,.66fr)!important;
+    gap:18px!important;
+  }
+  .experiment-method-workflow-head{padding:12px 14px!important}
+  .experiment-method-step{padding:14px 14px 13px!important}
+  .experiment-method-step strong{font-size:17px!important;margin:16px 0 7px!important}
+  .experiment-method-step small{font-size:10.5px!important;line-height:1.32!important}
+  .experiment-method-detail{padding:17px 18px!important}
+  .experiment-method-detail h3{font-size:25px!important;margin:16px 0 9px!important}
+  .experiment-method-detail>p{font-size:12px!important;line-height:1.38!important;margin-bottom:12px!important}
+  .experiment-method-io article{padding:8px 0!important}
+  .experiment-method-footer{margin-top:13px!important}
+  .experiment-method-footer>div{padding:10px 12px!important}
+  .experiment-method-footer p{font-size:10.5px!important}
+
+  /* 08 — Computational experiment */
+  .route-experiment-slide{display:flex;flex-direction:column}
+  .route-experiment-heading{margin-bottom:13px!important}
+  .route-experiment-intro>p{font-size:13px!important;line-height:1.45!important;margin-bottom:10px!important}
+  .route-experiment-fixed span{font-size:10px!important;padding:7px 9px!important}
+  .route-experiment-main{
+    height:350px!important;
+    grid-template-columns:minmax(0,1.38fr) minmax(380px,.62fr)!important;
+    gap:14px!important;
+  }
+  .route-experiment-controls{padding:12px!important}
+  .route-experiment-results{height:154px!important;margin-top:11px!important;gap:14px!important}
+  .route-experiment-selected{padding:10px 12px!important;gap:6px!important}
+  .route-experiment-candidates{padding:9px 10px!important}
+  .route-experiment-footer{margin-top:8px!important;padding-top:8px!important}
+  .route-experiment-footer p{font-size:10.5px!important}
+
+  /* 09 — Visual representation */
+  .visual-representation-slide{display:flex;flex-direction:column}
+  .vr-layout{
+    flex:1;
+    height:auto!important;
+    min-height:0!important;
+    margin-top:0!important;
+    grid-template-columns:180px minmax(0,1fr) 290px!important;
+    gap:18px!important;
+  }
+  .vr-principles,.vr-legend{min-width:0}
+
+  /* 10 — Rhetorical argument */
+  .rhetorical-argument-slide{display:flex;flex-direction:column;padding-top:50px!important}
+  .ra-heading{max-width:1120px!important;margin:0 auto 20px!important}
+  .ra-heading h2{font-size:clamp(48px,4.8vw,76px)!important;line-height:.91!important}
+  .ra-heading>p{font-size:13.5px!important;line-height:1.45!important;max-width:760px!important}
+  .ra-contrast{width:100%;max-width:1120px!important;margin:0 auto!important}
+  .ra-contrast article{padding:18px 22px!important;min-height:166px!important}
+  .ra-factor-area{width:100%;max-width:1120px!important;margin:14px auto 0!important;grid-template-columns:390px minmax(250px,1fr) minmax(250px,.82fr)!important}
+  .ra-position{
+    left:50%!important;right:auto!important;bottom:30px!important;
+    width:calc(100% - 96px)!important;max-width:1120px!important;
+    transform:translateX(-50%);
+  }
+
+  /* 11 — Potential capstone */
+  .potential-capstone-slide{display:flex;flex-direction:column}
+  .pc-heading-revised{margin-bottom:15px!important}
+  .pc-scope-revised{margin-top:0!important}
+  .pc-revised-layout{
+    flex:1;
+    min-height:0;
+    margin-top:14px!important;
+    grid-template-columns:minmax(0,1.42fr) minmax(330px,.58fr)!important;
+    gap:16px!important;
+  }
+  .pc-boundary-revised{
+    left:50%!important;right:auto!important;bottom:30px!important;
+    width:calc(100% - 96px)!important;max-width:var(--chapter-max)!important;
+    transform:translateX(-50%);
+  }
+
+  /* 12 — Challenges */
+  .challenge-slide{display:flex;flex-direction:column}
+  .ch-heading{margin-bottom:18px!important}
+  .ch-layout{margin-top:0!important;grid-template-columns:320px minmax(0,1fr)!important;gap:18px!important}
+  .ch-forward-plan{margin-top:14px!important}
+  .ch-conclusion{
+    left:50%!important;right:auto!important;bottom:30px!important;
+    width:calc(100% - 96px)!important;max-width:var(--chapter-max)!important;
+    transform:translateX(-50%);
+  }
+}
+
+/* Fixed 16:10 chapter canvas and final overflow corrections */
+@media (min-width:1101px){
+  .fields-slide,
+  .lineage-slide,
+  .community-slide,
+  .experiment-method-slide,
+  .route-experiment-slide,
+  .potential-capstone-slide{
+    aspect-ratio:16/10!important;
+    min-height:720px!important;
+    height:auto!important;
+  }
+  .fields-experience,.lineage-experience,.community-experience,
+  .experiment-method-body,.pc-revised-layout{min-height:0!important}
+
+  /* Compact high-information pages so every chapter stays in one frame. */
+  .experiment-method-heading,.route-experiment-heading{margin-bottom:13px!important}
+  .experiment-method-heading h2,.route-experiment-heading h2{font-size:clamp(34px,2.8vw,46px)!important}
+  .experiment-method-intro>p,.route-experiment-intro>p{font-size:12px!important;line-height:1.4!important}
+  .fixed-case-line{padding:8px 10px!important}
+  .experiment-method-step{padding:11px 12px 10px!important}
+  .experiment-method-step strong{font-size:15px!important;margin:12px 0 6px!important}
+  .experiment-method-step small{font-size:9px!important;line-height:1.27!important}
+  .experiment-method-detail{padding:14px 15px!important}
+  .experiment-method-detail h3{font-size:22px!important;margin:12px 0 7px!important}
+  .experiment-method-detail>p{font-size:10.5px!important;line-height:1.35!important;margin-bottom:8px!important}
+  .experiment-method-io article{padding:6px 0!important}
+  .experiment-method-io p{font-size:10px!important}
+  .experiment-method-tools{padding-top:8px!important}
+  .experiment-method-footer{margin-top:9px!important}
+  .experiment-method-footer>div{padding:7px 10px!important}
+  .experiment-method-footer p{font-size:9px!important;line-height:1.25!important}
+
+  .route-experiment-main{height:282px!important}
+  .route-experiment-results{height:122px!important;margin-top:8px!important}
+  .route-experiment-controls{padding:9px!important}
+  .route-objective-grid{margin-top:5px!important}
+  .route-objective-grid button{padding:5px 4px!important;font-size:8px!important}
+  .route-condition-head,.route-time-only-head{margin-top:7px!important;padding-top:7px!important}
+  .route-condition-grid{gap:5px 9px!important;margin-top:5px!important}
+  .route-condition-grid label>span,.route-time-only-grid label>span{font-size:8px!important;margin-bottom:2px!important}
+  .route-time-only-grid{padding:6px!important;margin-top:5px!important}
+  .route-selected-heading b{font-size:11px!important}
+  .route-selected-metrics b{font-size:12px!important}
+  .route-experiment-card{padding:5px 6px!important}
+  .route-experiment-card strong{font-size:9px!important;min-height:18px!important}
+  .route-experiment-footer{margin-top:6px!important;padding-top:6px!important}
+  .route-experiment-footer p{font-size:9px!important}
+
+  .potential-capstone-slide{padding-bottom:88px!important}
+  .pc-heading-revised{margin-bottom:10px!important}
+  .pc-heading-revised h2{font-size:clamp(34px,2.9vw,48px)!important}
+  .pc-heading-revised>div:last-child p{font-size:11.5px!important;line-height:1.4!important}
+  .pc-scope-revised{min-height:58px!important}
+  .pc-endpoint,.pc-core{min-height:58px!important;padding:9px 12px!important}
+  .pc-core strong{font-size:17px!important}
+  .pc-revised-layout{margin-top:10px!important;gap:12px!important}
+  .pc-form-buttons button{padding:10px!important;min-height:88px!important}
+  .pc-form-buttons button b{font-size:13px!important;margin:12px 0 4px!important}
+  .pc-form-buttons button small{font-size:9px!important;line-height:1.25!important}
+  .pc-component-detail{padding:11px 13px!important}
+  .pc-component-detail h3{font-size:16px!important;margin:9px 0 5px!important}
+  .pc-component-detail p{font-size:9.5px!important;line-height:1.35!important}
+  .pc-boundary-revised{
+    margin-left:0!important;margin-right:0!important;
+    left:50%!important;right:auto!important;transform:translateX(-50%)!important;
+    bottom:27px!important;
+  }
+  .ra-position,.ch-conclusion{margin-left:0!important;margin-right:0!important}
+}
+@media (min-width:1101px){
+  .visual-representation-slide{aspect-ratio:16/10!important;min-height:720px!important;height:auto!important}
+  .community-heading{margin-bottom:17px!important}
+  .route-experiment-footer>div{display:none!important}
+  .route-experiment-footer{min-height:0!important}
+  .route-experiment-footer p{max-width:none!important;width:100%!important}
+  .pc-boundary-revised{
+    left:48px!important;right:48px!important;width:auto!important;max-width:none!important;
+    transform:none!important;margin-left:0!important;margin-right:0!important;
+  }
+}
