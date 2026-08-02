@@ -9,3 +9,6 @@ This version fixes the missing Slide 01 image shown in the browser screenshot.
 - The original `style.css`, `main.js`, and `images/` files are retained for editing.
 
 For GitHub Pages, upload the whole folder or upload `index.html` by itself. The external Mapbox library is still loaded online for map-based sections.
+
+
+Update: Slide 02 has been fully relaid out. The 'Motivation' section and the entire top personal-experience strip were removed, leaving a cleaner research-questions composition.

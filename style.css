@@ -1876,3 +1876,15 @@ main{padding-left:238px}
   .title-slide .title-visual{height:560px;max-width:620px;width:100%}
   .title-image-wrap img{max-height:410px}
 }
+
+
+/* Slide 02 relayout */
+.research-slide{display:grid;grid-template-rows:auto 1fr auto;gap:24px}
+.research-heading-clean{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.9fr);align-items:end;gap:28px;margin-top:8px}
+.research-heading-clean .kicker{margin-bottom:18px}
+.research-heading-clean h2{max-width:900px}
+.research-heading-clean>p{max-width:520px;font-size:17px;line-height:1.55;color:#58554d;margin:0 0 6px}
+@media(max-width:1180px){
+  .research-heading-clean{grid-template-columns:1fr;align-items:start;gap:14px}
+  .research-heading-clean>p{max-width:900px}
+}

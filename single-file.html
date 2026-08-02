@@ -1887,6 +1887,14 @@ main{padding-left:238px}
   .title-image-wrap img{max-height:410px}
 }
 
+
+/* Slide 02 relayout */
+.research-slide{display:grid;grid-template-rows:auto 1fr auto;gap:24px}
+.research-heading-clean{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.9fr);align-items:end;gap:28px;margin-top:8px}
+.research-heading-clean .kicker{margin-bottom:18px}
+.research-heading-clean h2{max-width:900px}
+.research-heading-clean>p{max-width:520px;font-size:17px;line-height:1.55;color:#58554d;margin:0 0 6px}
+@media(max-width:1180px){.research-heading-clean{grid-template-columns:1fr;align-items:start;gap:14px}.research-heading-clean>p{max-width:900px}}
 </style>
 </head>
 <body>
@@ -1928,24 +1936,15 @@ main{padding-left:238px}
   </div>
 </section>
 
-<section class="slide research-slide" id="s02" data-title="Motivation & questions">
+<section class="slide research-slide" id="s02" data-title="Research questions">
   <div class="slide-no">02</div>
-  <p class="kicker">Motivation & research questions</p>
 
-  <div class="motivation-strip" aria-label="Personal motivation">
-    <article class="motivation-card">
-      <p class="motivation-label">Personal Experience</p>
-      <p>As a Columbia student, I order food several times a week. However, deliveries are often delayed, misplaced, or disrupted by bad weather and campus security restrictions.</p>
-    </article>
-    <article class="motivation-card motivation-card-dark">
-      <p class="motivation-label">My Reflection</p>
-      <p>These experiences made me realize that food delivery is more than a matter of convenience. It relies on an invisible network of workers, digital platforms, transportation systems, and urban infrastructure.</p>
-    </article>
-  </div>
-
-  <div class="research-heading">
-    <h2>From personal experience to research questions.</h2>
-    <p>A familiar act—ordering food—becomes an entry point for examining the hidden systems behind the visible route.</p>
+  <div class="research-heading research-heading-clean">
+    <div>
+      <p class="kicker">Research questions</p>
+      <h2>From a visible route to the hidden systems behind it.</h2>
+    </div>
+    <p>The project begins with the route shown by the platform, then asks how that route is produced, how design can make its hidden relationships visible, and how visualization can remain honest about uncertainty.</p>
   </div>
 
   <div class="research-sequence" aria-label="Research question logic">
