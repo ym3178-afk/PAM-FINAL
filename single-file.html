@@ -2366,56 +2366,756 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   }
 }
 
-/* Refinement: flatter Chapter 06–09 heading bands */
+
+
+/* Chapter 09 — Visual representation embedded in the situated map */
+#s09.visual-map-slide{background:#eceae4}
+#s09 .visual-map-heading{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(580px,1.18fr);
+  gap:28px;
+  align-items:stretch;
+  margin-bottom:14px;
+}
+#s09 .visual-map-heading>div{
+  min-width:0;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+#s09 .visual-map-heading h2{
+  max-width:520px;
+  margin:0;
+  font-size:clamp(30px,2.55vw,42px);
+  line-height:1;
+}
+#s09 .visual-map-heading>p{
+  width:100%;
+  max-width:none;
+  height:100%;
+  min-height:100%;
+  margin:0;
+  padding:9px 0;
+  border-top:1px solid rgba(17,17,17,.34);
+  border-bottom:1px solid rgba(17,17,17,.34);
+  display:flex;
+  align-items:center;
+  color:#55524c;
+  font-size:12px;
+  line-height:1.34;
+}
+#s09>.visual-map-heading,#s09>.visual-map-simulator{
+  width:min(100%,1460px);
+  margin-left:auto;
+  margin-right:auto;
+}
+#s09 .visual-map-simulator{
+  height:calc(100% - 150px);
+  min-height:0;
+  margin-top:0;
+}
+#s09 .visual-map-toolbar{
+  grid-template-columns:minmax(235px,.8fr) minmax(250px,1fr) minmax(310px,1.08fr) auto;
+}
+#s09 .visual-map-principles{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+  min-width:0;
+}
+#s09 .visual-map-principles span{
+  min-width:0;
+  padding:7px 8px;
+  border:1px solid #464243;
+  background:#151314;
+}
+#s09 .visual-map-principles b{
+  display:block;
+  color:var(--accent);
+  font-size:8px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+#s09 .visual-map-principles small{
+  display:block;
+  margin-top:3px;
+  color:#8d898a;
+  font-size:7px;
+  line-height:1.25;
+}
+#s09 .legend-uncertainty{
+  height:8px!important;
+  border:1px solid rgba(255,51,72,.65);
+  background:rgba(255,51,72,.18);
+}
+#s09 .visual-evidence-strip{
+  grid-template-columns:repeat(5,1fr);
+}
+#s09 .visual-evidence-strip span:last-child{
+  border-right:0;
+  border-style:dashed;
+}
+#s09 .realistic-body{
+  grid-template-columns:minmax(0,1.2fr) minmax(480px,.8fr);
+}
+#s09 .realistic-panel{
+  padding:15px 17px 16px;
+  gap:11px;
+}
+#s09 .realistic-panel-heading b{font-size:21px}
+#s09 .realistic-panel-heading p{font-size:10px;max-width:210px}
+#s09 .realistic-route-card{min-height:62px;padding:10px}
+#s09 .realistic-controls{grid-template-columns:repeat(2,1fr)}
+#s09 .realistic-reading{display:block}
+@media (min-width:901px) and (max-width:1260px){
+  #s09 .visual-map-heading{
+    grid-template-columns:minmax(0,.78fr) minmax(500px,1.22fr);
+    gap:22px;
+  }
+  #s09 .visual-map-heading h2{font-size:32px}
+  #s09 .visual-map-heading>p{font-size:10.6px;line-height:1.28}
+  #s09 .visual-map-toolbar{grid-template-columns:1fr 1.2fr}
+  #s09 .visual-map-principles{grid-column:1/-1}
+  #s09 .realistic-actions{justify-content:flex-end}
+  #s09 .realistic-body{grid-template-columns:minmax(0,1fr) minmax(430px,.86fr)}
+}
+@media (max-width:900px){
+  #s09 .visual-map-heading{grid-template-columns:1fr;gap:13px;align-items:start}
+  #s09 .visual-map-heading>p{height:auto;min-height:0;display:block;font-size:13px;line-height:1.44}
+  #s09 .visual-map-simulator{height:auto;min-height:1050px}
+  #s09 .visual-map-principles{grid-template-columns:1fr}
+  #s09 .visual-evidence-strip{grid-template-columns:1fr}
+}
+
+
+
+/* =====================================================================
+   FINAL 1–12 editorial layout refinement — 2026-08-02
+   Consistent typography, centered composition, safer overflow, and
+   improved readability across the complete 16:10 presentation.
+   ===================================================================== */
+:root{
+  --content-max:1480px;
+  --heading-1:clamp(56px,5.2vw,92px);
+  --heading-2:clamp(34px,2.75vw,46px);
+  --body-large:14px;
+  --body:13px;
+  --body-small:11px;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  font-kerning:normal;
+  text-rendering:optimizeLegibility;
+}
+.slide h1,.slide h2,.slide h3{text-wrap:balance}
+.slide p,.slide small{text-wrap:pretty}
+.slide button,.slide select,.slide input{font-family:inherit}
+
 @media (min-width:901px){
-  #s06 .community-heading,
-  #s07 .experiment-method-heading,
-  #s08 .route-experiment-heading,
-  #s09 .vr-heading{
-    grid-template-columns:minmax(0,.82fr) minmax(610px,1.18fr)!important;
+  .slide{
+    height:max(720px,calc((100vw - var(--rail-width,260px)) * .625))!important;
+    min-height:max(720px,calc((100vw - var(--rail-width,260px)) * .625))!important;
+    max-height:max(720px,calc((100vw - var(--rail-width,260px)) * .625))!important;
+    padding:70px 54px 38px!important;
+    overflow:hidden!important;
+  }
+  .slide>.slide-no{top:52px!important;right:20px!important;font-size:10px!important}
+  .slide>:not(.slide-no){width:min(100%,var(--content-max));margin-left:auto;margin-right:auto}
+  .slide .kicker{font-size:9px!important;line-height:1.25!important;letter-spacing:.145em!important;margin-bottom:12px!important}
+}
+
+/* 01 — title */
+@media (min-width:901px){
+  #s01 .title-grid-photo{grid-template-columns:minmax(0,1.1fr) minmax(330px,.9fr);gap:48px;align-content:center}
+  #s01 .title-copy h1{font-size:var(--heading-1)!important;line-height:.9!important;letter-spacing:-.058em!important}
+  #s01 .title-copy h2{font-size:clamp(23px,2vw,34px)!important;line-height:1.05!important;letter-spacing:-.035em!important;max-width:660px!important;margin:15px 0 17px!important}
+  #s01 .title-copy .lead{font-size:clamp(14.5px,1.02vw,17px)!important;line-height:1.48!important;max-width:680px!important;color:#3e3b36!important}
+  #s01 .meta-row{margin-top:18px!important}
+  #s01 .meta-row span{font-size:10px!important;padding:7px 10px!important}
+  #s01 .title-visual-heading{padding:10px 0!important}
+  #s01 .title-visual-heading strong{font-size:13px!important}
+  #s01 .title-image-wrap{padding:16px 28px!important}
+  #s01 .title-image-wrap img{max-width:240px!important;max-height:350px!important}
+  #s01 .title-visual figcaption p{font-size:11.5px!important;line-height:1.42!important;margin-bottom:10px!important}
+}
+
+/* 02 — research questions */
+@media (min-width:901px){
+  #s02.research-slide{grid-template-rows:auto minmax(0,1fr) auto!important;gap:15px!important}
+  #s02 .research-heading-clean{grid-template-columns:minmax(0,1.16fr) minmax(390px,.84fr)!important;gap:34px!important;align-items:end!important;margin:0!important}
+  #s02 .research-heading-clean h2{font-size:clamp(34px,2.6vw,43px)!important;line-height:1.02!important;max-width:760px!important}
+  #s02 .research-heading-clean>p{font-size:13.5px!important;line-height:1.47!important;max-width:520px!important;margin:0 0 2px!important}
+  #s02 .research-sequence{min-height:0!important;height:100%!important}
+  #s02 .research-step{padding:18px 18px 20px!important}
+  #s02 .research-index{font-size:9px!important}
+  #s02 .research-stage{font-size:8.5px!important;margin:13px 0 18px!important}
+  #s02 .research-step h3{font-size:clamp(18px,1.35vw,23px)!important;line-height:1.08!important;margin-bottom:13px!important}
+  #s02 .research-step>p:last-child{font-size:12.5px!important;line-height:1.48!important}
+  #s02 .research-logic-line{margin-top:0!important;font-size:8px!important}
+}
+
+/* 03 — keywords */
+@media (min-width:901px){
+  #s03 .keyword-heading{grid-template-columns:minmax(0,1.08fr) minmax(440px,.92fr)!important;gap:34px!important;align-items:end!important;margin-bottom:16px!important}
+  #s03 .keyword-heading h2{font-size:clamp(34px,2.65vw,44px)!important;line-height:1.02!important;max-width:760px!important}
+  #s03 .keyword-heading>p{font-size:13px!important;line-height:1.45!important;max-width:none!important;margin:0 0 2px!important}
+  #s03 .keyword-experience{height:calc(100% - 137px)!important;min-height:0!important;grid-template-columns:minmax(0,1.52fr) minmax(350px,.48fr)!important}
+  #s03 .keyword-detail{padding:25px 23px 20px!important}
+  #s03 .keyword-detail-role{font-size:9px!important;margin:14px 0 20px!important}
+  #s03 .keyword-detail h3{font-size:clamp(27px,2vw,35px)!important;margin-bottom:13px!important}
+  #s03 .keyword-detail>p{font-size:12.5px!important;line-height:1.48!important}
+  #s03 .keyword-detail-tags{gap:6px!important;margin-top:14px!important}
+  #s03 .keyword-detail-tags span{font-size:7.5px!important;padding:6px 7px!important}
+  #s03 .keyword-detail-logic{padding-top:12px!important;margin-top:auto!important}
+}
+
+/* 04–09 — one consistent heading band */
+@media (min-width:901px){
+  #s04 .fields-heading,#s05 .lineage-heading,#s06 .community-heading,
+  #s07 .experiment-method-heading,#s08 .route-experiment-heading,#s09 .visual-map-heading{
+    display:grid!important;
+    grid-template-columns:minmax(0,.92fr) minmax(560px,1.08fr)!important;
     gap:30px!important;
     align-items:stretch!important;
+    margin-bottom:16px!important;
   }
-  #s06 .community-heading>div:first-child,
-  #s07 .experiment-method-heading>div:first-child,
-  #s08 .route-experiment-heading>div:first-child,
-  #s09 .vr-heading>div:first-child,
-  #s06 .community-heading>p,
-  #s07 .experiment-method-intro,
-  #s08 .route-experiment-intro,
-  #s09 .vr-heading>p{
+  #s04 .fields-heading>div,#s05 .lineage-heading>div,#s06 .community-heading>div,
+  #s07 .experiment-method-heading>div:first-child,#s08 .route-experiment-heading>div:first-child,#s09 .visual-map-heading>div{
+    min-width:0!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important
+  }
+  #s04 .fields-heading h2,#s05 .lineage-heading h2,#s06 .community-heading h2,
+  #s07 .experiment-method-heading h2,#s08 .route-experiment-heading h2,#s09 .visual-map-heading h2{
+    font-size:clamp(33px,2.55vw,43px)!important;
+    line-height:1.01!important;
+    letter-spacing:-.04em!important;
+    max-width:700px!important;
+    margin:0!important;
+  }
+  #s04 .fields-heading>p,#s05 .lineage-intro,#s06 .community-heading>p,
+  #s07 .experiment-method-intro,#s08 .route-experiment-intro,#s09 .visual-map-heading>p{
+    width:100%!important;max-width:none!important;height:100%!important;min-height:0!important;
+    margin:0!important;padding:10px 0!important;
+    border-top:1px solid rgba(17,17,17,.32)!important;border-bottom:1px solid rgba(17,17,17,.32)!important;
+    align-self:stretch!important;color:#55524c!important
+  }
+  #s04 .fields-heading>p,#s05 .lineage-intro,#s06 .community-heading>p,#s09 .visual-map-heading>p{
+    display:flex!important;align-items:center!important;font-size:13px!important;line-height:1.43!important
+  }
+  #s07 .experiment-method-intro,#s08 .route-experiment-intro{display:flex!important;flex-direction:column!important;justify-content:center!important;gap:7px!important}
+  #s07 .experiment-method-intro>p,#s08 .route-experiment-intro>p{font-size:12.5px!important;line-height:1.42!important;margin:0!important;max-width:none!important;color:#55524c!important}
+}
+
+/* 04 — intersecting fields */
+@media (min-width:901px){
+  #s04 .fields-experience{height:calc(100% - 145px)!important;min-height:0!important;grid-template-columns:minmax(0,1.48fr) minmax(365px,.52fr)!important}
+  #s04 .field-detail{padding:25px 23px 20px!important;overflow:auto!important}
+  #s04 .field-detail-role{margin:14px 0 20px!important;font-size:9px!important}
+  #s04 .field-detail h3{font-size:clamp(27px,2vw,35px)!important;margin:0 0 13px!important}
+  #s04 .field-detail>p:not(.field-detail-role){font-size:12.5px!important;line-height:1.48!important}
+  #s04 .field-contribution{margin-top:18px!important;padding:12px 0!important}
+  #s04 .field-contribution strong{font-size:12.5px!important}
+  #s04 .field-shared-question p{font-size:10.5px!important}
+}
+
+/* 05 — historical lineage */
+@media (min-width:901px){
+  #s05 .lineage-experience{height:calc(100% - 244px)!important;min-height:0!important;grid-template-columns:minmax(0,1.53fr) minmax(350px,.47fr)!important}
+  #s05 .lineage-detail{padding:22px 21px 18px!important;overflow:auto!important}
+  #s05 .lineage-detail-index{font-size:34px!important;margin-bottom:9px!important}
+  #s05 .lineage-detail h3{font-size:clamp(23px,1.75vw,30px)!important;margin:8px 0 9px!important}
+  #s05 .lineage-detail>p:not(.lineage-detail-type){font-size:11.5px!important;line-height:1.43!important}
+  #s05 .lineage-continue,#s05 .lineage-transform{margin-top:10px!important;padding-top:9px!important}
+  #s05 .lineage-reading{margin-top:10px!important;min-height:88px!important}
+  #s05 .lineage-reading article{padding:10px 13px!important}
+  #s05 .lineage-reading strong{font-size:11.5px!important}
+  #s05 .lineage-reading p{font-size:9.7px!important;line-height:1.38!important}
+}
+
+/* 06 — community of practice */
+@media (min-width:901px){
+  #s06 .community-experience{height:calc(100% - 145px)!important;min-height:0!important;grid-template-columns:minmax(0,1.48fr) minmax(365px,.52fr)!important}
+  #s06 .community-detail{padding:24px 22px 18px!important;overflow:auto!important}
+  #s06 .community-detail h3{font-size:clamp(27px,2vw,35px)!important;margin:19px 0 12px!important}
+  #s06 .community-detail>p{font-size:12.5px!important;line-height:1.48!important;margin-bottom:12px!important}
+  #s06 .community-detail-row p{font-size:10.8px!important;line-height:1.4!important}
+  #s06 .community-bottom-notes{gap:10px!important;padding-top:10px!important}
+  #s06 .community-bottom-notes b{font-size:10px!important}
+  #s06 .community-bottom-notes p{font-size:8.5px!important}
+}
+
+/* 07 — methods */
+@media (min-width:901px){
+  #s07 .fixed-case-line{padding:7px 9px!important;grid-template-columns:72px 1fr!important}
+  #s07 .fixed-case-line b{font-size:11px!important}
+  #s07 .experiment-method-body{height:calc(100% - 226px)!important;min-height:0!important;grid-template-columns:minmax(0,1.34fr) minmax(365px,.66fr)!important;gap:16px!important}
+  #s07 .experiment-method-workflow-head{padding:11px 13px!important}
+  #s07 .experiment-method-workflow-head strong{font-size:10px!important}
+  #s07 .experiment-method-step{padding:15px 15px 14px!important}
+  #s07 .experiment-method-step strong{font-size:18px!important;margin:16px 0 7px!important}
+  #s07 .experiment-method-step small{font-size:11px!important;line-height:1.38!important}
+  #s07 .experiment-method-detail{padding:17px 18px!important;overflow:auto!important}
+  #s07 .experiment-method-detail h3{font-size:clamp(22px,1.7vw,29px)!important;margin:14px 0 10px!important}
+  #s07 .experiment-method-detail>p{font-size:11.5px!important;line-height:1.43!important}
+  #s07 .experiment-method-io p{font-size:9.6px!important;line-height:1.35!important}
+  #s07 .experiment-method-footer{margin-top:10px!important;padding-top:9px!important}
+  #s07 .experiment-method-footer p{font-size:8.7px!important;line-height:1.35!important}
+}
+
+/* 08 — computational experiment */
+@media (min-width:901px){
+  #s08 .route-experiment-fixed span{font-size:10px!important;padding:6px 8px!important}
+  #s08 .route-experiment-main{
+    height:calc(100% - 304px)!important;
+    min-height:388px!important;
+    grid-template-columns:minmax(0,1.78fr) minmax(320px,.38fr)!important;
+    gap:14px!important;
+  }
+  #s08 .route-experiment-map-wrap{min-height:100%!important}
+  #s08 .route-experiment-controls{padding:12px 13px!important;overflow:auto!important}
+  #s08 .route-objective-grid button{font-size:8.4px!important;padding:7px 5px!important}
+  #s08 .route-condition-grid{gap:8px 10px!important}
+  #s08 .route-condition-grid label span,#s08 .route-time-only-grid label span{font-size:8.3px!important}
+  #s08 .route-time-only-grid{padding:8px!important}
+  #s08 .route-experiment-results{
+    margin-top:8px!important;
+    min-height:0!important;
+    height:156px!important;
+    grid-template-columns:minmax(430px,.88fr) minmax(0,1.12fr)!important;
+    gap:14px!important;
+  }
+  #s08 .route-experiment-selected{padding:10px 12px!important;gap:7px!important}
+  #s08 .route-selected-heading b{font-size:13px!important}
+  #s08 .route-selected-metrics span{font-size:7.2px!important}
+  #s08 .route-selected-metrics b{font-size:12px!important}
+  #s08 .route-experiment-candidates{padding:9px 11px!important}
+  #s08 .route-experiment-cards{gap:5px!important}
+  #s08 .route-experiment-card{padding:6px 7px!important}
+  #s08 .route-experiment-card strong{font-size:10px!important}
+  #s08 .route-experiment-card>span{font-size:8px!important}
+  #s08 .route-experiment-card small{font-size:7px!important}
+  #s08 .route-experiment-footer{margin-top:7px!important;padding-top:7px!important}
+  #s08 .route-experiment-footer p{font-size:9.2px!important;max-width:760px!important}
+}
+
+/* 09 — visual representation map */
+@media (min-width:901px){
+  #s09.visual-map-slide{padding-bottom:34px!important}
+  #s09 .visual-map-simulator{height:calc(100% - 149px)!important;min-height:0!important;overflow:hidden!important}
+  #s09 .visual-map-toolbar{grid-template-columns:minmax(230px,.8fr) minmax(240px,.88fr) minmax(330px,1.12fr) auto!important;gap:8px!important;padding:8px 9px!important}
+  #s09 .visual-map-principles span{padding:6px 7px!important}
+  #s09 .visual-map-principles small{font-size:7.2px!important}
+  #s09 .realistic-body{grid-template-columns:minmax(0,1.38fr) minmax(420px,.62fr)!important}
+  #s09 .realistic-panel{padding:13px 14px!important;gap:9px!important;overflow:auto!important}
+  #s09 .realistic-panel-heading b{font-size:18px!important}
+  #s09 .realistic-panel-heading p{font-size:8.8px!important}
+  #s09 .realistic-route-card{min-height:56px!important;padding:8px!important}
+  #s09 .rr-copy b{font-size:9.5px!important}
+  #s09 .realistic-controls{gap:6px 10px!important;padding-top:8px!important}
+  #s09 .realistic-controls label span{font-size:7.8px!important}
+  #s09 .realistic-metrics b{font-size:13px!important}
+  #s09 .realistic-reading p{font-size:8.8px!important;line-height:1.34!important}
+  #s09 .visual-evidence-strip span{padding:7px 8px!important;font-size:7px!important}
+}
+
+/* 10 — rhetorical argument */
+@media (min-width:901px){
+  #s10 .ra-heading{max-width:1180px!important;margin:0 auto!important;text-align:center!important}
+  #s10 .ra-heading h2{font-size:clamp(48px,4.3vw,72px)!important;line-height:.94!important;margin:0 0 12px!important}
+  #s10 .ra-heading>p:last-child{font-size:13px!important;line-height:1.42!important;max-width:760px!important;margin:0 auto!important}
+  #s10 .ra-contrast{max-width:1180px!important;margin-top:22px!important}
+  #s10 .ra-contrast article{min-height:178px!important;padding:20px 23px!important}
+  #s10 .ra-contrast article p{font-size:11.5px!important;line-height:1.42!important}
+  #s10 .ra-factor-area{max-width:1180px!important;margin-top:15px!important}
+  #s10 .ra-factor-readout p{font-size:11.5px!important}
+  #s10 .ra-position{left:auto!important;right:auto!important;bottom:27px!important;width:min(calc(100% - 108px),var(--content-max))!important}
+}
+
+/* 11 — potential capstone */
+@media (min-width:901px){
+  #s11 .pc-heading-revised{grid-template-columns:minmax(0,1.03fr) minmax(470px,.97fr)!important;gap:34px!important;align-items:end!important}
+  #s11 .pc-heading-revised h2{font-size:clamp(32px,2.55vw,43px)!important;line-height:1.01!important;max-width:760px!important}
+  #s11 .pc-heading-revised>div:last-child p{font-size:12.5px!important;line-height:1.44!important}
+  #s11 .pc-status{font-size:8px!important;padding:6px 8px!important;margin-bottom:9px!important}
+  #s11 .pc-scope-revised{margin-top:14px!important}
+  #s11 .pc-endpoint,#s11 .pc-core{min-height:68px!important;padding:11px 13px!important}
+  #s11 .pc-core strong{font-size:18px!important}
+  #s11 .pc-revised-layout{grid-template-columns:minmax(0,1.52fr) minmax(330px,.48fr)!important;gap:15px!important;margin-top:14px!important}
+  #s11 .pc-components-two>button{min-height:118px!important;padding:13px 14px!important}
+  #s11 .pc-components-two>button b{font-size:15px!important;margin:14px 0 6px!important}
+  #s11 .pc-components-two>button small{font-size:9.8px!important;line-height:1.38!important}
+  #s11 .pc-component-detail-wide{min-height:80px!important;grid-template-columns:190px 1fr!important;padding:11px 14px!important}
+  #s11 .pc-component-detail-wide h3{font-size:17px!important}
+  #s11 .pc-component-detail-wide p{font-size:10.8px!important}
+  #s11 .pc-context-panel{padding:14px 15px!important;gap:11px!important;min-height:0!important}
+  #s11 .pc-context-panel h3{font-size:16px!important}
+  #s11 .pc-audience-list span,#s11 .pc-question-list span{font-size:8.8px!important;padding:5px 0!important}
+  #s11 .pc-boundary-revised{margin-top:12px!important;padding-top:9px!important}
+  #s11 .pc-boundary-revised p{font-size:8.8px!important;max-width:390px!important}
+}
+
+/* 12 — challenges */
+@media (min-width:901px){
+  #s12 .ch-heading{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(500px,1fr)!important;gap:36px!important;align-items:end!important}
+  #s12 .ch-heading h2{font-size:clamp(34px,2.7vw,45px)!important;line-height:1.02!important;max-width:720px!important}
+  #s12 .ch-heading>p{font-size:13px!important;line-height:1.48!important;margin:0 0 2px!important;color:#55524c!important}
+  #s12 .ch-layout{grid-template-columns:360px minmax(0,1fr)!important;gap:17px!important;margin-top:21px!important}
+  #s12 .ch-cards button{min-height:112px!important;padding:14px!important}
+  #s12 .ch-cards b{font-size:14px!important}
+  #s12 .ch-cards small{font-size:9.5px!important;line-height:1.3!important}
+  #s12 .ch-detail{min-height:230px!important;padding:18px 21px!important}
+  #s12 .ch-detail-top b{font-size:19px!important}
+  #s12 .ch-gap-plan article p,#s12 .ch-honesty p{font-size:11.5px!important;line-height:1.43!important}
+  #s12 .ch-forward-plan{margin-top:20px!important}
+  #s12 .ch-forward-plan b{font-size:16px!important}
+  #s12 .ch-forward-plan small{font-size:10.5px!important}
+  #s12 .ch-conclusion{left:auto!important;right:auto!important;bottom:27px!important;width:min(calc(100% - 108px),var(--content-max))!important;padding:13px 16px!important}
+  #s12 .ch-conclusion p{font-size:11.5px!important;line-height:1.4!important}
+}
+
+/* Laptop-width safeguards */
+@media (min-width:901px) and (max-width:1320px){
+  .slide{padding-left:42px!important;padding-right:42px!important}
+  #s04 .fields-heading,#s05 .lineage-heading,#s06 .community-heading,
+  #s07 .experiment-method-heading,#s08 .route-experiment-heading,#s09 .visual-map-heading{
+    grid-template-columns:minmax(0,.78fr) minmax(480px,1.22fr)!important;gap:22px!important
+  }
+  #s04 .fields-heading>p,#s05 .lineage-intro,#s06 .community-heading>p,#s09 .visual-map-heading>p{font-size:11.5px!important;line-height:1.36!important}
+  #s07 .experiment-method-intro>p,#s08 .route-experiment-intro>p{font-size:10.8px!important;line-height:1.35!important}
+  #s03 .keyword-experience,#s04 .fields-experience,#s06 .community-experience{grid-template-columns:minmax(0,1.42fr) minmax(330px,.58fr)!important}
+  #s09 .realistic-body{grid-template-columns:minmax(0,1fr) minmax(410px,.82fr)!important}
+  #s11 .pc-heading-revised{grid-template-columns:minmax(0,.9fr) minmax(430px,1.1fr)!important}
+}
+
+@media (max-width:900px){
+  .slide{overflow:visible!important}
+  #s01 .title-copy .lead,#s02 .research-heading-clean>p,#s03 .keyword-heading>p,
+  #s04 .fields-heading>p,#s05 .lineage-intro,#s06 .community-heading>p,
+  #s07 .experiment-method-intro>p,#s08 .route-experiment-intro>p,#s09 .visual-map-heading>p,
+  #s11 .pc-heading-revised>div:last-child p,#s12 .ch-heading>p{font-size:13px!important;line-height:1.48!important}
+}
+
+
+
+/* Final flow fixes: keep flex-based chapters inside the 16:10 canvas */
+@media (min-width:901px){
+  #s02,#s04,#s06,#s07,#s08{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+    align-items:stretch!important;
+  }
+  #s02 .research-heading-clean,#s02 .research-logic-line,
+  #s04 .fields-heading,#s06 .community-heading,
+  #s07 .experiment-method-heading,#s07 .experiment-method-footer,
+  #s08 .route-experiment-heading,#s08 .route-experiment-results,#s08 .route-experiment-footer{
+    flex:0 0 auto!important;
+  }
+  #s02 .research-sequence,#s04 .fields-experience,#s06 .community-experience,
+  #s07 .experiment-method-body,#s08 .route-experiment-main{
+    flex:1 1 auto!important;
     height:auto!important;
     min-height:0!important;
   }
-  #s06 .community-heading h2{font-size:clamp(29px,2.25vw,38px)!important;line-height:1.01!important}
-  #s07 .experiment-method-heading h2{font-size:clamp(34px,2.85vw,46px)!important;line-height:.98!important}
-  #s08 .route-experiment-heading h2{font-size:clamp(35px,2.9vw,47px)!important;line-height:.98!important}
-  #s09 .vr-heading h2{font-size:clamp(31px,2.55vw,42px)!important;line-height:1!important}
-  #s06 .community-heading>p,
-  #s09 .vr-heading>p,
-  #s07 .experiment-method-intro>p,
-  #s08 .route-experiment-intro>p{
-    font-size:12.25px!important;
-    line-height:1.36!important;
-  }
-  #s07 .fixed-case-line{padding:8px 10px!important;grid-template-columns:78px 1fr!important}
-  #s07 .fixed-case-line b{font-size:11.5px!important}
-  #s08 .route-experiment-fixed span{font-size:10.5px!important;padding:6px 8px!important}
+  #s02{gap:15px!important}
+  #s02 .research-heading-clean{margin:0!important}
+  #s02 .research-logic-line{margin:0!important}
+  #s04 .fields-heading,#s06 .community-heading,#s07 .experiment-method-heading,#s08 .route-experiment-heading{margin-bottom:16px!important}
+  #s07 .experiment-method-footer{margin-top:10px!important}
+  #s08 .route-experiment-results{margin-top:10px!important}
+  #s08 .route-experiment-footer{margin-top:8px!important}
 }
-@media (min-width:901px) and (max-width:1260px){
-  #s06 .community-heading,
-  #s07 .experiment-method-heading,
-  #s08 .route-experiment-heading,
-  #s09 .vr-heading{
-    grid-template-columns:minmax(0,.76fr) minmax(500px,1.24fr)!important;
-    gap:22px!important;
+
+
+
+/* Final laptop fit audit */
+@media (min-width:901px){
+  #s03 .keyword-experience{height:calc(100% - 148px)!important}
+  #s05 .lineage-experience{height:calc(100% - 247px)!important}
+  #s09 .visual-map-simulator{height:calc(100% - 168px)!important}
+}
+@media (min-width:901px) and (max-width:1440px){
+  #s11 .pc-heading-revised{gap:26px!important}
+  #s11 .pc-heading-revised h2{font-size:clamp(30px,2.45vw,38px)!important}
+  #s11 .pc-heading-revised>div:last-child p{font-size:10.8px!important;line-height:1.38!important}
+  #s11 .pc-scope-revised{margin-top:10px!important;grid-template-columns:minmax(135px,.75fr) 24px minmax(260px,1.5fr) 24px minmax(150px,.75fr)!important}
+  #s11 .pc-endpoint,#s11 .pc-core{min-height:58px!important;padding:9px 11px!important}
+  #s11 .pc-endpoint b{font-size:12px!important}
+  #s11 .pc-core strong{font-size:16px!important}
+  #s11 .pc-core span{font-size:8.5px!important}
+  #s11 .pc-revised-layout{margin-top:10px!important;grid-template-columns:minmax(0,1.42fr) minmax(330px,.58fr)!important;gap:12px!important}
+  #s11 .pc-components-two>button{min-height:100px!important;padding:11px 12px!important}
+  #s11 .pc-components-two>button b{font-size:14px!important;margin:11px 0 5px!important}
+  #s11 .pc-components-two>button small{font-size:8.8px!important;line-height:1.34!important}
+  #s11 .pc-component-detail-wide{min-height:68px!important;grid-template-columns:170px 1fr!important;padding:9px 12px!important}
+  #s11 .pc-component-detail-wide h3{font-size:15px!important}
+  #s11 .pc-component-detail-wide p{font-size:9.5px!important}
+  #s11 .pc-linkage{margin-top:7px!important;padding:7px 0!important}
+  #s11 .pc-linkage b{font-size:8.8px!important}
+  #s11 .pc-context-panel{grid-template-columns:1fr 1fr!important;grid-template-rows:1fr!important;gap:10px!important;padding:12px!important;min-height:0!important}
+  #s11 .pc-context-panel section+section{border-top:0!important;border-left:1px solid #444!important;padding-top:0!important;padding-left:10px!important}
+  #s11 .pc-context-panel h3{font-size:14px!important;margin:6px 0 8px!important}
+  #s11 .pc-context-panel p{display:none!important}
+  #s11 .pc-audience-list,#s11 .pc-question-list{gap:3px!important}
+  #s11 .pc-audience-list span,#s11 .pc-question-list span{font-size:7.6px!important;line-height:1.2!important;padding:4px 0!important}
+  #s11 .pc-boundary-revised{margin-top:8px!important;padding-top:7px!important;gap:5px!important}
+  #s11 .pc-boundary-revised span{font-size:8px!important;padding:5px 7px!important}
+  #s11 .pc-boundary-revised p{font-size:7.8px!important;max-width:330px!important}
+}
+
+
+@media (min-width:901px){#s03 .keyword-experience{height:calc(100% - 152px)!important}}
+
+@media (min-width:901px){#s05 .lineage-experience{height:calc(100% - 249px)!important}}
+
+@media (min-width:901px){#s03 .keyword-experience{height:calc(100% - 153px)!important}}
+
+@media (min-width:901px){#s03 .keyword-experience{height:calc(100% - 155px)!important}}
+
+
+/* =====================================================================
+   CHAPTER 08 — CONSISTENT 16:10 CANVAS
+   Keep the same overall slide proportion as Chapters 01–12 while giving
+   the dynamic map the largest possible area inside the shared canvas.
+   ===================================================================== */
+@media (min-width:901px){
+  #s08.route-experiment-slide{
+    aspect-ratio:auto!important;
+    height:max(720px,calc((100vw - var(--rail-width,260px)) * .625))!important;
+    min-height:max(720px,calc((100vw - var(--rail-width,260px)) * .625))!important;
+    max-height:max(720px,calc((100vw - var(--rail-width,260px)) * .625))!important;
+    overflow:hidden!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1.62fr) minmax(340px,.38fr)!important;
+    grid-template-rows:auto minmax(0,1fr) 116px 118px!important;
+    column-gap:14px!important;
+    row-gap:8px!important;
+    align-content:stretch!important;
+    padding-top:70px!important;
+    padding-bottom:34px!important;
   }
-  #s06 .community-heading>p,
-  #s09 .vr-heading>p,
-  #s07 .experiment-method-intro>p,
-  #s08 .route-experiment-intro>p{
-    font-size:11.25px!important;
-    line-height:1.34!important;
+
+  #s08>.route-experiment-heading{
+    grid-column:1 / -1!important;
+    grid-row:1!important;
+    width:auto!important;
+    max-width:none!important;
+    margin:0 0 3px!important;
+  }
+
+  #s08>.route-experiment-main,
+  #s08>.route-experiment-results{
+    display:contents!important;
+    width:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+  }
+
+  #s08 .route-experiment-map-wrap{
+    grid-column:1!important;
+    grid-row:2 / 5!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    align-self:stretch!important;
+  }
+
+  #s08 .route-experiment-controls{
+    grid-column:2!important;
+    grid-row:2!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:10px 11px!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+  }
+  #s08 .route-objective-head,
+  #s08 .route-condition-head,
+  #s08 .route-time-only-head{margin-bottom:6px!important}
+  #s08 .route-objective-grid{gap:4px!important;margin-bottom:8px!important}
+  #s08 .route-objective-grid button{padding:6px 4px!important;font-size:7.8px!important}
+  #s08 .route-condition-grid{gap:6px 8px!important}
+  #s08 .route-condition-grid label span,
+  #s08 .route-time-only-grid label span{font-size:7.7px!important;line-height:1.2!important}
+  #s08 .route-time-only-grid{padding:6px!important;gap:6px!important}
+
+  #s08 .route-experiment-selected{
+    grid-column:2!important;
+    grid-row:3!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:8px 10px!important;
+    gap:5px!important;
+    overflow:hidden!important;
+  }
+  #s08 .route-selected-heading{gap:3px!important}
+  #s08 .route-selected-heading b{font-size:11.5px!important;line-height:1.1!important}
+  #s08 .route-selected-heading small{font-size:7px!important}
+  #s08 .route-selected-metrics{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:4px 6px!important;
+  }
+  #s08 .route-selected-metrics article:nth-child(4){border-left:0!important;padding-left:0!important}
+  #s08 .route-selected-metrics span{font-size:6.5px!important}
+  #s08 .route-selected-metrics b{font-size:10.5px!important}
+  #s08 .route-time-breakdown{height:6px!important}
+  #s08 .route-time-labels{font-size:6.4px!important;gap:4px!important}
+
+  #s08 .route-experiment-candidates{
+    grid-column:2!important;
+    grid-row:4!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:7px 8px!important;
+    overflow:hidden!important;
+  }
+  #s08 .route-candidates-heading{margin-bottom:5px!important}
+  #s08 .route-candidates-heading span{font-size:7.5px!important}
+  #s08 .route-candidates-heading small{display:none!important}
+  #s08 .route-experiment-cards{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:4px!important;
+    min-height:0!important;
+  }
+  #s08 .route-experiment-card{padding:5px 6px!important;gap:2px 5px!important}
+  #s08 .route-experiment-card strong{font-size:8.7px!important;line-height:1.05!important;padding-right:18px!important;min-height:18px!important}
+  #s08 .route-experiment-card>span{font-size:6.8px!important}
+  #s08 .route-experiment-card small{font-size:6px!important;line-height:1.05!important}
+  #s08 .route-experiment-card.recommended::after{font-size:5.7px!important;padding:2px 3px!important}
+
+  #s08>.route-experiment-footer{display:none!important}
+  #s08 .route-experiment-map-label{max-width:210px!important}
+  #s08 .route-experiment-map-label b{font-size:10px!important}
+  #s08 .route-experiment-legend{font-size:8.5px!important;padding:7px 8px!important;gap:9px!important}
+}
+
+@media (min-width:901px) and (max-width:1260px){
+  #s08.route-experiment-slide{
+    grid-template-columns:minmax(0,1.56fr) minmax(315px,.44fr)!important;
+    grid-template-rows:auto minmax(0,1fr) 112px 114px!important;
+    column-gap:11px!important;
+  }
+  #s08 .route-experiment-heading{margin-bottom:0!important}
+  #s08 .route-experiment-intro>p{font-size:10.4px!important;line-height:1.31!important}
+  #s08 .route-experiment-fixed span{font-size:8.8px!important;padding:5px 6px!important}
+}
+
+@media (max-width:900px){
+  #s08.route-experiment-slide{height:auto!important;max-height:none!important;overflow:visible!important}
+  #s08 .route-experiment-map-wrap{min-height:620px!important}
+}
+
+
+
+/* =====================================================================
+   CHAPTER 08 — SCROLLABLE RIGHT INFORMATION COLUMN
+   Keep the map fixed while all controls, metrics, and route cards remain
+   accessible through one independent vertical scroll area.
+   ===================================================================== */
+@media (min-width:901px){
+  #s08.route-experiment-slide{
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:auto minmax(0,1fr)!important;
+    column-gap:0!important;
+    row-gap:9px!important;
+  }
+
+  #s08>.route-experiment-heading{
+    grid-column:1!important;
+    grid-row:1!important;
+  }
+
+  #s08>.route-experiment-main{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.62fr) minmax(340px,.38fr)!important;
+    grid-template-rows:minmax(0,1fr)!important;
+    gap:14px!important;
+    grid-column:1!important;
+    grid-row:2!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    margin:0!important;
+    overflow:hidden!important;
+  }
+
+  #s08 .route-experiment-map-wrap{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+  }
+
+  #s08 .route-experiment-sidebar{
+    grid-column:2!important;
+    grid-row:1!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:9px!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    max-height:100%!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+    scrollbar-gutter:stable!important;
+    padding:0 5px 10px 0!important;
+    scroll-behavior:smooth;
+    scrollbar-width:thin;
+    scrollbar-color:#7b776f #dedad1;
+  }
+  #s08 .route-experiment-sidebar::-webkit-scrollbar{width:8px}
+  #s08 .route-experiment-sidebar::-webkit-scrollbar-track{background:#dedad1}
+  #s08 .route-experiment-sidebar::-webkit-scrollbar-thumb{background:#7b776f;border:2px solid #dedad1;border-radius:999px}
+  #s08 .route-experiment-sidebar::-webkit-scrollbar-thumb:hover{background:#4d4a45}
+
+  #s08 .route-experiment-controls,
+  #s08 .route-experiment-selected,
+  #s08 .route-experiment-candidates{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    flex:0 0 auto!important;
+    overflow:visible!important;
+  }
+
+  #s08 .route-experiment-controls{padding:12px 13px!important}
+  #s08 .route-objective-grid button{font-size:8.4px!important;padding:7px 5px!important}
+  #s08 .route-condition-grid label span,
+  #s08 .route-time-only-grid label span{font-size:8.2px!important}
+
+  #s08 .route-experiment-selected{padding:10px 11px!important;gap:7px!important}
+  #s08 .route-selected-heading b{font-size:12.5px!important}
+  #s08 .route-selected-heading small{font-size:7.5px!important}
+  #s08 .route-selected-metrics span{font-size:7px!important}
+  #s08 .route-selected-metrics b{font-size:11.5px!important}
+
+  #s08 .route-experiment-candidates{padding:9px 10px 10px!important}
+  #s08 .route-candidates-heading small{display:block!important;font-size:7px!important}
+  #s08 .route-experiment-cards{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    min-height:118px!important;
+    gap:5px!important;
+  }
+  #s08 .route-experiment-card{padding:6px 7px!important}
+  #s08 .route-experiment-card strong{font-size:9.2px!important;min-height:20px!important}
+  #s08 .route-experiment-card>span{font-size:7.2px!important}
+  #s08 .route-experiment-card small{font-size:6.4px!important}
+}
+
+@media (max-width:900px){
+  #s08 .route-experiment-sidebar{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:12px!important;
+    overflow:visible!important;
+    min-height:0!important;
   }
 }
 
@@ -2429,7 +3129,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <nav id="nav"></nav>
   <div class="rail-footer">
     <span>Research foundations</span>
-    <b>13 sections · 16:10</b>
+    <b>12 sections · 16:10</b>
   </div>
 </aside>
 <main>
@@ -2440,7 +3140,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
       <p class="kicker">01 · Title — Why I research this problem</p>
       <h1>Behind the Route</h1>
       <h2>Making the invisible networks of urban food delivery perceptible</h2>
-      <p class="lead">As a Columbia University student, I often order food delivery. The app shows one route and one estimated arrival time, but the real journey is shaped by traffic, weather, restaurant waiting, rider decisions, and campus access. This mismatch between a clean interface and a complicated delivery experience is the starting point of my project. This mismatch between a clean interface and a complicated journey is the starting point of the project.</p>
+      <p class="lead">As a Columbia University student, I often order food delivery. The app shows one route and one estimated arrival time, but the real journey is shaped by traffic, weather, restaurant waiting, rider decisions, and campus access. This mismatch between a clean interface and a complicated delivery experience is the starting point of my project.</p>
       <div class="meta-row"><span>Urban food delivery</span><span>Critical visualization</span><span>Platform labor</span></div>
     </div>
 
@@ -2844,7 +3544,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
   <header class="route-experiment-heading">
     <div>
       <p class="kicker">08 · Computational experiment — The beginning of the simulator</p>
-      <h2>One journey,<br>multiple route logics.</h2>
+      <h2>One journey, multiple route logics and hidden infrastructures.</h2>
     </div>
     <div class="route-experiment-intro">
       <p>This method becomes a computational experiment called <em>One Journey, Multiple Route Logics</em>. The origin and destination remain the same, but the route changes depending on how the journey is evaluated. One route may be the shortest; another may be faster during traffic; another may use more bicycle lanes; and another may avoid difficult intersections, steep slopes, or restricted entrances. The experiment does not try to identify one universally correct route. Instead, it demonstrates that different priorities and conditions can produce different routes within the same journey. This is the beginning of the simulator.</p>
@@ -2874,55 +3574,55 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
       </div>
     </section>
 
-    <aside class="route-experiment-controls">
-      <div class="route-objective-head"><span>Route objective</span><b id="experimentObjectiveLabel">Balanced</b></div>
-      <div class="route-objective-grid" role="tablist" aria-label="Route calculation objectives">
-        <button class="active" type="button" data-experiment-objective="balanced">Balanced</button>
-        <button type="button" data-experiment-objective="shortest">Shortest</button>
-        <button type="button" data-experiment-objective="fastest">Fastest</button>
-        <button type="button" data-experiment-objective="bike">Bike priority</button>
-        <button type="button" data-experiment-objective="slope">Low slope</button>
-        <button type="button" data-experiment-objective="risk">Lower risk</button>
-      </div>
+    <div class="route-experiment-sidebar" tabindex="0" aria-label="Route controls, selected route metrics, and candidate routes. Scroll vertically to view all content.">
+      <aside class="route-experiment-controls">
+        <div class="route-objective-head"><span>Route objective</span><b id="experimentObjectiveLabel">Balanced</b></div>
+        <div class="route-objective-grid" role="tablist" aria-label="Route calculation objectives">
+          <button class="active" type="button" data-experiment-objective="balanced">Balanced</button>
+          <button type="button" data-experiment-objective="shortest">Shortest</button>
+          <button type="button" data-experiment-objective="fastest">Fastest</button>
+          <button type="button" data-experiment-objective="bike">Bike priority</button>
+          <button type="button" data-experiment-objective="slope">Low slope</button>
+          <button type="button" data-experiment-objective="risk">Lower risk</button>
+        </div>
+  
+        <div class="route-condition-head"><span>Situated conditions</span><small>These can change route ranking</small></div>
+        <div class="route-condition-grid">
+          <label><span>Traffic <b id="experimentTrafficValue">45%</b></span><input id="experimentTraffic" type="range" min="0" max="100" value="45"></label>
+          <label><span>Weather exposure <b id="experimentWeatherValue">25%</b></span><input id="experimentWeather" type="range" min="0" max="100" value="25"></label>
+          <label><span>Slope sensitivity <b id="experimentSlopeValue">45%</b></span><input id="experimentSlope" type="range" min="0" max="100" value="45"></label>
+          <label><span>Bike-lane priority <b id="experimentBikeValue">60%</b></span><input id="experimentBike" type="range" min="0" max="100" value="60"></label>
+          <label><span>Risk sensitivity <b id="experimentRiskValue">50%</b></span><input id="experimentRisk" type="range" min="0" max="100" value="50"></label>
+          <label><span>Road restriction</span><select id="experimentClosure"><option value="none">None</option><option value="broadway">Broadway corridor</option><option value="amsterdam">Amsterdam corridor</option><option value="morningside">Morningside corridor</option></select></label>
+        </div>
+  
+        <div class="route-time-only-head"><span>Time-only variables</span><small>Do not alter route geometry</small></div>
+        <div class="route-time-only-grid">
+          <label><span>Restaurant wait <b id="experimentWaitValue">8 min</b></span><input id="experimentWait" type="range" min="0" max="20" value="8"></label>
+          <label><span>Campus handoff <b id="experimentHandoffValue">4 min</b></span><input id="experimentHandoff" type="range" min="0" max="15" value="4"></label>
+        </div>
+      </aside>
 
-      <div class="route-condition-head"><span>Situated conditions</span><small>These can change route ranking</small></div>
-      <div class="route-condition-grid">
-        <label><span>Traffic <b id="experimentTrafficValue">45%</b></span><input id="experimentTraffic" type="range" min="0" max="100" value="45"></label>
-        <label><span>Weather exposure <b id="experimentWeatherValue">25%</b></span><input id="experimentWeather" type="range" min="0" max="100" value="25"></label>
-        <label><span>Slope sensitivity <b id="experimentSlopeValue">45%</b></span><input id="experimentSlope" type="range" min="0" max="100" value="45"></label>
-        <label><span>Bike-lane priority <b id="experimentBikeValue">60%</b></span><input id="experimentBike" type="range" min="0" max="100" value="60"></label>
-        <label><span>Risk sensitivity <b id="experimentRiskValue">50%</b></span><input id="experimentRisk" type="range" min="0" max="100" value="50"></label>
-        <label><span>Road restriction</span><select id="experimentClosure"><option value="none">None</option><option value="broadway">Broadway corridor</option><option value="amsterdam">Amsterdam corridor</option><option value="morningside">Morningside corridor</option></select></label>
-      </div>
+          <div class="route-experiment-selected" aria-live="polite">
+            <div class="route-selected-heading"><span>Selected route</span><b id="experimentSelectedName">Waiting for routes</b><small id="experimentRouteLogic">—</small></div>
+            <div class="route-selected-metrics">
+              <article><span>Distance</span><b id="experimentDistance">—</b></article>
+              <article><span>Moving time</span><b id="experimentMoveTime">—</b></article>
+              <article><span>Bike support</span><b id="experimentBikeCoverage">—</b></article>
+              <article><span>Slope effort</span><b id="experimentSlopeCost">—</b></article>
+              <article><span>Risk exposure</span><b id="experimentRiskMetric">—</b></article>
+              <article class="total"><span>Total delivery</span><b id="experimentTotalTime">—</b></article>
+            </div>
+            <div class="route-time-breakdown" aria-label="Delivery time breakdown">
+              <i id="experimentMovingSegment"></i><i id="experimentWaitSegment"></i><i id="experimentHandoffSegment"></i>
+            </div>
+            <div class="route-time-labels"><span>Moving <b id="experimentMovingLabel">—</b></span><span>Restaurant wait <b id="experimentWaitLabel">—</b></span><span>Campus handoff <b id="experimentHandoffLabel">—</b></span></div>
+          </div>
 
-      <div class="route-time-only-head"><span>Time-only variables</span><small>Do not alter route geometry</small></div>
-      <div class="route-time-only-grid">
-        <label><span>Restaurant wait <b id="experimentWaitValue">8 min</b></span><input id="experimentWait" type="range" min="0" max="20" value="8"></label>
-        <label><span>Campus handoff <b id="experimentHandoffValue">4 min</b></span><input id="experimentHandoff" type="range" min="0" max="15" value="4"></label>
-      </div>
-    </aside>
-  </div>
-
-  <div class="route-experiment-results">
-    <div class="route-experiment-selected" aria-live="polite">
-      <div class="route-selected-heading"><span>Selected route</span><b id="experimentSelectedName">Waiting for routes</b><small id="experimentRouteLogic">—</small></div>
-      <div class="route-selected-metrics">
-        <article><span>Distance</span><b id="experimentDistance">—</b></article>
-        <article><span>Moving time</span><b id="experimentMoveTime">—</b></article>
-        <article><span>Bike support</span><b id="experimentBikeCoverage">—</b></article>
-        <article><span>Slope effort</span><b id="experimentSlopeCost">—</b></article>
-        <article><span>Risk exposure</span><b id="experimentRiskMetric">—</b></article>
-        <article class="total"><span>Total delivery</span><b id="experimentTotalTime">—</b></article>
-      </div>
-      <div class="route-time-breakdown" aria-label="Delivery time breakdown">
-        <i id="experimentMovingSegment"></i><i id="experimentWaitSegment"></i><i id="experimentHandoffSegment"></i>
-      </div>
-      <div class="route-time-labels"><span>Moving <b id="experimentMovingLabel">—</b></span><span>Restaurant wait <b id="experimentWaitLabel">—</b></span><span>Campus handoff <b id="experimentHandoffLabel">—</b></span></div>
-    </div>
-
-    <div class="route-experiment-candidates">
-      <div class="route-candidates-heading"><span>Street-following candidates</span><small>Click a card or route to inspect it</small></div>
-      <div id="routeExperimentCards" class="route-experiment-cards"></div>
+          <div class="route-experiment-candidates">
+            <div class="route-candidates-heading"><span>Street-following candidates</span><small>Click a card or route to inspect it</small></div>
+            <div id="routeExperimentCards" class="route-experiment-cards"></div>
+          </div>
     </div>
   </div>
 
@@ -2933,82 +3633,119 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-se
 </section>
 
 
-<section class="slide visual-representation-slide" id="s09" data-title="Visual representation">
+<section class="slide simulator-slide visual-map-slide" id="s09" data-title="Visual representation">
   <div class="slide-no">09</div>
-  <header class="vr-heading">
+
+  <header class="visual-map-heading">
     <div>
       <p class="kicker">09 · Visual representation — Layer, compare, and disclose</p>
-      <h2>Show the differences—and show how the evidence was produced.</h2>
+      <h2>Visual representation through a situated route map.</h2>
     </div>
-    <p>To make these differences understandable, the visual strategy follows three principles: layer, compare, and disclose. The routes are placed together so that the viewer can compare their shapes, travel times, and hidden costs. Different visual styles distinguish verified information from modeled information: solid lines represent known street data, dashed lines represent modeled routes, and transparent areas show uncertainty. Missing information is not hidden; it is clearly identified.</p>
+    <p>To make these differences understandable, the visual strategy follows three principles: layer, compare, and disclose. The routes are placed together so that the viewer can compare their shapes, travel times, and hidden costs. Different visual styles distinguish verified information from modeled information. Solid lines can represent known street data. Dashed lines can represent modeled routes. Transparent areas can show uncertainty. Missing information is not hidden. It is clearly identified. The purpose is not only to show the result, but also to explain how the result was produced.</p>
   </header>
 
-  <div class="vr-layout">
-    <aside class="vr-modes" aria-label="Visual representation principles">
-      <p class="vr-label">Visual principles</p>
-      <button class="active" type="button" data-visual-mode="layer"><span>01</span><b>Layer</b><small>Open the systems behind the line</small></button>
-      <button type="button" data-visual-mode="compare"><span>02</span><b>Compare</b><small>Keep origin, destination, and scale fixed</small></button>
-      <button type="button" data-visual-mode="disclose"><span>03</span><b>Disclose</b><small>Make evidence and uncertainty visible</small></button>
-      <div class="vr-community">
-        <span>Situated within</span>
-        <p>Critical cartography · Investigative spatial practice · Data Feminism · Computational design</p>
-      </div>
-    </aside>
+  <div class="realistic-simulator visual-map-simulator">
+    <div class="realistic-toolbar visual-map-toolbar">
+      <label class="case-picker" for="realisticCase">
+        <span>Situated delivery case</span>
+        <select id="realisticCase">
+          <option value="broadway-west-harlem">Broadway restaurant → West Harlem apartment</option>
+          <option value="amsterdam-columbia">Amsterdam restaurant → Columbia residence</option>
+          <option value="125-morningside">125th Street restaurant → Morningside building</option>
+        </select>
+      </label>
 
-    <figure class="vr-stage mode-layer" id="visualRepresentationStage" aria-labelledby="visualRepresentationTitle">
-      <div class="vr-stage-head">
-        <div><span>Representational study</span><b id="visualRepresentationTitle">Layer the route</b></div>
-        <small>Abstract visual grammar — not a geographic map</small>
+      <div class="realistic-time-control">
+        <button id="realisticPlay" type="button">Play</button>
+        <label for="realisticTime">Time <strong id="realisticTimeOutput">12:00 PM</strong></label>
+        <input id="realisticTime" type="range" min="0" max="23" step="1" value="12" />
       </div>
-      <svg viewBox="0 0 760 430" role="img" aria-label="Abstract study showing multiple route lines, friction points, evidence labels, and uncertainty">
-        <g class="vr-grid-lines">
-          <path d="M64 78H696M64 150H696M64 222H696M64 294H696M64 366H696"/>
-          <path d="M116 42V392M232 42V392M348 42V392M464 42V392M580 42V392M696 42V392"/>
-        </g>
-        <g class="vr-context">
-          <rect x="302" y="148" width="190" height="144" rx="8"/>
-          <text x="397" y="218">Campus boundary</text>
-          <path d="M580 78L696 78L696 150L580 150Z"/>
-          <text x="638" y="118">Slope</text>
-        </g>
-        <path class="vr-route vr-route-platform" d="M88 350L116 350L116 294L232 294L232 222L348 222L348 150L464 150L464 78L696 78"/>
-        <path class="vr-route vr-route-observed" d="M88 350L116 350L116 294L232 294L232 366L464 366L464 294L580 294L580 222L696 222L696 78"/>
-        <path class="vr-route vr-route-modeled" d="M88 350L116 350L116 222L232 222L232 150L348 150L348 78L580 78L580 150L696 150L696 78"/>
-        <path class="vr-uncertainty" d="M88 350C210 250 278 336 378 242S572 116 696 78"/>
-        <g class="vr-friction-points">
-          <circle cx="232" cy="294" r="8"/><text x="244" y="290">signal wait</text>
-          <circle cx="464" cy="294" r="8"/><text x="476" y="290">access friction</text>
-          <circle cx="580" cy="150" r="8"/><text x="592" y="146">slope effort</text>
-        </g>
-        <g class="vr-evidence-tags">
-          <g transform="translate(154 92)"><rect width="96" height="30" rx="15"/><text x="48" y="20">PUBLIC</text></g>
-          <g transform="translate(356 322)"><rect width="108" height="30" rx="15"/><text x="54" y="20">OBSERVED</text></g>
-          <g transform="translate(512 246)"><rect width="104" height="30" rx="15"/><text x="52" y="20">MODELED</text></g>
-          <g transform="translate(596 342)"><rect width="96" height="30" rx="15"/><text x="48" y="20">MISSING</text></g>
-        </g>
-        <g class="vr-endpoints">
-          <circle cx="88" cy="350" r="11"/><text x="88" y="382">Restaurant</text>
-          <circle cx="696" cy="78" r="11"/><text x="696" y="52">Campus handoff</text>
-        </g>
-      </svg>
-      <figcaption id="visualRepresentationCaption">Begin with the familiar route line, then open spatial conditions, labor friction, and the wider digital system behind it.</figcaption>
-    </figure>
 
-    <aside class="vr-grammar">
-      <p class="vr-label">Visual grammar</p>
-      <div class="vr-legend-list">
-        <div><i class="solid"></i><span><b>Solid line</b><small>Known or verified street information</small></span></div>
-        <div><i class="dash"></i><span><b>Dashed line</b><small>Modeled route or calculated alternative</small></span></div>
-        <div><i class="dot"></i><span><b>Dotted relation</b><small>Inference or unresolved connection</small></span></div>
-        <div><i class="band"></i><span><b>Translucent band</b><small>Uncertainty, variation, or time range</small></span></div>
-        <div><i class="break"></i><span><b>Break / absence</b><small>Missing information that is not hidden</small></span></div>
+      <div class="visual-map-principles" aria-label="Visual representation principles">
+        <span><b>Layer</b><small>Network · routes · access · time</small></span>
+        <span><b>Compare</b><small>Same endpoints · same scale</small></span>
+        <span><b>Disclose</b><small>Evidence · uncertainty · absence</small></span>
       </div>
-      <div class="vr-sensory-note">
-        <span>Sensory aim</span>
-        <p>Make viewers feel the route splitting, waiting accumulating, and certainty weakening.</p>
+
+      <div class="realistic-actions">
+        <button id="realisticReset" type="button">Reset conditions</button>
+        <button id="realisticRecalculate" type="button">Recalculate routes</button>
       </div>
-      <div class="vr-media"><span>Screen</span><b>Map · timeline · interface</b><span>Material</span><b>Transparent layers · copper tape · LEDs</b></div>
-    </aside>
+    </div>
+
+    <div class="realistic-body">
+      <div class="realistic-map-column">
+        <div class="realistic-map-wrap">
+          <div id="realisticMap"></div>
+          <div id="realisticFallback" class="realistic-fallback">
+            <strong>Loading situated route layers…</strong>
+            <span>The visualization uses Mapbox street geometry. If routing is unavailable, invented street lines are not substituted.</span>
+          </div>
+          <div class="realistic-map-status" id="realisticMapStatus" aria-live="polite">Requesting comparable route alternatives…</div>
+          <div class="realistic-map-help">Drag the R, C, and E markers to test another restaurant, customer, or entrance.</div>
+          <div class="realistic-legend">
+            <span><i class="legend-platform"></i>Network-generated route</span>
+            <span><i class="legend-alternative"></i>Modeled alternatives</span>
+            <span><i class="legend-uncertainty"></i>Uncertainty band</span>
+            <span><i class="legend-selected"></i>Selected comparison</span>
+          </div>
+        </div>
+
+        <div class="realistic-provenance visual-evidence-strip">
+          <span><b>Public</b>Street geometry · Mapbox</span>
+          <span><b>Modeled</b>Routes + friction factors</span>
+          <span><b>Controlled</b>Traffic · weather · access</span>
+          <span><b>Uncertainty</b>Estimated time range</span>
+          <span><b>Missing</b>Internal platform data</span>
+        </div>
+      </div>
+
+      <aside class="realistic-panel">
+        <div class="realistic-panel-heading">
+          <div><span>Comparable route views</span><b id="realisticRouteCount">0 routes</b></div>
+          <p>Select a route card or click a line on the map.</p>
+        </div>
+
+        <div id="realisticRouteCards" class="realistic-route-cards" aria-live="polite"></div>
+
+        <div class="realistic-controls" aria-label="Adjust situated delivery conditions">
+          <label><span>Traffic <b id="realisticTrafficValue">55%</b></span><input id="realisticTraffic" type="range" min="0" max="100" value="55" /></label>
+          <label><span>Restaurant wait <b id="realisticWaitValue">9 min</b></span><input id="realisticWait" type="range" min="0" max="20" value="9" /></label>
+          <label><span>Access restriction <b id="realisticAccessValue">55%</b></span><input id="realisticAccess" type="range" min="0" max="100" value="55" /></label>
+          <label><span>Entrance delay <b id="realisticEntranceValue">5 min</b></span><input id="realisticEntrance" type="range" min="0" max="15" value="5" /></label>
+          <label><span>Weather exposure <b id="realisticWeatherValue">30%</b></span><input id="realisticWeather" type="range" min="0" max="100" value="30" /></label>
+          <label><span>Bike-lane availability <b id="realisticBikeValue">70%</b></span><input id="realisticBike" type="range" min="0" max="100" value="70" /></label>
+        </div>
+
+        <div class="realistic-metrics" aria-live="polite">
+          <article><span>Simplified platform ETA</span><b id="realisticPlatformEta">—</b></article>
+          <article class="metric-emphasis"><span>Modeled rider time</span><b id="realisticActualTime">—</b></article>
+          <article><span>Hidden time</span><b id="realisticHiddenTime">—</b></article>
+          <article><span>Uncertainty range</span><b id="realisticRange">—</b></article>
+        </div>
+
+        <div class="realistic-breakdown">
+          <div class="realistic-breakdown-head"><span>Selected route</span><b id="realisticSelectedName">Waiting for routes</b></div>
+          <div class="realistic-breakdown-bar" aria-hidden="true">
+            <i id="realisticBaseSegment" class="rb-base"></i>
+            <i id="realisticConditionSegment" class="rb-condition"></i>
+            <i id="realisticWaitSegment" class="rb-wait"></i>
+            <i id="realisticAccessSegment" class="rb-access"></i>
+          </div>
+          <div class="realistic-breakdown-list">
+            <span>Network travel <b id="realisticBaseTime">—</b></span>
+            <span>Street + weather friction <b id="realisticConditionTime">—</b></span>
+            <span>Restaurant waiting <b id="realisticWaitTime">—</b></span>
+            <span>Access + entrance <b id="realisticAccessTime">—</b></span>
+          </div>
+        </div>
+
+        <div class="realistic-reading">
+          <span>Representational reading</span>
+          <p id="realisticExplanation">The map keeps origin, destination, and scale fixed while route alternatives, hidden time, uncertainty, and unavailable platform evidence remain visible.</p>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -3442,6 +4179,7 @@ function realisticUpdateMapRoutes(fit=false){
   const selected=realisticState.routes.find(route=>route.id===realisticState.selectedId);
   if(selected){
     realisticState.map.setFilter('realistic-selected',['==',['get','routeId'],selected.id]);
+    if(realisticState.map.getLayer('realistic-uncertainty'))realisticState.map.setFilter('realistic-uncertainty',['==',['get','routeId'],selected.id]);
   }
   if(fit&&realisticState.routes.length){
     const bounds=new mapboxgl.LngLatBounds();realisticState.routes.forEach(route=>route.coordinates.forEach(coord=>bounds.extend(coord)));
@@ -3466,6 +4204,7 @@ function realisticInitMap(){
   realisticState.map.on('load',()=>{
     realisticState.mapReady=true;
     realisticState.map.addSource('realistic-routes',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
+    realisticState.map.addLayer({id:'realistic-uncertainty',type:'line',source:'realistic-routes',filter:['==',['get','routeId'],'__none__'],paint:{'line-color':'#ff3348','line-width':20,'line-opacity':.13,'line-blur':4}});
     realisticState.map.addLayer({id:'realistic-alternatives',type:'line',source:'realistic-routes',filter:['!=',['get','role'],'platform'],paint:{'line-color':'#7b7b7b','line-width':4,'line-opacity':.5}});
     realisticState.map.addLayer({id:'realistic-platform',type:'line',source:'realistic-routes',filter:['==',['get','role'],'platform'],paint:{'line-color':'#ffffff','line-width':5,'line-opacity':.84,'line-dasharray':[2,2]}});
     realisticState.map.addLayer({id:'realistic-selected',type:'line',source:'realistic-routes',filter:['==',['get','routeId'],'__none__'],paint:{'line-color':'#ff3348','line-width':7,'line-opacity':.96}});

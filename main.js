@@ -261,6 +261,7 @@ function realisticUpdateMapRoutes(fit=false){
   const selected=realisticState.routes.find(route=>route.id===realisticState.selectedId);
   if(selected){
     realisticState.map.setFilter('realistic-selected',['==',['get','routeId'],selected.id]);
+    if(realisticState.map.getLayer('realistic-uncertainty'))realisticState.map.setFilter('realistic-uncertainty',['==',['get','routeId'],selected.id]);
   }
   if(fit&&realisticState.routes.length){
     const bounds=new mapboxgl.LngLatBounds();realisticState.routes.forEach(route=>route.coordinates.forEach(coord=>bounds.extend(coord)));
@@ -285,6 +286,7 @@ function realisticInitMap(){
   realisticState.map.on('load',()=>{
     realisticState.mapReady=true;
     realisticState.map.addSource('realistic-routes',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
+    realisticState.map.addLayer({id:'realistic-uncertainty',type:'line',source:'realistic-routes',filter:['==',['get','routeId'],'__none__'],paint:{'line-color':'#ff3348','line-width':20,'line-opacity':.13,'line-blur':4}});
     realisticState.map.addLayer({id:'realistic-alternatives',type:'line',source:'realistic-routes',filter:['!=',['get','role'],'platform'],paint:{'line-color':'#7b7b7b','line-width':4,'line-opacity':.5}});
     realisticState.map.addLayer({id:'realistic-platform',type:'line',source:'realistic-routes',filter:['==',['get','role'],'platform'],paint:{'line-color':'#ffffff','line-width':5,'line-opacity':.84,'line-dasharray':[2,2]}});
     realisticState.map.addLayer({id:'realistic-selected',type:'line',source:'realistic-routes',filter:['==',['get','routeId'],'__none__'],paint:{'line-color':'#ff3348','line-width':7,'line-opacity':.96}});
