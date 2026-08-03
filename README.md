@@ -41,3 +41,9 @@ Latest text update: Chapter 09 visual-representation introduction has been short
 
 
 Latest text update: Chapter 11 capstone statement was shortened while preserving the fixed-ratio presentation and interactive layout.
+
+Latest text update: Chapter 07 now begins with ‘After defining the research context,’ while preserving the fixed-ratio layout.
+
+Latest text update: Chapter 04 now begins with ‘To study this system,’ while preserving the fixed-ratio layout.
+
+Latest text update: Chapter 12 summarizes the four project challenges in one concise sentence.
