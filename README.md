@@ -23,3 +23,21 @@ Latest refinement: Chapters 10–12 use true vertical centering while preserving
 
 
 Latest adjustment: Chapter 08 map and scrollable information sidebar now share one exact-height grid track, with locked bottom-edge alignment.
+
+Latest text update: Chapter 04 introductory paragraph was replaced with the condensed movement–power–representation version.
+
+
+Latest update: Chapter 06 community-of-practice summary was replaced with the concise revised text.
+
+
+Latest update: Chapter 01 introduction text was revised to emphasize delayed and cold deliveries and the gap between interface simplicity and delivery complexity.
+
+Latest text update: Chapter 07 methods introduction was condensed while preserving the fixed-ratio layout.
+
+Latest text update: Chapter 08 computational-experiment summary was condensed while preserving the fixed-ratio simulator layout.
+
+
+Latest text update: Chapter 09 visual-representation introduction has been shortened to focus on layer, compare, and disclose.
+
+
+Latest text update: Chapter 11 capstone statement was shortened while preserving the fixed-ratio presentation and interactive layout.
