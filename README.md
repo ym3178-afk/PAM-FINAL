@@ -47,3 +47,32 @@ Latest text update: Chapter 07 now begins with ‘After defining the research co
 Latest text update: Chapter 04 now begins with ‘To study this system,’ while preserving the fixed-ratio layout.
 
 Latest text update: Chapter 12 summarizes the four project challenges in one concise sentence.
+
+
+Update made on request:
+- Chapter 06 (Forensic Architecture): added two precedent images below the right-side detail panel.
+- Images switch on when the Forensic Architecture node is active.
+
+
+Update: Chapter 06 adjusted so the forensic precedent images are larger, the right-side panel contains less text, and the visuals are more prominent.
+
+
+Update: Added three reference images to the Data Feminism item in Chapter 06. Open index.html or presentation.html to view the updated right-hand panel.
+
+
+Update: Added an image-dominant Fairwork panel in Chapter 06. The Fairwork image is shown uncropped with reduced text and enlarged image display.
+
+
+Update: Chapter 06 Los Deliveristas Unidos panel is now image-dominant. Two uncropped reference images are displayed larger, with reduced supporting text.
+
+
+Update: Chapter 06 NYC DCWP panel is now image-dominant with two uncropped reference images and reduced supporting text.
+
+
+Update: Chapter 06 Delivery Platforms panel is now image-dominant with two uncropped reference images and reduced supporting text.
+
+
+Update: Chapter 05 Historical Lineage now uses recognizable platform wordmarks for the digital-platform and algorithmic-dispatch stages, and replaces the previous reading strip with visual book-cover cards for Trebor Scholz’s Uberworked and Underpaid and Nick Srnicek’s Platform Capitalism.
+
+
+Update: Chapter 09 (Visual representation) has been removed. All remaining chapters retain their existing content, numbering, and layout.

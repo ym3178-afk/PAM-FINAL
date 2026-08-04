@@ -596,13 +596,13 @@ main{padding-left:238px}
 .community-node span{display:block;margin-bottom:7px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;color:#666}.community-node strong{display:block;color:#fff;font-size:14px;line-height:1.08}.community-node small{display:block;margin-top:6px;color:#747474;font-size:8px;text-transform:uppercase;letter-spacing:.07em;line-height:1.25}
 .community-node:hover,.community-node:focus-visible,.community-node.active{transform:translateY(-4px);border-color:var(--accent);background:#1c1c1c;color:#fff}.community-node.active span{color:var(--accent)}
 .node-forensic{left:5%;top:7%}.node-data{right:5%;top:7%}.node-fairwork{right:2.5%;top:50%;transform:translateY(-50%)}.node-fairwork:hover,.node-fairwork:focus-visible,.node-fairwork.active{transform:translateY(calc(-50% - 4px))}.node-ldu{right:5%;bottom:7%}.node-policy{left:5%;bottom:7%}.node-platforms{left:2.5%;top:50%;transform:translateY(-50%)}.node-platforms:hover,.node-platforms:focus-visible,.node-platforms.active{transform:translateY(calc(-50% - 4px))}
-.community-detail{position:relative;padding:26px 25px 22px;background:#f2efe8;color:#111;display:flex;flex-direction:column;overflow:hidden}
+.community-detail{position:relative;padding:26px 25px 22px;background:#f2efe8;color:#111;display:flex;flex-direction:column;overflow:auto;scrollbar-width:thin}
 .community-detail::after{content:"";position:absolute;right:-70px;top:-70px;width:205px;height:205px;border:1px solid rgba(220,48,51,.22);border-radius:50%;animation:communityDetailOrbit 11s linear infinite;pointer-events:none}
 .community-detail-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}.community-detail-top span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent);font-size:11px}.community-detail-top em{font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#777}
 .community-detail h3{position:relative;z-index:1;font-size:clamp(28px,2.5vw,44px);line-height:.98;letter-spacing:-.04em;margin:25px 0 14px;max-width:360px;overflow-wrap:anywhere}.community-detail>p{position:relative;z-index:1;font-size:13px;line-height:1.5;color:#555;margin:0 0 14px;max-width:390px}
 .community-detail-row{position:relative;z-index:1;border-top:1px solid #cdc7bd;padding:11px 0 9px}.community-detail-row b{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#777;margin-bottom:5px}.community-detail-row p{font-size:11px;line-height:1.42;color:#555;margin:0}.community-detail-row.accent-row{border-left:3px solid var(--accent);padding-left:10px}
 .community-tags{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}.community-tags span{padding:6px 8px;border:1px solid #c8c2b8;background:#eae5dc;font-size:8px;text-transform:uppercase;letter-spacing:.06em}
-.community-bottom-notes{position:relative;z-index:1;margin-top:auto;padding-top:13px;border-top:1px solid #c7c1b7;display:grid;grid-template-columns:1fr 1fr;gap:12px}.community-bottom-notes article{min-width:0}.community-bottom-notes span{display:block;color:#777;font-size:8px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}.community-bottom-notes b{display:block;font-size:11px;line-height:1.18}.community-bottom-notes p{font-size:9px;line-height:1.3;color:#777;margin:4px 0 0}
+.community-bottom-notes{position:relative;z-index:1;margin-top:auto;padding-top:13px;border-top:1px solid #c7c1b7;display:grid;grid-template-columns:1fr 1fr;gap:12px}.community-bottom-notes article{min-width:0}.community-bottom-notes span{display:block;color:#777;font-size:8px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}.community-bottom-notes b{display:block;font-size:11px;line-height:1.18}.community-bottom-notes p{font-size:9px;line-height:1.3;color:#777;margin:4px 0 0}.community-visuals{position:relative;z-index:1;margin-top:14px;padding-top:12px;border-top:1px solid #c7c1b7}.community-visuals[hidden]{display:none!important}.community-visuals-header{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}.community-visuals-header span{display:block;color:#777;font-size:8px;text-transform:uppercase;letter-spacing:.08em}.community-visuals-header b{display:block;font-size:11px;line-height:1.22}.community-visual-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.community-visual-card{margin:0;border:1px solid #cec7bc;background:#ede8df;padding:5px}.community-visual-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid #d8d0c4;background:#d9d2c6}.community-visual-card figcaption{margin-top:5px;font-size:8px;line-height:1.35;color:#666}.community-detail::-webkit-scrollbar{width:8px}.community-detail::-webkit-scrollbar-thumb{background:rgba(0,0,0,.18);border-radius:999px}.community-detail::-webkit-scrollbar-track{background:transparent}
 .community-detail.is-changing h3,.community-detail.is-changing>p,.community-detail.is-changing .community-detail-row,.community-detail.is-changing .community-tags{animation:communityTextIn .38s ease both}
 @keyframes communityRadar{to{transform:rotate(360deg)}}@keyframes communityOrbit{to{transform:rotate(360deg)}}@keyframes communityOrbitBack{to{transform:rotate(-360deg)}}@keyframes communityFlow{to{stroke-dashoffset:-48}}@keyframes communityDetailOrbit{to{transform:rotate(360deg)}}@keyframes communityTextIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:1100px){.community-heading{grid-template-columns:1fr;gap:12px}.community-experience{height:auto;grid-template-columns:1fr;min-height:860px}.community-map{min-height:580px}.community-detail{min-height:320px}.community-bottom-notes{margin-top:20px}}
@@ -3482,6 +3482,445 @@ body{
     align-content:center!important;
   }
 }
+
+/* Ghostwriter refinement: make chapter 06 forensic visuals larger and more dominant */
+#s06 .community-heading{grid-template-columns:minmax(0,1.26fr) minmax(300px,.74fr)!important;gap:22px!important;align-items:end!important}
+#s06 .community-heading>p{max-width:500px!important;font-size:11.4px!important;line-height:1.34!important}
+#s06 .community-experience{grid-template-columns:minmax(0,1.42fr) minmax(430px,.58fr)!important;min-height:560px!important}
+#s06 .community-detail{padding:20px 20px 18px!important;overflow:auto!important}
+#s06 .community-detail::after{display:none!important}
+#s06 .community-detail-top span{font-size:10px!important}
+#s06 .community-detail-top em{font-size:7px!important}
+#s06 .community-detail h3{font-size:clamp(26px,2vw,34px)!important;line-height:1.02!important;margin:10px 0 8px!important;max-width:none!important}
+#s06 .community-detail>p{font-size:11.3px!important;line-height:1.38!important;margin:0 0 10px!important;max-width:none!important}
+#s06 .community-detail-row{padding:8px 0 7px!important}
+#s06 .community-detail-row b{font-size:8px!important;margin-bottom:4px!important}
+#s06 .community-detail-row p{font-size:10px!important;line-height:1.34!important}
+#s06 .community-detail-row.accent-row{padding-left:8px!important}
+#s06 .community-tags{margin-top:8px!important;gap:5px!important}
+#s06 .community-tags span{font-size:7px!important;padding:5px 7px!important}
+#s06 .community-bottom-notes{display:none!important}
+#s06 .community-visuals{margin-top:12px!important;padding-top:10px!important;border-top:1px solid #c7c1b7!important}
+#s06 .community-visuals-header{gap:3px!important;margin-bottom:10px!important}
+#s06 .community-visuals-header span{font-size:8px!important}
+#s06 .community-visuals-header b{font-size:12px!important;line-height:1.25!important}
+#s06 .community-visual-grid{grid-template-columns:1fr!important;gap:10px!important}
+#s06 .community-visual-card{padding:6px!important;background:#ece6dc!important}
+#s06 .community-visual-card img{aspect-ratio:16/10!important;object-fit:cover!important}
+#s06 .community-visual-card figcaption{font-size:9px!important;line-height:1.34!important;margin-top:6px!important}
+#s06 .community-visual-grid.single-visual .community-visual-card{padding:8px!important}
+#s06 .community-visual-grid.single-visual .community-visual-card img{width:100%!important;max-height:360px!important;aspect-ratio:auto!important;object-fit:contain!important}
+#s06 .community-visual-grid.single-visual .community-visual-card figcaption{font-size:8.5px!important;line-height:1.28!important}
+#s06 .community-visual-grid:not(.single-visual) .community-visual-card{padding:8px!important}
+#s06 .community-visual-grid:not(.single-visual) .community-visual-card img{width:100%!important;max-height:250px!important;aspect-ratio:auto!important;object-fit:contain!important;background:#f4efe7!important}
+#s06 .community-visual-grid:not(.single-visual) .community-visual-card figcaption{font-size:8px!important;line-height:1.26!important;margin-top:5px!important}
+
+
+/* Chapter 05 refinement — platform logos + theory book covers */
+#s05 .lineage-intro{font-size:11.7px!important;line-height:1.42!important;max-width:500px!important}
+#s05 .lineage-node.ln-4,#s05 .lineage-node.ln-5{min-height:112px!important;padding-bottom:10px!important}
+#s05 .lineage-node.ln-4{top:6%!important}
+#s05 .lineage-node.ln-5{bottom:10%!important}
+.lineage-brand-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.lineage-brand-row .lineage-brand{display:inline-flex!important;align-items:center!important;margin:0!important;padding:3px 5px!important;border:1px solid rgba(255,255,255,.18);border-radius:3px;background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif!important;font-size:6.5px!important;font-style:normal!important;font-weight:700!important;line-height:1!important;letter-spacing:-.02em!important;text-transform:none!important;white-space:nowrap}
+.lineage-brand-row .uber-brand b{color:#06c167;font-weight:800}.lineage-brand-row .doordash-brand{color:#ff3008}.lineage-brand-row .grubhub-brand{color:#f63440}.lineage-brand-row .system-brand{background:var(--accent);border-color:var(--accent);color:#fff;letter-spacing:.06em!important}
+#s05 .lineage-experience{height:calc(100% - 322px)!important;min-height:330px!important;grid-template-columns:minmax(0,1.54fr) minmax(350px,.46fr)!important}
+#s05 .lineage-reading.lineage-theory{position:relative;display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:10px!important;min-height:146px!important;border:0!important;background:transparent!important;overflow:visible!important}
+#s05 .lineage-reading.lineage-theory::before{content:"THEORY FOR THE PLATFORM TURN · WORKER EXPERIENCE + PLATFORM STRUCTURE";position:absolute;left:0;top:-9px;color:var(--accent);font-size:7px;font-weight:700;letter-spacing:.13em;transform:translateY(-100%)}
+#s05 .lineage-reading .lineage-book-card{position:relative;display:grid!important;grid-template-columns:82px 1fr!important;gap:12px!important;align-items:center!important;padding:9px 12px!important;border:1px solid #171717!important;background:#f8f6f0!important;min-width:0!important;overflow:visible!important}
+#s05 .lineage-reading .lineage-book-card+article{border-left:1px solid #171717!important}
+#s05 .lineage-book-card::before{content:"";position:absolute;top:-11px;width:1px;height:11px;background:var(--accent)}
+#s05 .lineage-book-card::after{content:"";position:absolute;top:-13px;width:5px;height:5px;border-top:1px solid var(--accent);border-right:1px solid var(--accent);transform:rotate(-45deg)}
+#s05 .book-labor::before,#s05 .book-labor::after{left:72%}
+#s05 .book-platform::before,#s05 .book-platform::after{left:84%}
+#s05 .book-cover{position:relative;width:72px;height:108px;display:flex;flex-direction:column;justify-content:space-between;padding:8px 7px;box-shadow:0 5px 12px rgba(0,0,0,.18);overflow:hidden}
+#s05 .book-cover::after{content:"";position:absolute;inset:0;border:1px solid rgba(0,0,0,.22);pointer-events:none}
+#s05 .book-cover .book-publisher{position:relative;z-index:1;margin:0!important;color:inherit!important;font-family:Arial,Helvetica,sans-serif!important;font-size:5.5px!important;line-height:1!important;letter-spacing:.14em!important}
+#s05 .book-cover b{position:relative;z-index:1;font-size:10.5px;line-height:.95;letter-spacing:-.045em}
+#s05 .book-cover small{position:relative;z-index:1;margin:0!important;color:inherit!important;font-size:6px!important;line-height:1.1!important;text-transform:none!important;letter-spacing:0!important}
+#s05 .cover-scholz{background:linear-gradient(135deg,#0f2430 0 66%,#f34b38 66% 78%,#f0b62f 78%);color:#fff}
+#s05 .cover-scholz b{max-width:57px}.cover-scholz::before{content:"WORK / LABOR / PLATFORM";position:absolute;right:-25px;top:34px;transform:rotate(90deg);font-size:4.8px;letter-spacing:.12em;color:rgba(255,255,255,.65)}
+#s05 .cover-srnicek{background:#f0df48;color:#111}.cover-srnicek::before{content:"";position:absolute;right:-13px;bottom:13px;width:54px;height:54px;border:9px solid #111;border-radius:50%;opacity:.9}.cover-srnicek b{font-size:11px;max-width:60px}
+#s05 .lineage-book-copy{min-width:0}
+#s05 .lineage-book-copy>span{display:block!important;margin-bottom:4px!important;color:var(--accent)!important;font-size:7px!important;font-weight:700!important;letter-spacing:.09em!important;text-transform:uppercase!important}
+#s05 .lineage-book-copy strong{font-size:13px!important;line-height:1.15!important;margin:0!important}
+#s05 .lineage-book-copy strong em{font-style:italic}
+#s05 .lineage-book-copy>small{display:block;margin:4px 0 0;color:#777;font-size:7.5px;line-height:1.2}
+#s05 .lineage-book-copy p{margin:6px 0 0!important;color:#555!important;font-size:8.8px!important;line-height:1.34!important}
+@media (min-width:901px) and (max-width:1260px){
+  #s05 .lineage-experience{height:calc(100% - 315px)!important;min-height:315px!important}
+  #s05 .lineage-reading.lineage-theory{min-height:136px!important}
+  #s05 .lineage-reading .lineage-book-card{grid-template-columns:68px 1fr!important;gap:9px!important;padding:8px 9px!important}
+  #s05 .book-cover{width:60px;height:91px;padding:6px}
+  #s05 .book-cover b{font-size:8.5px}.cover-srnicek b{font-size:9px!important}
+  #s05 .lineage-book-copy p{font-size:8px!important}
+}
+@media (max-width:900px){
+  #s05 .lineage-reading.lineage-theory{grid-template-columns:1fr!important}
+  #s05 .lineage-book-card::before,#s05 .lineage-book-card::after{display:none}
+}
+
+
+#s05 .book-cover-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3;background:#eee}
+#s05 .book-cover-image~.book-publisher,#s05 .book-cover-image~b,#s05 .book-cover-image~small{z-index:2}
+
+
+
+/* Chapter 05 final reflow — upper timeline / lower theory split 50–50 */
+@media (min-width:901px){
+  #s05{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+    align-items:center!important;
+  }
+  #s05>.lineage-heading,
+  #s05>.lineage-experience,
+  #s05>.lineage-reading{
+    width:min(100%,1460px)!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    flex-shrink:0!important;
+  }
+  #s05 .lineage-heading{
+    margin-bottom:14px!important;
+  }
+  #s05 .lineage-heading h2{max-width:690px!important}
+  #s05 .lineage-intro{
+    font-size:11.5px!important;
+    line-height:1.38!important;
+    padding:8px 0!important;
+  }
+
+  /* Make the remaining space split into two equal bands */
+  #s05 .lineage-experience,
+  #s05 .lineage-reading.lineage-theory{
+    flex:1 1 0!important;
+    height:auto!important;
+    min-height:0!important;
+  }
+
+  /* Top half: timeline dominates, detail panel reduced */
+  #s05 .lineage-experience{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.42fr) minmax(255px,.34fr)!important;
+    gap:16px!important;
+    align-items:stretch!important;
+    margin-top:0!important;
+  }
+  #s05 .lineage-map,
+  #s05 .lineage-detail,
+  #s05 .lineage-reading.lineage-theory{
+    height:100%!important;
+  }
+  #s05 .lineage-map{min-height:0!important}
+  #s05 .lineage-detail{
+    padding:18px 16px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:space-between!important;
+  }
+  #s05 .lineage-detail-index{font-size:34px!important;margin-bottom:6px!important}
+  #s05 .lineage-detail-type{font-size:10px!important;margin:0 0 5px!important}
+  #s05 .lineage-detail h3{font-size:24px!important;line-height:1.02!important;margin:6px 0 8px!important}
+  #s05 .lineage-detail>p:not(.lineage-detail-type){
+    font-size:11px!important;
+    line-height:1.37!important;
+    margin:0 0 10px!important;
+  }
+  #s05 .lineage-continue,
+  #s05 .lineage-transform{
+    margin-top:10px!important;
+    padding-top:8px!important;
+  }
+  #s05 .lineage-continue span,
+  #s05 .lineage-transform span{font-size:8px!important}
+  #s05 .lineage-continue strong{font-size:11px!important;line-height:1.3!important}
+  #s05 .lineage-transform p{font-size:9.7px!important;line-height:1.33!important}
+  #s05 .lineage-tags{margin-top:10px!important;gap:6px!important}
+  #s05 .lineage-tags span{font-size:8px!important;padding:5px 7px!important}
+
+  /* Slightly emphasize the platform stages */
+  #s05 .lineage-node.ln-4,
+  #s05 .lineage-node.ln-5{width:190px!important}
+
+  /* Bottom half: book covers become the main visual element */
+  #s05 .lineage-reading.lineage-theory{
+    position:relative!important;
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:16px!important;
+    margin-top:16px!important;
+    padding-top:24px!important;
+    border-top:1px solid #111!important;
+    background:transparent!important;
+    overflow:visible!important;
+  }
+  #s05 .lineage-reading.lineage-theory::before{
+    content:"THEORY FOR THE PLATFORM TURN"!important;
+    position:absolute!important;
+    left:0!important;
+    top:0!important;
+    transform:translateY(-100%)!important;
+    color:var(--accent)!important;
+    font-size:7.4px!important;
+    font-weight:700!important;
+    letter-spacing:.13em!important;
+  }
+  #s05 .lineage-reading.lineage-theory::after{
+    content:"These books explain what changes during digital platforms and algorithmic dispatch.";
+    position:absolute!important;
+    right:0!important;
+    top:0!important;
+    transform:translateY(-100%)!important;
+    color:#67645d!important;
+    font-size:8.2px!important;
+    letter-spacing:.02em!important;
+  }
+  #s05 .lineage-reading .lineage-book-card{
+    position:relative!important;
+    display:grid!important;
+    grid-template-columns:minmax(185px,220px) 1fr!important;
+    gap:18px!important;
+    align-items:stretch!important;
+    padding:18px 16px!important;
+    border:1px solid #171717!important;
+    background:#f8f6f0!important;
+    min-width:0!important;
+    overflow:visible!important;
+  }
+  #s05 .lineage-reading .lineage-book-card+article{border-left:1px solid #171717!important}
+  #s05 .lineage-book-card::before{
+    content:""!important;
+    position:absolute!important;
+    top:-25px!important;
+    width:1px!important;
+    height:25px!important;
+    background:#111!important;
+  }
+  #s05 .lineage-book-card::after{
+    content:""!important;
+    position:absolute!important;
+    top:-27px!important;
+    width:7px!important;
+    height:7px!important;
+    border-top:1px solid #111!important;
+    border-right:1px solid #111!important;
+    transform:rotate(-45deg)!important;
+  }
+  #s05 .book-labor::before,
+  #s05 .book-labor::after{left:34%!important}
+  #s05 .book-platform::before,
+  #s05 .book-platform::after{left:70%!important}
+
+  #s05 .book-cover{
+    width:100%!important;
+    max-width:220px!important;
+    min-height:255px!important;
+    height:100%!important;
+    padding:14px 12px!important;
+    justify-self:start!important;
+  }
+  #s05 .book-cover .book-publisher{font-size:8px!important;letter-spacing:.16em!important}
+  #s05 .book-cover b{font-size:21px!important;line-height:.9!important;letter-spacing:-.05em!important}
+  #s05 .book-cover small{font-size:10px!important;line-height:1.15!important}
+  #s05 .cover-scholz::before{font-size:7px!important;right:-28px!important;top:58px!important}
+  #s05 .cover-srnicek::before{right:-12px!important;bottom:14px!important;width:68px!important;height:68px!important;border-width:11px!important}
+  #s05 .book-cover-image{
+    object-fit:contain!important;
+    background:#fff!important;
+    padding:0!important;
+  }
+  #s05 .lineage-book-copy{
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-end!important;
+    min-width:0!important;
+  }
+  #s05 .lineage-book-copy>span{
+    display:block!important;
+    margin-bottom:7px!important;
+    color:var(--accent)!important;
+    font-size:8.7px!important;
+    font-weight:700!important;
+    letter-spacing:.1em!important;
+    text-transform:uppercase!important;
+  }
+  #s05 .lineage-book-copy strong{
+    font-size:22px!important;
+    line-height:1.05!important;
+    margin:0!important;
+  }
+  #s05 .lineage-book-copy>small{
+    display:block!important;
+    margin:7px 0 0!important;
+    color:#777!important;
+    font-size:10px!important;
+    line-height:1.25!important;
+  }
+  #s05 .lineage-book-copy p{
+    margin:10px 0 0!important;
+    color:#555!important;
+    font-size:11px!important;
+    line-height:1.38!important;
+    max-width:300px!important;
+  }
+}
+
+@media (min-width:901px) and (max-width:1260px){
+  #s05 .lineage-experience{grid-template-columns:minmax(0,1.32fr) minmax(225px,.42fr)!important}
+  #s05 .lineage-node.ln-4,
+  #s05 .lineage-node.ln-5{width:172px!important}
+  #s05 .lineage-reading .lineage-book-card{grid-template-columns:150px 1fr!important;gap:14px!important;padding:14px 12px!important}
+  #s05 .book-cover{max-width:160px!important;min-height:215px!important}
+  #s05 .book-cover b{font-size:17px!important}
+  #s05 .lineage-book-copy strong{font-size:18px!important}
+  #s05 .lineage-book-copy p{font-size:10px!important}
+  #s05 .lineage-reading.lineage-theory::after{font-size:7.2px!important}
+}
+
+@media (max-width:900px){
+  #s05 .lineage-reading.lineage-theory::after{display:none!important}
+}
+
+
+
+/* Chapter 05 emphasis update — stronger arrows/connectors + stronger platform turn */
+@media (min-width:901px){
+  /* Make the timeline path and motion more legible */
+  #s05 .lineage-svg{inset:5% 2.5% 8%!important;width:95%!important;height:87%!important}
+  #s05 .lineage-base{
+    stroke:#5a5550!important;
+    stroke-width:4.6!important;
+    stroke-dasharray:10 10!important;
+    opacity:.88!important;
+  }
+  #s05 .lineage-progress{
+    stroke:var(--accent)!important;
+    stroke-width:7.5!important;
+    filter:drop-shadow(0 0 10px rgba(255,94,53,.38))!important;
+  }
+  #s05 .lineage-pulse{
+    filter:drop-shadow(0 0 10px rgba(255,94,53,.75))!important;
+  }
+
+  /* Make Digital Platforms + Algorithmic Dispatch stand out clearly */
+  #s05 .lineage-node.ln-4,
+  #s05 .lineage-node.ln-5{
+    width:206px!important;
+    border:2px solid var(--accent)!important;
+    background:linear-gradient(180deg,rgba(39,22,15,.98) 0%,rgba(17,17,17,.98) 100%)!important;
+    box-shadow:0 0 0 2px rgba(255,94,53,.16),0 14px 26px rgba(0,0,0,.34),inset 0 0 26px rgba(255,94,53,.08)!important;
+    transform:translateY(-2px)!important;
+    overflow:visible!important;
+  }
+  #s05 .lineage-node.ln-4:hover,
+  #s05 .lineage-node.ln-5:hover,
+  #s05 .lineage-node.ln-4:focus-visible,
+  #s05 .lineage-node.ln-5:focus-visible,
+  #s05 .lineage-node.ln-4.active,
+  #s05 .lineage-node.ln-5.active{
+    transform:translateY(-5px) scale(1.02)!important;
+    box-shadow:0 0 0 2px rgba(255,94,53,.22),0 18px 32px rgba(0,0,0,.42),0 0 30px rgba(255,94,53,.16),inset 0 0 26px rgba(255,94,53,.10)!important;
+  }
+  #s05 .lineage-node.ln-4 span,
+  #s05 .lineage-node.ln-5 span{color:#ffc6b2!important}
+  #s05 .lineage-node.ln-4 strong,
+  #s05 .lineage-node.ln-5 strong{font-size:14.2px!important;line-height:1.1!important}
+  #s05 .lineage-node.ln-4 small,
+  #s05 .lineage-node.ln-5 small{color:#ffd8ca!important;opacity:.95!important}
+  #s05 .lineage-node.ln-4::before,
+  #s05 .lineage-node.ln-5::before{
+    position:absolute!important;
+    left:-2px!important;
+    top:-24px!important;
+    padding:4px 8px!important;
+    background:var(--accent)!important;
+    color:#fff!important;
+    font-size:8px!important;
+    font-weight:800!important;
+    letter-spacing:.11em!important;
+    line-height:1!important;
+    text-transform:uppercase!important;
+    border-radius:2px!important;
+    box-shadow:0 5px 12px rgba(0,0,0,.24)!important;
+    white-space:nowrap!important;
+  }
+  #s05 .lineage-node.ln-4::before{content:"Platform turn"!important}
+  #s05 .lineage-node.ln-5::before{content:"Algorithmic turn"!important}
+  #s05 .lineage-node.ln-4::after,
+  #s05 .lineage-node.ln-5::after{
+    content:""!important;
+    position:absolute!important;
+    inset:-10px!important;
+    border:1px dashed rgba(255,94,53,.45)!important;
+    pointer-events:none!important;
+  }
+  #s05 .lineage-brand-row{gap:5px!important;margin-top:10px!important}
+  #s05 .lineage-brand-row .lineage-brand{font-size:7px!important;padding:4px 6px!important}
+
+  /* Make the explanatory connectors much more visible */
+  #s05 .lineage-reading.lineage-theory{
+    padding-top:34px!important;
+  }
+  #s05 .lineage-reading.lineage-theory::before{
+    font-size:8px!important;
+    letter-spacing:.16em!important;
+  }
+  #s05 .lineage-reading.lineage-theory::after{
+    font-size:8.8px!important;
+    color:#4d4943!important;
+  }
+  #s05 .lineage-book-card{
+    box-shadow:0 10px 22px rgba(0,0,0,.08)!important;
+  }
+  #s05 .lineage-book-card::before{
+    top:-34px!important;
+    width:3px!important;
+    height:34px!important;
+    background:var(--accent)!important;
+    box-shadow:0 0 10px rgba(255,94,53,.25)!important;
+  }
+  #s05 .lineage-book-card::after{
+    top:-37px!important;
+    width:12px!important;
+    height:12px!important;
+    border-top:3px solid var(--accent)!important;
+    border-right:3px solid var(--accent)!important;
+    transform:rotate(-45deg)!important;
+  }
+  #s05 .book-labor::before,
+  #s05 .book-labor::after{left:34%!important}
+  #s05 .book-platform::before,
+  #s05 .book-platform::after{left:70%!important}
+  #s05 .lineage-book-card .lineage-book-copy>span{
+    margin-bottom:8px!important;
+    font-size:9px!important;
+    letter-spacing:.13em!important;
+  }
+  #s05 .book-labor .lineage-book-copy>span::after,
+  #s05 .book-platform .lineage-book-copy>span::after{
+    content:""!important;
+    display:inline-block!important;
+    width:26px!important;
+    height:1px!important;
+    margin-left:8px!important;
+    vertical-align:middle!important;
+    background:var(--accent)!important;
+  }
+}
+
+@media (min-width:901px) and (max-width:1260px){
+  #s05 .lineage-node.ln-4,
+  #s05 .lineage-node.ln-5{width:188px!important}
+}
+
+
+/* Chapter 05 top-right intro text update */
+#s05 .lineage-intro{max-width:680px!important;width:680px!important;font-size:12.6px!important;line-height:1.38!important;justify-self:end!important}
+@media (max-width:1500px){#s05 .lineage-intro{max-width:640px!important;width:640px!important}}
+@media (max-width:1200px){#s05 .lineage-intro{max-width:100%!important;width:auto!important}}
+
 </style>
 </head>
 <body>
@@ -3715,7 +4154,7 @@ body{
       <p class="kicker">05 · Historical lineage — How did today’s delivery network emerge?</p>
       <h2>From local food supply to algorithmic instant delivery.</h2>
     </div>
-    <p class="lineage-intro">To understand why food delivery has become automated and invisible, I trace its historical development: from local food supply and industrial logistics to telephone ordering, digital platforms, and algorithmic dispatch. As delivery becomes faster and more efficient, its infrastructure and labor become increasingly hidden from customers. This reflects the idea of partial knowing: computation can organize and predict complex systems, but it cannot fully represent lived experience, social context, and invisible labor.</p>
+    <p class="lineage-intro">To understand today’s delivery system, I trace the shift from local supply to digital platforms and algorithmic dispatch. Platforms make ordering faster but turn locations, payments, ratings, and workers into data. Scholz explains how platform labor becomes fragmented and hidden, while Srnicek shows how platforms centralize data, prediction, and control. Together, they show that delivery routes are produced by both platform structures and workers’ real conditions.</p>
   </div>
 
   <div class="lineage-experience">
@@ -3737,9 +4176,19 @@ body{
       </button>
       <button class="lineage-node ln-4" type="button" data-lineage="digital">
         <span>04 · 2000s–2010s</span><strong>Digital platforms</strong><small>Orders become data</small>
+        <div class="lineage-brand-row" aria-label="Representative delivery platforms">
+          <em class="lineage-brand uber-brand">Uber <b>Eats</b></em>
+          <em class="lineage-brand doordash-brand">DoorDash</em>
+          <em class="lineage-brand grubhub-brand">Grubhub</em>
+        </div>
       </button>
       <button class="lineage-node ln-5" type="button" data-lineage="algorithmic">
         <span>05 · 2010s–present</span><strong>Algorithmic dispatch + instant delivery</strong><small>Prediction and control</small>
+        <div class="lineage-brand-row algorithm-row" aria-label="Platform dispatch systems">
+          <em class="lineage-brand uber-brand">Uber <b>Eats</b></em>
+          <em class="lineage-brand doordash-brand">DoorDash</em>
+          <em class="lineage-brand system-brand">ETA · AI</em>
+        </div>
       </button>
 
       <div class="lineage-direction">
@@ -3765,16 +4214,34 @@ body{
     </aside>
   </div>
 
-  <div class="lineage-reading" aria-label="Course reading and project lineage">
-    <article>
-      <span>Course reading connection</span>
-      <strong><em>Mirror Stage: Between Computability and Its Opposite</em> · edited by Nora N. Khan</strong>
-      <p>The course idea of “partial knowing” helps frame the project: computation can calculate, organize, and predict, but it cannot fully represent lived experience, social context, and invisible labor.</p>
+  <div class="lineage-reading lineage-theory" aria-label="Theoretical references for the platform turn">
+    <article class="lineage-book-card book-labor">
+      <div class="book-cover cover-scholz" aria-label="Book cover: Uberworked and Underpaid by Trebor Scholz">
+        <img class="book-cover-image" src="https://dynamic.indigoimages.ca/v1/books/books/0745653561/1.jpg" alt="Uberworked and Underpaid book cover" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="book-publisher">POLITY</span>
+        <b>UBERWORKED<br>AND<br>UNDERPAID</b>
+        <small>Trebor Scholz</small>
+      </div>
+      <div class="lineage-book-copy">
+        <span>Labor experience · explains the worker side</span>
+        <strong><em>Uberworked and Underpaid</em></strong>
+        <small>Trebor Scholz · Polity · 2016</small>
+        <p>Shows how platform work fragments, outsources, and hides labor while weakening worker protections.</p>
+      </div>
     </article>
-    <article>
-      <span>Lineage continued by this project</span>
-      <strong>Making hidden urban systems visible</strong>
-      <p>This project continues a lineage of making hidden urban systems visible through mapping, critical visualization, and spatial investigation.</p>
+    <article class="lineage-book-card book-platform">
+      <div class="book-cover cover-srnicek" aria-label="Book cover: Platform Capitalism by Nick Srnicek">
+        <img class="book-cover-image" src="https://dynamic.indigoimages.ca/v1/books/books/1509504877/1.jpg" alt="Platform Capitalism book cover" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+        <span class="book-publisher">POLITY</span>
+        <b>PLATFORM<br>CAPITALISM</b>
+        <small>Nick Srnicek</small>
+      </div>
+      <div class="lineage-book-copy">
+        <span>Platform structure · explains the system side</span>
+        <strong><em>Platform Capitalism</em></strong>
+        <small>Nick Srnicek · Polity · 2016</small>
+        <p>Explains why platforms centralize data, coordination, prediction, and control inside opaque infrastructures.</p>
+      </div>
     </article>
   </div>
 </section>
@@ -3786,7 +4253,7 @@ body{
       <p class="kicker">06 · Community of practice — Who is working here, and where do I stand?</p>
       <h2>Who investigates, regulates, experiences, and builds the delivery system?</h2>
     </div>
-    <p>This community shows who shapes food delivery systems. Forensic Architecture and Data Feminism investigate hidden infrastructures and power. Fairwork, Los Deliveristas Unidos, and city agencies address labor rights and accountability, while delivery platforms design the algorithms, routes, and interfaces. My project connects these perspectives through spatial investigation and interactive visualization, revealing hidden networks behind everyday delivery.</p>
+    <p>This community shows who shapes food delivery systems. Forensic Architecture and Data Feminism investigate hidden infrastructures and power. Fairwork, Los Deliveristas Unidos, and city agencies address labor rights and accountability, while delivery platforms design the algorithms, routes, and interfaces. My project connects these perspectives through spatial investigation and interactive visualization.</p>
   </div>
 
   <div class="community-experience">
@@ -3821,9 +4288,16 @@ body{
     <aside class="community-detail" aria-live="polite">
       <div class="community-detail-top"><span id="communityDetailIndex">01</span><em id="communityDetailRole">Precedent method</em></div>
       <h3 id="communityDetailTitle">Forensic Architecture</h3>
-      <p id="communityDetailText">Reconstructs contested events by connecting maps, media, geolocation, models, and timelines into a spatial argument.</p>
-      <div class="community-detail-row"><b>Question / approach</b><p id="communityApproach">How can distributed and uncertain evidence be spatially reassembled?</p></div>
-      <div class="community-detail-row accent-row"><b>My relationship</b><p id="communityPosition">My project sits between these groups, combining spatial investigation with interactive visualization while focusing on one everyday delivery journey.</p></div>
+      <p id="communityDetailText">Uses maps, media, geolocation, models, and timelines to reconstruct contested events.</p>
+      <div class="community-visuals" id="communityVisuals" aria-label="Precedent images" hidden>
+        <div class="community-visuals-header">
+          <span id="communityVisualsLabel">Precedent images</span>
+          <b id="communityVisualsTitle">Forensic Architecture / Evros River investigation</b>
+        </div>
+        <div class="community-visual-grid" id="communityVisualGrid"></div>
+      </div>
+      <div class="community-detail-row"><b>Question / approach</b><p id="communityApproach">How can distributed evidence be spatially reassembled?</p></div>
+      <div class="community-detail-row accent-row"><b>My relationship</b><p id="communityPosition">Provides a model for combining spatial investigation, evidence, and public-facing visualization.</p></div>
       <div class="community-tags" id="communityTags"><span>Multi-source evidence</span><span>Geolocation</span><span>Uncertainty</span></div>
       <div class="community-bottom-notes">
         <article><span>Precedent relation</span><b>Reinterpretation + fork</b><p>Not a copy or direct advancement.</p></article>
@@ -3995,122 +4469,6 @@ body{
   </footer>
 </section>
 
-
-<section class="slide simulator-slide visual-map-slide" id="s09" data-title="Visual representation">
-  <div class="slide-no">09</div>
-
-  <header class="visual-map-heading">
-    <div>
-      <p class="kicker">09 · Visual representation — Layer, compare, and disclose</p>
-      <h2>Visual representation through a situated route map.</h2>
-    </div>
-    <p>To make these differences understandable, the visual strategy uses three operations: layer, compare, and disclose. Data layers reveal routes, time, and access conditions. Comparing routes and disclosing uncertainty makes hidden delays and infrastructures visible, showing that delivery is shaped by more than distance alone.</p>
-  </header>
-
-  <div class="realistic-simulator visual-map-simulator">
-    <div class="realistic-toolbar visual-map-toolbar">
-      <label class="case-picker" for="realisticCase">
-        <span>Situated delivery case</span>
-        <select id="realisticCase">
-          <option value="broadway-west-harlem">Broadway restaurant → West Harlem apartment</option>
-          <option value="amsterdam-columbia">Amsterdam restaurant → Columbia residence</option>
-          <option value="125-morningside">125th Street restaurant → Morningside building</option>
-        </select>
-      </label>
-
-      <div class="realistic-time-control">
-        <button id="realisticPlay" type="button">Play</button>
-        <label for="realisticTime">Time <strong id="realisticTimeOutput">12:00 PM</strong></label>
-        <input id="realisticTime" type="range" min="0" max="23" step="1" value="12" />
-      </div>
-
-      <div class="visual-map-principles" aria-label="Visual representation principles">
-        <span><b>Layer</b><small>Network · routes · access · time</small></span>
-        <span><b>Compare</b><small>Same endpoints · same scale</small></span>
-        <span><b>Disclose</b><small>Evidence · uncertainty · absence</small></span>
-      </div>
-
-      <div class="realistic-actions">
-        <button id="realisticReset" type="button">Reset conditions</button>
-        <button id="realisticRecalculate" type="button">Recalculate routes</button>
-      </div>
-    </div>
-
-    <div class="realistic-body">
-      <div class="realistic-map-column">
-        <div class="realistic-map-wrap">
-          <div id="realisticMap"></div>
-          <div id="realisticFallback" class="realistic-fallback">
-            <strong>Loading situated route layers…</strong>
-            <span>The visualization uses Mapbox street geometry. If routing is unavailable, invented street lines are not substituted.</span>
-          </div>
-          <div class="realistic-map-status" id="realisticMapStatus" aria-live="polite">Requesting comparable route alternatives…</div>
-          <div class="realistic-map-help">Drag the R, C, and E markers to test another restaurant, customer, or entrance.</div>
-          <div class="realistic-legend">
-            <span><i class="legend-platform"></i>Network-generated route</span>
-            <span><i class="legend-alternative"></i>Modeled alternatives</span>
-            <span><i class="legend-uncertainty"></i>Uncertainty band</span>
-            <span><i class="legend-selected"></i>Selected comparison</span>
-          </div>
-        </div>
-
-        <div class="realistic-provenance visual-evidence-strip">
-          <span><b>Public</b>Street geometry · Mapbox</span>
-          <span><b>Modeled</b>Routes + friction factors</span>
-          <span><b>Controlled</b>Traffic · weather · access</span>
-          <span><b>Uncertainty</b>Estimated time range</span>
-          <span><b>Missing</b>Internal platform data</span>
-        </div>
-      </div>
-
-      <aside class="realistic-panel">
-        <div class="realistic-panel-heading">
-          <div><span>Comparable route views</span><b id="realisticRouteCount">0 routes</b></div>
-          <p>Select a route card or click a line on the map.</p>
-        </div>
-
-        <div id="realisticRouteCards" class="realistic-route-cards" aria-live="polite"></div>
-
-        <div class="realistic-controls" aria-label="Adjust situated delivery conditions">
-          <label><span>Traffic <b id="realisticTrafficValue">55%</b></span><input id="realisticTraffic" type="range" min="0" max="100" value="55" /></label>
-          <label><span>Restaurant wait <b id="realisticWaitValue">9 min</b></span><input id="realisticWait" type="range" min="0" max="20" value="9" /></label>
-          <label><span>Access restriction <b id="realisticAccessValue">55%</b></span><input id="realisticAccess" type="range" min="0" max="100" value="55" /></label>
-          <label><span>Entrance delay <b id="realisticEntranceValue">5 min</b></span><input id="realisticEntrance" type="range" min="0" max="15" value="5" /></label>
-          <label><span>Weather exposure <b id="realisticWeatherValue">30%</b></span><input id="realisticWeather" type="range" min="0" max="100" value="30" /></label>
-          <label><span>Bike-lane availability <b id="realisticBikeValue">70%</b></span><input id="realisticBike" type="range" min="0" max="100" value="70" /></label>
-        </div>
-
-        <div class="realistic-metrics" aria-live="polite">
-          <article><span>Simplified platform ETA</span><b id="realisticPlatformEta">—</b></article>
-          <article class="metric-emphasis"><span>Modeled rider time</span><b id="realisticActualTime">—</b></article>
-          <article><span>Hidden time</span><b id="realisticHiddenTime">—</b></article>
-          <article><span>Uncertainty range</span><b id="realisticRange">—</b></article>
-        </div>
-
-        <div class="realistic-breakdown">
-          <div class="realistic-breakdown-head"><span>Selected route</span><b id="realisticSelectedName">Waiting for routes</b></div>
-          <div class="realistic-breakdown-bar" aria-hidden="true">
-            <i id="realisticBaseSegment" class="rb-base"></i>
-            <i id="realisticConditionSegment" class="rb-condition"></i>
-            <i id="realisticWaitSegment" class="rb-wait"></i>
-            <i id="realisticAccessSegment" class="rb-access"></i>
-          </div>
-          <div class="realistic-breakdown-list">
-            <span>Network travel <b id="realisticBaseTime">—</b></span>
-            <span>Street + weather friction <b id="realisticConditionTime">—</b></span>
-            <span>Restaurant waiting <b id="realisticWaitTime">—</b></span>
-            <span>Access + entrance <b id="realisticAccessTime">—</b></span>
-          </div>
-        </div>
-
-        <div class="realistic-reading">
-          <span>Representational reading</span>
-          <p id="realisticExplanation">The map keeps origin, destination, and scale fixed while route alternatives, hidden time, uncertainty, and unavailable platform evidence remain visible.</p>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
 
 <section class="slide rhetorical-argument-slide" id="s10" data-title="Rhetorical argument">
   <div class="slide-no">10</div>
@@ -4807,9 +5165,9 @@ const lineageData={
     index:'04',
     type:'2000s–2010s',
     title:'Digital platforms',
-    text:'Websites and mobile applications connected customers, restaurants, payments, GPS, menus, ratings, and riders through a single interface.',
+    text:'Platforms such as Uber Eats, DoorDash, and Grubhub connected customers, restaurants, payments, GPS, menus, ratings, and riders through a single interface.',
     continueText:'Customer app → platform → restaurant → rider → customer.',
-    transform:'The interface simplified ordering while platform databases and networked coordination moved more decisions into an invisible digital layer.',
+    transform:'The branded interface made ordering familiar and simple, while databases, payments, tracking, and coordination moved into an invisible platform layer.',
     tags:['Mobile apps','GPS','Platform mediation'],
     progress:'78%'
   },
@@ -4819,7 +5177,7 @@ const lineageData={
     title:'Algorithmic dispatch and instant delivery',
     text:'Platforms now use automated assignment, ETA prediction, route optimization, demand forecasting, dynamic pricing, and multi-order coordination.',
     continueText:'Continuous data → prediction → rider positioning → dispatch → route and ETA adjustment.',
-    transform:'The system no longer only responds to orders. It predicts and organizes labor, movement, and demand, while presenting the customer with one apparently certain route.',
+    transform:'The system predicts and organizes labor, movement, and demand, while the customer sees one logo, one route, and one apparently certain ETA.',
     tags:['Algorithmic management','ETA prediction','Instant delivery'],
     progress:'100%'
   }
@@ -4874,12 +5232,12 @@ if(lineageMap){
 
 // Chapter 06: dynamic community-of-practice map
 const communityData={
-  forensic:{index:'01',role:'Critical practice · Investigative method',title:'Forensic Architecture',text:'Reconstructs contested events by connecting maps, media, geolocation, models, and timelines into a spatial argument.',approach:'How can distributed and uncertain evidence be spatially reassembled?',position:'My project sits between these groups, combining spatial investigation with interactive visualization while focusing on one everyday delivery journey.',tags:['Multi-source evidence','Geolocation','Uncertainty']},
-  data:{index:'02',role:'Critical practice · Ethical framework',title:'Data Feminism',text:'Examines how power shapes data collection, representation, context, and whose labor or experience becomes visible.',approach:'Who is counted, who controls the data, and what knowledge remains absent?',position:'I use this framework to identify power, label data provenance, make labor visible, and avoid treating partial evidence as objective completeness.',tags:['Power','Context','Make labor visible']},
-  fairwork:{index:'03',role:'Labor research · Standards',title:'Fairwork',text:'Evaluates platform work through standards for pay, conditions, contracts, management, and worker representation.',approach:'How can platform working conditions be measured through research, worker testimony, and accountable standards?',position:'I share its concern with algorithmic management and worker voice, but translate those questions into spatial comparison and public interaction rather than a platform score.',tags:['Worker interviews','Fair management','Accountability']},
-  ldu:{index:'04',role:'Worker knowledge · Organizing',title:'Los Deliveristas Unidos',text:'Organizes app-based delivery workers in New York around pay, safety, infrastructure, education, and collective representation.',approach:'How can delivery workers shape the policies and infrastructures that affect their daily work?',position:'Rider knowledge should inform the project through consent-based observation and participation. I should not treat workers as data sources or speak on their behalf.',tags:['Worker voice','Road safety','Local knowledge']},
-  policy:{index:'05',role:'Public accountability · Regulation',title:'NYC DCWP',text:'Regulates delivery-app worker protections, minimum pay, rights notices, and reporting obligations in New York City.',approach:'What information and responsibilities should delivery platforms be required to disclose?',position:'This provides the project’s policy context and potential public data, showing that routes are shaped by law, pay rules, reporting systems, and rights—not only streets.',tags:['Worker rights','Platform reporting','Regulation']},
-  platforms:{index:'06',role:'Platform builders · Technical interlocutor',title:'Delivery platforms',text:'Companies such as DoorDash, Uber Eats, and Meituan develop systems for assignment, ETA prediction, routing, demand forecasting, and marketplace optimization.',approach:'How can logistics be predicted and optimized across customers, restaurants, workers, and cities?',position:'They are both technical references and objects of critique. I study their methods while questioning whose time, risk, and knowledge their optimization models prioritize or omit.',tags:['Dispatch','ETA prediction','Optimization']}
+  forensic:{index:'01',role:'Critical practice · Investigative method',title:'Forensic Architecture',text:'Uses maps, media, geolocation, models, and timelines to reconstruct contested events.',approach:'How can distributed evidence be spatially reassembled?',position:'Provides a model for combining spatial investigation, evidence, and public-facing visualization.',tags:['Multi-source evidence','Geolocation','Uncertainty'],visualLabel:'Precedent images',visualTitle:'Forensic Architecture / Evros River investigation',visuals:[{src:'images/forensic-architecture-evros-overview.png',alt:'Forensic Architecture border-region composite map showing layered aerial imagery, route traces, markers, and a timeline across the Evros and Meriç region.',caption:'Layered reconstruction combining imagery, route traces, and a timeline.'},{src:'images/forensic-architecture-evros-route.png',alt:'Forensic Architecture satellite map showing a red route line and red evidence markers along the Evros border corridor.',caption:'Geolocated route reconstruction with distributed evidence points.'}]},
+  data:{index:'02',role:'Critical practice · Ethical framework',title:'Data Feminism',text:'Examines how power shapes data collection, representation, context, and whose labor or experience becomes visible.',approach:'Who is counted, who controls the data, and what knowledge remains absent?',position:'I use this framework to identify power, label data provenance, make labor visible, and avoid treating partial evidence as objective completeness.',tags:['Power','Context','Make labor visible'],visualLabel:'Reference images',visualTitle:'Data Feminism / book and mapping precedents',visuals:[{src:'images/data-feminism-cover.png',alt:'Cover of the book Data Feminism by Catherine D’Ignazio and Lauren F. Klein.',caption:'The core framework linking data, power, and situated knowledge.'},{src:'images/data-feminism-global-map.png',alt:'Dark world map with multicolored global route lines over oceans and continents.',caption:'A large-scale network visualization showing how data graphics can expose global infrastructures.'},{src:'images/data-feminism-mexico-map.png',alt:'Map of Mexico covered with many colored point markers.',caption:'A point-distribution map showing how mapping can reveal uneven patterns, scale, and visibility.'}]},
+  fairwork:{index:'03',role:'Labor research · Standards',title:'Fairwork',text:'Benchmarks platform labor through five principles: pay, conditions, contracts, management, and representation.',approach:'How can worker conditions be assessed through evidence and comparable standards?',position:'This helps frame labor conditions and accountability within the delivery system.',tags:['Scores','Worker conditions','Accountability'],visualLabel:'Reference image',visualTitle:'Fairwork / Scores 2024 by Principle',visuals:[{src:'images/fairwork-scores-2024.png',alt:'Fairwork score table titled Scores 2024, by Principle, comparing platforms across five labor principles.',caption:'A scorecard comparing platforms across fair pay, conditions, contracts, management, and representation.',fit:'contain'}]},
+  ldu:{index:'04',role:'Worker knowledge · Organizing',title:'Los Deliveristas Unidos',text:'A worker-led organization in New York that mobilizes delivery workers around pay, safety, dignity, and collective representation.',approach:'How can delivery workers shape the policies and infrastructures that affect their daily work?',position:'Worker knowledge should guide how delivery is represented, documented, and discussed in this project.',tags:['Worker voice','Collective action','Street knowledge'],visualLabel:'Reference images',visualTitle:'Los Deliveristas Unidos / Organizing and public action',visuals:[{src:'images/ldu-group-photo.png',alt:'Group portrait of Los Deliveristas Unidos members wearing organization shirts.',caption:'Organizing through collective identity, solidarity, and worker-led advocacy.',fit:'contain'},{src:'images/ldu-street-action.png',alt:'Los Deliveristas Unidos members leading a street protest with bicycles and a banner in New York City.',caption:'Public protest and direct action make worker demands visible in the city.',fit:'contain'}]},
+  policy:{index:'05',role:'Public accountability · Regulation',title:'NYC DCWP',text:'NYC DCWP represents the policy and public-accountability side of platform work, including consumer protection, worker rights, and access to public services.',approach:'How do city agencies shape the rules, protections, and public responsibilities around delivery systems?',position:'This perspective connects delivery to regulation, reporting, rights enforcement, and public support structures beyond the platform itself.',tags:['Public policy','Worker rights','Accountability'],visualLabel:'Reference images',visualTitle:'NYC DCWP / Public services and consumer protection',visuals:[{src:'images/dcwp-financial-empowerment.png',alt:'NYC Financial Empowerment Centers page showing free financial counseling with a counselor and client.',caption:'Public-service support, including financial counseling, shows DCWP’s broader role in economic protection and guidance.',fit:'contain'},{src:'images/dcwp-medical-debt.png',alt:'News-style image about NYC suing Brooklyn dental providers for preying on patients and driving them into medical debt.',caption:'Consumer-protection action highlights public accountability, legal oversight, and protection against harmful financial practices.',fit:'contain'}]},
+  platforms:{index:'06',role:'Platform builders · Technical interlocutor',title:'Delivery platforms',text:'Delivery platforms such as Wonder and Uber Eats present delivery as seamless convenience through branding, interface design, and coordinated logistics systems.',approach:'How do platforms shape customer expectations while organizing assignment, routing, ETAs, and marketplace control behind the screen?',position:'This panel represents the corporate and technical perspective of delivery: optimizing operations, standardizing interfaces, and shaping how the delivery journey is perceived.',tags:['Branding','Interface','Optimization'],visualLabel:'Reference images',visualTitle:'Delivery platforms / corporate interface and brand logic',visuals:[{src:'images/delivery-platforms-wonder.png',alt:'Wonder website news page showing a large group photo at a store opening with the Wonder brand in the header.',caption:'Corporate image-making frames delivery and food logistics as polished service, growth, and convenience.',fit:'contain'},{src:'images/delivery-platforms-uber-eats.png',alt:'Black screen with the Uber Eats wordmark centered in white.',caption:'Platform branding distills a complex delivery system into a simple, recognizable customer-facing interface.',fit:'contain'}]}
 };
 const communityMap=document.getElementById('communityMap');
 const communityNodes=[...document.querySelectorAll('.community-node')];
@@ -4898,6 +5256,23 @@ function setCommunity(key,manual=false){
   document.getElementById('communityApproach').textContent=d.approach;
   document.getElementById('communityPosition').textContent=d.position;
   document.getElementById('communityTags').innerHTML=d.tags.map(tag=>`<span>${tag}</span>`).join('');
+  const visuals=document.getElementById('communityVisuals');
+  const visualsLabel=document.getElementById('communityVisualsLabel');
+  const visualsTitle=document.getElementById('communityVisualsTitle');
+  const visualsGrid=document.getElementById('communityVisualGrid');
+  if(visuals&&visualsGrid){
+    if(d.visuals&&d.visuals.length){
+      if(visualsLabel)visualsLabel.textContent=d.visualLabel||'Precedent images';
+      if(visualsTitle)visualsTitle.textContent=d.visualTitle||`${d.title} visuals`;
+      visualsGrid.classList.toggle('single-visual', d.visuals.length===1);
+      visualsGrid.innerHTML=d.visuals.map(v=>`<figure class="community-visual-card"><img src="${v.src}" alt="${v.alt}"${v.fit==='contain' ? ' style=\"object-fit:contain;background:#f4efe7;\"' : ''}><figcaption>${v.caption}</figcaption></figure>`).join('');
+      visuals.hidden=false;
+    }else{
+      visualsGrid.classList.remove('single-visual');
+      visualsGrid.innerHTML='';
+      visuals.hidden=true;
+    }
+  }
   const detail=document.querySelector('.community-detail');
   if(detail){detail.classList.remove('is-changing');void detail.offsetWidth;detail.classList.add('is-changing');}
   if(manual) restartCommunityCycle();
