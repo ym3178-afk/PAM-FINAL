@@ -88,8 +88,15 @@ Latest Chapter 08 road-restriction update:
 - If every candidate conflicts with the closure, the interface shows “No valid reroute” instead of drawing a misleading red line.
 
 Latest Chapter 08 candidate-pool update:
-- The simulator now requests 30 authored waypoint strategies and retains up to 24 returned street-following candidates, with a minimum target of 20.
+- The simulator now requests 30 authored waypoint strategies with alternative-route responses enabled and retains up to 48 returned street-following candidates, with a target of at least 40.
 - The right panel reports generated and valid candidate counts and sorts cards by comprehensive rank.
 - Red always means the rank #1 recommendation within the returned candidate set; a manually inspected alternative is shown as a white dashed line.
-- After a yellow road closure, the system requests up to 24 additional open-street detours and re-ranks all valid routes.
+- After a yellow road closure, the system requests alternative responses for the open-street detour strategies, retains up to 48 additional reroutes, and re-ranks all valid routes.
 - No schematic or invented street geometry is added when the routing service returns fewer routes.
+
+
+Latest Chapter 08 candidate-pool refinement:
+- Candidate target increased from 20 to 40, with a maximum of 48 initial routes.
+- Every authored waypoint strategy now requests Mapbox alternatives when available.
+- Dynamic road-closure rerouting also requests alternatives and can retain up to 48 new open-street reroutes.
+- Gray candidate lines use rank-based width and opacity so the larger pool remains readable.
