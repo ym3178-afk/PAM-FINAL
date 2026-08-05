@@ -4207,6 +4207,30 @@ body{
   }
 }
 
+
+/* Chapter 08 — fixed six-line explanatory copy */
+#s08 .route-experiment-six-line-copy{
+  display:block!important;
+  margin:0!important;
+  max-width:none!important;
+  font-size:12.5px!important;
+  line-height:1.42!important;
+  letter-spacing:-.005em;
+}
+#s08 .route-experiment-six-line-copy>span{
+  display:block;
+  white-space:nowrap;
+}
+@media (min-width:901px) and (max-width:1320px){
+  #s08 .route-experiment-six-line-copy{font-size:10.8px!important;line-height:1.35!important}
+}
+@media (min-width:901px) and (max-width:1260px){
+  #s08 .route-experiment-six-line-copy{font-size:10.4px!important;line-height:1.31!important}
+}
+@media (max-width:900px){
+  #s08 .route-experiment-six-line-copy>span{white-space:normal}
+}
+
 </style>
 </head>
 <body>
@@ -4670,7 +4694,7 @@ body{
       <h2>One journey, multiple route logics and hidden infrastructures.</h2>
     </div>
     <div class="route-experiment-intro">
-      <p>This method becomes a computational experiment called <em>One Journey, Multiple Route Logics</em>. With the same origin and destination, every candidate is evaluated across distance, moving time, bicycle support, slope, traffic, weather, and risk. The selected Route Objective does not switch factors on or off; it only changes their relative weights. Rather than finding one universally correct route, the experiment shows how different priorities and situated conditions reorder the same candidates. This forms the foundation of the simulator.</p>
+      <p class="route-experiment-six-line-copy"><span>This panel shows how the system compares multiple street-following routes. All factors remain active,</span><span>while the selected objective changes their relative weights. Traffic, weather, slope, bike-lane support,</span><span>risk, and road restrictions can change the ranking, while waiting and handoff time only affect total delivery time.</span><span>In this example, the Direct network is fully closed in yellow. The system generates 37 candidates,</span><span>removes routes that overlap with the closed segments, and keeps 2 valid alternatives.</span><span>The red Cross-corridor hybrid ranks first because it has the lowest weighted score, 0.90, so it becomes the new recommended route.</span></p>
       <div class="route-experiment-fixed">
         <span><b>R</b> 125th Street restaurant</span>
         <i>→</i>
