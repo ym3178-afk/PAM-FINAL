@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>Behind the Route — Fixed Ratio Presentation</title>
+<meta name="description" content="Behind the Route presentation displayed at a fixed desktop composition on every device." />
+<style>
+  :root {
+    --design-width: 1920;
+    --design-height: 1052;
+    --fit-scale: 1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: #111;
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    overscroll-behavior: none;
+  }
+  #stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #111;
+  }
+  #frame {
+    position: relative;
+    flex: 0 0 auto;
+    overflow: hidden;
+    background: #111;
+  }
+  #presentation {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1052px;
+    border: 0;
+    display: block;
+    transform-origin: 0 0;
+    background: #111;
+  }
+  #orientation-note {
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    padding: 7px 11px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+    color: rgba(255,255,255,.72);
+    background: rgba(17,17,17,.82);
+    font-size: 10px;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .2s ease;
+  }
+  @media (orientation: portrait) and (max-width: 700px) {
+    #stage { align-items: flex-start; padding-top: max(8px, env(safe-area-inset-top)); }
+    #orientation-note { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+  <div id="stage">
+    <div id="frame">
+      <iframe
+        id="presentation"
+        src="presentation.html"
+        title="Behind the Route — 12 chapter presentation"
+        allow="fullscreen; geolocation"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+  <div id="orientation-note">Landscape view gives the largest readable presentation.</div>
+<script>
+(() => {
+  const DESIGN_WIDTH = 1920;
+  const DESIGN_HEIGHT = 1052;
+  const frame = document.getElementById('frame');
+  const presentation = document.getElementById('presentation');
+
+  function fitPresentation() {
+    const safeWidth = Math.max(1, window.innerWidth);
+    const safeHeight = Math.max(1, window.innerHeight);
+    const scale = Math.min(safeWidth / DESIGN_WIDTH, safeHeight / DESIGN_HEIGHT);
+    const fittedWidth = Math.round(DESIGN_WIDTH * scale * 1000) / 1000;
+    const fittedHeight = Math.round(DESIGN_HEIGHT * scale * 1000) / 1000;
+
+    frame.style.width = fittedWidth + 'px';
+    frame.style.height = fittedHeight + 'px';
+    presentation.style.transform = `scale(${scale})`;
+    document.documentElement.style.setProperty('--fit-scale', String(scale));
+  }
+
+  fitPresentation();
+  window.addEventListener('resize', fitPresentation, { passive: true });
+  window.addEventListener('orientationchange', () => setTimeout(fitPresentation, 120), { passive: true });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', fitPresentation, { passive: true });
+  }
+})();
+</script>
+</body>
+</html>

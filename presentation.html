@@ -1059,8 +1059,12 @@ main{padding-left:238px}
 .route-experiment-fallback.is-hidden{opacity:0;pointer-events:none}
 .route-experiment-fallback strong{font-size:20px;margin-bottom:8px}
 .route-experiment-fallback span{font-size:12px;line-height:1.4;color:#aaa;max-width:430px}
-.route-experiment-status{position:absolute;z-index:6;left:12px;top:12px;background:rgba(0,0,0,.78);color:#fff;padding:8px 10px;font-size:10px;border-left:3px solid #ff3348}
+.route-experiment-status{position:absolute;z-index:8;left:12px;top:12px;background:rgba(0,0,0,.82);color:#fff;padding:8px 10px;font-size:10px;border-left:3px solid #ff3348;max-width:470px}
 .route-experiment-status.is-error{border-left-color:#ffb000}
+.route-experiment-closure-note{position:absolute;z-index:8;left:12px;top:49px;display:none;max-width:330px;padding:8px 10px;background:rgba(20,20,20,.91);color:#fff;border:1px solid rgba(255,176,0,.7);border-left:5px solid #ffb000;pointer-events:none}
+.route-experiment-closure-note.active{display:flex;flex-direction:column;gap:3px}
+.route-experiment-closure-note b{font-size:9px;letter-spacing:.08em;color:#ffbf2f}
+.route-experiment-closure-note span{font-size:8px;line-height:1.35;color:#eee}
 .route-experiment-map-label{position:absolute;z-index:4;background:rgba(255,255,255,.94);padding:7px 9px;display:flex;flex-direction:column;gap:2px;max-width:190px;pointer-events:none}
 .route-experiment-map-label span{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:#777}
 .route-experiment-map-label b{font-size:10px;line-height:1.2}
@@ -1068,7 +1072,7 @@ main{padding-left:238px}
 .route-experiment-map-label.destination{right:12px;top:12px}
 .route-experiment-legend{position:absolute;z-index:4;left:12px;right:12px;bottom:10px;display:flex;gap:13px;align-items:center;flex-wrap:wrap;background:rgba(0,0,0,.78);color:#fff;padding:7px 9px;font-size:9px}
 .route-experiment-legend i{display:inline-block;width:22px;height:3px;margin-right:5px;vertical-align:middle}
-.exp-line-all{background:#888}.exp-line-recommended{background:#fff}.exp-line-selected{background:#ff3348}.exp-line-blocked{background:repeating-linear-gradient(90deg,#ffb000 0 4px,transparent 4px 7px)}
+.exp-line-all{background:#888}.exp-line-recommended{background:#ff3348}.exp-line-selected{background:repeating-linear-gradient(90deg,#fff 0 8px,transparent 8px 12px)}.exp-line-blocked{height:7px!important;border:1px solid rgba(255,176,0,.5);background:repeating-linear-gradient(90deg,#ffb000 0 5px,transparent 5px 8px)}
 .route-experiment-controls{border:1px solid #bbb7ad;background:#f7f5ef;padding:14px;display:flex;flex-direction:column;min-width:0;overflow:hidden}
 .route-objective-head,.route-condition-head,.route-time-only-head{display:flex;justify-content:space-between;align-items:end;gap:12px}
 .route-objective-head span,.route-condition-head span,.route-time-only-head span{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#5b5852;font-weight:700}
@@ -1078,6 +1082,15 @@ main{padding-left:238px}
 .route-objective-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:8px}
 .route-objective-grid button{border:1px solid #aaa69c;background:#fff;padding:8px 5px;font-size:10px;cursor:pointer}
 .route-objective-grid button:hover,.route-objective-grid button.active{background:#111;color:#fff;border-color:#111}
+.route-score-explainer{margin-top:8px;padding:9px 10px;border:1px solid #c1bdb3;background:#111;color:#fff}
+.route-score-explainer-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.route-score-explainer-head span{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700}
+.route-score-explainer-head b{font-size:8px;color:#fff;text-transform:uppercase;letter-spacing:.06em}
+.route-score-explainer p{margin:6px 0 7px;font-size:8.6px;line-height:1.34;color:#d7d7d7}
+.route-weight-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.route-weight-summary span{display:flex;flex-direction:column;gap:2px;padding:5px 5px;background:#232323;font-size:6.8px;line-height:1.15;color:#aaa;text-transform:uppercase;letter-spacing:.04em;min-width:0}
+.route-weight-summary b{font-size:9px;color:#fff;letter-spacing:0}
+.route-score-explainer>small{display:block;margin-top:6px;font-size:6.8px;line-height:1.28;color:#8e8e8e}
 .route-condition-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px 12px;margin-top:9px}
 .route-condition-grid label,.route-time-only-grid label{min-width:0}
 .route-condition-grid label>span,.route-time-only-grid label>span{display:flex;justify-content:space-between;gap:8px;font-size:10px;line-height:1.2;font-weight:700;margin-bottom:4px}
@@ -1086,7 +1099,7 @@ main{padding-left:238px}
 .route-time-only-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;background:#ebe8df;padding:9px}
 .route-experiment-results{display:grid;grid-template-columns:minmax(470px,.9fr) minmax(0,1.1fr);gap:16px;margin-top:13px;height:176px}
 .route-experiment-selected,.route-experiment-candidates{border:1px solid #bbb7ad;background:#f7f5ef;min-width:0}
-.route-experiment-selected{padding:12px 14px;display:grid;grid-template-rows:auto auto 8px auto;gap:8px}
+.route-experiment-selected{padding:12px 14px;display:grid;grid-template-rows:auto auto auto 8px auto;gap:8px}
 .route-selected-heading{display:grid;grid-template-columns:86px 1fr auto;gap:8px;align-items:baseline}
 .route-selected-heading span,.route-candidates-heading span{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700}
 .route-selected-heading b{font-size:14px}
@@ -1097,6 +1110,11 @@ main{padding-left:238px}
 .route-selected-metrics span{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.06em;color:#777;white-space:nowrap}
 .route-selected-metrics b{display:block;font-size:17px;line-height:1;margin-top:5px;white-space:nowrap}
 .route-selected-metrics article.total b{color:var(--accent)}
+.route-overall-score{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 8px;background:#111;color:#fff}
+.route-overall-score>div{display:flex;flex-direction:column;gap:2px}
+.route-overall-score span{font-size:7px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.route-overall-score small{font-size:7px;color:#8f8f8f}
+.route-overall-score>b{font-size:18px;line-height:1;color:#fff}
 .route-time-breakdown{height:8px;background:#ddd9cf;display:flex;overflow:hidden}
 .route-time-breakdown i{display:block;height:100%;transition:width .25s ease}
 #experimentMovingSegment{background:#111}#experimentWaitSegment{background:#ff3348}#experimentHandoffSegment{background:#999}
@@ -1110,7 +1128,10 @@ main{padding-left:238px}
 .route-experiment-card:hover{border-color:#555}
 .route-experiment-card.selected{border-color:#ff3348;box-shadow:inset 0 0 0 1px #ff3348}
 .route-experiment-card.recommended::after{content:'BEST';position:absolute;right:5px;top:5px;background:#111;color:#fff;font-size:7px;padding:3px 4px;letter-spacing:.08em}
-.route-experiment-card.blocked{background:#eee8dc;border-style:dashed;opacity:.68}
+.route-experiment-card.blocked{background:#eee8dc;border-style:dashed;opacity:.72}
+.route-experiment-card.blocked:disabled{cursor:not-allowed;filter:saturate(.7)}
+.route-experiment-card.conflict{background:#f2eee5;border-color:#c79a3b}
+.route-experiment-card.conflict strong{color:#7b5100}
 .route-experiment-card strong{font-size:11px;line-height:1.1;padding-right:28px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .route-experiment-card>span{font-size:9px;color:#777;align-self:end}
 .route-experiment-card small{font-size:8px;color:var(--accent);grid-column:1/-1;text-transform:uppercase;letter-spacing:.06em}
@@ -2757,6 +2778,11 @@ body{
   #s08 .route-experiment-map-wrap{min-height:100%!important}
   #s08 .route-experiment-controls{padding:12px 13px!important;overflow:auto!important}
   #s08 .route-objective-grid button{font-size:8.4px!important;padding:7px 5px!important}
+  #s08 .route-score-explainer{padding:8px 9px!important;margin-top:7px!important}
+  #s08 .route-score-explainer p{font-size:7.8px!important;margin:5px 0 6px!important}
+  #s08 .route-weight-summary span{font-size:6.2px!important;padding:4px!important}
+  #s08 .route-weight-summary b{font-size:8.2px!important}
+  #s08 .route-score-explainer>small{font-size:6.2px!important}
   #s08 .route-condition-grid{gap:8px 10px!important}
   #s08 .route-condition-grid label span,#s08 .route-time-only-grid label span{font-size:8.3px!important}
   #s08 .route-time-only-grid{padding:8px!important}
@@ -3921,6 +3947,266 @@ body{
 @media (max-width:1500px){#s05 .lineage-intro{max-width:640px!important;width:640px!important}}
 @media (max-width:1200px){#s05 .lineage-intro{max-width:100%!important;width:auto!important}}
 
+
+
+/* =====================================================================
+   CHAPTER 08 — FINAL RIGHT-PANEL LAYOUT
+   A readable, independently scrollable information column. The map stays
+   fixed while controls, comprehensive scoring, selected-route metrics,
+   and all candidate cards move together in one vertical flow.
+   ===================================================================== */
+@media (min-width:901px){
+  #s08.route-experiment-slide{
+    display:flex!important;
+    flex-direction:column!important;
+    grid-template-columns:none!important;
+    grid-template-rows:none!important;
+    gap:0!important;
+    padding-top:70px!important;
+    padding-bottom:24px!important;
+    overflow:hidden!important;
+  }
+
+  #s08>.route-experiment-heading{
+    flex:0 0 auto!important;
+    width:100%!important;
+    margin:0 0 12px!important;
+  }
+
+  #s08>.route-experiment-main{
+    flex:1 1 auto!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(380px,410px)!important;
+    grid-template-rows:minmax(0,1fr)!important;
+    gap:14px!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:hidden!important;
+  }
+
+  #s08 .route-experiment-map-wrap{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+  }
+
+  #s08 .route-experiment-sidebar{
+    grid-column:2!important;
+    grid-row:1!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:9px!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    max-height:100%!important;
+    margin:0!important;
+    padding:0 8px 12px 0!important;
+    overflow-x:hidden!important;
+    overflow-y:scroll!important;
+    overscroll-behavior:contain!important;
+    scroll-behavior:smooth!important;
+    scroll-padding-top:34px!important;
+    scrollbar-gutter:stable!important;
+    scrollbar-width:auto!important;
+    scrollbar-color:#5f5b54 #d8d4cb!important;
+    touch-action:pan-y!important;
+    outline:none!important;
+  }
+  #s08 .route-experiment-sidebar:focus-visible{
+    box-shadow:inset 0 0 0 2px #ff4d2e!important;
+  }
+  #s08 .route-experiment-sidebar::-webkit-scrollbar{width:11px!important}
+  #s08 .route-experiment-sidebar::-webkit-scrollbar-track{background:#d8d4cb!important}
+  #s08 .route-experiment-sidebar::-webkit-scrollbar-thumb{
+    background:#5f5b54!important;
+    border:3px solid #d8d4cb!important;
+    border-radius:999px!important;
+  }
+  #s08 .route-experiment-sidebar::-webkit-scrollbar-thumb:hover{background:#292724!important}
+  #s08 .route-experiment-sidebar::after{display:none!important}
+
+  #s08 .route-sidebar-scroll-hint{
+    position:sticky!important;
+    top:0!important;
+    z-index:30!important;
+    flex:0 0 auto!important;
+    display:flex!important;
+    justify-content:space-between!important;
+    align-items:center!important;
+    min-height:30px!important;
+    padding:7px 10px!important;
+    border:1px solid #2e2e2e!important;
+    background:rgba(17,17,17,.96)!important;
+    color:#fff!important;
+    box-shadow:0 5px 10px rgba(0,0,0,.13)!important;
+  }
+  #s08 .route-sidebar-scroll-hint span{
+    font-size:8px!important;
+    font-weight:700!important;
+    letter-spacing:.12em!important;
+    text-transform:uppercase!important;
+    color:#ff4d2e!important;
+  }
+  #s08 .route-sidebar-scroll-hint b{
+    font-size:8px!important;
+    font-weight:600!important;
+    letter-spacing:.04em!important;
+    color:#d8d8d8!important;
+  }
+
+  #s08 .route-experiment-controls,
+  #s08 .route-experiment-selected,
+  #s08 .route-experiment-candidates{
+    position:relative!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    flex:0 0 auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:0!important;
+    overflow:visible!important;
+    border:1px solid #aaa69c!important;
+    background:#f8f6f0!important;
+    box-shadow:0 1px 0 rgba(17,17,17,.04)!important;
+  }
+
+  #s08 .route-experiment-controls{padding:14px!important}
+  #s08 .route-objective-head span,
+  #s08 .route-condition-head span,
+  #s08 .route-time-only-head span{font-size:9.2px!important}
+  #s08 .route-objective-head b{font-size:12px!important}
+  #s08 .route-objective-grid{gap:5px!important;margin:8px 0 0!important}
+  #s08 .route-objective-grid button{
+    min-height:30px!important;
+    padding:7px 5px!important;
+    font-size:9px!important;
+    line-height:1.1!important;
+  }
+
+  #s08 .route-score-explainer{margin-top:10px!important;padding:11px!important}
+  #s08 .route-score-explainer-head span,
+  #s08 .route-score-explainer-head b{font-size:7.8px!important}
+  #s08 .route-score-explainer p{font-size:8.8px!important;line-height:1.38!important;margin:7px 0!important}
+  #s08 .route-weight-summary{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:5px!important;
+  }
+  #s08 .route-weight-summary span{font-size:7px!important;padding:6px!important}
+  #s08 .route-weight-summary b{font-size:9.6px!important}
+  #s08 .route-score-explainer>small{font-size:7px!important;line-height:1.35!important;margin-top:7px!important}
+
+  #s08 .route-condition-head,
+  #s08 .route-time-only-head{margin-top:13px!important;padding-top:12px!important;margin-bottom:0!important}
+  #s08 .route-condition-head small,
+  #s08 .route-time-only-head small{font-size:8px!important}
+  #s08 .route-condition-grid{
+    grid-template-columns:1fr 1fr!important;
+    gap:10px 12px!important;
+    margin-top:10px!important;
+  }
+  #s08 .route-time-only-grid{
+    grid-template-columns:1fr 1fr!important;
+    gap:10px!important;
+    margin-top:9px!important;
+    padding:10px!important;
+  }
+  #s08 .route-condition-grid label>span,
+  #s08 .route-time-only-grid label>span{
+    font-size:8.8px!important;
+    line-height:1.25!important;
+    margin-bottom:5px!important;
+  }
+  #s08 .route-condition-grid input[type=range],
+  #s08 .route-time-only-grid input[type=range]{height:16px!important}
+  #s08 .route-condition-grid select{height:30px!important;font-size:9px!important}
+
+  #s08 .route-experiment-selected{
+    display:grid!important;
+    grid-template-rows:auto auto auto 8px auto!important;
+    gap:8px!important;
+    padding:13px 14px!important;
+  }
+  #s08 .route-selected-heading{
+    grid-template-columns:84px minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    gap:3px 8px!important;
+    align-items:baseline!important;
+  }
+  #s08 .route-selected-heading span{grid-column:1!important;grid-row:1 / 3!important;align-self:start!important;font-size:8.5px!important}
+  #s08 .route-selected-heading b{grid-column:2!important;grid-row:1!important;font-size:13.5px!important;line-height:1.12!important}
+  #s08 .route-selected-heading small{grid-column:2!important;grid-row:2!important;text-align:left!important;font-size:7.6px!important;line-height:1.25!important}
+  #s08 .route-selected-metrics{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:7px 9px!important;
+  }
+  #s08 .route-selected-metrics article{
+    border-left:0!important;
+    border-top:1px solid #d2cec4!important;
+    padding:7px 0 0!important;
+  }
+  #s08 .route-selected-metrics span{font-size:7px!important}
+  #s08 .route-selected-metrics b{font-size:12px!important;margin-top:4px!important}
+  #s08 .route-overall-score{padding:9px 10px!important}
+  #s08 .route-overall-score span,
+  #s08 .route-overall-score small{font-size:7px!important}
+  #s08 .route-overall-score>b{font-size:18px!important}
+  #s08 .route-time-labels{font-size:7px!important;gap:7px!important}
+
+  #s08 .route-experiment-candidates{
+    display:flex!important;
+    flex-direction:column!important;
+    padding:12px!important;
+  }
+  #s08 .route-candidates-heading{margin-bottom:8px!important}
+  #s08 .route-candidates-heading span{font-size:8.5px!important}
+  #s08 .route-candidates-heading small{display:block!important;font-size:7.6px!important}
+  #s08 .route-experiment-cards{
+    flex:0 0 auto!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:none!important;
+    gap:7px!important;
+    min-height:0!important;
+    height:auto!important;
+  }
+  #s08 .route-experiment-card{
+    min-height:54px!important;
+    height:auto!important;
+    padding:9px 10px!important;
+    gap:5px 10px!important;
+    align-content:center!important;
+  }
+  #s08 .route-experiment-card strong{
+    min-height:0!important;
+    padding-right:34px!important;
+    font-size:10.6px!important;
+    line-height:1.15!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+  }
+  #s08 .route-experiment-card>span{font-size:8px!important}
+  #s08 .route-experiment-card small{font-size:7.2px!important;line-height:1.2!important}
+  #s08 .route-experiment-card.recommended::after{font-size:6.5px!important;padding:3px 5px!important}
+
+  #s08>.route-experiment-footer{display:none!important}
+}
+
+@media (min-width:901px) and (max-width:1260px){
+  #s08>.route-experiment-main{
+    grid-template-columns:minmax(0,1fr) minmax(350px,380px)!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4384,7 +4670,7 @@ body{
       <h2>One journey, multiple route logics and hidden infrastructures.</h2>
     </div>
     <div class="route-experiment-intro">
-      <p>This method becomes a computational experiment called <em>One Journey, Multiple Route Logics</em>. With the same origin and destination, routes change according to different priorities, including distance, traffic, bicycle lanes, intersections, slopes, and access restrictions. Rather than finding one correct route, the experiment shows how different conditions produce different journeys. This forms the foundation of the simulator.</p>
+      <p>This method becomes a computational experiment called <em>One Journey, Multiple Route Logics</em>. With the same origin and destination, every candidate is evaluated across distance, moving time, bicycle support, slope, traffic, weather, and risk. The selected Route Objective does not switch factors on or off; it only changes their relative weights. Rather than finding one universally correct route, the experiment shows how different priorities and situated conditions reorder the same candidates. This forms the foundation of the simulator.</p>
       <div class="route-experiment-fixed">
         <span><b>R</b> 125th Street restaurant</span>
         <i>→</i>
@@ -4401,19 +4687,21 @@ body{
         <span>The map uses Mapbox road geometry. If routing is unavailable, invented street lines are not substituted.</span>
       </div>
       <div class="route-experiment-status" id="routeExperimentStatus" aria-live="polite">Preparing the controlled case…</div>
+      <div class="route-experiment-closure-note" id="routeExperimentClosureNotice" aria-live="polite"><b>ALL YELLOW SEGMENTS CLOSED</b><span>Red routes cannot travel along any yellow segment. A single perpendicular crossing at an intersection is not shared travel.</span></div>
       <div class="route-experiment-map-label origin"><span>Fixed origin</span><b>125th Street restaurant</b></div>
       <div class="route-experiment-map-label destination"><span>Fixed destination</span><b>Columbia campus gate</b></div>
       <div class="route-experiment-legend">
-        <span><i class="exp-line-all"></i>Candidate routes</span>
-        <span><i class="exp-line-recommended"></i>Recommended</span>
-        <span><i class="exp-line-selected"></i>Selected</span>
-        <span><i class="exp-line-blocked"></i>Restricted</span>
+        <span><i class="exp-line-all"></i>Available candidates</span>
+        <span><i class="exp-line-recommended"></i>Recommended · rank #1</span>
+        <span><i class="exp-line-selected"></i>Inspected alternative</span>
+        <span><i class="exp-line-blocked"></i>Closed road segments</span>
       </div>
     </section>
 
     <div class="route-experiment-sidebar" tabindex="0" aria-label="Route controls, selected route metrics, and candidate routes. Scroll vertically to view all content.">
+    <div class="route-sidebar-scroll-hint" aria-hidden="true"><span>Route panel</span><b>Scroll to view all ↓</b></div>
       <aside class="route-experiment-controls">
-        <div class="route-objective-head"><span>Route objective</span><b id="experimentObjectiveLabel">Balanced</b></div>
+        <div class="route-objective-head"><span>Weighting objective</span><b id="experimentObjectiveLabel">Balanced</b></div>
         <div class="route-objective-grid" role="tablist" aria-label="Route calculation objectives">
           <button class="active" type="button" data-experiment-objective="balanced">Balanced</button>
           <button type="button" data-experiment-objective="shortest">Shortest</button>
@@ -4421,6 +4709,20 @@ body{
           <button type="button" data-experiment-objective="bike">Bike priority</button>
           <button type="button" data-experiment-objective="slope">Low slope</button>
           <button type="button" data-experiment-objective="risk">Lower risk</button>
+        </div>
+
+        <div class="route-score-explainer" aria-live="polite">
+          <div class="route-score-explainer-head"><span>Comprehensive evaluation</span><b>All factors remain active</b></div>
+          <p id="experimentObjectiveExplanation">Balanced compares every factor with relatively even base weights.</p>
+          <div class="route-weight-summary" id="experimentWeightSummary" aria-label="Current route-objective base weights">
+            <span><b data-experiment-weight="distance">1.00×</b>Distance</span>
+            <span><b data-experiment-weight="time">1.15×</b>Time + traffic</span>
+            <span><b data-experiment-weight="bike">0.90×</b>Bike support</span>
+            <span><b data-experiment-weight="slope">0.80×</b>Slope</span>
+            <span><b data-experiment-weight="risk">0.90×</b>Risk</span>
+            <span><b data-experiment-weight="weather">0.55×</b>Weather</span>
+          </div>
+          <small>Weighted overall score = sum of all factor penalties. Lower score → higher rank. At least 20 street-following candidates are requested. The red route is rank #1 within the returned candidate set—not a claim of a universal mathematical optimum.</small>
         </div>
   
         <div class="route-condition-head"><span>Situated conditions</span><small>These can change route ranking</small></div>
@@ -4430,7 +4732,7 @@ body{
           <label><span>Slope sensitivity <b id="experimentSlopeValue">45%</b></span><input id="experimentSlope" type="range" min="0" max="100" value="45"></label>
           <label><span>Bike-lane priority <b id="experimentBikeValue">60%</b></span><input id="experimentBike" type="range" min="0" max="100" value="60"></label>
           <label><span>Risk sensitivity <b id="experimentRiskValue">50%</b></span><input id="experimentRisk" type="range" min="0" max="100" value="50"></label>
-          <label><span>Road restriction</span><select id="experimentClosure"><option value="none">None</option><option value="broadway">Broadway corridor</option><option value="amsterdam">Amsterdam corridor</option><option value="morningside">Morningside corridor</option></select></label>
+          <label><span>Road restriction <b>full closure</b></span><select id="experimentClosure"><option value="none">None</option><option value="direct">Direct network</option><option value="broadway">Broadway corridor</option><option value="amsterdam">Amsterdam corridor</option><option value="morningside">Morningside corridor</option><option value="west">West-side detour</option><option value="east">East-side detour</option></select></label>
         </div>
   
         <div class="route-time-only-head"><span>Time-only variables</span><small>Do not alter route geometry</small></div>
@@ -4450,6 +4752,10 @@ body{
               <article><span>Risk exposure</span><b id="experimentRiskMetric">—</b></article>
               <article class="total"><span>Total delivery</span><b id="experimentTotalTime">—</b></article>
             </div>
+            <div class="route-overall-score">
+              <div><span>Overall weighted score</span><small>Lower score = higher rank</small></div>
+              <b id="experimentOverallScore">—</b>
+            </div>
             <div class="route-time-breakdown" aria-label="Delivery time breakdown">
               <i id="experimentMovingSegment"></i><i id="experimentWaitSegment"></i><i id="experimentHandoffSegment"></i>
             </div>
@@ -4457,14 +4763,14 @@ body{
           </div>
 
           <div class="route-experiment-candidates">
-            <div class="route-candidates-heading"><span>Street-following candidates</span><small>Click a card or route to inspect it</small></div>
+            <div class="route-candidates-heading"><span>Street-following candidates</span><small id="experimentCandidateCount">Requesting at least 20 routes…</small></div>
             <div id="routeExperimentCards" class="route-experiment-cards"></div>
           </div>
     </div>
   </div>
 
   <footer class="route-experiment-footer">
-    <p id="experimentInterpretation">There is no universally correct route: different priorities and conditions produce different routes within the same journey.</p>
+    <p id="experimentInterpretation">Every route is evaluated across all factors. The selected objective changes their weights, and the lowest comprehensive score ranks first.</p>
     <div><span>Road geometry · Mapbox</span><span>Route scoring · Authored model</span><span>Slope / bike / risk · Prototype proxies</span><span>Platform internals · Missing</span></div>
   </footer>
 </section>
@@ -5432,11 +5738,11 @@ const experimentMethodData={
     tools:['OSMnx','GeoPandas','NetworkX','QGIS']
   },
   routes:{
-    index:'03 · Candidate generation',evidence:'4–6 STREET-FOLLOWING ROUTES',title:'Generate distinct route candidates',
-    description:'The experiment avoids a single “optimal” line by generating several plausible paths between the same two fixed points.',
+    index:'03 · Candidate generation',evidence:'20+ STREET-FOLLOWING ROUTES',title:'Generate distinct route candidates',
+    description:'The experiment avoids a single “optimal” line by requesting at least twenty plausible street-following paths between the same two fixed points.',
     input:'Attributed street graph and baseline origin–destination pair.',
     operation:'Use shortest paths, weighted paths, K-shortest paths, corridor constraints, and near-duplicate removal.',
-    output:'Four to six street-following alternatives that are spatially different enough to compare.',
+    output:'At least twenty returned street-following candidates, ranked transparently while near-duplicates remain identifiable.',
     tools:['NetworkX','OSMnx','Mapbox Directions','Jupyter']
   },
   scenarios:{
@@ -5508,7 +5814,8 @@ const routeExperimentRoleMeta={
   amsterdam:{name:'Amsterdam corridor',bike:78,slope:43,risk:46,weather:52,traffic:.94,description:'A bicycle-support proxy using the central north–south corridor.'},
   morningside:{name:'Morningside corridor',bike:42,slope:76,risk:38,weather:43,traffic:.82,description:'A quieter-street proxy with greater modeled slope effort.'},
   west:{name:'West-side detour',bike:58,slope:35,risk:54,weather:72,traffic:1.08,description:'A longer western alternative with lower modeled slope but more exposure.'},
-  east:{name:'East-side detour',bike:54,slope:67,risk:41,weather:47,traffic:.86,description:'An eastern alternative that trades effort for lower modeled traffic risk.'}
+  east:{name:'East-side detour',bike:54,slope:67,risk:41,weather:47,traffic:.86,description:'An eastern alternative that trades effort for lower modeled traffic risk.'},
+  reroute:{name:'Dynamic street reroute',bike:56,slope:46,risk:48,weather:54,traffic:1.00,description:'A newly calculated street-following route generated after the yellow road segments are removed from the available network.'}
 };
 const routeExperimentObjectives={
   balanced:{label:'Balanced',distance:1,time:1.15,bike:.9,slope:.8,risk:.9,weather:.55},
@@ -5518,7 +5825,18 @@ const routeExperimentObjectives={
   slope:{label:'Low-slope priority',distance:.55,time:.7,bike:.4,slope:2.8,risk:.45,weather:.3},
   risk:{label:'Lower-risk priority',distance:.5,time:.7,bike:.55,slope:.4,risk:2.8,weather:.45}
 };
-const routeExperimentState={map:null,mapReady:false,routes:[],selectedId:null,recommendedId:null,objective:'balanced',requestSerial:0,abortController:null};
+const routeExperimentTargetCandidateCount=20;
+const routeExperimentMaxBaseCandidates=24;
+const routeExperimentMaxDynamicCandidates=24;
+const routeExperimentObjectiveExplanations={
+  balanced:'All factors are considered with relatively even base weights.',
+  shortest:'Distance receives the highest weight; time, slope, risk, bike support, and weather remain in the score.',
+  fastest:'Moving time receives the highest weight; distance, slope, risk, bike support, and weather remain in the score.',
+  bike:'Bike-lane support receives the highest weight; distance, time, slope, risk, and weather still affect the ranking.',
+  slope:'Slope effort receives the highest weight; this does not mean selecting only the route with the lowest slope.',
+  risk:'Risk exposure receives the highest weight; distance, time, bike support, slope, and weather still affect the ranking.'
+};
+const routeExperimentState={map:null,mapReady:false,baseRoutes:[],routes:[],selectedId:null,recommendedId:null,restrictedRouteId:null,restrictedCoordinates:[],objective:'balanced',requestSerial:0,abortController:null,detourSerial:0,detourAbortController:null,reroutePending:false};
 const routeExperimentControls={
   traffic:document.getElementById('experimentTraffic'),
   weather:document.getElementById('experimentWeather'),
@@ -5529,6 +5847,10 @@ const routeExperimentControls={
   handoff:document.getElementById('experimentHandoff'),
   closure:document.getElementById('experimentClosure')
 };
+function routeExperimentRouteName(route){
+  if(!route)return 'Route';
+  return route.name||(routeExperimentRoleMeta[route.profileRole||route.role]||routeExperimentRoleMeta.reroute).name;
+}
 function routeExperimentValues(){
   return {
     traffic:Number(routeExperimentControls.traffic?.value||0),
@@ -5550,8 +5872,8 @@ function routeExperimentDirectionsUrl(points,alternatives=false){
   const params=new URLSearchParams({alternatives:String(alternatives),geometries:'geojson',overview:'full',steps:'true',access_token:TOKEN});
   return `https://api.mapbox.com/directions/v5/mapbox/cycling/${path}?${params.toString()}`;
 }
-async function routeExperimentRequest(points,{role,label,alternatives=false}={}){
-  const response=await fetch(routeExperimentDirectionsUrl(points,alternatives),{signal:routeExperimentState.abortController?.signal});
+async function routeExperimentRequest(points,{role,label,alternatives=false,signal=null,profileRole=null}={}){
+  const response=await fetch(routeExperimentDirectionsUrl(points,alternatives),{signal:signal||routeExperimentState.abortController?.signal});
   if(!response.ok)throw new Error(`Directions request failed (${response.status})`);
   const data=await response.json();
   if(data.code!=='Ok'||!Array.isArray(data.routes)||!data.routes.length)throw new Error(data.message||'No street route returned');
@@ -5563,7 +5885,8 @@ async function routeExperimentRequest(points,{role,label,alternatives=false}={})
     distance:route.distance,
     duration:route.duration,
     steps:route.legs?.reduce((sum,leg)=>sum+(leg.steps?.length||0),0)||0,
-    source:'Mapbox cycling geometry'
+    source:'Mapbox cycling geometry',
+    profileRole
   }));
 }
 function routeExperimentCentroid(route){
@@ -5573,82 +5896,237 @@ function routeExperimentCentroid(route){
   return [total[0]/points.length,total[1]/points.length];
 }
 function routeExperimentDuplicate(a,b){
-  const ca=routeExperimentCentroid(a),cb=routeExperimentCentroid(b);
-  const centroidDistance=Math.hypot(ca[0]-cb[0],ca[1]-cb[1]);
-  return Math.abs(a.distance-b.distance)<28&&Math.abs(a.duration-b.duration)<18&&centroidDistance<.00022;
+  const lengthA=routeExperimentLineLength(a.coordinates),lengthB=routeExperimentLineLength(b.coordinates);
+  const shorter=Math.max(1,Math.min(lengthA,lengthB));
+  const sharedAB=routeExperimentSharedRoadMeters(a.coordinates,b.coordinates);
+  const sharedBA=routeExperimentSharedRoadMeters(b.coordinates,a.coordinates);
+  const overlap=Math.max(sharedAB,sharedBA)/shorter;
+  return overlap>.96&&Math.abs(a.distance-b.distance)<75;
 }
 function routeExperimentSelectCandidates(batches){
   const all=batches.flat();
-  const result=[];
   const roleOrder=['direct','broadway','amsterdam','morningside','west','east'];
-  roleOrder.forEach(role=>{
-    const candidate=all.find(route=>route.role===role&&!result.some(existing=>routeExperimentDuplicate(existing,route)));
-    if(candidate)result.push(candidate);
+  /* Preserve one primary route for every Road restriction option. Then add
+     geometrically distinct Mapbox routes. If fewer than twenty survive strict
+     near-duplicate removal, retain the closest remaining returned alternatives
+     rather than inventing any street geometry. */
+  const selected=roleOrder.map(role=>all.find(route=>route.role===role)).filter(Boolean);
+  const extras=all.filter(route=>!selected.includes(route)).sort((a,b)=>a.duration-b.duration||a.distance-b.distance);
+  for(const route of extras){
+    if(selected.some(existing=>routeExperimentDuplicate(existing,route)))continue;
+    selected.push(route);
+    if(selected.length>=routeExperimentMaxBaseCandidates)break;
+  }
+  if(selected.length<routeExperimentTargetCandidateCount){
+    for(const route of extras){
+      if(selected.includes(route))continue;
+      selected.push(route);
+      if(selected.length>=routeExperimentTargetCandidateCount||selected.length>=routeExperimentMaxBaseCandidates)break;
+    }
+  }
+  return selected.slice(0,routeExperimentMaxBaseCandidates).map((route,index)=>({...route,id:`experiment-route-${index}`}));
+}
+function routeExperimentInitialPlans(){
+  const primary=[
+    {points:[routeExperimentOrigin,routeExperimentDestination],role:'direct',label:'Direct network',profileRole:'direct',alternatives:true},
+    {points:[routeExperimentOrigin,routeExperimentCorridors.broadway,routeExperimentDestination],role:'broadway',label:'Broadway corridor',profileRole:'broadway',alternatives:false},
+    {points:[routeExperimentOrigin,routeExperimentCorridors.amsterdam,routeExperimentDestination],role:'amsterdam',label:'Amsterdam corridor',profileRole:'amsterdam',alternatives:false},
+    {points:[routeExperimentOrigin,routeExperimentCorridors.morningside,routeExperimentDestination],role:'morningside',label:'Morningside corridor',profileRole:'morningside',alternatives:false},
+    {points:[routeExperimentOrigin,routeExperimentCorridors.west,routeExperimentDestination],role:'west',label:'West-side detour',profileRole:'west',alternatives:false},
+    {points:[routeExperimentOrigin,routeExperimentCorridors.east,routeExperimentDestination],role:'east',label:'East-side detour',profileRole:'east',alternatives:false}
+  ];
+  const variants=[
+    {label:'Broadway upper approach',profileRole:'broadway',points:[routeExperimentOrigin,[-73.96345,40.81445],routeExperimentDestination]},
+    {label:'Broadway lower approach',profileRole:'broadway',points:[routeExperimentOrigin,[-73.96375,40.81035],routeExperimentDestination]},
+    {label:'Broadway two-stage',profileRole:'broadway',points:[routeExperimentOrigin,[-73.96330,40.81415],[-73.96372,40.81015],routeExperimentDestination]},
+    {label:'Amsterdam upper approach',profileRole:'amsterdam',points:[routeExperimentOrigin,[-73.95980,40.81440],routeExperimentDestination]},
+    {label:'Amsterdam lower approach',profileRole:'amsterdam',points:[routeExperimentOrigin,[-73.96005,40.80985],routeExperimentDestination]},
+    {label:'Amsterdam two-stage',profileRole:'amsterdam',points:[routeExperimentOrigin,[-73.95955,40.81410],[-73.96015,40.81005],routeExperimentDestination]},
+    {label:'Morningside upper approach',profileRole:'morningside',points:[routeExperimentOrigin,[-73.95575,40.81430],routeExperimentDestination]},
+    {label:'Morningside lower approach',profileRole:'morningside',points:[routeExperimentOrigin,[-73.95520,40.80975],routeExperimentDestination]},
+    {label:'Morningside two-stage',profileRole:'morningside',points:[routeExperimentOrigin,[-73.95575,40.81400],[-73.95505,40.81000],routeExperimentDestination]},
+    {label:'West inner approach',profileRole:'west',points:[routeExperimentOrigin,[-73.96465,40.81345],routeExperimentDestination]},
+    {label:'West outer approach',profileRole:'west',points:[routeExperimentOrigin,[-73.96620,40.81170],routeExperimentDestination]},
+    {label:'West two-stage',profileRole:'west',points:[routeExperimentOrigin,[-73.96515,40.81410],[-73.96545,40.80965],routeExperimentDestination]},
+    {label:'East inner approach',profileRole:'east',points:[routeExperimentOrigin,[-73.95640,40.81345],routeExperimentDestination]},
+    {label:'East outer approach',profileRole:'east',points:[routeExperimentOrigin,[-73.95390,40.81105],routeExperimentDestination]},
+    {label:'East two-stage',profileRole:'east',points:[routeExperimentOrigin,[-73.95625,40.81405],[-73.95465,40.80985],routeExperimentDestination]},
+    {label:'Central west weave',profileRole:'broadway',points:[routeExperimentOrigin,[-73.96185,40.81380],[-73.96275,40.81015],routeExperimentDestination]},
+    {label:'Central east weave',profileRole:'amsterdam',points:[routeExperimentOrigin,[-73.95820,40.81355],[-73.95745,40.81015],routeExperimentDestination]},
+    {label:'Cross-corridor hybrid',profileRole:'east',points:[routeExperimentOrigin,[-73.95690,40.81370],[-73.96290,40.81020],routeExperimentDestination]},
+    {label:'Upper west then central',profileRole:'west',points:[routeExperimentOrigin,[-73.96510,40.81455],[-73.96120,40.81130],routeExperimentDestination]},
+    {label:'Upper east then central',profileRole:'east',points:[routeExperimentOrigin,[-73.95485,40.81430],[-73.95970,40.81120],routeExperimentDestination]},
+    {label:'Broadway–Amsterdam hybrid',profileRole:'amsterdam',points:[routeExperimentOrigin,[-73.96320,40.81395],[-73.95995,40.81055],routeExperimentDestination]},
+    {label:'Amsterdam–Morningside hybrid',profileRole:'morningside',points:[routeExperimentOrigin,[-73.95960,40.81395],[-73.95545,40.81045],routeExperimentDestination]},
+    {label:'Wide west return',profileRole:'west',points:[routeExperimentOrigin,[-73.96645,40.81365],[-73.96420,40.80945],routeExperimentDestination]},
+    {label:'Wide east return',profileRole:'east',points:[routeExperimentOrigin,[-73.95365,40.81350],[-73.95615,40.80935],routeExperimentDestination]}
+  ].map((plan,index)=>({...plan,role:`candidate-${index+1}`,alternatives:false}));
+  return [...primary,...variants];
+}
+function routeExperimentSyncClosureOptions(){
+  const select=routeExperimentControls.closure;
+  if(!select)return;
+  const availableRoles=new Set(routeExperimentState.routes.map(route=>route.role));
+  [...select.options].forEach(option=>{
+    if(option.value==='none')return;
+    option.disabled=!availableRoles.has(option.value);
+    option.textContent=option.textContent.replace(/ \(unavailable\)$/,'')+(option.disabled?' (unavailable)':'');
   });
-  all.forEach(route=>{
-    if(result.length>=6)return;
-    if(!result.some(existing=>routeExperimentDuplicate(existing,route)))result.push(route);
-  });
-  return result.slice(0,6).map((route,index)=>({...route,id:`experiment-route-${index}`}));
+  if(select.value!=='none'&&!availableRoles.has(select.value))select.value='none';
+}
+function routeExperimentMeters(a,b){
+  const radius=6371000;
+  const lat1=a[1]*Math.PI/180,lat2=b[1]*Math.PI/180;
+  const dLat=(b[1]-a[1])*Math.PI/180,dLon=(b[0]-a[0])*Math.PI/180;
+  const h=Math.sin(dLat/2)**2+Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLon/2)**2;
+  return 2*radius*Math.asin(Math.min(1,Math.sqrt(h)));
+}
+function routeExperimentBearing(a,b){
+  const lat1=a[1]*Math.PI/180,lat2=b[1]*Math.PI/180;
+  const dLon=(b[0]-a[0])*Math.PI/180;
+  const y=Math.sin(dLon)*Math.cos(lat2);
+  const x=Math.cos(lat1)*Math.sin(lat2)-Math.sin(lat1)*Math.cos(lat2)*Math.cos(dLon);
+  return (Math.atan2(y,x)*180/Math.PI+360)%360;
+}
+function routeExperimentBearingDifference(a,b){
+  const d=Math.abs(a-b)%360;
+  return Math.min(d,360-d);
+}
+function routeExperimentPointToSegmentMeters(point,a,b){
+  const lat=((point[1]+a[1]+b[1])/3)*Math.PI/180;
+  const scaleX=111320*Math.cos(lat),scaleY=110540;
+  const px=(point[0]-a[0])*scaleX,py=(point[1]-a[1])*scaleY;
+  const bx=(b[0]-a[0])*scaleX,by=(b[1]-a[1])*scaleY;
+  const denom=bx*bx+by*by;
+  if(denom<.0001)return Math.hypot(px,py);
+  const t=Math.max(0,Math.min(1,(px*bx+py*by)/denom));
+  return Math.hypot(px-t*bx,py-t*by);
+}
+function routeExperimentPointAlong(a,b,t){
+  return [a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
+}
+function routeExperimentPointAtDistance(coordinates,target){
+  if(!coordinates?.length)return null;
+  if(target<=0)return coordinates[0];
+  let travelled=0;
+  for(let i=1;i<coordinates.length;i++){
+    const length=routeExperimentMeters(coordinates[i-1],coordinates[i]);
+    if(travelled+length>=target){
+      const t=length?((target-travelled)/length):0;
+      return routeExperimentPointAlong(coordinates[i-1],coordinates[i],t);
+    }
+    travelled+=length;
+  }
+  return coordinates[coordinates.length-1];
+}
+function routeExperimentTrimLine(coordinates,startMeters=38,endMeters=38){
+  if(!Array.isArray(coordinates)||coordinates.length<2)return coordinates||[];
+  const cumulative=[0];
+  for(let i=1;i<coordinates.length;i++)cumulative.push(cumulative[i-1]+routeExperimentMeters(coordinates[i-1],coordinates[i]));
+  const total=cumulative[cumulative.length-1];
+  if(total<=startMeters+endMeters+20)return coordinates.slice();
+  const start=routeExperimentPointAtDistance(coordinates,startMeters);
+  const endDistance=total-endMeters;
+  const end=routeExperimentPointAtDistance(coordinates,endDistance);
+  const middle=coordinates.filter((_,index)=>cumulative[index]>startMeters&&cumulative[index]<endDistance);
+  return [start,...middle,end];
+}
+function routeExperimentSharedRoadMeters(candidateCoordinates,restrictedCoordinates){
+  if(!candidateCoordinates?.length||!restrictedCoordinates?.length)return 0;
+  const restrictedSegments=[];
+  for(let i=1;i<restrictedCoordinates.length;i++){
+    const a=restrictedCoordinates[i-1],b=restrictedCoordinates[i];
+    const length=routeExperimentMeters(a,b);
+    if(length>1)restrictedSegments.push({a,b,bearing:routeExperimentBearing(a,b)});
+  }
+  let shared=0;
+  for(let i=1;i<candidateCoordinates.length;i++){
+    const a=candidateCoordinates[i-1],b=candidateCoordinates[i];
+    const length=routeExperimentMeters(a,b);
+    if(length<1)continue;
+    const bearing=routeExperimentBearing(a,b);
+    const samples=Math.max(1,Math.ceil(length/10));
+    for(let sample=0;sample<samples;sample++){
+      const point=routeExperimentPointAlong(a,b,(sample+.5)/samples);
+      const matches=restrictedSegments.some(segment=>{
+        const direction=routeExperimentBearingDifference(bearing,segment.bearing);
+        const parallel=Math.min(direction,Math.abs(180-direction))<=28;
+        return parallel&&routeExperimentPointToSegmentMeters(point,segment.a,segment.b)<=15;
+      });
+      if(matches)shared+=length/samples;
+    }
+  }
+  return shared;
 }
 function routeExperimentFeatureCollection(){
-  const values=routeExperimentValues();
-  return {
-    type:'FeatureCollection',
-    features:routeExperimentState.routes.map(route=>({
+  const features=routeExperimentState.routes.map(route=>{
+    const calculated=route.calculated||{};
+    return {
       type:'Feature',
       properties:{
+        featureType:'route',
         routeId:route.id,
-        selected:route.id===routeExperimentState.selectedId,
-        recommended:route.id===routeExperimentState.recommendedId,
-        blocked:values.closure!=='none'&&route.role===values.closure
+        routeName:routeExperimentRouteName(route),
+        selected:route.id===routeExperimentState.selectedId&&!calculated.blocked,
+        selectedOnly:route.id===routeExperimentState.selectedId&&route.id!==routeExperimentState.recommendedId&&!calculated.blocked,
+        recommended:route.id===routeExperimentState.recommendedId&&!calculated.blocked,
+        available:!calculated.blocked,
+        conflict:Boolean(calculated.closureConflict),
+        restrictedSource:Boolean(calculated.restrictedSource)
       },
       geometry:{type:'LineString',coordinates:route.coordinates}
-    }))
-  };
+    };
+  });
+  if(routeExperimentState.restrictedCoordinates.length>1){
+    const restrictedRoute=(routeExperimentState.baseRoutes.length?routeExperimentState.baseRoutes:routeExperimentState.routes).find(route=>route.id===routeExperimentState.restrictedRouteId);
+    const meta=routeExperimentRoleMeta[restrictedRoute?.role]||routeExperimentRoleMeta.direct;
+    features.push({
+      type:'Feature',
+      properties:{featureType:'closure',routeId:'active-road-closure',routeName:meta.name,restrictionLabel:`${meta.name.toUpperCase()} · ALL SEGMENTS CLOSED`},
+      geometry:{type:'LineString',coordinates:routeExperimentState.restrictedCoordinates}
+    });
+  }
+  return {type:'FeatureCollection',features};
 }
 function routeExperimentNormalize(routes,key){
-  const values=routes.map(route=>route.calculated[key]);
+  const valid=routes.filter(route=>!route.calculated?.blocked);
+  if(!valid.length){routes.forEach(route=>{route.calculated[`n_${key}`]=1;});return;}
+  const values=valid.map(route=>route.calculated[key]);
   const min=Math.min(...values),max=Math.max(...values);
-  routes.forEach(route=>{route.calculated[`n_${key}`]=(route.calculated[key]-min)/Math.max(.0001,max-min);});
+  routes.forEach(route=>{
+    route.calculated[`n_${key}`]=route.calculated.blocked?1:(route.calculated[key]-min)/Math.max(.0001,max-min);
+  });
 }
 function routeExperimentCalculate(){
   const values=routeExperimentValues();
   const objective=routeExperimentObjectives[routeExperimentState.objective];
+  const closurePool=routeExperimentState.baseRoutes.length?routeExperimentState.baseRoutes:routeExperimentState.routes;
+  const restrictedRoute=values.closure==='none'?null:closurePool.find(route=>route.role===values.closure)||null;
+  routeExperimentState.restrictedRouteId=restrictedRoute?.id||null;
+  /* Close the central street section, not the restaurant/campus access legs.
+     Every segment actually drawn in yellow is removed from rerouting. */
+  const closureAccess=restrictedRoute?Math.max(90,routeExperimentLineLength(restrictedRoute.coordinates)*.20):0;
+  routeExperimentState.restrictedCoordinates=restrictedRoute?routeExperimentTrimLine(restrictedRoute.coordinates,closureAccess,closureAccess):[];
   routeExperimentState.routes.forEach(route=>{
-    const meta=routeExperimentRoleMeta[route.role]||routeExperimentRoleMeta.direct;
+    const meta=routeExperimentRoleMeta[route.profileRole||route.role]||routeExperimentRoleMeta.reroute;
     const baseMinutes=route.duration/60;
     const trafficDelay=baseMinutes*(values.traffic/100)*.34*meta.traffic;
     const weatherDelay=baseMinutes*(values.weather/100)*.18*(meta.weather/100);
     const moving=baseMinutes+trafficDelay+weatherDelay;
-    route.calculated={
-      distance:route.distance,
-      moving,
-      bikePenalty:100-meta.bike,
-      bikeSupport:meta.bike,
-      slope:meta.slope,
-      risk:Math.min(100,meta.risk+Math.max(0,route.steps-10)*.65),
-      weather:meta.weather,
-      total:moving+values.wait+values.handoff,
-      blocked:values.closure!=='none'&&route.role===values.closure
-    };
+    const restrictedSource=Boolean(restrictedRoute&&route.id===restrictedRoute.id);
+    const closureOverlapMeters=restrictedRoute&&!restrictedSource?routeExperimentSharedRoadMeters(route.coordinates,routeExperimentState.restrictedCoordinates):0;
+    const closureConflict=Boolean(restrictedRoute&&!restrictedSource&&closureOverlapMeters>=5);
+    route.calculated={distance:route.distance,moving,bikePenalty:100-meta.bike,bikeSupport:meta.bike,slope:meta.slope,risk:Math.min(100,meta.risk+Math.max(0,route.steps-10)*.65),weather:meta.weather,total:moving+values.wait+values.handoff,restrictedSource,closureConflict,closureOverlapMeters,blocked:restrictedSource||closureConflict};
   });
   ['distance','moving','bikePenalty','slope','risk','weather'].forEach(key=>routeExperimentNormalize(routeExperimentState.routes,key));
   routeExperimentState.routes.forEach(route=>{
     const c=route.calculated;
-    const score=
-      objective.distance*c.n_distance+
-      objective.time*c.n_moving+
-      objective.bike*c.n_bikePenalty*(values.bike/100)+
-      objective.slope*c.n_slope*(values.slope/100)+
-      objective.risk*c.n_risk*(values.risk/100)+
-      objective.weather*c.n_weather*(values.weather/100)+
-      (c.blocked?100:0);
-    route.score=score;
+    route.score=objective.distance*c.n_distance+objective.time*c.n_moving+objective.bike*c.n_bikePenalty*(values.bike/100)+objective.slope*c.n_slope*(values.slope/100)+objective.risk*c.n_risk*(values.risk/100)+objective.weather*c.n_weather*(values.weather/100)+(c.blocked?100:0);
   });
-  const sorted=[...routeExperimentState.routes].sort((a,b)=>a.score-b.score);
-  sorted.forEach((route,index)=>route.rank=index+1);
-  routeExperimentState.recommendedId=sorted[0]?.id||null;
+  const sorted=[...routeExperimentState.routes].sort((a,b)=>a.calculated.blocked!==b.calculated.blocked?(a.calculated.blocked?1:-1):a.score-b.score);
+  let availableRank=0;
+  sorted.forEach(route=>{route.rank=route.calculated.blocked?null:++availableRank;});
+  routeExperimentState.recommendedId=sorted.find(route=>!route.calculated.blocked)?.id||null;
 }
 function routeExperimentUpdateLabels(){
   const values=routeExperimentValues();
@@ -5662,57 +6140,78 @@ function routeExperimentUpdateLabels(){
     experimentHandoffValue:`${values.handoff} min`
   };
   Object.entries(labels).forEach(([id,value])=>{const element=document.getElementById(id);if(element)element.textContent=value;});
+  const objective=routeExperimentObjectives[routeExperimentState.objective];
   const objectiveLabel=document.getElementById('experimentObjectiveLabel');
-  if(objectiveLabel)objectiveLabel.textContent=routeExperimentObjectives[routeExperimentState.objective].label;
+  if(objectiveLabel)objectiveLabel.textContent=objective.label;
+  const explanation=document.getElementById('experimentObjectiveExplanation');
+  if(explanation)explanation.textContent=routeExperimentObjectiveExplanations[routeExperimentState.objective];
+  document.querySelectorAll('[data-experiment-weight]').forEach(element=>{
+    const key=element.dataset.experimentWeight;
+    if(Number.isFinite(objective[key]))element.textContent=`${objective[key].toFixed(2)}×`;
+  });
+  const closureNotice=document.getElementById('routeExperimentClosureNotice');
+  if(closureNotice){
+    const active=values.closure!=='none'&&routeExperimentState.restrictedCoordinates.length>1;
+    closureNotice.classList.toggle('active',active);
+    const span=closureNotice.querySelector('span');
+    if(span&&active)span.textContent='Every yellow segment is removed from routing. The red line is recalculated on open streets and cannot travel along any yellow segment; a single cross-street intersection is allowed.';
+  }
 }
 function routeExperimentRenderCards(){
   const container=document.getElementById('routeExperimentCards');
+  const countLabel=document.getElementById('experimentCandidateCount');
   if(!container)return;
-  if(!routeExperimentState.routes.length){container.innerHTML='<div class="route-experiment-card"><strong>No routes available</strong><small>Check routing access</small></div>';return;}
-  container.innerHTML=routeExperimentState.routes.map(route=>{
-    const meta=routeExperimentRoleMeta[route.role]||routeExperimentRoleMeta.direct;
+  if(!routeExperimentState.routes.length){
+    if(countLabel)countLabel.textContent='No route candidates returned';
+    container.innerHTML='<div class="route-experiment-card"><strong>No routes available</strong><small>Check routing access</small></div>';
+    return;
+  }
+  const validCount=routeExperimentState.routes.filter(route=>!route.calculated?.blocked).length;
+  const targetNote=routeExperimentState.routes.length>=routeExperimentTargetCandidateCount?'target reached':'routing service returned fewer than 20';
+  if(countLabel)countLabel.textContent=`${routeExperimentState.routes.length} generated · ${validCount} valid · ${targetNote}`;
+  const displayRoutes=[...routeExperimentState.routes].sort((a,b)=>a.calculated?.blocked!==b.calculated?.blocked?(a.calculated?.blocked?1:-1):(a.rank||999)-(b.rank||999));
+  container.innerHTML=displayRoutes.map(route=>{
+    const meta=routeExperimentRoleMeta[route.profileRole||route.role]||routeExperimentRoleMeta.reroute;
+    const calculated=route.calculated||{};
     const classes=['route-experiment-card'];
     if(route.id===routeExperimentState.selectedId)classes.push('selected');
     if(route.id===routeExperimentState.recommendedId)classes.push('recommended');
-    if(route.calculated?.blocked)classes.push('blocked');
-    return `<button type="button" class="${classes.join(' ')}" data-experiment-route-id="${route.id}"><strong>${meta.name}</strong><span>#${route.rank} · ${(route.distance/1000).toFixed(2)} km</span><small>${route.calculated?.blocked?'restricted corridor':`${Math.round(route.calculated.moving)} min moving · score ${route.score.toFixed(2)}`}</small></button>`;
+    if(calculated.blocked)classes.push('blocked');
+    if(calculated.closureConflict)classes.push('conflict');
+    const disabled=calculated.blocked?' disabled aria-disabled="true"':'';
+    let status=`#${route.rank}`;
+    let detail=`${Math.round(calculated.moving)} min moving · weighted ${route.score.toFixed(2)}`;
+    if(calculated.restrictedSource){status='CLOSED';detail='Yellow segments are fully closed';}
+    else if(calculated.closureConflict){status='INVALID';detail=`Shares ${Math.round(calculated.closureOverlapMeters)} m of closed road · excluded`;}
+    return `<button type="button" class="${classes.join(' ')}" data-experiment-route-id="${route.id}"${disabled}><strong>${routeExperimentRouteName(route)}</strong><span>${status} · ${(route.distance/1000).toFixed(2)} km</span><small>${detail}</small></button>`;
   }).join('');
   container.querySelectorAll('[data-experiment-route-id]').forEach(button=>button.addEventListener('click',()=>routeExperimentSelectRoute(button.dataset.experimentRouteId,false)));
 }
 function routeExperimentInterpretation(route){
-  if(!route)return 'Route data is unavailable.';
+  if(!route)return routeExperimentState.reroutePending?'Recalculating a new street-following route around the yellow closure…':'No street-following detour was returned by the routing service.';
   const objective=routeExperimentObjectives[routeExperimentState.objective].label.toLowerCase();
-  const meta=routeExperimentRoleMeta[route.role]||routeExperimentRoleMeta.direct;
+  const meta=routeExperimentRoleMeta[route.profileRole||route.role]||routeExperimentRoleMeta.reroute;
   const values=routeExperimentValues();
-  const blocked=route.calculated.blocked?' It is currently penalized by the selected road restriction.':'';
-  return `${meta.name} ranks #${route.rank} under the ${objective} objective. ${meta.description}${blocked} Restaurant waiting and campus handoff are added to total delivery time but do not redraw the street route.`;
+  const weightingNote=routeExperimentObjectiveExplanations[routeExperimentState.objective];
+  const closureNote=values.closure!=='none'?' It shares no closed yellow road segment; a point crossing at an intersection is not counted as shared travel.':'';
+  const validCount=routeExperimentState.routes.filter(item=>!item.calculated?.blocked).length;
+  return `${routeExperimentRouteName(route)} ranks #${route.rank} of ${validCount} valid returned candidates with an overall weighted score of ${route.score.toFixed(2)} under the ${objective} objective. ${weightingNote} ${meta.description}${closureNote} The red line is the best route inside this generated candidate set, not proof of a universal optimum. Restaurant waiting and campus handoff are added to total delivery time but do not redraw the street route.`;
 }
 function routeExperimentUpdateMetrics(){
-  const route=routeExperimentState.routes.find(item=>item.id===routeExperimentState.selectedId)||routeExperimentState.routes.find(item=>item.id===routeExperimentState.recommendedId);
+  const route=routeExperimentState.routes.find(item=>item.id===routeExperimentState.selectedId&&!item.calculated?.blocked)||routeExperimentState.routes.find(item=>item.id===routeExperimentState.recommendedId&&!item.calculated?.blocked);
   const values=routeExperimentValues();
-  if(!route)return;
-  const meta=routeExperimentRoleMeta[route.role]||routeExperimentRoleMeta.direct;
-  const data={
-    experimentSelectedName:meta.name,
-    experimentRouteLogic:route.id===routeExperimentState.recommendedId?`Recommended · rank 1/${routeExperimentState.routes.length}`:`Alternative · rank ${route.rank}/${routeExperimentState.routes.length}`,
-    experimentDistance:`${(route.distance/1000).toFixed(2)} km`,
-    experimentMoveTime:`${Math.round(route.calculated.moving)} min`,
-    experimentBikeCoverage:`${meta.bike}%`,
-    experimentSlopeCost:`${meta.slope}/100`,
-    experimentRiskMetric:`${Math.round(route.calculated.risk)}/100`,
-    experimentTotalTime:`${Math.round(route.calculated.total)} min`,
-    experimentMovingLabel:`${Math.round(route.calculated.moving)} min`,
-    experimentWaitLabel:`${values.wait} min`,
-    experimentHandoffLabel:`${values.handoff} min`,
-    experimentInterpretation:routeExperimentInterpretation(route)
-  };
+  if(!route){
+    const empty={experimentSelectedName:routeExperimentState.reroutePending?'Recalculating reroute…':'No reroute returned',experimentRouteLogic:routeExperimentState.reroutePending?'Removing yellow road segments from routing':'Routing service could not find an open-street detour',experimentDistance:'—',experimentMoveTime:'—',experimentBikeCoverage:'—',experimentSlopeCost:'—',experimentRiskMetric:'—',experimentOverallScore:'—',experimentTotalTime:'—',experimentMovingLabel:'—',experimentWaitLabel:`${values.wait} min`,experimentHandoffLabel:`${values.handoff} min`,experimentInterpretation:routeExperimentInterpretation(null)};
+    Object.entries(empty).forEach(([id,value])=>{const element=document.getElementById(id);if(element)element.textContent=value;});
+    ['experimentMovingSegment','experimentWaitSegment','experimentHandoffSegment'].forEach(id=>{const element=document.getElementById(id);if(element)element.style.width='0%';});
+    return;
+  }
+  const meta=routeExperimentRoleMeta[route.profileRole||route.role]||routeExperimentRoleMeta.reroute;
+  const availableCount=routeExperimentState.routes.filter(item=>!item.calculated.blocked).length;
+  const data={experimentSelectedName:routeExperimentRouteName(route),experimentRouteLogic:route.id===routeExperimentState.recommendedId?`Best generated candidate · rank 1/${availableCount}`:`Inspected alternative · rank ${route.rank}/${availableCount}`,experimentDistance:`${(route.distance/1000).toFixed(2)} km`,experimentMoveTime:`${Math.round(route.calculated.moving)} min`,experimentBikeCoverage:`${meta.bike}%`,experimentSlopeCost:`${meta.slope}/100`,experimentRiskMetric:`${Math.round(route.calculated.risk)}/100`,experimentOverallScore:route.score.toFixed(2),experimentTotalTime:`${Math.round(route.calculated.total)} min`,experimentMovingLabel:`${Math.round(route.calculated.moving)} min`,experimentWaitLabel:`${values.wait} min`,experimentHandoffLabel:`${values.handoff} min`,experimentInterpretation:routeExperimentInterpretation(route)};
   Object.entries(data).forEach(([id,value])=>{const element=document.getElementById(id);if(element)element.textContent=value;});
   const total=Math.max(1,route.calculated.total);
-  const segments={
-    experimentMovingSegment:route.calculated.moving/total*100,
-    experimentWaitSegment:values.wait/total*100,
-    experimentHandoffSegment:values.handoff/total*100
-  };
+  const segments={experimentMovingSegment:route.calculated.moving/total*100,experimentWaitSegment:values.wait/total*100,experimentHandoffSegment:values.handoff/total*100};
   Object.entries(segments).forEach(([id,width])=>{const element=document.getElementById(id);if(element)element.style.width=`${width}%`;});
 }
 function routeExperimentUpdateMap(fit=false){
@@ -5725,18 +6224,155 @@ function routeExperimentUpdateMap(fit=false){
     routeExperimentState.map.fitBounds(bounds,{padding:{top:55,right:55,bottom:55,left:55},duration:700,maxZoom:15.8});
   }
 }
+function routeExperimentFocusRoute(route){
+  if(!routeExperimentState.mapReady||!route?.coordinates?.length)return;
+  const bounds=new mapboxgl.LngLatBounds();
+  route.coordinates.forEach(coordinate=>bounds.extend(coordinate));
+  routeExperimentState.map.fitBounds(bounds,{padding:{top:70,right:85,bottom:70,left:85},duration:800,maxZoom:16.2});
+}
+function routeExperimentFocusRestriction(blockedRoute,recommendedRoute){
+  if(!routeExperimentState.mapReady)return;
+  const bounds=new mapboxgl.LngLatBounds();
+  let hasGeometry=false;
+  routeExperimentState.restrictedCoordinates.forEach(coordinate=>{bounds.extend(coordinate);hasGeometry=true;});
+  recommendedRoute?.coordinates?.forEach(coordinate=>{bounds.extend(coordinate);hasGeometry=true;});
+  if(!hasGeometry&&blockedRoute?.coordinates?.length)blockedRoute.coordinates.forEach(coordinate=>{bounds.extend(coordinate);hasGeometry=true;});
+  if(!hasGeometry)return;
+  routeExperimentState.map.fitBounds(bounds,{padding:{top:85,right:95,bottom:85,left:95},duration:850,maxZoom:15.9});
+}
 function routeExperimentSelectRoute(id,fromMap=false){
-  if(!routeExperimentState.routes.some(route=>route.id===id))return;
+  const route=routeExperimentState.routes.find(item=>item.id===id);
+  if(!route)return;
+  if(route.calculated?.blocked){
+    const meta=routeExperimentRoleMeta[route.profileRole||route.role]||routeExperimentRoleMeta.reroute;
+    const reason=route.calculated.restrictedSource?'is the active yellow road closure':`shares ${Math.round(route.calculated.closureOverlapMeters)} m with the yellow closed road`;
+    routeExperimentSetStatus(`${routeExperimentRouteName(route)} ${reason} and cannot be selected.`);
+    return;
+  }
   routeExperimentState.selectedId=id;
   routeExperimentRenderCards();
   routeExperimentUpdateMetrics();
   routeExperimentUpdateMap(false);
-  if(fromMap)routeExperimentSetStatus('Selected a route directly from the map.');
+  if(fromMap)routeExperimentSetStatus(route.id===routeExperimentState.recommendedId?'Red route is the current rank #1 recommendation.':'White dashed line is the inspected alternative; the red rank #1 route remains visible.');
+}
+function routeExperimentRefreshUI({fit=false}={}){
+  routeExperimentCalculate();
+  const selected=routeExperimentState.routes.find(route=>route.id===routeExperimentState.selectedId);
+  if(!selected||selected.calculated?.blocked)routeExperimentState.selectedId=routeExperimentState.recommendedId;
+  routeExperimentUpdateLabels();
+  routeExperimentRenderCards();
+  routeExperimentUpdateMetrics();
+  routeExperimentUpdateMap(fit);
+}
+function routeExperimentLineLength(coordinates){
+  let total=0;
+  for(let i=1;i<(coordinates?.length||0);i++)total+=routeExperimentMeters(coordinates[i-1],coordinates[i]);
+  return total;
+}
+function routeExperimentOffsetMeters(point,eastMeters,northMeters){
+  const latRadians=point[1]*Math.PI/180;
+  return [point[0]+eastMeters/(111320*Math.max(.25,Math.cos(latRadians))),point[1]+northMeters/110540];
+}
+function routeExperimentOffsetByBearing(point,bearingDegrees,distanceMeters){
+  const radians=bearingDegrees*Math.PI/180;
+  return routeExperimentOffsetMeters(point,Math.sin(radians)*distanceMeters,Math.cos(radians)*distanceMeters);
+}
+function routeExperimentAvoidancePlans(restrictedCoordinates){
+  const total=routeExperimentLineLength(restrictedCoordinates);
+  if(total<20)return [];
+  const p30=routeExperimentPointAtDistance(restrictedCoordinates,total*.30);
+  const p50=routeExperimentPointAtDistance(restrictedCoordinates,total*.50);
+  const p70=routeExperimentPointAtDistance(restrictedCoordinates,total*.70);
+  const bearing=routeExperimentBearing(p30,p70);
+  const plans=[];
+  [180,260,340,440,560,700,850].forEach(distance=>{
+    [-1,1].forEach(side=>{
+      const normal=bearing+side*90;
+      const a=routeExperimentOffsetByBearing(p30,normal,distance);
+      const m=routeExperimentOffsetByBearing(p50,normal,distance);
+      const b=routeExperimentOffsetByBearing(p70,normal,distance);
+      const sideName=side<0?'west-side':'east-side';
+      plans.push({points:[routeExperimentOrigin,m,routeExperimentDestination],label:`Dynamic ${sideName} reroute`,profileRole:side<0?'west':'east'});
+      plans.push({points:[routeExperimentOrigin,a,b,routeExperimentDestination],label:`Wide ${sideName} reroute`,profileRole:side<0?'west':'east'});
+    });
+  });
+  const corridorEntries=Object.entries(routeExperimentCorridors);
+  corridorEntries.forEach(([profileRole,point])=>plans.push({points:[routeExperimentOrigin,point,routeExperimentDestination],label:`Dynamic ${profileRole} reroute`,profileRole}));
+  return plans;
+}
+async function routeExperimentGenerateDetours(){
+  const restrictedCoordinates=routeExperimentState.restrictedCoordinates.slice();
+  if(restrictedCoordinates.length<2)return [];
+  const serial=++routeExperimentState.detourSerial;
+  routeExperimentState.detourAbortController?.abort();
+  routeExperimentState.detourAbortController=new AbortController();
+  const signal=routeExperimentState.detourAbortController.signal;
+  const plans=routeExperimentAvoidancePlans(restrictedCoordinates);
+  const settled=await Promise.allSettled(plans.map((plan,index)=>routeExperimentRequest(plan.points,{role:'reroute',label:plan.label,alternatives:false,signal,profileRole:plan.profileRole})));
+  if(serial!==routeExperimentState.detourSerial)return [];
+  const candidates=settled.filter(result=>result.status==='fulfilled').flatMap(result=>result.value);
+  const viable=candidates.filter(route=>routeExperimentSharedRoadMeters(route.coordinates,restrictedCoordinates)<5);
+  viable.sort((a,b)=>a.duration-b.duration||a.distance-b.distance);
+  const unique=[];
+  for(const route of viable){
+    if(unique.some(existing=>routeExperimentDuplicate(existing,route)))continue;
+    unique.push({...route,id:`dynamic-reroute-${unique.length}-${serial}`,role:'reroute'});
+    if(unique.length>=routeExperimentMaxDynamicCandidates)break;
+  }
+  if(unique.length<routeExperimentTargetCandidateCount){
+    for(const route of viable){
+      if(unique.some(existing=>existing.coordinates===route.coordinates))continue;
+      unique.push({...route,id:`dynamic-reroute-${unique.length}-${serial}`,role:'reroute'});
+      if(unique.length>=routeExperimentTargetCandidateCount||unique.length>=routeExperimentMaxDynamicCandidates)break;
+    }
+  }
+  return unique;
+}
+async function routeExperimentApplyClosure(){
+  const values=routeExperimentValues();
+  routeExperimentState.detourAbortController?.abort();
+  routeExperimentState.routes=routeExperimentState.baseRoutes.slice();
+  routeExperimentState.reroutePending=values.closure!=='none';
+  routeExperimentRefreshUI({fit:false});
+  if(values.closure==='none'){
+    routeExperimentState.reroutePending=false;
+    routeExperimentState.selectedId=routeExperimentState.recommendedId;
+    routeExperimentRefreshUI({fit:false});
+    routeExperimentSetStatus(`${routeExperimentState.routes.length} street-following candidates ready — no road restriction active`);
+    return;
+  }
+  const closedMeta=routeExperimentRoleMeta[values.closure]||routeExperimentRoleMeta.direct;
+  routeExperimentSetStatus(`${closedMeta.name} closed in yellow — recalculating a new street-following red route…`);
+  try{
+    const detours=await routeExperimentGenerateDetours();
+    if(routeExperimentValues().closure!==values.closure)return;
+    routeExperimentState.routes=[...routeExperimentState.baseRoutes,...detours];
+    routeExperimentState.reroutePending=false;
+    routeExperimentRefreshUI({fit:false});
+    routeExperimentState.selectedId=routeExperimentState.recommendedId;
+    routeExperimentRefreshUI({fit:false});
+    const recommended=routeExperimentState.routes.find(route=>route.id===routeExperimentState.recommendedId);
+    if(recommended){
+      const recommendedMeta=routeExperimentRoleMeta[recommended.profileRole||recommended.role]||routeExperimentRoleMeta.reroute;
+      const validCount=routeExperimentState.routes.filter(route=>!route.calculated?.blocked).length;
+      routeExperimentSetStatus(`${closedMeta.name} is closed in yellow. ${validCount} valid street-following routes were evaluated; red marks rank #1 → ${routeExperimentRouteName(recommended)}.`);
+      const blockedRoute=routeExperimentState.baseRoutes.find(route=>route.role===values.closure);
+      routeExperimentFocusRestriction(blockedRoute,recommended);
+    }else{
+      routeExperimentSetStatus(`${closedMeta.name} is closed in yellow, but the routing service did not return an open-street detour.`,true);
+    }
+  }catch(error){
+    if(error.name==='AbortError')return;
+    routeExperimentState.reroutePending=false;
+    routeExperimentRefreshUI({fit:false});
+    routeExperimentSetStatus(`Reroute calculation failed: ${error.message}`,true);
+  }
 }
 function routeExperimentUpdateModel(autoSelect=true){
   if(!routeExperimentState.routes.length){routeExperimentUpdateLabels();return;}
   routeExperimentCalculate();
-  if(autoSelect||!routeExperimentState.routes.some(route=>route.id===routeExperimentState.selectedId))routeExperimentState.selectedId=routeExperimentState.recommendedId;
+  const selected=routeExperimentState.routes.find(route=>route.id===routeExperimentState.selectedId);
+  if(autoSelect||!selected||selected.calculated?.blocked)routeExperimentState.selectedId=routeExperimentState.recommendedId;
   routeExperimentUpdateLabels();
   routeExperimentRenderCards();
   routeExperimentUpdateMetrics();
@@ -5747,30 +6383,26 @@ async function routeExperimentFetchRoutes(){
   const serial=++routeExperimentState.requestSerial;
   routeExperimentState.abortController?.abort();
   routeExperimentState.abortController=new AbortController();
-  routeExperimentSetStatus('Calculating street-following alternatives…');
+  routeExperimentSetStatus('Requesting at least 20 street-following candidates…');
   document.getElementById('routeExperimentFallback')?.classList.remove('is-hidden');
   try{
-    const requests=[
-      routeExperimentRequest([routeExperimentOrigin,routeExperimentDestination],{role:'direct',label:'Direct network',alternatives:true}),
-      routeExperimentRequest([routeExperimentOrigin,routeExperimentCorridors.broadway,routeExperimentDestination],{role:'broadway',label:'Broadway corridor'}),
-      routeExperimentRequest([routeExperimentOrigin,routeExperimentCorridors.amsterdam,routeExperimentDestination],{role:'amsterdam',label:'Amsterdam corridor'}),
-      routeExperimentRequest([routeExperimentOrigin,routeExperimentCorridors.morningside,routeExperimentDestination],{role:'morningside',label:'Morningside corridor'}),
-      routeExperimentRequest([routeExperimentOrigin,routeExperimentCorridors.west,routeExperimentDestination],{role:'west',label:'West-side detour'}),
-      routeExperimentRequest([routeExperimentOrigin,routeExperimentCorridors.east,routeExperimentDestination],{role:'east',label:'East-side detour'})
-    ];
+    const plans=routeExperimentInitialPlans();
+    const requests=plans.map(plan=>routeExperimentRequest(plan.points,{role:plan.role,label:plan.label,alternatives:plan.alternatives,profileRole:plan.profileRole}));
     const settled=await Promise.allSettled(requests);
     if(serial!==routeExperimentState.requestSerial)return;
     const batches=settled.filter(result=>result.status==='fulfilled').map(result=>result.value);
     if(!batches.length)throw settled.find(result=>result.status==='rejected')?.reason||new Error('No route request succeeded');
-    routeExperimentState.routes=routeExperimentSelectCandidates(batches);
-    if(!routeExperimentState.routes.length)throw new Error('No distinct route alternatives returned');
+    routeExperimentState.baseRoutes=routeExperimentSelectCandidates(batches);
+    routeExperimentState.routes=routeExperimentState.baseRoutes.slice();
+    if(!routeExperimentState.routes.length)throw new Error('No route alternatives returned');
+    routeExperimentSyncClosureOptions();
     routeExperimentCalculate();
     routeExperimentState.selectedId=routeExperimentState.recommendedId;
     routeExperimentUpdateLabels();
     routeExperimentRenderCards();
     routeExperimentUpdateMetrics();
     routeExperimentUpdateMap(true);
-    routeExperimentSetStatus(`${routeExperimentState.routes.length} fixed-endpoint routes ready`);
+    routeExperimentSetStatus(`${routeExperimentState.routes.length} street-following candidates ready — red marks rank #1 in the generated set`);
     document.getElementById('routeExperimentFallback')?.classList.add('is-hidden');
   }catch(error){
     if(error.name==='AbortError')return;
@@ -5812,11 +6444,17 @@ function routeExperimentInitMap(){
   routeExperimentState.map.on('load',()=>{
     routeExperimentState.mapReady=true;
     routeExperimentState.map.addSource('route-experiment-routes',{type:'geojson',data:{type:'FeatureCollection',features:[]}});
-    routeExperimentState.map.addLayer({id:'route-experiment-base',type:'line',source:'route-experiment-routes',paint:{'line-color':'#8f8f8f','line-width':4,'line-opacity':.48}});
-    routeExperimentState.map.addLayer({id:'route-experiment-blocked',type:'line',source:'route-experiment-routes',filter:['==',['get','blocked'],true],paint:{'line-color':'#ffb000','line-width':5,'line-opacity':.82,'line-dasharray':[1.2,1.2]}});
-    routeExperimentState.map.addLayer({id:'route-experiment-recommended',type:'line',source:'route-experiment-routes',filter:['==',['get','recommended'],true],paint:{'line-color':'#ffffff','line-width':5,'line-opacity':.9,'line-dasharray':[2,1.4]}});
-    routeExperimentState.map.addLayer({id:'route-experiment-selected',type:'line',source:'route-experiment-routes',filter:['==',['get','selected'],true],paint:{'line-color':'#ff3348','line-width':7,'line-opacity':.98}});
-    routeExperimentState.map.addLayer({id:'route-experiment-hit',type:'line',source:'route-experiment-routes',paint:{'line-color':'rgba(0,0,0,0)','line-width':18}});
+    routeExperimentState.map.addLayer({id:'route-experiment-base',type:'line',source:'route-experiment-routes',filter:['all',['==',['get','featureType'],'route'],['==',['get','available'],true]],paint:{'line-color':'#9a9a9a','line-width':2.6,'line-opacity':.20}});
+    routeExperimentState.map.addLayer({id:'route-experiment-selected',type:'line',source:'route-experiment-routes',filter:['all',['==',['get','featureType'],'route'],['==',['get','selectedOnly'],true],['==',['get','available'],true]],paint:{'line-color':'#ffffff','line-width':4.5,'line-opacity':.96,'line-dasharray':[2,1.4]}});
+    routeExperimentState.map.addLayer({id:'route-experiment-recommended',type:'line',source:'route-experiment-routes',filter:['all',['==',['get','featureType'],'route'],['==',['get','recommended'],true],['==',['get','available'],true]],paint:{'line-color':'#ff3348','line-width':7,'line-opacity':.98}});
+    /* Yellow is the actual closed-road set. Any candidate sharing a parallel
+       road segment with it is removed before a red route is drawn. */
+    routeExperimentState.map.addLayer({id:'route-experiment-closure-buffer',type:'line',source:'route-experiment-routes',filter:['==',['get','featureType'],'closure'],paint:{'line-color':'#ffb000','line-width':24,'line-opacity':.2}});
+    routeExperimentState.map.addLayer({id:'route-experiment-blocked-casing',type:'line',source:'route-experiment-routes',filter:['==',['get','featureType'],'closure'],paint:{'line-color':'#171717','line-width':13,'line-opacity':.95}});
+    routeExperimentState.map.addLayer({id:'route-experiment-blocked',type:'line',source:'route-experiment-routes',filter:['==',['get','featureType'],'closure'],paint:{'line-color':'#ffb000','line-width':8,'line-opacity':1,'line-dasharray':[1.1,1.1]}});
+    routeExperimentState.map.addLayer({id:'route-experiment-closure-x',type:'symbol',source:'route-experiment-routes',filter:['==',['get','featureType'],'closure'],layout:{'symbol-placement':'line','symbol-spacing':58,'text-field':'×','text-size':15,'text-allow-overlap':true,'text-ignore-placement':true},paint:{'text-color':'#171717','text-halo-color':'#ffb000','text-halo-width':2}});
+    routeExperimentState.map.addLayer({id:'route-experiment-blocked-label',type:'symbol',source:'route-experiment-routes',filter:['==',['get','featureType'],'closure'],layout:{'symbol-placement':'line-center','text-field':['get','restrictionLabel'],'text-size':12,'text-letter-spacing':.1,'text-allow-overlap':true,'text-ignore-placement':true},paint:{'text-color':'#ffb000','text-halo-color':'#171717','text-halo-width':3}});
+    routeExperimentState.map.addLayer({id:'route-experiment-hit',type:'line',source:'route-experiment-routes',filter:['all',['==',['get','featureType'],'route'],['==',['get','available'],true]],paint:{'line-color':'rgba(0,0,0,0)','line-width':18}});
     routeExperimentState.map.on('mouseenter','route-experiment-hit',()=>routeExperimentState.map.getCanvas().style.cursor='pointer');
     routeExperimentState.map.on('mouseleave','route-experiment-hit',()=>routeExperimentState.map.getCanvas().style.cursor='');
     routeExperimentState.map.on('click','route-experiment-hit',event=>{
@@ -5840,7 +6478,9 @@ function routeExperimentInitMap(){
   routeExperimentUpdateModel(true);
 }));
 ['traffic','weather','slope','bike','risk','wait','handoff'].forEach(key=>routeExperimentControls[key]?.addEventListener('input',()=>routeExperimentUpdateModel(true)));
-routeExperimentControls.closure?.addEventListener('change',()=>routeExperimentUpdateModel(true));
+routeExperimentControls.closure?.addEventListener('change',()=>{
+  routeExperimentApplyClosure();
+});
 routeExperimentUpdateLabels();
 routeExperimentInitMap();
 
